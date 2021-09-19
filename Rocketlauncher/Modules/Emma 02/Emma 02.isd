@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="PortableMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run in portable mode. In this mode, emulator will expect all data and setting files to be in the sub directory "data" in the application directory (wherever the Emma 02.exe file is located). This is enabled by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="A1Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Type the key you have configured for Player 1 Button 1 in the emulator. This is required in order for the built-in games to start automatically. Defaults to 1.</DESCRIPTION>
+						</KEY>
+						<KEY name="A2Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Type the key you have configured for Player 1 Button 2 in the emulator. This is required in order for the built-in games to start automatically. Defaults to 2.</DESCRIPTION>
+						</KEY>
+						<KEY name="A3Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Type the key you have configured for Player 1 Button 3 in the emulator. This is required in order for the built-in games to start automatically. Defaults to 3.</DESCRIPTION>
+						</KEY>
+						<KEY name="A4Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Type the key you have configured for Player 1 Button 4 in the emulator. This is required in order for the built-in games to start automatically. Defaults to 4.</DESCRIPTION>
+						</KEY>
+						<KEY name="A5Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Type the key you have configured for Player 1 Button 5 in the emulator. This is required in order for the built-in games to start automatically. Defaults to 5.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

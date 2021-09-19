@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Timex Sinclair 2068" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Filter" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Graphics Filter you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Normal">normal</VALUE>
+								<VALUE description="Timex Half (smoothed)">half</VALUE>
+								<VALUE description="Time Half (skipping)">halfskip</VALUE>
+								<VALUE description="Timex TV">timextv</VALUE>
+								<VALUE description="Timex 1.5x">timex15x</VALUE>
+								<VALUE description="PAL TV">paltv</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine model to emulate</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Timex TC2068">2068</VALUE>
+								<VALUE description="Timex TS2068">ts2068</VALUE>
+								<VALUE description="Timex TC2048">2048</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine model to emulate. Defaults to TS2068.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Timex TC2068">2068</VALUE>
+								<VALUE description="Timex TS2068">ts2068</VALUE>
+								<VALUE description="Timex TC2048">2048</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Sinclair ZX Spectrum" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Filter" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Horizontal Screen resolution you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Normal">normal</VALUE>
+								<VALUE description="Double Size">2x</VALUE>
+								<VALUE description="Triple Size">3x</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="Super 2xSaI">super2xsai</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="AdvMAME 2x">advmame2x</VALUE>
+								<VALUE description="AdvMAME 3x">advmame3x</VALUE>
+								<VALUE description="TV 2x">tv2x</VALUE>
+								<VALUE description="TV 3x">??????????</VALUE>
+								<VALUE description="Dot Matrix">dotmatrix</VALUE>
+								<VALUE description="PAL TV">paltv</VALUE>
+								<VALUE description="PAL TV 2x">paltv2x</VALUE>
+								<VALUE description="PAL TV 3x">paltv3x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="Europe">XXX</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine model to emulate. Defaults to 48K</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Spectrum 16K">16</VALUE>
+								<VALUE description="Spectrum 48K">48</VALUE>
+								<VALUE description="Spectrum 48K (NTSC)">48_ntsc</VALUE>
+								<VALUE description="Spectrum 128K">128</VALUE>
+								<VALUE description="Spectrum +2">plus2</VALUE>
+								<VALUE description="Spectrum +2A">plus2a</VALUE>
+								<VALUE description="Spectrum +3">plus3</VALUE>
+								<VALUE description="Spectrum +3e">plus3e</VALUE>
+								<VALUE description="Spectrum SE">se</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine model to emulate</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Spectrum 16K">16</VALUE>
+								<VALUE description="Spectrum 48K">48</VALUE>
+								<VALUE description="Spectrum 48K (NTSC)">48_ntsc</VALUE>
+								<VALUE description="Spectrum 128K">128</VALUE>
+								<VALUE description="Spectrum +2">plus2</VALUE>
+								<VALUE description="Spectrum +2A">plus2a</VALUE>
+								<VALUE description="Spectrum +3">plus3</VALUE>
+								<VALUE description="Spectrum +3e">plus3e</VALUE>
+								<VALUE description="Spectrum SE">se</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>
+

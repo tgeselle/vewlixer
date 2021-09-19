@@ -1,0 +1,33 @@
+MCRC := "42C0DCD4"
+MVersion := "1.0.0"
+
+; MaLa Plugin
+
+PluginInit:
+	Log("PluginInit - Started")
+
+	; Load Plugin settings
+	frontendPlugin := pluginName
+	frontendWinClass := "MaLa ahk_class TfrmMain"
+	; frontendGamesDb := frontendPath . "\Databases\" . systemName . "\" . systemName . ".xml"
+	frontendSystemDb := frontendPath . "\All Games.ml0"	; each new system increments this digit by 1, unsure where this is mapped within mala. Mame db is stored in "All Games.mlg". Unknown format used for dbs.
+	frontendSystemIni := frontendPath . "\mala.mle"		; all system settings are stored in this file with an unknown format
+	frontendMainMenuIni := frontendPath . "\mala.ini"	; standard settings are stored here
+	; frontendBaseGamesAssetPath := frontendPath . "\Media\" . systemName . "\Images"
+	; frontendBaseSystemsAssetPath := frontendPath . "\Media\Main Menu\Images"
+	; frontendGameWheel := frontendBaseGamesAssetPath . "\Wheel\" . dbName . ".png"
+	; frontendSystemWheel := frontendBaseSystemsAssetPath . "\Wheel\" . systemName . ".png"
+	; frontendArtworkTypes := Object("Artwork1",frontendBaseGamesAssetPath . "\Artwork1","Artwork2",frontendBaseGamesAssetPath . "\Artwork2","Artwork3",frontendBaseGamesAssetPath . "\Artwork3","Artwork4",frontendBaseGamesAssetPath . "\Artwork4")
+	frontendVideoExtensions := ["mp4","flv"]	; order matters, preferred is found first
+	frontendArtworkExtensions := ["png"]
+	; frontendMGArtwork := 
+
+	frontendPluginInit := 1	; used to keep track if the FE plugin was initialized already
+	Log("PluginInit - Ended")
+Return
+
+ReadFEGameInfo:
+	Log("ReadFEGameInfo - Started")
+	readFEGameInfo := 1	; used to keep track if the FE game info was read already
+	Log("ReadFEGameInfo - Ended")
+Return

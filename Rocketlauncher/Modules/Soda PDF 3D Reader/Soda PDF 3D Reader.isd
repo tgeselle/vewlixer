@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="NextPage" required="false" nullable="true">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>Hotkey to go to the next page in 3D view mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreviousPage" required="false" nullable="true">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>Hotkey to go to the previous page in 3D view mode.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

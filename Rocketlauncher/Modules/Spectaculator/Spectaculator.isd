@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Default model to use. This is set to 48K by default, if you want to use a different model for a specific game you can set it to 16K or 48K or 128K or Plus3. Can be overriden as a per rom setting.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="16K">16K</VALUE>
+								<VALUE description="48K">48K</VALUE>
+								<VALUE description="128K">128K</VALUE>
+								<VALUE description="Plus3">Plus3</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Games are run on 48K model by default, if you want to use a different model for a specific game you can set it to 16K or 48K or 128K or Plus3.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="16K">16K</VALUE>
+								<VALUE description="48K">48K</VALUE>
+								<VALUE description="128K">128K</VALUE>
+								<VALUE description="Plus3">Plus3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SpecialRom" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>If you want to use a special rom for this game or if the game requires it point this setting to the rom file. Rom must be in the same folder as the game's rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="Currah" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to enable Currah Microspeech for the games that support it.</DESCRIPTION>
+						</KEY>
+						<KEY name="AutoLoad" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false to disable auto loading. Very few games require this to be turned off. This is on by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="AutoPlay" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false to disable tape auto play. It's enabled by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="FastLoad" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false to disable fast loading. A very small amount of games might require this to be turned off in order to load properly. It's enabled by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="DetailedTOC" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to view the listing of the tape contents. This should be enabled on compilations so you can choose what game you want to play.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>
+

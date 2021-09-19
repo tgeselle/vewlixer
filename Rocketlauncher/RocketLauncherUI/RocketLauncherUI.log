@@ -1,0 +1,218 @@
+INFO  2017-07-03 08:17:47 [1] RocketLauncher.UI.Util.FileUtils RocketLauncher.UI.Util.FileUtils.findDllFolder(:0) – 7z.dll found in Z:\Project NXL\RocketLauncher\RocketLauncherUI\lib
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file path is Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Window coordinates are : 1150|732|90|31
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Checking RocketLauncher folder at '..'
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file loading complete
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – RocketLauncher folder is : Z:\Project NXL\RocketLauncher
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Util.AdsUtil RocketLauncher.UI.Util.AdsUtil.checkIfFileIsBlocked(:0) – Checking if 'Z:\Project NXL\RocketLauncher\Module Extensions\RocketLauncher.dll' is blocked
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Util.AdsUtil RocketLauncher.UI.Util.AdsUtil.checkIfFileIsBlocked(:0) – Security zone for 'Z:\Project NXL\RocketLauncher\Module Extensions\RocketLauncher.dll' is Internet
+WARN  2017-07-03 08:17:47 [1] RocketLauncher.UI.Util.AdsUtil RocketLauncher.UI.Util.AdsUtil.checkIfFileIsBlocked(:0) – Error while checking for alternate DataStream, will assume there is none
+System.IO.FileNotFoundException: The filename, directory name, or volume label syntax is incorrect. (Exception from HRESULT: 0x8007007B)
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   at Trinet.Core.IO.Ntfs.SafeNativeMethods.ThrowIOError(Int32 errorCode, String path)
+   at Trinet.Core.IO.Ntfs.SafeNativeMethods.ThrowLastIOError(String path)
+   at Trinet.Core.IO.Ntfs.SafeNativeMethods.SafeGetFileAttributes(String name)
+   at Trinet.Core.IO.Ntfs.FileSystem.AlternateDataStreamExists(FileSystemInfo file, String streamName)
+   at Trinet.Core.IO.Ntfs.FileSystem.AlternateDataStreamExists(String filePath, String streamName)
+   at RocketLauncher.UI.Util.AdsUtil.checkIfFileIsBlocked(String filePath)
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:47 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Database.DatabasePluginManager RocketLauncher.UI.Database.DatabasePluginManager.BuildAssembly(:0) – LinqXML is at C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – Reading active frontend
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.FrontendIni RocketLauncher.UI.Ini.FrontendIni..ctor(:0) – Frontends ini file path is Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\Frontends.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\Frontends.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – Active frontend is Attract MODE using plugin AttractMode
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – Reading plugin from manager...
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – Plugin detection complete
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.validateApp(:0) – Setting plugin to AttractMode
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.App RocketLauncher.UI.App.setupWebServices(:0) – Starting to setup WebService...
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file path is Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Window coordinates are : 1150|732|90|31
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Checking RocketLauncher folder at '..'
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file loading complete
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Setting up base window...
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Loading ini files for base window
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file path is Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\RocketLauncherUI.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Window coordinates are : 1150|732|90|31
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni.readIniValues(:0) – Checking RocketLauncher folder at '..'
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.RocketLauncherUIIni RocketLauncher.UI.Ini.RocketLauncherUIIni..ctor(:0) – RocketLauncherUI ini file loading complete
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.FrontendIni RocketLauncher.UI.Ini.FrontendIni..ctor(:0) – Frontends ini file path is Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\Frontends.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\RocketLauncherUI\Settings\Frontends.ini
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Entity.AuditResult RocketLauncher.UI.Entity.AuditResult..ctor(:0) – Initializing AuditResult
+DEBUG 2017-07-03 08:17:48 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Main Folder is Z:\Project NXL\RocketLauncher
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Emulator Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Game Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Global RocketLauncher Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\RocketLauncher.ini
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing RocketLauncher Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Pause Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Bezel Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Plugins Settings...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Frontend folder is Z:\Project NXL\AM
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Reading RLUI version
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – AssemblyVersion is 1.0.1.10, FileVersion is 1.0.1.10
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.loadSystems(:0) – Loading systems...
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.loadSystems(:0) – RLUI Media folder is set to : .\Media
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.loadSystems(:0) – Searching for icons in : Z:\Project NXL\RocketLauncher\RocketLauncherUI\Media\Icons\GLOBAL.png
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.loadSystems(:0) – Searching for logos in : Z:\Project NXL\RocketLauncher\RocketLauncherUI\Media\Icons\GLOBAL.png
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.refreshSystemsList(:0) – Database being read from attract.cfg according to plugin
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.refreshSystemsList(:0) – Loading systems complete. 4 systems found
+DEBUG 2017-07-03 08:17:49 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Components
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Controls.RocketLauncherUIPanel RocketLauncher.UI.Controls.RocketLauncherUIPanel..ctor(:0) – Initializing RocketLauncherUIPanel
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Controls.RocketLauncherUIPanel RocketLauncher.UI.Controls.RocketLauncherUIPanel..ctor(:0) – RocketLauncherUIPanel Initialization complete
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Initializing Systray
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Reading version info
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Controls.RocketLauncherUIPanel RocketLauncher.UI.Controls.RocketLauncherUIPanel.CheckWinMgmtService(:0) – Detecting if WMI Service is running...
+INFO  2017-07-03 08:17:53 [1] RocketLauncher.UI.Controls.RocketLauncherUIPanel RocketLauncher.UI.Controls.RocketLauncherUIPanel.CheckWinMgmtService(:0) – WMI Service is running
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.updateWindowTitle(:0) – Updating Main Window title...
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.updateWindowTitle(:0) – Active plugin is AttractMode on version v1.0.0
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.updateWindowTitle(:0) – Main Window title Updated to RocketLauncherUI v1.0.1.10 [ FE = Attract MODE | Plugin = AttractMode ]
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Loading Joysticks from Constructor
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.LoadConnectedJoysticks(:0) – getConnectedJoystickOEMNames from LoadConnectedJoysticks : True
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.queryJoysticks(:0) – Forcing JoyConfigChanged...
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.queryJoysticks(:0) – JoyConfigChanged Complete
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getNumberOfJoysticksForDriver(:0) – Reading Joystick Driver Info
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getNumberOfJoysticksForDriver(:0) – Driver Info Returned 16
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 0
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 1
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 2
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 3
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 4
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 5
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 6
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 7
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 8
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 9
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 10
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 11
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 12
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 13
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 14
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Reading Joystick Extended Info for ID 15
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getJoystickInfoEx(:0) – Extended Info is 165
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global Emulators.ini
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global RocketLauncher.ini
+DEBUG 2017-07-03 08:17:53 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global Pause.ini
+DEBUG 2017-07-03 08:17:54 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global Bezel.ini
+DEBUG 2017-07-03 08:17:54 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global Plugins.ini
+DEBUG 2017-07-03 08:17:54 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Loading Modules
+DEBUG 2017-07-03 08:17:54 [1] RocketLauncher.UI.Controls.ModulePanel RocketLauncher.UI.Controls.ModulePanel.GenerateModuleList(:0) – Loading modules from Z:\Project NXL\RocketLauncher\Modules
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow..ctor(:0) – Loading Keymapper Profiles
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemNames(:0) – Loading System Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getGlobalEmuNames(:0) – Loading Global Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemEmuNames(:0) – Loading System Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getJoystickNames(:0) – Loading Joystick Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getLocalOEMIds(:0) – Reading OEM Ids...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getLocalOEMIds(:0) – Found 30 entries
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getUserOEMIds(:0) – Reading User OEM Ids...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getUserOEMIds(:0) – Found 0 entries
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_044F&PID_A012
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_044F&PID_B202
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_000E
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_001A
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_001B
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_0026
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_0034
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_0038
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_045E&PID_003B
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C029
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C202
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C208
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C209
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C20A
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C291
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_046D&PID_C293
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_3001
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_3004
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_3005
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_4003
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_4005
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_047D&PID_4008
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_05FD&PID_0253
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_05FD&PID_3002
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06A3&PID_0101
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06A3&PID_0102
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06A3&PID_0104
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06F8&PID_0004
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06F8&PID_A300
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Reading User OEM Name for VID_06F8&PID_A303
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.JoystickUtil RocketLauncher.UI.Util.JoystickUtil.getOEMName(:0) – Name is null
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listKeymapperProfiles(:0) – Loading AHK Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listKeymapperProfiles(:0) – Loading JoyToKey Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listKeymapperProfiles(:0) – Loading xPadder Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listKeymapperProfiles(:0) – Loading VJoy Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listKeymapperProfiles(:0) – Profiles loading complete
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemNames(:0) – Loading System Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getGlobalEmuNames(:0) – Loading Global Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemEmuNames(:0) – Loading System Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listStandardKeymapperProfiles(:0) – Loading WinIPAC Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listStandardKeymapperProfiles(:0) – Profiles loading complete
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemNames(:0) – Loading System Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getGlobalEmuNames(:0) – Loading Global Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.getSystemEmuNames(:0) – Loading System Emulator Names...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listStandardKeymapperProfiles(:0) – Loading Ultramap Profiles...
+DEBUG 2017-07-03 08:17:56 [1] RocketLauncher.UI.Util.KeymapperLoader RocketLauncher.UI.Util.KeymapperLoader.listStandardKeymapperProfiles(:0) – Profiles loading complete
+DEBUG 2017-07-03 08:17:57 [1] RocketLauncher.UI.Updater.AutoUpdater RocketLauncher.UI.Updater.AutoUpdater.getMD5Hash(:0) – Calculating hash for file
+DEBUG 2017-07-03 08:17:57 [1] RocketLauncher.UI.Updater.AutoUpdater RocketLauncher.UI.Updater.AutoUpdater.getCRC32(:0) – Calculating crc for file
+DEBUG 2017-07-03 08:17:57 [1] RocketLauncher.UI.Updater.SimpleAES RocketLauncher.UI.Updater.SimpleAES.releaseObjects(:0) – Releasing encryptor objects
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Emulators.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\Global Emulators.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Emulators.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Games.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Emulators.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Games.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\RocketLauncher.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Pause.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Bezel.ini
+DEBUG 2017-07-03 08:23:27 [1] RocketLauncher.UI.Ini.IniFile RocketLauncher.UI.Ini.IniFile..ctor(:0) – Loading INI File Z:\Project NXL\RocketLauncher\Settings\PC GAMES\Plugins.ini
+DEBUG 2017-07-03 08:23:37 [1] RocketLauncher.UI.Forms.BaseWindow RocketLauncher.UI.Forms.BaseWindow.TimerEventProcessor(:0) – RocketLauncher was closed, trying to reactivate RLUI window

@@ -1,0 +1,1896 @@
+==================================================================================================================
+   __            _        _     __                        _                                  _       _           
+  /__\ ___   ___| | _____| |_  / /  __ _ _   _ _ __   ___| |__   ___ _ __    /\/\   ___   __| |_   _| | ___  ___ 
+ / \/// _ \ / __| |/ / _ \ __|/ /  / _` | | | | '_ \ / __| '_ \ / _ \ '__|  /    \ / _ \ / _` | | | | |/ _ \/ __|
+/ _  \ (_) | (__|   <  __/ |_/ /__| (_| | |_| | | | | (__| | | |  __/ |    / /\/\ \ (_) | (_| | |_| | |  __/\__ \
+\/ \_/\___/ \___|_|\_\___|\__\____/\__,_|\__,_|_| |_|\___|_| |_|\___|_|    \/    \/\___/ \__,_|\__,_|_|\___||___/
+
+==================================================================================================================
+                                                Release History                                                   
+==================================================================================================================
+
+2017/01/31
+ * DeSmuME updated to v2.0.9
+  - Fixed bug in horizontal/vertical bezels
+
+2017/01/30
+ * Radikal Bikers Emu updated to v2.0.1
+  - Rewritten to use class functions
+ * U64Emu Platinum Edition updated to v2.0.1
+  - Rewritten to use class functions
+
+2017/01/29
+ * Bsnes updated to v2.0.4
+  - Rewritten to use class functions
+ * Fceux updated to v2.0.1
+  - Rewritten to use class functions
+ * Fusion updated to v2.1.4
+  - Rewritten to use class functions
+ * FreezeSMS updated to v2.0.3
+  - Rewritten to use class functions
+  - Added additional check for network path as this emu doesn't support loading from them
+ * JNes updated to v2.0.1
+  - Rewritten to use class functions
+ * Gens updated to v2.0.2
+  - Rewritten to use class functions
+ * Meka updated to v2.0.3
+  - Rewritten to use class functions
+  - WindowTitle setting slightly changed so it can be parsed easily in module. If you used this, you will have to select one of the 2 new settings.
+ * Nebula updated to v2.0.2
+  - Rewritten to use class functions
+ * Nintendulator updated to v2.0.3
+  - Rewritten to use class functions
+  - Added Bezel support
+ * puNES updated to v2.0.3
+  - Rewritten to use class functions
+ * Regen updated to v2.0.2
+  - Rewritten to use class functions
+  - Added Bezel support
+ * TwoMbit updated to v2.0.2
+  - Rewritten to use class functions
+ * UberNES updated to v2.0.1
+  - Rewritten to use class functions
+
+2017/01/28
+ * ePSXe updated to v2.1.6
+  - Added in neGcon controller functionality (slizzap)
+ * PSXMAME updated to v2.0.1
+  - Rewritten to use class functions
+ * ZiNc updated to v2.0.6
+  - Rewritten to use class functions
+ * ZSNESw updated to v2.0.5
+  - Rewritten to use class functions
+
+2017/01/27
+ * Snes9X updated to v2.0.6
+  - Rewritten to use class functions
+
+2017/01/24
+ * WinUAE updated to v2.2.10
+  - Fixed wrong check for extensions on ExtraDriveFolder (leading dot shouldn't be present)
+
+2017/01/23
+ * Dolphin updated to v2.2.0
+  - Added new settings to force the control type in each port globally or by rom.
+
+2017/01/22
+ * Cemu updated to v1.0.5
+  - Updated module to work with version 1.7.0 of the emulator
+
+2017/01/21
+ * Mednafen updated to v2.1.8
+  - Added support for Expansion Carts (Including KoF 95 and Ultraman)
+  - Added configurable per game region setting
+ * WinVICE updated to v2.1.5
+  - Fixed bug causing C128 Fullscreen mode not to work properly (wrong screen was getting active)
+
+2017/01/18
+ * ePSXe updated to v2.1.5
+  - Rewritten to use class functions
+  - Many changes bringing it in line with v2.0.5 of the emu. It is no longer compatible with the v1.x.x line (slizzap)
+
+2017/01/11
+ * 3DNes module created
+  - New Module
+
+2017/01/04
+ * ZXSpin module created
+  - New Module
+ * RetroArch updated to v2.4.3
+  - Many changes bringing it in line with v1.3.6 of the emu. (zerojay,sweatypickle,others?)
+ * RPCEmu updated to v1.0.2
+  - Rewritten to use class functions
+  - Several new settings added in order to provide compatibility with more games
+  - Removed all Keys settings since they should no longer be needed
+
+2017/01/03
+ * Altirra updated to v1.3.2
+  - Moving mouse cursor slightly down in order to avoid emulator's menu to become visible
+ * BlueMSX updated to v2.1.5
+  - Fixed MultiGame due to wrong window class being used
+ * Citra updated to v1.0.1
+  - Full module rewrite to use class functions and support newer emulator version
+ * DeSmuME updated to v2.0.8
+  - Added proper bezel support for vertical games
+  - Renamed Vertical setting to Rotation as the old name no longer makes sense for its function. Please update all your inis and change 'true' to '270' if using this setting.
+ * Fusion updated to v2.1.3
+  - Added Othello Multivision support
+ * Future Pinball updated to v2.0.2
+  - Fixed bug causing module not to wait for the proper window when using BAM
+ * Hatari updated to v2.0.4
+  - Added new ConfigFile setting
+ * MAME updated to v2.3.10
+  - Warning log is now only written for arcade systems if the system name isn't included in the MSystem array
+  - Fixed bug in ListXMLInfo in order to support non-arcade systems
+ * Mednafen updated to v2.1.7
+  - Added Bandai WonderSwan and Bandai WonderSwan Color Example ini files for vertical games
+  - Fixed screen rotation for WonderSwan consoles
+ * Project64 (v1.6.1) updated to v2.0.3
+  - Changed if condition for fullscreen so it works properly even if the setting isn't present in the emulator ini file
+ * Project64 (v2.x) updated to v2.0.6
+  - Changed if condition for fullscreen so it works properly even if the setting isn't present in the emulator ini file
+ * Project64 (v20120726 build 57) updated to v2.0.3
+  - Changed if condition for fullscreen so it works properly even if the setting isn't present in the emulator ini file
+ * WinAPE updated to v2.0.6
+  - Added new ProgramToStart setting
+ * WinUAE updated to v2.2.9
+  - Added FastMemory setting to Commodore Amiga CD32
+
+2016/11/25
+ * ActiveGS updated to v2.1.2
+  - Read/Write to activegs.conf file using the new PropertiesFile class
+  - Added missing \ in slot7disk1
+  - Fixed bad call to Delete function causing default config file to never being deleted
+ * Demul (v0.5.7) updated to v2.0.9
+  - Added DemulShooter support
+ * Demul (v0.5.8) updated to v2.1.7
+  - Added DemulShooter support
+ * Demul (v0.7) updated to v2.1.10
+  - Added DemulShooter support
+  - Added per game MaxLayers setting
+ * Sega Model 2 Emulator updated to v2.0.9
+  - Added DemulShooter support
+ * GeePee32 updated to v2.0.4
+  - Added support for non-English locales
+ * Final Burn Alpha updated to v2.0.4
+  - Fixed wrong loading window class name causing RocketLauncher to hang on a forever loop
+ * MAME updated to v2.3.9
+  - Added proper loading depending on media type for Acorn Electron (tomkun)
+  - Added configurable system card path for NEC TurboGrafx-CD and NEC PC Engine-CD (tomkun)
+
+2016/11/23
+ * Updated following modules to remove i18n calls, no version change:
+  - 1964
+  - ActiveGS
+  - CDiEmu
+  - Cemu
+  - DCAlice
+  - DCVG5K
+  - ePSXe
+  - FreeDO
+  - GameCom
+  - MakaronEX
+  - Mame
+  - Oricutron
+  - Phoenix
+  - Project64
+  - Virtual APF
+  - Virtual Aquarius
+  - Xebra
+2016/11/11
+ * Altirra updated to v1.3.1
+  - Fixed fullscreen CLI
+  - Replaced FileGetSize call with File.GetSize
+
+2016/11/01
+ * MAME updated to v2.3.8
+  - Added FM Towns, FM Towns Marty and VTech Socrates support
+
+2016/10/30
+ * Snes9x updated to v2.0.5
+  - Added StereoSound setting
+ * WinUAE updated to v2.2.8
+  - Fixed broken multi game support
+
+2016/10/18
+ * No$GBA updated to v2.0.3
+  - Rewritten to use class functions
+
+2016/10/14
+ * DeSmuME updated to v2.0.7
+  - Rewritten to use class functions
+  - Add bezel settings to ISD
+
+2016/10/13
+ * ActiveGS updated to v2.1.2
+  - Rewritten to use class functions
+ * Altirra updated to v1.3.0
+  - Rewritten to use class functions
+ * Updated all modules with new header system
+  - No version change
+
+2016/10/12
+ * Final Burn Alpha updated to v2.0.3
+  - Rewritten to use class functions
+ * Higan updated to v2.0.7
+  - LegacyMode default changed to false
+  - Added support for backing up save.ram (neodan)
+ * Nestopia updated to v2.0.5
+  - Rewritten to use class functions
+  - Added support for forcing controls (knewlife)
+
+2016/09/06
+ * MAME updated (no version change)
+  - Added "Arcade" and "Arcade Classics" as valid system names
+
+2016/09/02
+ * PCLauncher updated to v2.2.7
+  - Added several per game bezel settings so you can configure specific bezel settings on a per game basis
+  - Added possibility to configure fullscreen on a per game basis through new User Functions
+  - Added HaltEmu and RestoreEmu labels to increase Pause support. Also to use through new User Functions
+  - Added new BezelFixedResMode per game setting
+ * XM7dash module created (wahoobrian)
+  - New Module
+
+2016/08/29
+ * Cemu updated to v1.0.4
+  - Updated module to work with version 1.5.6 of the emulator
+ * WinUAE updated to v2.2.7
+  - Added support for Internal FPU Setting
+  - Added support for Arcadia Multi Select System (using WHDLoad versions only)
+ * Demul (v0.5.8) updated (no version change)
+  - Added Auto option to VideoMode setting
+ * Demul (v0.7) updated (no version change)
+  - Added Auto option to VideoMode setting
+ * Dolphin Triforce updated to v2.0.3
+  - Added SendF1 and RenderToMain settings
+  - Rewritten to use class functions
+
+2016/08/23
+ * CDiEmu updated to v2.0.3
+  - Rewritten to use class functions
+  - Automates -savenvram usage now
+ * MakaronEX updated to v2.0.3
+  - MEmuV updated to 4.1
+  - Rewritten to use class functions
+  - Fixed issue with open rom window not always being handled correctly
+
+2016/08/20
+ * Mednafen updated to v2.1.6
+  - Added support for Sega Saturn (Jazzphone)
+  - Rewritten to use class functions
+  - MEmuV updated to 0.9.39
+  - Changed native resolution for Sony PlayStation
+
+2016/07/31
+ * Jaguar Tempest 2000 Emulator updated to v2.0.1
+  - Added Bezel support
+  - Rewritten to use class functions
+
+2016/07/24
+ * Project Tempest updated to v2.0.4
+  - Removed internationalization from the Open ROM dialog since it's not needed
+  - Rewritten to use class functions
+
+2016/07/11
+ * AAE updated to v2.0.7
+  - Rewritten to use class functions
+ * AppleWin updated to v1.6.2
+  - Rewritten to use class functions
+ * Unz updated to v2.0.4
+  - Rewritten to use class functions
+  - Added error handling on exit that some users experience on v0.5L30
+
+2016/07/06
+ * RetroArch updated to v2.4.2
+  - Added Sony PSP Minis support (spotUP)
+
+2016/07/03
+ * MUGEN updated to v2.0.6 (knewlife)
+  - Rewritten to use class functions
+  - Improved automatic game path detection routine
+
+2016/06/26
+ * Demul (v0.7) updated to v2.1.9
+  - Fixed VMU display bug and added support for four simultaneous VMU displays
+  - Remove unneeded bezel function call
+  - Deprecated module options: displayVMU and VMUPos
+  - New module options: showVMU, VMU1Pos, VMU2Pos, VMU3Pos and VMU4Pos 
+ * WinAPE updated to v2.0.5
+  - Replaced DriveErrorFix setting with InsertDiskErrorFix to deal with the same error, but in a cleaner way
+ * ZiNc updated to v2.0.5
+  - Added new setting InsertDiskErrorFix to deal with a windows error dialog that pops up under certain conditions
+
+2016/06/24
+ * PCSX2 updated to v2.2.1
+  - Added fullboot per game setting
+ * Cemu updated to v1.0.3
+  - Changed window title to match latest versions of the emulator
+
+2016/06/19
+ * Demul (v0.5.6) updated to v2.0.7
+  - Controls will now always be written to the Demul ini file
+ * Demul (v0.5.7) updated to v2.0.8
+  - Controls will now always be written to the Demul ini file
+ * Demul (v0.5.8) updated to v2.1.6
+  - Controls will now always be written to the Demul ini file
+ * Demul (v0.7) updated to v2.1.8
+  - Controls will now always be written to the Demul ini file
+ * Dolphin updated to v2.1.9
+  - Added missing parameter to moduleIni.Write call
+ * Makaron updated to v2.0.5
+  - Controls will now always be written to the Makaron ini file
+ * Raine updated to v2.0.3
+  - Fixed 2 Ini Writes that should be done to the emulator ini instead of the module one
+
+2016/06/18
+ * RPCEmu updated to v1.0.1 (manson976)
+  - Added DxWnd support
+ * WinAPE updated to v2.0.4 (knewlife)
+  - Removed i18n for open file dialog since it wasn't needed
+
+2016/06/16
+ * DOSBox updated to v2.0.8
+  - Changed bezel mode to normal and module will now set windowed mode resolution to match the bezel width/height
+ * Demul (v0.5.8) updated to v2.1.5
+  - Fixed File.Copy calls
+ * Demul (v0.7) updated to v2.1.7
+  - Fixed File.Copy calls
+ * MAME updated to v2.3.7
+  - Added ControllerRemap support (knewlife)
+  - Added wait parameter to RunDirect call in ListXMLInfo method to ensure temp file is copied before being read
+ * OpenMSX updated to v2.0.6
+  - Added GX9000 support
+  - Added extra settings for 2 more extension carts
+  - Fixed all writes with variables to BootScriptFile (they were all wrong)
+ * PCLauncher updated to v2.2.6
+  - Added new settings: FadeTitleTimeout and FadeTitleWaitTillActive
+ * PCSX2 updated to v2.2.0
+  - Fixed File.Copy calls
+ * SpudACE updated to v1.0.2
+  - Fixed wrong if condition for ModelType
+  - Changed SendCommand call to use KeyUtils class
+
+2016/05/28
+ * Demul (v0.5.8) updated to v2.1.4
+  - Added missing global module setting VideoMode
+ * Demul (v0.7) updated to v2.1.7
+  - Added missing global/rom module settings VideoMode & AspectRatio
+
+2016/05/24
+ * MAME updated to v2.3.6
+  - Fixed bezels where it would take 2 launches to show correct horizontal or vertical bezel
+
+2016/05/23
+ * SNESGT updated to v1.0.1
+  - Added bezel-related settings (bleasby)
+  - Window class now uses regex titlemode for universal emu version support
+
+2016/05/21
+ * MAME updated to v2.3.5
+  - Fixed issue with Fujitsu FM-7 not being detected properly (Pacman56)
+
+2016/05/15
+ * 1964 updated to v2.0.2
+  - Rewritten to use class functions
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Bgb updated to v2.0.8
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * BlueMSX updated to v2.1.4
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * BizHawk updated to v2.0.9
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Casual Games updated to v2.0.6
+  - Rewritten to use class functions
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Cemu updated to v1.0.2
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+  - Supported Emu version updated to 1.4.2
+ * ColEm Initial release
+ * DCAlice updated to v2.0.2
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Demul (v0.5.6) updated to v2.0.6
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Demul (v0.5.7) updated to v2.0.7
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Demul (v0.5.8) updated to v2.1.3
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Demul (v0.7) updated to v2.1.6
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Dolphin updated to v2.1.8
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+  - Fixed custom control profiles not loading correctly
+ * Fuse updated to v1.0.1
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Higan updated to v2.0.6
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Kat5200 updated to v2.0.4
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * MAME updated to v2.3.4
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * MFME updated to v2.1.0
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * OpenMSX updated to v2.0.5
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * PCLauncher updated to v2.2.5
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * PCSX2 updated to v2.1.9
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * PicoDrive updated to v2.0.5
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Pinball Arcade updated to v2.1.2
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * Pinball FX2 updated to v2.1.3
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+  - Rewritten to use class functions
+ * Raine updated to v2.0.2
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * RetroArch updated to v2.4.1
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * ScummVM updated to v2.1.5
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * SNESGT Initial release
+ * SpudAce updated to v1.0.1
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * SSF updated to v2.1.7
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+  - Fixed SSF going fullscreen when Pause exits
+ * WinUAE updated to v2.2.6
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+ * WinVICE updated to v2.1.4
+  - Now using new Rini class for all module settings
+  - Now using new Emulator class for primaryExe
+
+2016/05/05
+ * PicoDrive updated to v2.0.4
+  - Rewritten to use class functions
+  - Removed retired function calls
+ * PCLauncher updated to v2.2.3 and v2.2.4
+  - Fixed Application triggering exception when not used (like in steam games)
+  - v2.2.4: AppWaitExe will no longer error because it was always getting a 0 PID from the Process class
+
+2016/05/01
+ * RetroArch updated to v2.4.0
+  - Default to mame when mame core is used and MAMEID not set in module
+ * WinUAE updated to v2.2.5
+  - Fix for splitpath exeception errors when some paths were not set in the module settings
+
+2016/04/30
+ * RetroArch updated to v2.3.9
+  - Fixed mame games not loading (agent47)
+ * DCAlice updated to v2.0.1
+  - Rewritten to use class functions
+  - Fixed missing Wait in StartCommand (millansoft)
+ * WinUAE updated to v2.2.4
+  - Fix for error in WHDUserStartupFile (agent47)
+
+2016/04/29
+ * RetroArch updated to v2.3.8
+  - Fixed regex affecting many cores from working properly (agent47)
+
+2016/04/28
+ * RetroArch updated to v2.3.7
+  - Error where syscard3.pce was missing is fixed as it was actually looking for syscard3.bin. It now correctly looks for syscard3.pce (agent47)
+  - When launching MAME using the MAME core, will no longer error that it is not a supported system
+  - Nintendo DS with desume core will no longer trigger conditionals looking for "ume"
+  - Renamed all variables using a MESS reference to MAME
+  - Added 4 missing options to MAME system in ISD: BIOS_Roms_Folder, Hide_Nag_Screen, Hide_Info_Screen, Hide_Warning_Screen
+  - BIOS_Roms_Folder for MAME system defaults to your rom path if not set now
+ * Demul (v0.5.6) updated to v2.0.5
+  - Fixed not being able to exit emu
+ * Demul (v0.5.7) updated to v2.0.6
+  - Fixed not being able to exit emu
+ * Demul (v0.5.8) updated to v2.1.2
+  - Fixed not being able to exit emu
+  - Added Hikaru to fullscreen support
+ * Demul (v0.7) updated to v2.1.5
+  - Fixed not being able to exit emu
+  - Added Hikaru to fullscreen support
+ * Pinball Arcade updated to v2.1.1
+  - MEmuV updated to v1.49.9 (metalzoic)
+  - My_Tables default list updated with all current tables. "Last Action Hero (Data East)" table added (metalzoic)
+ * Kat5200 updated to v2.0.3
+  - Rewritten to use class functions
+
+2016/04/25
+ * Demul (v0.5.8) updated to v2.1.1
+  - Now uses Folder class for folders
+ * Demul (v0.7) updated to v2.1.4
+  - Now uses Folder class for folders
+ * Dolphin updated to v2.1.7
+  - Now uses Folder class for folders
+ * MAME updated to v2.3.3
+  - Now uses Folder class for folders
+ * PCSX2 updated to v2.1.8
+  - Now uses Folder class for folders
+ * ScummVM updated to v2.1.4
+  - Now uses Folder class for folders
+ * RetroArch updated to v2.3.6
+  - Now uses Folder class for folders
+ * WinUAE updated to v2.2.3
+  - Now uses Folder class for folders
+
+2016/04/20
+ * PCLauncher updated to v2.2.2
+  - Fixed window creation error when launching games with no FadeTitle or AppWaitExe set
+
+2016/04/17
+ * BlueMSX updated to v2.1.3
+  - Added DxWnd setting so the emulator can be freely resized when used with bezels
+ * Fuse module created
+  - New Module
+ * OpenMSX updated to v2.0.4
+  - Added settings to rotate display and send custom commands on startup (wahoobrian)
+  - HoldKeyOnBoot will be automatically disable for tape games
+  - Added example ini file for MSX1 (wahoobrian)
+
+2016/04/16
+ * Bgb updated to v2.0.7
+  - Rewritten to use class functions
+ * MAME updated to v2.3.2
+  - Rewritten to use class functions
+
+2016/04/16
+ * BizHawk updated to v2.0.8
+  - Rewritten to use class functions
+  - Added support for Sony Playstation
+
+2016/04/01
+ * Dolphin updated to v2.1.6
+  - Rewritten to use class functions
+
+2016/03/28
+ * SpudACE module created (wahoobrian)
+  - New Module
+ * SSF updated to v2.1.6
+  - Fixed some bugs with ini settings location introduced in the last module update
+  - Rewritten to use class functions
+ * WinVICE updated to v2.1.3
+  - Added Commodore PET support
+  - Rewritten to use class functions
+ * WinUAE updated to v2.2.2
+  - Added CDRomImage setting (Amiga CD only)
+  - Rewritten to use class functions
+
+2016/03/02
+ * Cemu updated to v1.0.1
+  - Updated to support emu version 1.3.2
+  - Added Fullscreen module setting and in turn bezel support
+  - Rewritten to use class functions
+
+2016/02/13
+ * Higan updated to v2.0.5
+  - Added support for emu version 0.97
+  - New setting Legacy_Mode which can switch between supporting the newer emu versions and older ones that have proper bezel support. By default legacy mode is enabled.
+  - Rewritten to use class functions
+
+2016/02/10
+ * MFME updated to v2.0.9
+  - Fixed an invalid character preventing the module from being used
+  - Rewritten to use class functions
+
+2016/02/07
+ * Pinball Arcade updated to v2.1.0
+  - MEmuV updated to v1.48.5 (metalzoic)
+  - My_Tables default list updated with all current tables. "Fireball (Bally) & El Dorado (Gottlieb)" tables added (metalzoic)
+  - Farsight also finally fixed their screwed up out-of-alphabetical-order naming for the Black Knight tables so that has also been fixed in the AHK & XML (metalzoic)
+  - Added Whats_New_Screen setting to clear the What's New screen if your game shows it.
+  - Rewritten to use class functions
+ * WinArcadia updated to v2.0.3
+  - Added support for Coleco Telstar
+  - Prepared module to support further pong-on-a-chip systems
+  - Rewritten to use class functions
+  - Added HideEmu support
+
+2016/01/26
+ * ScummVM updated to v2.1.3
+  - Fixed Bezels not working with latest scummvm v1.7.0
+  - Added opengl choices to graphics mode in ISD
+  - OpenGL no filtering mode is now forced when bezels are enabled as that's the only graphics mode that allows stretching of the window
+  - Rewritten to use class functions
+
+2016/01/25
+ * PCLauncher updated to v2.2.1
+  - Removed romExtensions error when one was sent to the module
+  - Rewritten to use class functions
+  - Updated notes and Wiki article discussing module
+
+2016/01/24
+ * PCSX2 updated to v2.1.7
+  - MEmuv version changed to v1.5.0-dev
+  - Module notes updated with some additions
+  - Rewritten to use class functions
+  - Removed registry functions in favor of the global variants
+  - Removed Module's HideConsole setting in favor of RL's HideEmulator version
+  - Refactored module for future upgrades
+  - Per-Game Memroy cards module setting now defaults to false because the emu natively supports Per-Game memory cards
+  - Module will now automatically set the correct virtual drive letter in the cdvdgigaherz plugin when a virtual drive is used with pcsx2
+  - Module will now search for bins/isos of the same name as your cue if you supplied a cue to the emu but you left vir1tual drive disabled. If one is found, the game will still launch instead of erroring.
+  - Added many new userhack and aspect ratio per-game settings (robbforce)
+  - fullboot is now also a per-game setting
+
+2016/01/23
+ * Demul (v0.5.6) updated to v2.0.4
+  - Rewritten to use class functions
+  - Added HideEmu support
+ * Demul (v0.5.7) updated to v2.0.5
+  - Rewritten to use class functions
+  - Added HideEmu support
+ * Demul (v0.5.8) updated to v2.1.0
+  - Will now log a warning if the demul inis are read only and BOM cannot be fixed
+  - Rewritten to use class functions
+ * Demul (v0.7) updated to v2.1.3
+  - Will now log a warning if the demul inis are read only and BOM cannot be fixed
+  - Rewritten to use class functions
+  - Changed the Bezel mode to normal, instead of fixResMode, by editing the emu ini config to reflect the desired resolution when bezel is running prior the emulator launch
+  - Included aspect ratio module option
+  - Included bezel offset module settings if they are eventually needed
+ * Raine updated to v2.0.1
+  - Refactored module for future upgrades
+  - Rewritten to use class functions
+  - Rom path is now automatically set for you
+  - MEmuv version changed to v0.64.10
+  - Removed RestoreEmu label since it's no longer needed and was causing issues with bezels
+ * RetroArch updated to v2.3.5
+  - MESS is now merged into MAME (robbforce)
+  - Added Saturn and TurboGrafx/PCEngine into MAME core (robbforce)
+  - Setting MESS_BIOS_Roms_Folder now known as BIOS_Roms_Folder and found in the MAME tab. You will have to set this path again! (robbforce)
+  - Added settings Hide_Nagscreen, Hide_Infoscreen, Hide_Warnings for MAME but requires a mame core built to support them, not the official one (robbforce)
+  - Added ScummVM support (nosh)
+  - Capcom Play Systems 2 and 3 are now II and III. Update your system names to the correct names!
+  - Rewritten to use class functions
+
+2016/01/20
+ * Demul (v0.7) updated to v2.1.2
+  - Removed support for old gpuDX11ng plugin and added gpuDX11old to match latest release
+  - Refactored module for future upgrades
+  - MEmuv version changed to v0.7a 221215
+ * SSF updated to v2.1.5
+  - Fixed Stretch setting where values were reversed (neodan)
+  - Fixed IniWrite commands not wrapping values in quotes (neodan)
+
+2016/01/18
+ * AppleWin updated to v1.6.1
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+  - Changed some commands to use RL functions instead
+  - Refactored module for future upgrades
+ * BizHawk updated to v2.0.7
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * Dolphin updated to v2.1.5
+  - Fixed an issue where the emulator might not have been focused or fitted properly in the bezel in vbalink games
+  - Changed some commands to use RL functions instead
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * ePSXe updated to v2.1.3
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+  - Many new settings and graphical customization options (robbforce)
+ * Hatari updated to v2.0.3
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * MFME updated to v2.0.8
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * OpenBOR updated to v2.0.5
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * ScummVM updated to v2.1.2
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+ * WinKawaks updated to v2.0.3
+  - Module will now automatically set the rom path so you don't have to
+  - Added Capcom Play System, Capcom Play System 2, & Capcom Play System II to the MSystem list
+ * WinVICE updated to v2.1.2
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+  - Changed some commands to use RL functions instead
+  - Refactored module for future upgrades
+ * Yape updated to v1.0.1
+  - Fixed potential duplicate xhotkey bug by toggling module hotkeys when Pause/MultiGame is used
+  - Changed some commands to use RL functions instead
+  - Refactored module for future upgrades
+
+2016/01/17
+ * Dolphin updated to v2.1.4
+  - Fixed an issue where the emulator might not have been focused or fitted properly in the bezel in vbalink games
+ * RetroArch updated to v2.3.4
+  - Added Sega Dreamcast support (newoski)
+  - Refactored module for future upgrades
+ * SSF updated to v2.1.4
+  - Fixed bug where extensions weren't being identified correctly
+ * Yabause updated to v2.0.3
+  - Removed GetCommonPath function as it's now in shared.ahk
+  - Added support for Devmiyax SSF, read notes to know how to use it
+
+2015/01/16
+ * Pinball FX2 updated to v2.1.2
+  - Fixed invalid integer type in isd
+  - Refactored module for future upgrades
+ * DOSBox updated to v2.0.7
+  - Fixed a bug with NetBios being enabled properly in multiplayer mode
+  - Refactored module for future upgrades
+
+2015/01/11
+ * WinUAE updated to v2.2.1
+  - Refactored module for future upgrades
+  - DLL calls now use Lib
+
+2015/01/05
+ * MAME updated to v2.3.1
+  - Added Nintendo 64DD system support
+  - Added Philips Videopac Plus G7400 system support
+  - Added Soundic Victory MPT-02 system support
+  - Fully reviewed Texas Instruments TI 99-4A section (wahoobrian)
+  - Added command support for Texas Instruments TI 99-4A (requires DirectInput enabled build) (wahoobrian)
+  - Improved RCA Studio II support, namely so built-in games can auto-start without user intervention
+  - Refactored module for future upgrades
+
+2015/12/31
+ * BizHawk updated to v2.0.6
+  - Setting GB mode to Super Game Boy when system name is Nintendo Super Game Boy
+  - Added support for Barcode Reader (Nintendo Famicom)
+  - Added support for Sega CD
+  - Refactored module for future upgrades
+ * DCVG5K updated to v2.0.3
+  - Changed supported emu version to v2013.03.30
+  - Added some notes
+  - Removed Send, {Alt down}{Alt up} from CloseProcess since it's no longer needed
+  - Refactored module for future upgrades
+ * Demul (v0.7) updated to v2.1.1
+  - Fixed Sega System SP system name
+  - Refactored module for future upgrades
+ * Demul (v0.5.8) updated to v2.0.9
+  - Refactored module for future upgrades
+  - Added missing 7zCleanup call
+ * Emma02 updated to v2.0.3
+  - Added portable mode setting
+  - Added configurable pad keys to auto start the built-in Studio II games
+  - Added support to Soundic Victory MPT-02
+  - Improved module notes
+  - Refactored module for future upgrades
+ * Elkulator module created
+  - New Module
+ * Kat5200 updated to v2.0.2
+  - Refactored module for future upgrades
+ * NullDC updated to v2.0.7
+  - Refactored module for future upgrades
+ * O2Em module created
+  - New Module
+ * OpenBOR updated to v2.0.4
+  - Refactored module for future upgrades
+ * Project64 (v2.x) updated to v2.0.5
+  - Added Nintendo 64 DD support
+  - Emulator window class is now based on emulator version which is now configurable, but also read from the emulator exe by default
+  - Refactored module for future upgrades
+ * ScummVM updated to v2.1.1
+  - Refactored module for future upgrades
+ * Snes9X updated to v2.0.4
+  - Added proper Bandai Sufami Turbo support (module now supports both proper and hacked roms through a setting)
+  - Added Sufami Turbo multiple cart support (game combos)
+  - Refactored module for future upgrades
+ * SSF updated to v2.1.3
+  - Renamed ShowBIOS setting to UseBIOS as the old name was misleading. This setting actually enables/disables the Bios
+  - Added legacy mode so the module can support older SSF version which use binary configuration files
+  - Added SH2enabled, BusWait, Scanlines and ScanlineRatio settings
+  - Added new option to delete the cached settings files SSF creates prior to launching a game. Highly suggest to enable this.
+  - Added support to custom configuration files (Put them in %emuPath%\Configurations\ read the module notes)
+  - Added ability to force a region despite the game's name tags
+  - Refactored module for future upgrades
+ * Virtual Aquarius updated to v2.0.3
+  - Replaced Send commands with the SendCommand function
+  - Added bezel support
+  - Added missing HideEmuEnd() call
+  - Refactored module for future upgrades
+
+2015/12/22
+ * ePSXe updated to v2.1.2
+  - Added support for pbp extensions (robbforce)
+  - Changed how the module exits the emu as it is different depending if multigame supported games are used
+  - Removed i18n support for now as it seems ePSXe doesn't support it (dvilches)
+  - Fixed MultiGame support where the initial disc was always being loaded (dvilches)
+  - Refactored module for future upgrades
+ * MFME updated to v2.0.7
+  - Changed to support new monitor functions
+  - Refactored module for future upgrades
+ * PicoDrive updated to v2.0.4
+  - Removed ScreenRes setting in favor of new global/system setting
+  - Refactored module for future upgrades
+
+2015/12/18
+ * Pinball Arcade updated to v2.0.9
+  - MEmuV updated to v1.45.6 (metalzoic)
+  - My_Tables default list updated with all current tables. "Judge Dredd (Bally)" table added (metalzoic)
+  - Refactored module for future upgrades
+
+2015/12/09
+ * FS-UAE updated to v2.0.5
+  - Fixed wrong ini key for Commodore Amiga fast-memory setting (Tomkun)
+  - Emu version updated to 2.6.2
+  - Refactored module for future upgrades
+
+2015/12/08
+ * MAME updated to v2.3.0
+  - Added Jupiter Ace system support (craiganderson)
+  - Added Amstrad CPC & Commodore MAX Machine system support (tonesmalone)
+
+2015/12/07
+ * Demul (v0.5.6) updated to v2.0.3
+  - Updated to utilize IniReadCheck function
+  - Refactored module for future upgrades
+ * Demul (v0.5.7) updated to v2.0.4
+  - Updated to utilize IniReadCheck function
+  - Refactored module for future upgrades
+ * Dolphin updated to v2.1.3
+  - Updated to utilize new Ini functions
+  - Small updates to support bezel changes
+  - Refactored module for future upgrades
+ * Dolphin Triforce updated to v2.0.2
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+ * Magic Engine updated to v2.0.4
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+ * Makaron updated to v2.0.4
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+ * PCLauncher updated to v2.2.0
+  - Updated to utilize IniReadCheck function
+  - Refactored module for future upgrades
+ * Snes9X updated to v2.0.3
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+ * WinKawaks updated to v2.0.2
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+ * XM6 updated to v2.0.4
+  - Updated to utilize new Ini functions
+  - Refactored module for future upgrades
+
+2015/12/02
+ * Pinball Arcade updated to v2.0.8
+  - MEmuV updated to v1.44.7 (metalzoic)
+  - My_Tables default list updated with all current tables. "No Fear - Dangerous Sports (Williams)" table added (metalzoic)
+ * Oricutron updated to v1.0.1
+  - Bezels changed to FixResMode (wahoobrian)
+  - Refactored module for future upgrades
+
+2015/12/01
+ * RetroArch updated (no version change)
+  - Added ScummVM to the MSystem list
+
+2015/11/29
+ * Daphne updated to v2.0.9
+  - ISD fixed to not require some settings
+
+2015/11/22
+ * WinVICE updated to v2.1.1
+  - TrueDriveEmulation setting can now be toggled for all games and not just a single rom
+ * UNZ updated (no version change)
+  - Changed daemon tools references to virtual drive in notes
+ * PCSX2 updated (no version change)
+  - Changed emu version to latest nightly as old version doesn't work with current module
+
+2015/11/19
+ * EDuke32 initial release
+
+2015/11/18
+ * MAME updated to v2.2.9
+  - Added Apple II system support (spotUP)
+
+2015/11/16
+ * MAME updated to v2.2.8
+  - Fixed servostik support when using mameromnames setting. Will now use the mameromname instead of your db name
+  - Added Fujitsu FM-7 and NEC PC-8801 system support (tonesmalone)
+
+2015/11/15
+ * PCSX2 updated to v2.1.6
+  - Updated loop to detect new window title properly so module knows when a game has loaded
+ * MAME updated to v2.2.7
+  - Added Sharp X1 system support (tonesmalone)
+  - Added cart support to Coleco ADAM (spotup)
+ * Snes9x updated (no version change)
+  - Added Bandai Sufami Turbo support
+
+2015/11/14
+ * MAME updated to v2.2.6
+  - Bug with bezels wasn't totally fixed on 2.2.5, should be fine now
+
+2015/11/13
+ * Fusion updated (no version change)
+  - Added new emulator website
+ * MAME updated to v2.2.5
+  - Fixed bug with fullscreen CLI setting and RL bezels
+ * ScummVM updated (no version change)
+  - Added missing GraphicFilter setting to ISD file
+
+2015/11/08
+ * ActiveGS updated to v2.1.1
+  - Updated module to use the new global MaximizeWindow function
+ * BeebEm updated to v1.0.5
+  - Small fix on rom extensions check
+ * BizHawk updated to v2.0.5
+  - Added support to Samsung Gam*Boy
+ * Demul (v0.5.7) updated to v2.0.3
+  - Updated module to use the new global MaximizeWindow function
+ * Demul (v0.5.8) updated to v2.0.8
+  - Updated module to use the new global MaximizeWindow function
+ * Demul (v0.7) updated to v2.1.0
+  - Updated module to use the new global MaximizeWindow function
+ * DXWnd updated to v2.0.6
+  - Renamed local MaximizeWindow function to avoid naming conflicts with the global one
+  - Module will now look to EmuPath to allow users to use their own Dxwnd installation
+ * Emu7800 updated to v2.0.3
+  - Updated module to use the new global MaximizeWindow function
+ * GameCom updated to v2.0.4
+  - Changed window title used when detecting error dialogs
+  - Increased sleep time for auto start game as it was too short
+  - Updated module to use the new global MaximizeWindow function
+ * GeePee32 updated to v2.0.3
+  - Updated module to use the new global MaximizeWindow function
+ * GEST updated to v2.0.2
+  - Updated module to use the new global MaximizeWindow function
+ * MAME updated to v2.2.4
+  - Added per game SoftwareList setting
+  - Added setting to define a custom hash folder path
+  - Added support for Sega VMU
+ * No$GBA updated to v2.0.2
+  - Updated module to use the new global MaximizeWindow function
+ * OdyEmu updated to v2.0.1
+  - Added some notes regarding emulator support and 8.3 DOS filenames under Windows 8
+ * PCLauncher updated to v2.1.9
+  - Added HideConsole setting that allows hiding the console when launching .bat files
+  - Added DXWndMaximizeWindow setting to automatically maximize the window for games launched using DxWnd
+  - Added new option to ExitMethod: InGame
+  - Reorganized ISD settings by groups
+  - Added some settings to the ISD that were missing from the general vs system inis
+ * VivaNonno updated to v2.0.2
+  - Updated module to use the new global MaximizeWindow function
+ * WinArcadia updated to v2.0.2
+  - Updated emulator version to v24.3 (Anything older than this won't work)
+  - Complete module remake to support the new version
+  - Added a lot of configurable options now that the config files are no longer binary
+ * WinKawaks updated to v2.0.1
+  - Updated module to use the new global MaximizeWindow function
+
+2015/11/05
+ * Pinball FX2 updated to v2.1.1
+  - Removed need for dxwnd support
+  - Added support for the new arguments (fullscreen, borderless, width/height)
+  - Normal bezel mode is also now supported as well, no more fixedres mode
+  - Removed notes pertaining to the above changes
+  - New module settings: Fullscreen_Width & Fullscreen_Height. Removed Windowed_Resolution
+
+2015/11/05
+ * Demul (v0.7) updated to v2.0.9
+  - Fixed windowed fullscreen window background from being clickable
+
+2015/10/25
+ * PCLauncher updated to v2.1.8
+  - Removed BezelEnabled per-game setting from module as it's a global per-game setting and module setting was redundant.
+  - Remove ExitMethod condition requirement to use FadeOut. FadeOut will now trigger on all games if it's enabled. This can still be turned off glboally or per-game.
+
+2015/10/23
+ * RetroArch updated (no version change)
+  - Atari 8-bit changed to Atari 8-Bit
+ * Pinball Arcade updated to v2.0.7
+  - MEmuV updated to v1.43.8 (Metalzoic)
+  - My_Tables default list updated with all current tables. F-14 Tomcat (Williams) added. Mary Shelley's Frankenstein (Sega) added. (Metalzoic)
+  - Some of the module instructions updated/re-written again for clarity (Metalzoic)
+
+2015/10/11
+ * MAME updated to v2.2.3
+  - Added support for Camputers Lynx, Commodore 64, EACA EG2000 Colour Genie, Irem Classics, MGT Sam Coupe, Nintendo Satellaview, Nintendo Pokemon Mini, Othello Multivision, Philips VG 5000, Sega Pico, Sega Saturn, Sega SC-3000, Williams Classics (gooch)
+  - Added support for GamePark 32 (tonesmalone)
+  - Cleaned up the module notes to match BIOS names used in module (gooch)
+  - Added support for link-enabled games
+  - Added MultiPlayer Menu support for link-enabled games
+  - Added many new module settings to support linking games together
+  - Updated notes with instructions on linking
+
+2015/10/10
+ * JzIntv updated to v1.0.1
+  - Added ConsoleWindow to HideEmu
+ * ParaJVE updated to v2.0.4
+  - External ROM Loading is working again
+  - Added support for romPath, roms no longer need to be stored inside the emulator's rom folder
+ * ScummVM updated to v2.1.0
+  - Added GraphicFilter Setting
+ * Raine module created
+  - New Module
+
+2015/10/05
+ * Atari800 (no version change)
+  - Added notes regarding lightgun emulation
+ * Casual Games updated to v2.0.5
+  - Added support to per system ini settings file
+  - Module will now also search for games using romPath as the root folder
+ * Demul (v0.5.8) updated to v2.0.7
+  - Added Gaelco 3D as a supported system
+ * Demul (v0.7) updated to v2.0.8
+  - Added Gaelco 3D as a supported system
+ * Emu7800 updated to v2.0.2
+  - Added fullscreen setting
+  - Updated emulator version to 1.8
+  - Added support for both the Classic and D2D versions
+ * FreeDO updated to v2.0.4
+  - Changed Send command to PostMessage (more reliable)
+  - Added missing FadeOutStart() call
+ * Meka updated to v2.0.2
+  - Added support to latest v0.80 beta versions through a RLUI setting (Window title/class changed)
+ * Mednafen updated to v2.1.5
+  - Fixed bug calculating the screen size for bezels on Master System
+ * PokeMini (SDL) updated to v2.0.2
+  - Updated emulator version to v0.60
+  - Normal bezel mode is now supported
+ * PokeMini updated to v2.0.1
+  - Updated emulator version to v0.60
+  - Added bezel support
+ * Spectaculator updated to v2.0.2
+  - Updated emulator version to v8.0
+  - Complete module overhaul, lots of new settings added to support as many games as possible
+  - Module will now looks at filename tags to detect the model to use
+  - Finally added proper support to load compilation tapes
+ * Steem SSE updated to v2.0.7
+  - Fixed bug related to model setting reading
+ * Virtual APF updated to v2.0.4
+  - Added RAMExpansion setting
+ * Virtual Jaguar updated to v2.1.1
+  - Added support for latest SVN versions through a RLUI setting (Window title/class changed)
+ * WinUAE updated to v2.2.0
+  - Corrected fullscreen setting for Commodore CDTV
+ * WinVICE updated to v2.1.0
+  - Added Command setting to Commodore 64
+  - Added Commodore 64 Games System ini file
+
+2015/10/01
+ * MAME updated to v2.2.2
+  - Added support for Nintendo Super Famicom
+
+2015/09/17
+ * MAME (no version change)
+  - Added support for PacMAME and HBMAME systemnames
+
+2015/09/13
+ * Bgb updated to v2.0.6
+  - Fixed wrong ternary condition for SGBColorsEnabled which was causing the mode not to be set properly
+ * BlueMSX updated to v2.1.2
+  - HoldKeyOnBoot can now have a default value at the system level
+ * MAME updated to v2.2.1
+  - Added support for hacked Bally Astrocade games that require the Blue RAM Basic cart
+  - Bally Astrocade games that require a reset on startup can now be configured through a module setting
+  - Added Bilinear filter selection as a module setting
+  - Executable is now wrapped in double quotes
+ * Mednafen updated to v2.1.4
+  - Added new module setting (Params) which can be used to send any extra CLI parameters to mednafen
+ * OpenMSX updated to v2.0.3
+  - Added new module settings: Renderer,ScanlineValue,HoldKeyOnBoot
+  - Changed the way MSX1 floppy games are handled, a floppy drive is now plugged in as an expansion module by default
+ * RetroArch updated to v2.3.3
+  - Ternary condition used on CheckFile for coreOptionsCFGFile was wrong and always returning the same value
+ * Stella updated to v2.0.4
+  - Fixed screenZoom setting which existed, but was being read, but never sent to the emulator
+
+2015/09/11
+ * DFend updated to v2.0.2
+  - Fixed an error when enabling network play for a game (wiggles)
+ * RetroArch updated to v2.3.2
+  - Fixed relative path detection error (Tomkun)
+
+2015/08/31
+ * Atari800 updated to v2.0.4
+  - Added Sleep line to solve some possible resize issues when using bezels
+ * Daphne Singe updated to v2.0.7
+  - Added Daphne and LaserDisc as supported systems
+  - Changed the SingePathUpdate default value to false as having it set to true will remove all relative paths from the singe files and this isn't good for a default behavior
+ * DOSBox updated to v2.0.6
+  - Added some extra comments, no version update
+ * Mednafen updated to v2.1.3
+  - Added missing parameter on the IniReadCheck for RotateScreen which was causing this setting to be added to the ini file to every launched game
+  - Fixed Raiden name on Atari Lynx (Example).ini
+ * PCLauncher
+  - Added American Laser Games as a supported system, no version update
+ * Steem SSE updated to v2.0.6
+  - Added new setting: LockAspectRatio
+  - Module will now always set BlockResize to 0 so window can be freely resized
+ * WinVICE updated to v2.0.9
+  - Module now disables TrueDriveEmulation for C16/Plus4, without this games won't auto start
+
+2015/08/29
+ * Pinball FX2 updated to v2.1.0
+  - Fixed tables not directly loading for non-steam versions
+ * RetroArch updated to v2.3.1
+  - Added support for Nintendo Game & Watch (newoski)
+ * PCSX2 updated to v2.1.5
+  - Updated wintitle to support latest emu versions. Please update your emu's to the newer versions to use this updated module
+  - Fixed VDOveride setting not having the desired per-game effect
+ * CPS3 updated to v1.0.1
+  - Added support for proper pausing and resuming when using Pause
+
+2015/08/24
+ * WinUAE updated to v2.1.9
+  - Fixed DLL call to use CLR_L
+ * Demul (v0.5.8) updated to v2.0.6
+  - Fixed DLL call to use CLR_L
+ * Demul (v0.7) updated to v2.0.7
+  - Fixed DLL call to use CLR_L
+ * Dolphin updated to v2.1.2
+  - Fixed DLL call to use CLR_L
+
+2015/08/23
+ * Pinball Arcade updated to v2.0.6
+  - Updated to reflect application v1.41.7 (metalzoic)
+ * Pinball FX2 updated to v2.0.9
+  - Removed table navigation code as the latest versions of the application no longer need it and can launch tables directly now.
+  - Removed all settings associated with navigation as well. You no longer need the module ini with coordinates defined.
+
+2015/08/17
+ * BGB updated to v2.0.5
+  - Added missing SplitScreen_2_Players to ISD
+  - Removed unused Wheel_Images_Folder setting from ISD
+ * Following modules had comments updated w/o increasing module version
+  - Arculator
+  - Atomulator
+  - BlueMSX
+  - Casual Games
+  - Daphne
+  - Daphne Singe
+  - Demul
+  - DXWnd
+  - DICE
+  - EZ Flasher
+  - Final Burn Alpha
+  - FourDO
+  - FreeDO
+  - Handy
+  - Makaron
+  - MAME
+  - MESS
+  - Nostalgia
+  - ParaJVE
+  - PCLauncher
+  - Pheonix
+  - Project64
+  - RPCEmu
+  - ScummVM
+  - Sega Model 2 Emulator
+  - Steam SSE
+  - Stella
+  - U64Emu Platinum Edition
+  - Visual Pinball
+  - WinArcadia
+  - WinKawaks
+  - WinUAE Loader
+
+2015/08/14
+ * UNZ module updated to v2.0.3
+  - RestoreEmu now works with any FE
+
+2015/08/14
+ * PCLauncher module updated to v2.0.5
+  - Added new setting: PreLaunchMode
+
+2015/08/12
+ * Steem SSE module updated to v2.0.5
+  - Disable/Enable hard drives automatically depending on game being HDD installed or not
+ * WinVICE module updated to v2.0.8
+  - DriveTrueEmulation setting wasn't being properly set on some situations (like when setting didn't exist on the ini file)
+
+2015/08/09
+ * BeebEm module updated to v1.0.4
+  - Added several new options required to run some games
+  - Added multi-game support
+
+2015/08/03
+ * BGB updated to v2.0.4
+  - Fixed missing FadeOutStart()
+ * Demul updated to v2.0.6
+  - Module updated to support emu v0.7a
+  - Added Sega System SP support
+  - ISD updated to support new naomi bios additions. If you use this setting, you will need to redo them as the emu has changed most of them.
+ * DOSBox updated to v2.0.6
+  - Changed how the module detects if using it for dos or using it for windows
+  - Added Microsoft Windows as a supported system name
+ * Pinball Arcade updated to v2.0.5
+  - Module setting added for All Tables: Navigates the menu to the My Tables folder properly (determined by owning all the tables or not). (Metalzoic)
+  - Default My Tables list updated to include all tables from all seasons in the correct order. (Metalzoic)
+  - The "skipwhatsnew" parameter added for non-Steam versions. (Disables the What's New pop-up nag screen) (Metalzoic)
+  - MEmuV updated to v1.40.9 
+  - Some module instructions added/changed/updated for clarity. (Metalzoic)
+ * MAME updated to v2.2.0
+  - MAME and MESS are now combined into just the MAME module. Updates to the MESS module will cease from now on.
+
+2015/08/02
+ * Citra Initial Release
+
+2015/07/28
+ * Atomulator Initial Release (xttx)
+
+2015/07/26
+ * AAE module updated to v2.0.6
+  - Fixed default values on some module settings (should be 0/1 not true/false)
+  - Added Exit_Mode setting since the emulator won't exit using WinClose unless your exit emulator key is Esc
+
+2015/07/22
+ * CPS3 module initial release
+ * Pinball Arcade updated to v2.0.4
+  - Added missing "shortcut" method for rotation support
+  - Fixed rotation support
+  - Added new setting: Select_Key, which now defaults to your Navigation Select Key in RLUI. This allows you to change the default Enter key sent to the game if you remapped it internally.
+
+2015/07/18
+ * MESS updated to v2.3.6
+  - Added Aamber Pegasus support (tonesmalone)
+  - Fixed Software Lists and SNK Neo Geo AES sending a duplicate rompath via CLI (brolly)
+
+2015/07/11
+ * Dolphin updated to v2.1.1
+  - Fixed an ISD bug with the key section ending early
+ * MAME updated to v2.1.14
+  - Fixed auto-rotate mode for vertical games (wrong CLI argument was being used)
+ * MESS updated to v2.3.5
+  - Changed ISD section for Electron from %systemname% to Settings
+
+2015/07/07
+ * Unit3D Pinball initial release (bleasby)
+ * WinVICE updated to v2.0.7
+  - Added support for missing vsf extension (krakerman)
+ * MESS updated to v2.3.4
+  - MESS_BIOS_Path default changed to "emuPath\roms" if not set in RLUI
+  - Fixed some bad spacing on ti99_4a params (krakerman)
+
+2015/07/05
+ * MESS updated to v2.3.3
+  - Added new setting: MESS_BIOS_Path - You need to set this path once, then the module will handle paths to your roms automatically from now on. You never need to set rom paths in the emu anymore.
+ * OpenBOR updated to v2.0.3
+  - Will now backup save files/configs when using archived versions of games and restore them on next launch (solipsist1234)
+
+2015/07/04
+ * Daphne updated to v2.0.8
+  - Added new KeepAspect setting (rfancella)
+ * Pinball Arcade updated to v2.0.3
+  - Added support for DX11 window name along with a new setting to handle what version you want to use
+  - New Setting - Start_Game: This lets you send an additional Enter key to skip player selection and get right into the game
+
+2015/07/03
+ * Dolphin updated to v2.1.0
+  - Added new Render_To_Main setting which controls where you want the emu to render. False (default) is for legacy support, true is the new standard.
+  - Removes Dolphin's toolbar and statusbar when using bezels or vbalink and rendering to main window.
+ * MESS updated to v2.3.2
+  - Added Nintendo Super Game Boy Color support
+  - Revamped how the mess object is calculated. It is like the RetroArch module now and much more readable and now easily updated.
+
+2015/06/24
+ * WinUAE updated to v2.1.8
+  - Added new setting: PathToExtraDrive
+  - Options can now be set globally for both CD32 and CDTV
+
+2015/06/22
+ * Mupen64Plus updated to v2.0.5
+  - Fixed plugins being sent over CLI w/o double quotes
+ * Xebra updated to v2.0.4
+  - Fixed bug where emulator does not always exit properly. This changes on every version, so future versions may need additions to make it work properly.
+
+2015/06/20
+ * WinUAE updated to v2.1.7
+  - Added support for mds files
+
+2015/06/19
+ * WinUAE updated to v2.1.6
+  - Added shader support and some extra display settings (Rfancella)
+  - Fixed bug causing Amiga CD installed games not to start if hdf wasn't before cue/iso extensions
+  - Amiga CD games will now have Workbench enabled by default
+
+2015/06/17
+ * Project64 (v2.x) updated to v2.3.0
+  - Added support for Nintendo 64DD (Zerojay)
+ * RetroArch updated to v2.3.0
+  - Added support for Nintendo 64DD, Technos, & 	Williams Classics (Zerojay)
+  - Neo Geo AES default core changed from mess to mame (Zerojay)
+  - Support for MultiGame and dynamically creating m3u files on the fly (nosh)
+  - Added new settings Eject_Toggle_Key, Next_Disk_Key, Previous_Disk_Key (nosh)
+ * Pinball FX2 updated to v2.0.8
+  - Updated descriptions in ISD relating to Y/Y2 and direction to count.
+ * Dolphin updated to v2.0.9
+  - Removed previously added bezel sleep setting for a more automatic window wait alternative. (bleasby)
+  - Added support to run GameCube games together with GBA. (bleasby)
+ * DOSBox updated to v2.0.5
+  - Fixed configFolder setting not converting relative paths to absolute
+ * MESS updated to v2.3.1
+  - Added Acorn Electron support (tomkun)
+
+2015/06/06
+ * MESS updated to v2.3.0
+  - Added Nintendo Famicom support and now differentiates Nintendo Famicom from Nintendo Famicom Disk System (gooch)
+
+2015/06/03
+ * ePSXe updated to v2.1.1
+  - EnableAnalog is now a global and per-game setting
+ * Fusion updated to v2.1.2
+  - PerfectSync now is a global and per-game setting
+ * PCSX2 updated to v2.1.4
+  - New settings - AutoCreateINIDir and defaultINISPath (pike & rfancella)
+  - Now has the ability to create rom-named ini files and copy existing settings into them to make per-game customizations a snap (pike & rfancella)
+ * puNES updated to v2.0.2
+  - Added HideEmu support
+  - Emu version supported now 0.94
+ * Yabause updated to v2.0.2
+  - New setting CustomBios, allows global or per-game bios files
+  - Now much easier to get Yabause working with minimal initial setup
+  - Now using CLI to launch games
+  - Added Bezel support
+  - Emu version supported now 0.9.14
+
+2015/06/01
+ * MAME updated to v2.1.13
+  - Fixed bug when videomode was set to opengl through ini file and glsl never got enabled
+ * MESS updated to v2.2.9
+  - Fixed bug when videomode was set to opengl through ini file and glsl never got enabled
+
+2015/05/30
+ * MESS updated to v2.2.8
+  - Added a missing double quote to the module that was causing it to crash
+
+2015/05/29
+ * Xebra updated to v2.0.3
+  - Removed an unnecessary space sent on CLI
+ * BGB updated to v2.0.3
+  - Multiplayer menu setting is now global or per-rom and defaulted to false
+ * Pinball FX2 updated to v2.0.7
+  - Multiplayer menu setting is now global or per-rom and defaulted to false
+ * VBA Link updated to v2.0.5
+  - VBA Link menu setting is now global or per-rom and defaulted to false
+ * MAME updated to v2.1.12
+  - Added a missing double quote to the module that was causing it to crash
+ * WinUAE updated to v2.1.5
+  - Added a bunch of settings back to the ISD that were inadvertedly remove on the previous update
+  - Added better support for Amiga CD games
+  - Added support for RTG (Expansions tab on per game settings)
+  - Added support for processor slot RAM
+  - Moved a couple of settings to different sections so make sure you recheck your module settings
+
+2015/05/27
+ * MAME updated to v2.1.11
+  - Added ini option to Videomode setting (Module will use whatever videomode setting user defined in the MAME ini files)
+ * MESS updated to v2.2.7
+  - Added support to define command line parameters per rom
+  - Added static system command line parameters
+  - Updated HLSL, GLSL and Videomode settings to match the MAME module
+
+2015/05/25
+ * AAE updated to v2.0.5
+  - Missed some hyperlaunch references in the isd (Rfancella)
+
+2015/05/21
+ * FS-UAE updated to v2.0.3
+  - New settings for FloppySounds and Shaders (Rfancella)
+  - Now deletes Drive and Image values set in FS-UAE's config so CLI loading will work (Rfancella)
+  - Added the load of up to four disks and a swap list of all the disks (Rfancella)
+
+2015/05/20
+ * RetroArch updated to v2.2.9
+  - Added support for Atari 8-bit
+  - Removed messType Object and made it a part of the mType object as label MessID
+  - Dragon 64 is now known as Dragon Data Dragon (Zerojay)
+  - Fix SegaCD, Nintendo Famicom Disk System, TurboGrafx-16 CD, PC Engine CD and PC-FX configuration file loading (bean)
+ * Soda PDF 3D Reader updated to v1.1
+  - Added support for setting hotkeys to turn pages left and right. Set them up in RLUI module settings (Bleasby)
+  - New settings NextPage and PreviousPage (Bleasby)
+ * Project64 (v2.x) updated to v2.0.3
+  - Added BezelDelay setting to allow some time to pass before bezel draws its bezels around the emu window.
+
+2015/05/19
+ * BizHawk updated to v2.0.4
+  - Fixed all the gameboy system checks as the window names changed
+  - Updated minimum emu version to 1.9.4
+ * DOSBox updated to v2.0.4
+  - Missed some HyperLaunch references in the ISD
+ * Dolphin updated to v2.0.8
+  - Added new setting to give time for emu to draw itself before bezels take over
+ * RetroArch updated to v2.2.8
+  - Added support for Applied Technology MicroBee (MESS), Atari Classics (MAME), Capcom Classics (MAME), Cave (MAME), Data East Classics (MAME), Irem Classics (MAME), Konami Classics (MAME), Midway Classics (MAME), Namco Classics (MAME), Namco System 22 (MAME), Nintendo Classics (MAME), Othello Multivision (Genesis Plus), Sega Classics (MAME), SNK Classics (MAME), Taito Classics (MAME) (Zerojay)
+  - Updated MAME notes to mention the nag screen patch having been removed from Retroarch to stay as close to mainline as possible. (Zerojay)
+  - Will now stretch RA's viewport to RL's bezel viewport (Nosh)
+  - Added new setting StretchToFillBezel (Nosh)
+ * Snes9x
+  - Small formatting standardization, no version update
+ * Magic Engine updated to v2.0.3
+  - Added Bezels support (Rfancella)
+  - Added bezelTopOffset, bezelBottomOffset, bezelLeftOffset, bezelRightOffset settings
+  - Run now uses RL's Run function instead of standard AHK one
+  - Now errors if you try to send 7z or rar directly to Magic Engine as the emu does not support these archives.
+
+2015/05/15
+ * MAME updated to v2.1.10
+  - It's now possible to leave HLSL and GLSL configuration up to the MAME ini files
+  - Fixed issue where ini files weren't being read from the correct place in some cases
+ * DOSBox updated to v2.0.3
+  - Added support for shaders (only works with ykhwong's builds)
+
+2015/05/10
+ * Soda PDF 3D Reader
+  - Initial release
+ * SumatraPDF
+  - Initial release (zerojay)
+ * Steem SSE updated to v2.0.4
+  - Added new RunSpeed setting to control CPU speed globally or per-game
+ * Altirra updated to v1.2
+  - Fix resuming from Pause not restoring fullscreen to emu
+
+2015/05/09
+ * Project64 (v2.x)
+  - Updated notes about where plugin settings are stored, no version change
+ * Steem SSE updated to v2.0.3
+  - Added 2MB RAM and fast drive support
+ * Hatari updated to v2.0.2
+  - Added Fast Drive support
+ * MAME updated to v2.1.9
+  - Added support to enable/disable HLSL and GLSL from the MAME ini files only
+
+2015/05/08
+ * PCSX2 updated to v2.1.3
+  - Now supports .gz extension when loading images directly in pcsx2
+ * SSF updated to v2.1.2
+  - Module now always detect Sega Saturn system using InStr instead of exact system name
+
+2015/05/03
+ * mGBA initial release
+ * aae to 2.0.4
+ * applewin to 1.6
+ * arculator to 1.1
+ * beebem to 1.0.3
+ * bgb to 2.0.2
+  - support for Multiplayer_Menu (ghutch92)
+ * bizhawk to 2.0.3
+ * casual games to 2.0.4
+ * ccs64 to 2.0.3
+ * cdiemu to 2.0.2
+ * cpce to 2.0.3
+ * daphne singe to 2.0.6
+ * demul 0.5.8 to 2.0.5
+  - Gaelco and Sega Hikaru now supported. Per-game memcard support. New settings OpaqueMod, TransMod, videomode. Fix file encoding automatically. Some VMU visibility fixes
+ * desmume to 2.0.6
+ * dfend to 2.0.1
+ * dolphin to 2.0.7
+  - netplay (MultiPlayer) support updated wiimote function for dolphinbar
+  - Netplay support will also take into account "_netplay" named inis if you need tweaked settings only for netplay
+  - RLProfilePath now requires (RL) in the name instead of (HL)
+  - Module now takes into account portable.txt to determine what settings to use
+  - Updated notes
+ * dosbox to 2.0.2
+ * dwjukebox to 2.0.1
+ * dxwnd to 2.0.5
+ * emugaki to 2.0.1
+ * epsxe to 2.1.0
+ * epv-1000 to 2.0.2
+ * esc-3000 to 2.0.1
+ * escv to 2.0.1
+ * final burn alpha to 2.0.2
+ * flash player projector to 2.0.2
+ * fourdo to 2.0.3
+ * freedo to 2.0.3
+ * freezesms to 2.0.2
+ * fs-uae to 2.0.2
+  - many more changes and settings
+ * fusion to 2.1.1
+ * gamecom to 2.0.3
+  - added i18n support
+ * handy to 2.0.2
+ * hatari to 2.0.1
+  - many new additions and settings by wahoobrian
+ * higan to 2.0.4
+ * magic engine to 2.0.2
+ * makaron to 2.0.3
+ * mame to 2.1.8
+  - added IniPath, GLSL, & VerticalRotationMode settings
+ * mednafen to 2.1.2
+  - added Nintendo BS-X Satellaview & Nintendo Sufami Turbo and fixed stretch
+ * mess to 2.2.6
+  - added Applied Technology MicroBee support
+ * mfme to 2.0.6
+ * mupen64plus to 2.0.4
+ * nestopia to 2.0.4
+ * nintendulator to 2.0.2
+ * nulldc to 2.0.6
+  - per game memory cards support
+ * ootake to 2.0.2
+ * openbor to 2.0.2
+ * parajve to 2.0.3
+ * pclauncher to 2.1.6
+ * pcsx2 to 2.1.2
+  - DTOverride setting renamed to VDOverride and VD_CDVD_Plugin renamed to VD_CDVD_Plugin
+ * pcsxr to 2.0.6
+ * pheonix to 2.0.4
+ * picodrive to 2.0.3
+ * pinball arcade to 2.0.2
+  - updated emu version to 1.37.8 with some new tables (marxkemp)
+ * pinball fx2 to 2.0.6
+ * playguy to 2.0.2
+ * ppsspp to 2.0.3
+ * project64 to 2.0.2
+  - added EmuVersion setting by rfancella
+ * project tempest to 2.0.3
+ * psxfin to to 2.0.4
+ * retroarch to 2.2.7
+  - fixed bug with LibRetro_DUCK & LibRetro_EBK
+  - Added systems Sega Mark III, Sega Mega Drive 32X and Nintendo SuFami Turbo (newoski), Tiger Game.com (nomisholman)
+ * scummvm to 2.0.9
+ * sega model 2 emulator to 2.0.8
+ * snes9x to 2.0.2
+  - added Nintendo Satellaview support, and ControlType setting to set your controller type per game
+ * ssf to 2.1.1
+ * steem sse to 2.0.2
+  - many new additions and settings by wahoobrian
+ * stella to 2.0.3
+ * turbo engine 16 to 2.0.1
+ * unz to 2.0.2
+ * virtual aquarius to 2.0.2
+ * winape to 2.0.3
+ * winuae to 2.1.4
+  - huge update by turranius
+ * xm6 to 2.0.3
+  - some new stretch settings
+ * xmillennium to 2.0.2
+ * yabause to 2.0.1
+ * xebra to 2.0.2
+  - i18n support & setting memcard path
+
+2015/03/01
+ * BeebEm (updated to v1.0.1)
+  - Moved 7z call to proper location (7z support was broken) (brolly)
+  - Changed CLI switches to send proper RUN command (brolly)
+ * PCLauncher (updated to v2.1.5)
+  - Removed the HideCursor settings, in favor of the global per-game settings on HLHQ's Games tab.
+ * NullDC (updated to v2.0.5)
+  - Added romExtension check and module will now error if you try to pass a compressed format to nulldc as it is not supported by the ImageReader plugin.
+  - Added VMUHideKey (rfancella)
+ * RetroArch (updated to v2.2.3)
+  - Fixed zero values from not being written to RA configs
+  - Tandy TRS-80 Color Computer 3 renamed to Tandy TRS-80 Color Computer
+  - Spectravideo SV-328 renamed to Spectravideo
+  - Pecom 64 renamed to Elektronska Industrija Pecom 64
+  - SNK Neo Geo MVS support added and defaults to the mame core
+
+2015/01/21
+ * DOSBox (updated to v2.0.1)
+  - Updated to support MultiPlayer changes
+  - Added ability to turn off grabbing your WAN IP in case you never plan to be online and only setup for local multiplayer LAN play
+  - Fixed HyperPause support when fullscreen is used (bleasby)
+ * MAME (updated to v2.1.4)
+  - Updated notes on how ServoStik support works on this system
+ * NullDC (updated to v2.0.4)
+  - Moved ini settings to be read before 7z is called which standardizes and helps avoid issues with rom names inside archive containing []
+  - Added upto 4-player VMU support to be displayed on screen (bleasby)
+ * OpenBOR (updated to v2.0.1)
+  - Added Bezels support
+  - Added HideEmu support
+  - Added Fullscreen setting to module
+  - Added AlternateExitKey setting to module 
+  - Rewrote logic to finding your OpenBOR.exe
+  - Updated notes to reflect these changes
+
+2015/01/06
+ * ScummVM (updated to v2.0.7)
+  - Fixed some improper placement of dbl quotes on paths causing scummvm to reject them in CLI
+ * Daphne (updated to v2.0.6)
+  - Added new hwAccel module setting for controlling use of opengl (thanks rfancella)
+
+2014/12/31
+ * WinUAE (updated to v2.1.1)
+  - Added support for Commodore Amiga Demos (thanks rfancella & Turranius)
+
+2014/12/29
+ * Demul (v0.5.8) (updated to v2.0.4)
+  - Added missing 7zCleanup()
+ * Mednafen
+  - Removed extra Mednafen module in folder
+ * MESS (updated to v2.2.5)
+  - userparams now tacks on a space in case user forgot one
+ * WinVICE (updated to v2.0.4)
+  - Fixed typo in ISD
+
+2014/12/24
+ * 1964 (updated to v2.0.1):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * ActiveGS (updated to v2.1):
+  - Added Hide_Emu support
+  - Added the ability to browse and specify the location and name of your BootableHardDiskImage and changed its location from the Rom directory to the Emulator directory. (Thanks Rfan)
+  - Now copies over the default.activegsxml config file with a saved original.activegsxml when the game is closed (like the WinUAE module does). (Thanks Rfan)
+  - Fixed an error in the settingsfile line. (Thanks Rfan)
+ * AppleWin (updated to v1.5):
+  - Added Hide_Emu support
+  - Now uses Rotate global function
+ * Arculator (updated to v1.0):
+  - Added Hide_Emu support
+ * BlueMSX (updated to v2.1.0):
+  - Added Hide_Emu support
+ * Bsnes (updated to v2.0.3):
+  - Added Hide_Emu support
+ * CCS64 (updated to v2.0.2):
+  - Added Hide_Emu support
+  - Added Bezel support (thanks rfancella)
+  - Fixed DX9 issue
+  - Automatically closes Direct3D msgbox if it pops up
+ * CPCE (updated to v2.0.2):
+  - Several new settings added to support more CPC game specific configurations (thanks wahoobrian)
+  - Reworked the ISD (thanks wahoobrian)
+  - Tape support added (thanks wahoobrian)
+  - MG support added including for CP/M games (thanks wahoobrian)
+  - Added Hide_Emu support
+ * Daphne (updated to v2.0.5):
+  - Added Bezel Support (thanks rfancella)
+  - Added Hide_Emu support
+ * Daphne Singe (updated to v2.0.2):
+  - Added Bezel Support (thanks rfancella)
+  - Added Hide_Emu support
+  - Drastically increased the speed at which the *.singe files are updated with correct paths and added much more logging when they are.
+  - Old method could take upto 20 seconds and scanned every singe file when only a few actually have paths. New method only updates files that have paths.
+  - Added missing ForcePathUpdate to the ISD
+ * DCAlice (initial release):
+  - Added Hide_Emu support
+ * DCVG5K (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * DeSmuMe (updated to v2.0.5):
+  - Added Hide_Emu support
+ * DICE (updated to v2.0.2):
+  - Added Hide_Emu support
+  - Bezel support
+ * Dolphin (updated to v2.0.1):
+  - Added Hide_Emu support
+  - Profile support rewritten to a function and removed an error when a custom profile was not found, will log it instead.
+ * DXWnd (updated to v2.0.4):
+  - Updated to support Dxwnd function calls instead
+  - Now uses Rotate global function
+ * Emma 02 (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * Emu7800 (updated to v2.0.1):
+  - Added Bezel support (Thanks gigapig)
+  - Added Hide_Emu support
+ * EmuGaki (initial release):
+  - Added Hide_Emu support
+ * ePSXe (updated to v2.0.8):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * ePV-1000 (updated to v2.0.1):
+  - Added Hide_Emu support
+ * eSC-3000 (initial release):
+  - Added Hide_Emu support
+ * eSCV (initial release):
+  - Added Hide_Emu support
+  - Flash Player Projector (updated to v2.0.1):
+  - Added Bezel support
+  - Added Hide_Emu support
+  - Global and per-game fullscreen support
+  - All games can be made fullscreen now
+  - Emu version updated to v14
+ * FourDO (updated to v2.0.2):
+  - Bezel support
+  - Added Hide_Emu support
+ * FreeDO (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * Fusion (updated to v2.0.9):
+  - Sega Pico support
+  - Added Hide_Emu support
+ * Future Pinball (updated to v2.0.1):
+  - Bezel support
+  - Added Hide_Emu support
+ * GameCom (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * GeePee32 (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * Higan (updated to v2.0.3):
+  - Added Hide_Emu support
+ * JavaGX4000 (initial release):
+  - Added Hide_Emu support
+ * JPcsp (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * Magic Engine (updated to v2.0.1):
+  - Added Hide_Emu support
+ * Makaron (updated to v2.0.2):
+  - Now uses Rotate global function
+ * MakaronEX (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Removed HideLoading module setting
+  - Added Hide_Emu support
+ * MAME (updated to v2.1.3):
+  - Bezel support improved
+  - Changed script error to log on MAME validity check
+  - HLSL mode can now be configured on a per-game basis if desired
+  - Removed HideConsole module setting
+  - Added Hide_Emu support which also hides the console now when enabled
+ * Mednafen (updated to v2.1.0):
+  - Better bezel support
+  - Better vertical games support
+  - Added Hide_Emu support
+ * MESS (updated to v2.2.4):
+  - Bezel support improved
+  - Changed script error to log on MESS validity check.
+  - Added support for Tomy Tutor, Sord M5, Sinclair ZX81, Sony PocketStation, Tandy TRS-80 Color Computer 3 and JungleTac Sport Vii (thanks zerojay)
+  - Added support for Nintendo Famicom Disk System, Sega SG-1000
+  - Renamed Matra Alice 32 to Matra & Hachette Alice
+  - Added Hide_Emu support
+  - Sega Mega Drive ident changed to megadriv as genesis is for USA only
+  - Module now auto-changes the ident if booting Genesis and a Europe rom is booted or if booting Mega Drive and a USA rom is booted
+  - Fixed PC-Engine CD bios. Now requires Super CD-ROM2 System V3.0 (J).pc to exist in Mess's roms folder.
+  - Added option to set asia or japan bios for each rom for SNK Neo Geo AES
+ * MFME (updated to v2.0.5):
+  - Updated notes
+  - Removed ResizeHeight and Width keys from module and ISD
+  - Added Hide_Emu support
+ * Nebula (updated to v2.0.1):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * NeoRaine (updated to v2.0.3):
+  - Added Hide_Emu support
+ * Nestopia (updated to v2.0.2):
+  - Added Bezel support (Thanks Nosh)
+  - Added Hide_Emu support
+ * NullDC (updated to v2.0.3):
+  - Module now uses OpenRom()
+  - Added Hide_Emu support
+ * OpenMSX (updated to v2.0.2):
+  - Added Hide_Emu support
+ * ParaJVE (updated to v2.0.2):
+  - Bezel support (thanks rfancella)
+  - Disables emu's chassis setting when bezels are enabled automatically (avoids double bezel)
+  - Added Hide_Emu support
+  - Loading logo hidden when HL setting Hide Emu is enabled
+ * PCLauncher (updated to v2.1.2):
+  - Removed Steam and Origin labels
+  - Added DXWnd support
+ * PCSX2 (updated to v2.1.1):
+  - Added support for portable and standard installation modes (thanks ghutch)
+  - Added Hide_Emu support
+  - Added support for BZ2 images
+  - New global module settings: DT_CDVD_Plugin, Image_CDVD_Plugin, Linuz_CDVD_Plugin, gs, pad, spu2, usb, fw, dev9
+  - If you do not have every ps2 game using the same CDVD plugin, it's suggested to set the 3 global CDVD settings for this module.
+ * Phoenix (updated to v2.0.3):
+  - Module now supports i18n translations
+  - Added Hide_Emu support
+ * PicoDrive (updated to v2.0.2):
+  - Storywave Change Pages support
+  - Bezel support improved
+  - Added Hide_Emu support
+ * Pinball FX2 (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Dxwnd function calls
+  - Added # of Players GUI at launch
+  - Added new module option Sleep_Base_Time. This is a Sleep Multiplier which affects all the module sleeps. If you have issues with the game picking up the keys sent from HL.
+ * Project64 v1.6.1 (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Removed HideLoading module setting
+  - Added Hide_Emu support
+ * Project64 v2.x (updated to v2.0.1):
+  - Renamed Project64 (v2.0.0.14) ahk and isd to Project64 (v2.x). Make sure your Global Emulator.ini file reflects the changed module name.
+  - Emu version updated to v2.1.0.1
+  - Added Hide_Emu support
+  - Added Bezel support
+  - StatusBar is removed when bezels are enabled
+  - Halt/Restore from HP now use PostMessages to toggle fullscreen
+  - CloseProcess now uses PostMessage instead of WinClose because WinClose often left the process running in memory
+ * Project64 v20120726 build 57 (updated to v2.0.2):
+  - Module now supports i18n translations
+  - Removed HideLoading module setting
+  - Added Hide_Emu support
+ * Project Tempest (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Module now supports i18n translations
+  - Removed SelectGameMode from module and isd and now using OpenRom instead
+  - Added Hide_Emu support
+  - Added Bezel support (thanks rfancella!)
+ * PSXFin: (updated to v2.0.2)
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * RetroArch (updated to v2.1.8):
+  - Added support for MAME, Neo Geo, Panasonic 3DO, Atari Jaguar, Atari Lynx, Atari 2600, Atari 5200, Atari 7800, Atari ST, Microsoft MSX, & Sony PSP
+  - Added support for RetroArch style relative folders in its config file
+  - Added ccd as a valid extension to PC Engine-CD and TurboGrafx-CD
+  - Changed default libretro for 32x to picodrive as genesis plus doesn't work with 32x
+  - Added Hide_Emu support
+  - RetroArch ahk and isd updated to reflect Nosh's additions that allow fine-tuned control of the mupen64 core
+  - Included a Nintendo 64.ini which contains the per-rom settings required to get a lot of games to run.
+  - Fix a bad path when checking for bios files.
+  - Sega Model 2 Emulator (updated to v2.0.7):
+  - Updated measure text function call
+  - Removed # of Players GUI from module because it is global now
+  - Added Hide_Emu support
+ * SSF (updated to v2.1.0):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added OpenRom() support for ST-V loading
+  - Added Hide_Emu support
+ * Steem SSE (updated to v2.0.1):
+  - Previously known as Steem, but that emu is discontinued.
+  - Added Bezel settings (thanks rfancella)
+  - Bezel support (thanks rfancella)
+  - Added Hide_Emu support
+ * Stella (updated to v2.0.2):
+  - Module rewritten
+  - Better settings support
+  - Bezel support
+  - Added Hide_Emu support
+ * T98-Next (updated to v2.0.5):
+  - Added Hide_Emu support
+  - Added Touhou Project to supported systems list
+ * VBALink (updated to v2.0.4):
+  - Updated measure text function call
+  - Removed # of Players GUI from module because it is global now
+  - Added Hide_Emu support
+ * Virtual APF (updated to v2.0.2):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+ * Virtual Aquarius (updated to v2.0.1):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Module now supports i18n translations
+  - Removed SelectGameMode from module and isd and now using OpenRom instead
+  - Added Hide_Emu support
+ * Virtual Jaguar (updated to v2.1.0):
+  - Adapted for more recent version
+  - Bezel support
+  - Added Hide_Emu support
+ * WinAPE (updated to v2.0.2):
+  - Added Bezel Support (thanks rfancella)
+  - Added Hide_Emu support
+  - Added i8n support
+  - Several new settings added to support more CPC game specific configurations (thanks wahoobrian)
+  - Reworked the ISD (thanks wahoobrian)
+  - Tape support added (thanks wahoobrian)
+ * WinUAE (updated to v2.1.0):
+  - Added Bezel Support (thanks rfancella)
+  - Added Hide_Emu support
+ * WinUAE Loader (updated to v2.0.1):
+  - Added Bezel Support (thanks rfancella)
+  - Added Hide_Emu support
+ * WinVice (updated to v2.0.3):
+  - Added Bezel Support (thanks rfancella)
+  - Updated SetKeyDelay to use HL's function call instead
+  - Removed SelectGameMode from module and isd and now using OpenRom instead
+  - Added Hide_Emu support
+  - vsf is now a supported extension and should be placed before d64 and tap in your romextensions for this emu
+  - Commodore 128 now supported (thanks wahoobrian)
+ * XMillennium (updated to v2.0.1):
+  - Added Hide_Emu support
+ * XMillenniumR (initial release):
+  - Added Hide_Emu support
+ * Yape (initial release):
+  - Added Hide_Emu support
+ * ZSNESw (updated to v2.0.4):
+  - Updated SetKeyDelay to use HL's function call instead
+  - Added Hide_Emu support
+
+2014/06/01
+ * General
+  - All modules have been updated, changing 'MSystem :=' to 'MSystem ='
+  - Run 'Rename Modules for HLv3.0.0.4.exe' to approve one-by-one a rename of all your modules to the new standard. It will automatically create a backup of your Modules folder. Be careful with Demul, Project64, & Virtual APF as they have multiple modules in the folders. I kept either the author name or the version of the emu in the filename to distinguish the differences.
+  - Run 'Rename Global Emu ini for HLv3.0.0.4.exe' to approve one-by-one a rename of all your Global Emulator Module values to the new standard. It will automatically create a backup of your Global Emulators.ini before it writes to the file.
+ * PicoDrive
+  - contains the PicoDrive module and isd files for Sega Pico
+ * NullDC
+  - updated removing toggleMenu function sincie it is now in shared.ahk

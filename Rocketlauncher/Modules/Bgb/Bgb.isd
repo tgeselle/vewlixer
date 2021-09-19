@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="SplitScreen_2_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Horizontal or Vertical 2 players split screen.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Vertical</VALUE>
+								<VALUE>Horizontal</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SplitScreen_3_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>What screen player 1 should appear in split screen mode.</DESCRIPTION>
+							<VALUES>
+								<VALUE>P1top</VALUE>
+								<VALUE>P1bottom</VALUE>
+								<VALUE>P1left</VALUE>
+								<VALUE>P1right</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SGB_Colors_Enabled" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>if enabled some game boy games will have color instead of being black and white</DESCRIPTION>
+						</KEY>
+						<KEY name="SGB_Border_Enabled" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>if enabled some game boy games will have the border that the SGB used for tv screens</DESCRIPTION>
+						</KEY>
+						<KEY name="Multiplayer_Menu" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the local MultiPlayer selection menu globally. This menu gives you a choice to select between 1 to 4 players which will be playing the game locally.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Multiplayer_Menu" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the local MultiPlayer selection menu for just this game. This menu gives you a choice to select between 1 to 4 players which will be playing the game locally.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="%SystemName%" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="SplitScreen_2_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Horizontal or Vertical 2 players split screen.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Vertical</VALUE>
+								<VALUE>Horizontal</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SplitScreen_3_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>What screen player 1 should appear in split screen mode.</DESCRIPTION>
+							<VALUES>
+								<VALUE>P1top</VALUE>
+								<VALUE>P1bottom</VALUE>
+								<VALUE>P1left</VALUE>
+								<VALUE>P1right</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SGB_Colors_Enabled" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>if enabled some game boy games will have color instead of being black and white</DESCRIPTION>
+						</KEY>
+						<KEY name="SGB_Border_Enabled" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>if enabled some game boy games will have the border that the SGB used for tv screens</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Multiplayer_Menu" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the local MultiPlayer selection menu. This menu gives you a choice to select between 1 to 4 players which will be playing the game locally.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

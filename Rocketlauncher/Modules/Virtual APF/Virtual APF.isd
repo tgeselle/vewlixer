@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+								<KEYTYPE>Boolean</KEYTYPE>
+								<DESCRIPTION>Set to true for fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="WindowSize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Window Dimension (Windowed Mode only).</DESCRIPTION>
+							<VALUES>
+								<VALUE description="100%">1</VALUE>
+								<VALUE description="200%">2</VALUE>
+								<VALUE description="300%">3</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="TapeLoadingMethod" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Tape Loading method, should be CLOAD+RUN for most tapes, only some professional APF tapes seem to use different loading methods</DESCRIPTION>
+							<VALUES>
+								<VALUE description="CLOAD+RUN">1</VALUE>
+								<VALUE description="1 CLOAD+RUN+GOTO100">2</VALUE>
+								<VALUE description="RUN+CLOAD+GOTO100">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="RAMExpansion" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to true if game requires the 8K RAM Expansion</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

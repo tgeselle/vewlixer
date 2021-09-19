@@ -1,0 +1,21 @@
+MCRC := "B4DEB2A2"
+MVersion := "1.0.0"
+
+; Default RocketLauncher Plugin (used when no other plugins exist)
+
+PluginInit:
+	Log("PluginInit - Started")
+
+	; Load Plugin settings
+	frontendPlugin := pluginName
+	frontendVideoExtensions := ["mp4","flv"]	; order matters, preferred is found first
+	frontendArtworkExtensions := ["png"]
+	frontendPluginInit := 1	; used to keep track if the FE plugin was initialized already
+	Log("PluginInit - Ended")
+Return
+
+ReadFEGameInfo:
+	Log("ReadFEGameInfo - Started")
+	readFEGameInfo := 1	; used to keep track if the FE game info was read already
+	Log("ReadFEGameInfo - Ended")
+Return

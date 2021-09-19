@@ -1,0 +1,194 @@
+=============================================================================================
+  ______           _        _   _                            _                 _   _ _____ 
+  | ___ \         | |      | | | |                          | |               | | | |_   _|
+  | |_/ /___   ___| | _____| |_| |     __ _ _   _ _ __   ___| |__   ___ _ __  | | | | | |  
+  |    // _ \ / __| |/ / _ \ __| |    / _` | | | | '_ \ / __| '_ \ / _ \ '__| | | | | | |  
+  | |\ \ (_) | (__|   <  __/ |_| |___| (_| | |_| | | | | (__| | | |  __/ |    | |_| |_| |_ 
+  \_| \_\___/ \___|_|\_\___|\__\_____/\__,_|\__,_|_| |_|\___|_| |_|\___|_|     \___/ \___/
+
+=============================================================================================
+                                       Release History                                       
+=============================================================================================
+
+2017/01/17
+ * RocketLauncherUI updated to v1.0.1.10
+  - Added support for DemulShooter setting
+  - Added button to cancel a running game audit
+  - Split the existing "Clear Old Data" checkbox into 3 different on the system creation wizard, also 
+    improved their descriptions to make it clearer what each one will do. Media and Database deletion are 
+    now disabled by default
+  - Added support for Help_Right_Margin and Help_Bottom_Margin settings on Pause.ini
+  - Added support for the new 7z_Extensions setting
+  - Refactored auditing to take the 7z_Extensions setting into consideration
+
+2016/11/06
+ * RocketLauncherUI updated to v1.0.1.9
+  - mTest module header tags weren't being properly recognized when they were mixed with comments
+
+2016/10/06
+ * RocketLauncherUI updated to v1.0.1.8
+  - Added support for Cursor_Size setting (Also per game setting)
+  - Added vertical scrollbar to Game Options form which will appear when needed
+  - Added per game ShaderName setting
+  - Added support for the new options in the Extra_FullScreen_Bezel setting
+  - Added editable comboBox component support
+  - Added new aspect ratio options to Extra_FullScreen_Bezel setting
+  - Added support for the new options 7z_Games_to_Keep and 7z_Delete_per_System
+  - Updated module parser to support the new module header format
+  - LaunchBox plugin updated to v1.0.3: Updated to support the new XML folder/file structure
+
+2016/07/16
+ * RocketLauncherUI updated to v1.0.1.7
+  - LaunchBox plugin updated to v1.0.2: Changed media types to match current RL plugin
+  - Fixed bug causing scrollbar in the frontend artwork form not to work properly
+
+2016/07/05
+ * RocketLauncherUI updated to v1.0.1.6
+  - LaunchBox plugin updated to v1.0.1: Fixed bug causing game list not updating when switching systems
+
+2016/06/27
+ * RocketLauncherUI updated to v1.0.1.5
+  - Added plugin for LaunchBox frontend
+  - Added new option to add tilde prefix when capturing hotkeys
+  - HyperPin plugin updated to v1.0.1: Artwork folder variables moved up to super class
+  - Added Use Global checkbox to HotKey form
+  - Added checkbox to disable any HotKey to the HotKey form
+  - Warning will be displayed when log level is set to DEBUG or lower so the user understands this 
+    might have impact on RL performance and should only be used when debugging/testing
+
+2016/05/13
+ * RocketLauncherUI updated to v1.0.1.4
+  - Added support for the new Error_Sounds setting
+  - Updated some default values for Fade
+  - Updated included Fade Profiles
+  - Fixed bug in URL parser on module info form causing URLs with ; character not to work
+
+2016/05/05
+ * RocketLauncherUI updated to v1.0.1.3
+  - Added support for the new Logging_Include_DLL_Logs setting
+  - Fixed bug where use_global was being possible to use together with other hotkeys at system level
+  - Added support for the new TRACE_DLL log level
+
+2016/04/21
+ * RocketLauncherUI updated to v1.0.1.2
+  - Fixed NullPointerException when reading Joystick OEM names from registry
+
+2016/04/17
+ * RocketLauncherUI updated to v1.0.1.1
+  - Increased ini parser buffer size to fix a bug causing some settings not to be saved on fade profiles
+  - PinballX Plugin updated to v1.0.1: Custom systems are added first so that properly named custom systems 
+    such as Future Pinball, Visual Pinball or Pinball FX2 get added before the standard PinballX names
+  - Replaced repeated option appearing in the combo box for the Custom Cursor setting
+  - Fixed bug that was causing last update info to be deleted after you reset your ini file settings through 
+    the UI
+  - Added support for the new Shader settings: shaderName, shaderTransparency, shaderColor and shaderChangeKey.
+    They can all be set under the Bezel tab
+  - Set_Resolution can now be set on a per game basis
+  - Fixed bug preventing systems with the ' character on their name to be deleted
+  - Replaced DEBUG2 and DEBUG1 log levels with TRACE and DEBUG respectively
+  - Load Class Libraries version info into the RLUI panel
+  - Added support for the new Suspend_Front_End setting
+
+2016/01/12
+ * RocketLauncherUI updated to v1.0.1.0
+  - Changed Pause's Force Resolution field validator to use x|y|w|z format instead of integer
+  - Added support for the new Restore_Resolution_On_Exit setting
+  - Added support for the new Set_Resolution setting which will change your display resolution when 
+    starting a game
+  - Created editor and validator for display settings
+  - Moved Virtual_Emulator out of RocketLauncherUI.ini to Emulators.ini. You will need to edit your 
+    virtual emulators and tick the virtual checkbox for each of them once again
+  - Added support for Keyboard Encoder settings Keyboard_Encoder, Keyboard_Encoder_Enabled
+  - Added support for WinIPAC and Ultramap settings WinIPAC_Path, UltraMap_Path, UltraMap_Enabled
+  - Created new Mappings tab under Settings and moved all keyboard mapping related settings to it (
+    Keymapper, Keyencoders, vjoy, etc.)
+  - Added support to create/edit Keyboard Encoder profiles under the Keymapper section. WinIPAC supported, 
+    but also Ultrastik/Ultramap
+  - You can now create a default profile under .\Profiles\_Default\%TYPE%\_Default.%ext% and this will be 
+    used as a base when creating a new keymap profile through RLUI (Required for WinIPAC)
+  - Added support for the Base_Rom_Path setting and updated auditing and database generator to make use of it
+  - Added do_not_restore option to Hide_Taskbar and do_not_restore, custom_and_do_not_restore to Hide_Cursor
+  - Updated RetroFE plugin to ignore comments inside the include.txt file
+  - Added ChangeLog form to the Updater, use it to check for all the changes before updating
+  - Added new exclude text field to the log viewer filter panel
+  - Added new buttons to load the RocketLauncher and RocketLauncher DLL logs directly to the log viewer
+  - Added mandatory PluginVersion attribute to all plugins
+  - Added support for new Pause setting: Appearance_Duration
+  - Added support for new Bezel setting: Game_Monitor
+  - Replaced Fade_Rom_Info_Manufacturer setting with Fade_Rom_Info_Publisher and Fade_Rom_Info_Developer
+
+2015/11/08
+ * RocketLauncherUI updated to v1.0.0.9
+  - Improved modules panel filtering to support non-standard system names. Now any modules referenced 
+    on the system emulators.ini or games.ini will also show up on the list so you can configure per 
+    game settings even if you aren't using non-standard system names
+  - Fixed bug with alternate game dialog that was causing a NullPointerException when system or emulator 
+    names weren't being set
+  - Added support for new settings: Default_Front_End_Path, Default_Plugin, LEDBlinky_System_Name, 
+    Fade_Click_Through, DxWnd_Path
+
+2015/10/10
+ * RocketLauncherUI updated to v1.0.0.8
+  - Added support for the new RomMapping settings: Hide_Parent, Game_Name_Text_Font, 
+    Game_Name_Text_Options
+  - Custom icons are now supported, just name them properly and put them inside .\Media\Custom Icons
+
+2015/09/13
+ * RocketLauncherUI updated to v1.0.0.7
+  - Added one extra validation for the RocketLauncher.dll unblocking that should avoid errors 
+    on some particular systems
+  - FadeIn and FadeOut can now be enabled/disabled on a per game basis (Games tab)
+  - Fixed a bug on auditor when using alternate emulators
+
+2015/08/31
+ * RocketLauncherUI updated to v1.0.0.6
+  - RocketLauncherUI will now automatically unblock the RocketLauncher.dll file if your Windows 
+    is blocking it
+
+2015/08/27
+ * RocketLauncherUI updated to v1.0.0.5
+  - Moved Exit_Emulator_Key and Mode_Rotation_Angle settings to the correct sections
+  - Updated RetroFE plugin to work with the newer versions of the frontend
+
+2015/08/16
+ * RocketLauncherUI updated to v1.0.0.4
+  - Added game name column to the sorting order regardless the column you click
+  - RLUI will now check if .NET framework 2.0 is installed and won't let RL start if it isn't
+  - Added validation to ExitEmulatorKeyWait setting, 1000ms is now the minimum value accepted
+  - Added support for new ServoStik_Exit_Mode ini key, it can also be set on a per game basis 
+    through the Games tab under specific game options
+  - Moved Exit_Emulator_Key from General Settings to the Settings tab (You can now set your exit 
+    emulator key on a per system basis if you want)
+  - Removed support for Exit_Emulator_Key_Wait and Force_Hold_Key since they are no longer needed 
+    due to the above change
+  - Fixed issues with relative paths on ISDs when %RocketLauncherPath% was specified as a BASEPATH 
+    setting
+
+2015/06/24
+ * RocketLauncherUI updated to v1.0.0.3
+  - Fixed bug where visibility of some buttons wasn't being updated in context when you 
+    changed your active Frontend or selected plugin
+  - Added support for new settings: JoyIDsPreferredControllersOnExit, Pause_Monitor, 
+    Pause_Screen_Rotation_Angle,Broadcast_Window_Title
+  - Fixed TextReader .NET 4.0 bug, using a workaround so the updater should now run properly 
+    in all machines
+  - Added possibility to setup bezels on a per game basis. You can configure it in the Games tab 
+    under specific game options
+  - Added path to the RocketLauncher installation being used to the RLUI tab
+  - Added support for new ISD key type FileOrFolderPath
+
+2015/05/28
+ * RocketLauncherUI updated to v1.0.0.2
+  - License info is now added to newly created JoyToKey profiles if exists. You must enable this 
+    setting in the RLUI panel
+  - Added support for the new Virtual_Drive_Drive_Letter setting
+
+2015/05/04
+ * RocketLauncherUI updated to v1.0.0.1
+  - Correct number of video labels in the HyperSpin plugin
+  - Updater will now notify the user when a file can't be updated due to being read-only. The 
+    update procedure will go through the end and the user will need to fix the problem afterwards
+
+2015/05/03
+ * RocketLauncherUI updated to v1.0.0.0
+  - First public release under the RLUI name

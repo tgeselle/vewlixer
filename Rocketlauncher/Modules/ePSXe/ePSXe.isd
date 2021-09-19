@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Video_Plugin" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the video plugin you would like to use for this emulator. (Default = Pete's OpenGL2 GPU core 2.0.0.)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="ePSXe GPU core 2.0.0.">GPUCORE</VALUE>
+								<VALUE description="Pete's OpenGL2 GPU core 2.0.0.">GPUCOREGL2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Widescreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Widescreen support is used to stretch the screen to 16:9 without modifying the aspect of 3D objects. Given it is a hack it will fail in some games, especially those combining 2D and 3D. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="GamepadType_Player1" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 1. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="GamepadType_Player2" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 2. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="Slow_Boot" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, force emulator to show bios screen at boot. (Default = false)</DESCRIPTION>
+						</KEY>						
+						<KEY name="Hide_ePSXe_GUIs" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables hiding of all ePSXe's GUI windows on load and disc change for multi-disc games. (Default = true)</DESCRIPTION>
+						</KEY>
+						<KEY name="Per_Game_Memory_Cards" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Support for Per-Game Memory Card support. Make sure the first time you run with this option enabled, your current memory cards are formatted and blank. (Default = true)</DESCRIPTION>
+						</KEY>
+						<KEY name="Memory_Card_Path" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Full path to your memory card folder. (Default = %EmuPath%\memcards)</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Pete's OpenGL2 GPU Plugin" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true enables Fullscreen mode. If false enables Window mode. (Default = true)</DESCRIPTION>
+						</KEY>
+						<KEY name="Desktop_Resolution_X" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Horizontal resolution of Fullscreen mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="Desktop_Resolution_Y" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Vertical resolution of Fullscreen mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="Window_Size_X" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Horizontal size of Window mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="Window_Size_Y" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Vertical size of Window mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="Color_Depth" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Color Depth. (Default = 32 Bit)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="16 Bit">16</VALUE>
+								<VALUE description="32 Bit">32</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Window_Size_In_Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true enables use of Window Size in Fullscreen mode. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Internal_X_Resolution" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls the image quality for the width of the screen. A sane value is "2" with modern cards. (Default = 1: High - Standard, enhanced display)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Low - Native PSX resolution">0</VALUE>
+								<VALUE description="1: High - Standard, enhanced display">1</VALUE>
+								<VALUE description="2: Very high - Needs a modern card, otherwise crashes are possible">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Internal_Y_Resolution" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls the image quality for the height of the screen. A sane value is "2" with modern cards. (Default = 1: High - Standard, enhanced display)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Low - Native PSX resolution">0</VALUE>
+								<VALUE description="1: High - Standard, enhanced display">1</VALUE>
+								<VALUE description="2: Very high - Needs MUCH gfx card vram... 128 MB cards will be fine">2</VALUE>
+								<VALUE description="3: Ultra high - A 256 MB card is recommended, VERY slow FB effects">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Stretching_Mode" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls how the image will be stretched for your display. Most users will be satisfied with "0". (Default = 0: Stretch to full window size (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Stretch to full window size (standard)">0</VALUE>
+								<VALUE description="1: Scale to window size, keep aspect ratio">1</VALUE>
+								<VALUE description="2: Stretch on small heights, keep aspect ratio">2</VALUE>
+								<VALUE description="3: Try to keep pixel ratio">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Render_Mode" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Tells the plugin how to render the image internally, output is the same. (Default = 0: Render to pbuffer-texture (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Render to pbuffer-texture (standard)">0</VALUE>
+								<VALUE description="1: Render to pbuffer, copy to texture (supported by most cards)">1</VALUE>
+								<VALUE description="2: Use framebuffer object (fastest mode, if supported)">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Texture_Filtering" required="false" nullable="false" minLength="0" maxLength="6">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>You can try to improve the texture look with texture filtering, but be aware that the real psx doesn't support filtering, which will result in glitches. Set this to 0 if you intend to use a shader. (Default = 0: None)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None">0</VALUE>
+								<VALUE description="1: Standard - Glitches will happen">1</VALUE>
+								<VALUE description="2: Extended - Removes black borders">2</VALUE>
+								<VALUE description="3: Standard w/o sprites - unfiltered 2D">3</VALUE>
+								<VALUE description="4: Extended w/o sprites - unfiltered 2D">4</VALUE>
+								<VALUE description="5: Standard + smoothed sprites">5</VALUE>
+								<VALUE description="6: Extended + smoothed sprites">6</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Hi_Res_Textures" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Hi-Res textures. (Default = 0: None (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None (standard)">0</VALUE>
+								<VALUE description="1: 2xSal (much vram needed)">1</VALUE>
+								<VALUE description="2: Stretched (filtering needed)">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Gfx_Card_Vram" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Graphics card VRAM in MBytes. (Default = 0 (Autodetect))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0 (Autodetect)">0</VALUE>
+								<VALUE description="2">2</VALUE>
+								<VALUE description="4">4</VALUE>
+								<VALUE description="8">8</VALUE>
+								<VALUE description="16">16</VALUE>
+								<VALUE description="32">32</VALUE>
+								<VALUE description="64">64</VALUE>
+								<VALUE description="128">128</VALUE>
+								<VALUE description="256">256</VALUE>
+								<VALUE description="512">512</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Pixel_Shader" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Use pixel shader for a faster and more accurate emulation of the 'PSX texture window' ability. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Offscreen_Drawing" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Sometimes the real psx renders polygons not only into its display areas, but also to some other vram areas, to archive special effects like Crash Bandicoot's shadow in CB3. (Default = 1: Standard - OK for most games)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None - No offscreen polygon rendering">0</VALUE>
+								<VALUE description="1: Standard - OK for most games">1</VALUE>
+								<VALUE description="2: Extended - Can cause garbage">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Framebuffer_Effects" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The highest setting (3=Full) is the most compatible one (you should get all of the effects by selecting it). (Default = 0: None - No framebuffer effects will be emulated)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None - No framebuffer effects will be emulated">0</VALUE>
+								<VALUE description="1: Minimum - Emulates most frame texture effects">1</VALUE>
+								<VALUE description="2: Standard - Emulates frame textures and buffer moves / reads">2</VALUE>
+								<VALUE description="3: Full - Emulates everything, causes overall slowdown">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Framebuffer_Upload" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Another ability of the real psx gpu is to upload pictures to any part of its vram, and to display such areas as needed. The standard "1" setting is the best choice for most games. (Default = 1: Standard - Uploads detected screen areas)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Minimum - Lazy upload detection, can cause missing screens">0</VALUE>
+								<VALUE description="1: Standard - Uploads detected screen areas">1</VALUE>
+								<VALUE description="2: Full - Uploads full vram area, can be slow - use only when screens are missing">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Screen_Filtering" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>A nice fullscreen filter. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Shader_Effects" required="false" nullable="false" minLength="0" maxLength="5">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enables shader effects. Enabling 3 or 5 requires Shader_Directory to be set, and will disable Texture_Filtering, Hi_Res_Textures, and Screen_Filtering. (Default = 0: None)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None">0</VALUE>
+								<VALUE description="1: Fullscreen smoothing">1</VALUE>
+								<VALUE description="2: Black/white smoothing">2</VALUE>
+								<VALUE description="3: ARB program (gpuPeteOGL2.vp/fp)">3</VALUE>
+								<VALUE description="4: GLSlang smoothing">4</VALUE>
+								<VALUE description="5: GLSlang files (gpuPeteOGL2.slv/slf)">5</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Shader_Directory" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Directory where you store your shader files.</DESCRIPTION>
+						</KEY>
+						<KEY name="Shader_Level" required="false" nullable="false" minLength="1" maxLength="4">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Selects the shader intensity level. The intensity level will depend on the shader. (Default = 1: Minimum)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="1: Minimum">1</VALUE>
+								<VALUE description="2: More">2</VALUE>
+								<VALUE description="3: Medium">3</VALUE>
+								<VALUE description="4: Maximum">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Scanlines" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>TV screen-like lines. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Scanline_Brightness" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Valid values are -1 (Monitor dot matrix) and 0-255.</DESCRIPTION>
+						</KEY>
+						<KEY name="MDEC_Filter" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Movies will look less pixelated. (Default = false)</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="neGcon Controller" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Player1_Twist" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for twisting functionality of the neGcon.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_LeftShoulder" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon Left Shoulder button.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_ButtonI" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon button I.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_ButtonII" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon button II.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_Twist" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for twisting functionality of the neGcon.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_LeftShoulder" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon Left Shoulder button.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_ButtonI" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon button I.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_ButtonII" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon button II.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Settings"/>
+						<GROUP name="Pete's OpenGL2 GPU Plugin"/>
+						<GROUP name="neGcon Controller"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="Video_Plugin" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the video plugin you would like to use for this game. (Default = Pete's OpenGL2 GPU core 2.0.0.)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="ePSXe GPU core 2.0.0.">GPUCORE</VALUE>
+								<VALUE description="Pete's OpenGL2 GPU core 2.0.0.">GPUCOREGL2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Widescreen" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Widescreen support is used to stretch the screen to 16:9 without modifying the aspect of 3D objects. Given it is a hack it will fail in some games, especially those combining 2D and 3D. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="GamepadType_Player1" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 1. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="GamepadType_Player2" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 2. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="GamepadType_Player3" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 3. Multitap_Port1 must be enabled for this setting to take effect. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="GamepadType_Player4" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting to configure the Gamepad type for Player 4. Multitap_Port1 must be enabled for this setting to take effect. For example, change this to Digital for games that do not support analog controllers, or to neGcon for games that only support the neGcon controller for analog controls. (Default = DualShock)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="[SXXX-0000] Disabled">0</VALUE>								
+								<VALUE description="[SCPH-1080] Digital">1</VALUE>
+								<VALUE description="[SCPH-1090] Mouse/Digital">2</VALUE>								
+								<VALUE description="[SCPH-1150] DualAnalog">5</VALUE>
+								<VALUE description="[SCPH-1200] DualShock">4</VALUE>
+								<VALUE description="[SLEH-0003] Namco Negcon/Digital">7</VALUE>
+								<VALUE description="[SLEH-0007] Namco G-con45/Digital">3</VALUE>								
+								<VALUE description="[SLEH-0005] Konami Justifier/Digital">8</VALUE>																
+							</VALUES>
+						</KEY>
+						<KEY name="Multitap_Port1" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, enables Multitap on Port 1. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="EnableFlightStick" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, will force "[SCPH-1150] DualAnalog" as your GamepadType for this game, and will press F5 twice during boot to enable Flight Stick Mode. Enabling this setting will override your GamepadType_Player1 and GamepadType_Player2 settings. Flight Stick setting is used for games that only support the Flight Stick as an analog controller such as Bogey: Dead 6 and Descent. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="EnableAnalog_Delay" group="Settings" required="false" nullable="false" minLength="1">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Delay in seconds before Analog mode is enabled. Some games re-initialize analog controls during the boot process. For example, Colin McRae Rally needs a 30 second delay (timed to enable after loading screen). (Default = 3)</DESCRIPTION>
+						</KEY>
+						<KEY name="DisableMemoryCard1" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, disables memory card 1 for this game. Some games may not boot if both memory cards are inserted. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="DisableMemoryCard2" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, disables memory card 2 for this game. Some games may not boot if both memory cards are inserted. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Internal_X_Resolution" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls the image quality for the width of the screen. A sane value is "2" with modern cards. (Default = 1: High - Standard, enhanced display)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Low - Native PSX resolution">0</VALUE>
+								<VALUE description="1: High - Standard, enhanced display">1</VALUE>
+								<VALUE description="2: Very high - Needs a modern card, otherwise crashes are possible">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Internal_Y_Resolution" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls the image quality for the height of the screen. A sane value is "2" with modern cards. (Default = 1: High - Standard, enhanced display)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Low - Native PSX resolution">0</VALUE>
+								<VALUE description="1: High - Standard, enhanced display">1</VALUE>
+								<VALUE description="2: Very high - Needs MUCH gfx card vram... 128 MB cards will be fine">2</VALUE>
+								<VALUE description="3: Ultra high - A 256 MB card is recommended, VERY slow FB effects">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Stretching_Mode" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Controls how the image will be stretched for your display. Most users will be satisfied with "0". (Default = 0: Stretch to full window size (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Stretch to full window size (standard)">0</VALUE>
+								<VALUE description="1: Scale to window size, keep aspect ratio">1</VALUE>
+								<VALUE description="2: Stretch on small heights, keep aspect ratio">2</VALUE>
+								<VALUE description="3: Try to keep pixel ratio">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Render_Mode" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Tells the plugin how to render the image internally, output is the same. (Default = 0: Render to pbuffer-texture (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Render to pbuffer-texture (standard)">0</VALUE>
+								<VALUE description="1: Render to pbuffer, copy to texture (supported by most cards)">1</VALUE>
+								<VALUE description="2: Use framebuffer object (fastest mode, if supported)">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Texture_Filtering" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="6">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>You can try to improve the texture look with texture filtering, but be aware that the real psx doesn't support filtering, which will result in glitches. Set this to 0 if you intend to use a shader. (Default = 0: None)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None">0</VALUE>
+								<VALUE description="1: Standard - Glitches will happen">1</VALUE>
+								<VALUE description="2: Extended - Removes black borders">2</VALUE>
+								<VALUE description="3: Standard w/o sprites - unfiltered 2D">3</VALUE>
+								<VALUE description="4: Extended w/o sprites - unfiltered 2D">4</VALUE>
+								<VALUE description="5: Standard + smoothed sprites">5</VALUE>
+								<VALUE description="6: Extended + smoothed sprites">6</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Hi_Res_Textures" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Hi-Res textures. (Default = 0: None (standard))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None (standard)">0</VALUE>
+								<VALUE description="1: 2xSal (much vram needed)">1</VALUE>
+								<VALUE description="2: Stretched (filtering needed)">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Gfx_Card_Vram" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Graphics card VRAM in MBytes. (Default = 0 (Autodetect))</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0 (Autodetect)">0</VALUE>
+								<VALUE description="2">2</VALUE>
+								<VALUE description="4">4</VALUE>
+								<VALUE description="8">8</VALUE>
+								<VALUE description="16">16</VALUE>
+								<VALUE description="32">32</VALUE>
+								<VALUE description="64">64</VALUE>
+								<VALUE description="128">128</VALUE>
+								<VALUE description="256">256</VALUE>
+								<VALUE description="512">512</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Pixel_Shader" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Use pixel shader for a faster and more accurate emulation of the 'PSX texture window' ability. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Offscreen_Drawing" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Sometimes the real psx renders polygons not only into its display areas, but also to some other vram areas, to archive special effects like Crash Bandicoot's shadow in CB3. (Default = 1: Standard - OK for most games)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None - No offscreen polygon rendering">0</VALUE>
+								<VALUE description="1: Standard - OK for most games">1</VALUE>
+								<VALUE description="2: Extended - Can cause garbage">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Framebuffer_Effects" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="3">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The highest setting (3=Full) is the most compatible one (you should get all of the effects by selecting it). (Default = 0: None - No framebuffer effects will be emulated)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None - No framebuffer effects will be emulated">0</VALUE>
+								<VALUE description="1: Minimum - Emulates most frame texture effects">1</VALUE>
+								<VALUE description="2: Standard - Emulates frame textures and buffer moves / reads">2</VALUE>
+								<VALUE description="3: Full - Emulates everything, causes overall slowdown">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Framebuffer_Upload" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Another ability of the real psx gpu is to upload pictures to any part of its vram, and to display such areas as needed. The standard "1" setting is the best choice for most games. (Default = 1: Standard - Uploads detected screen areas)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: Minimum - Lazy upload detection, can cause missing screens">0</VALUE>
+								<VALUE description="1: Standard - Uploads detected screen areas">1</VALUE>
+								<VALUE description="2: Full - Uploads full vram area, can be slow - use only when screens are missing">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Screen_Filtering" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>A nice fullscreen filter. (Default = false)</DESCRIPTION>
+						</KEY>
+						<KEY name="Shader_Effects" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="0" maxLength="5">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enables shader effects. Enabling 3 or 5 requires Shader_Directory to be set, and will disable Texture_Filtering, Hi_Res_Textures, and Screen_Filtering. (Default = 0: None)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0: None">0</VALUE>
+								<VALUE description="1: Fullscreen smoothing">1</VALUE>
+								<VALUE description="2: Black/white smoothing">2</VALUE>
+								<VALUE description="3: ARB program (gpuPeteOGL2.vp/fp)">3</VALUE>
+								<VALUE description="4: GLSlang smoothing">4</VALUE>
+								<VALUE description="5: GLSlang files (gpuPeteOGL2.slv/slf)">5</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Shader_Directory" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Directory where you store your shader files.</DESCRIPTION>
+						</KEY>
+						<KEY name="Shader_Level" group="Pete's OpenGL2 GPU Plugin" required="false" nullable="false" minLength="1" maxLength="4">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Selects the shader intensity level. The intensity level will depend on the shader. (Default = 1: Minimum)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="1: Minimum">1</VALUE>
+								<VALUE description="2: More">2</VALUE>
+								<VALUE description="3: Medium">3</VALUE>
+								<VALUE description="4: Maximum">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_Twist" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for twisting functionality of the neGcon.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_LeftShoulder" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon Left Shoulder button.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_ButtonI" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon button I.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player1_ButtonII" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 1 analog controls for neGcon button II.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">0</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">64</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">128</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">1</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">65</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">129</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">3</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">67</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">131</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">4</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">68</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">132</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">66</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">130</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_Twist" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for twisting functionality of the neGcon.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_LeftShoulder" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon Left Shoulder button.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_ButtonI" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon button I.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Player2_ButtonII" group="neGcon Controller" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Remap Player 2 analog controls for neGcon button II.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Left Thumbstick (X axis) - Full/Square">8</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Negative">72</VALUE>
+								<VALUE description="Left Thumbstick (X axis) - Positive">136</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Full/Square">9</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Negative">73</VALUE>
+								<VALUE description="Left Thumbstick (Y axis) - Positive">137</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Full/Square">11</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Negative">75</VALUE>
+								<VALUE description="Right Thumbstick (X axis) - Positive">139</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Full/Square">12</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Negative">76</VALUE>
+								<VALUE description="Right Thumbstick (Y axis) - Positive">140</VALUE>
+								<VALUE description="Triggers (Z axis) - Negative">74</VALUE>
+								<VALUE description="Triggers (Z axis) - Positive">138</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

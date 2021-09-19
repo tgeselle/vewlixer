@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="FullscreenMethod" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Windows 8 does not seem to work with the registry method as the key is not even there to change, Use hotkey if reg doesn't set fullscreen for you.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Registry">reg</VALUE>
+								<VALUE description="ALT+Enter">hotkey</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ControlDelay" required="false" nullable="true" minLength="-1">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Raise this if the module is getting stuck somewhere. Default = 20</DESCRIPTION>
+						</KEY>
+						<KEY name="KeyDelay" required="false" nullable="true" minLength="-1">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Raise this if the module is getting stuck. Default = -1</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

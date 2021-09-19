@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelTopOffset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the top of your playing screen increase this value. If your playing screen is hidden at the top decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelBottomOffset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the bottom of your playing screen increase this value. If your playing screen is hidden at the bottom decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelLeftOffset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the left of your playing screen increase this value. If your playing screen is hidden at the left decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelRightOffset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the right of your playing screen increase this value. If your playing screen is hidden at the right decrease it.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Nintendo Game Boy" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="SuperGameBoyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this system to use Super Game Boy mode.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Nintendo Game Boy Color" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="SuperGameBoyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this system to use Super Game Boy mode.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Nintendo Famicom" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BarcodeReaderHotkey" required="false" nullable="false">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>Hotkey to bring up the dialog for barcode entering. Use in Datach Joint ROM System games.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="SuperGameBoyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this rom to use Super Game Boy mode. Only affects Nintendo Super Game Boy and Nintendo Game Boy.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+		</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

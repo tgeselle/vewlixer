@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="LockAspectRatio" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Locks/Unlocks aspect ratio when resizing the emulator window</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelTopOffset" required="false" nullable="false">
+                            <KEYTYPE>Integer</KEYTYPE>
+                            <DESCRIPTION>If you see part of the emulator window at the top of your playing screen increase this value. If your playing screen is hidden at the top decrease it. Default is 20.</DESCRIPTION>
+                        </KEY>
+                        <KEY name="bezelBottomOffset" required="false" nullable="false">
+                            <KEYTYPE>Integer</KEYTYPE>
+                            <DESCRIPTION>If you see part of the emulator window at the bottom of your playing screen increase this value. If your playing screen is hidden at the bottom decrease it. Default is 0.</DESCRIPTION>
+                        </KEY>
+                        <KEY name="bezelLeftOffset" required="false" nullable="false">
+                            <KEYTYPE>Integer</KEYTYPE>
+                            <DESCRIPTION>If you see part of the emulator window at the left of your playing screen increase this value. If your playing screen is hidden at the left decrease it. Default is 0.</DESCRIPTION>
+                        </KEY>
+                        <KEY name="bezelRightOffset" required="false" nullable="false">
+                            <KEYTYPE>Integer</KEYTYPE>
+                            <DESCRIPTION>If you see part of the emulator window at the right of your playing screen increase this value. If your playing screen is hidden at the right decrease it. Default is 10.</DESCRIPTION>
+                        </KEY>
+						<KEY name="RunSpeed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+						    <DESCRIPTION>Speed of emulated Atari ST</DESCRIPTION>
+							<VALUES>
+								<VALUE description="8mhz">8000000</VALUE>
+								<VALUE description="10mhz">10000000</VALUE>
+								<VALUE description="12mhz">12000000</VALUE>
+								<VALUE description="16mhz">16000000</VALUE>
+								<VALUE description="24mhz">24000000</VALUE>
+								<VALUE description="32mhz">32000000</VALUE>
+								<VALUE description="64mhz">64000000</VALUE>
+							</VALUES>							
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="MachineType" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine Type ST, STE</DESCRIPTION>
+							<VALUES>
+								<VALUE description="ST">1</VALUE>
+								<VALUE description="STE">0</VALUE>								
+							</VALUES>
+						</KEY>
+						<KEY name="MemorySize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Memory size of emulated Atari ST</DESCRIPTION>
+							<VALUES>
+								<VALUE description="512KB">0</VALUE>
+								<VALUE description="1MB">1</VALUE>
+								<VALUE description="2MB">2</VALUE>
+								<VALUE description="4MB">4</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="RunSpeed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+						    <DESCRIPTION>Speed of emulated Atari ST</DESCRIPTION>
+							<VALUES>
+								<VALUE description="8mhz">8000000</VALUE>
+								<VALUE description="10mhz">10000000</VALUE>
+								<VALUE description="12mhz">12000000</VALUE>
+								<VALUE description="16mhz">16000000</VALUE>
+								<VALUE description="24mhz">24000000</VALUE>
+								<VALUE description="32mhz">32000000</VALUE>
+								<VALUE description="64mhz">64000000</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="TOSImage" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>TOS/System Rom Image to use</DESCRIPTION>
+							<VALUES>
+								<VALUE>Tos100.img</VALUE>
+								<VALUE>Tos102.img</VALUE>
+								<VALUE>Tos104.img</VALUE>
+								<VALUE>Tos162.img</VALUE>
+								<VALUE>Tos102us.img</VALUE>
+								<VALUE>Tos206.img</VALUE>								
+								<VALUE>Tos206us.img</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="UseSingleDrive" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Only relevant for multi disk games.  If this is true, only one drive will be used.  Otherwise, the second disk will be loaded in Drive B at emu start.  Set to true if game can only read from a single drive.</DESCRIPTION>
+						</KEY>
+						<KEY name="FastFloppy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Select speed of floppy emulation. Disable if a game appears to have issues booting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Monitor" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="mono/high res">0</VALUE>
+								<VALUE description="color">1</VALUE>
+							</VALUES>
+							<DESCRIPTION>Some games require specific monitor types, like mono/high res.</DESCRIPTION>
+						</KEY>
+						<KEY name="AssociatedCartName" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Very unique scenario where a game boots from disk, but also requires a specific cartridge to be mounted as a way of copy protection.  Use full path.</DESCRIPTION>
+						</KEY>						
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

@@ -1,0 +1,13 @@
+{
+  "overlays": [
+    {
+      "filename": "Scanline.png",
+      "size-mode": "tile",
+	  "alpha-channel": "",
+	  "matrix": "",
+	  "orientation": ""
+    }
+	]
+}
+
+

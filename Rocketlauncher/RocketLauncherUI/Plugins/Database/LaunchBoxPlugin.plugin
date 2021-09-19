@@ -1,0 +1,306 @@
+﻿using RocketLauncher.UI.Entity;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using RocketLauncher.UI.Util.Extensions;
+using RocketLauncher.UI.Util;
+
+namespace RocketLauncher.UI.Database
+{
+    [DisplayName("LaunchBox")]
+    [FrontendExecutable("BigBox.exe")]
+    [PluginDescription("Loads from LaunchBox databases")]
+    [RocketLauncherPluginName("LaunchBox")]
+    [PluginVersion("1.0.3")]
+    public class LaunchBoxPlugin : DefaultDatabasePlugin
+    {
+        private long filesize = 0;
+        private ObservableCollection<GameXml> currentGamesList = new ObservableCollection<GameXml>();
+
+        public LaunchBoxPlugin(String RLpath)
+            : base(RLpath)
+        {
+            initArtworkFolders();
+        }
+
+        private void initArtworkFolders()
+        {
+            //These must follow the exact same order as defined in the RL Plugin file
+            logoFolders.Add(new ArtworkLabel("Clear Logo", "Game Logo"));
+            logoFolders.Add(new ArtworkLabel("Clear Logo (Platform)", "System Logo"));
+
+            artworkFolders.Add(new ArtworkLabel("Advertisement Flyer - Back", "Advertisement Flyer - Back"));
+            artworkFolders.Add(new ArtworkLabel("Advertisement Flyer - Front", "Advertisement Flyer - Front"));
+            artworkFolders.Add(new ArtworkLabel("Arcade - Cabinet", "Arcade - Cabinet"));
+            artworkFolders.Add(new ArtworkLabel("Arcade - Circuit Board", "Arcade - Circuit Board"));
+            artworkFolders.Add(new ArtworkLabel("Arcade - Control Panel", "Arcade - Control Panel"));
+            artworkFolders.Add(new ArtworkLabel("Arcade - Controls Information", "Arcade - Controls Information"));
+            artworkFolders.Add(new ArtworkLabel("Arcade - Marquee", "Arcade - Marquee"));
+            artworkFolders.Add(new ArtworkLabel("Banner", "Banner"));
+            artworkFolders.Add(new ArtworkLabel("Box - 3D", "Box - 3D"));
+            artworkFolders.Add(new ArtworkLabel("Box - Back", "Box - Back"));
+            artworkFolders.Add(new ArtworkLabel("Box - Back - Reconstructed", "Box - Back - Reconstructed"));
+            artworkFolders.Add(new ArtworkLabel("Box - Front", "Box - Front"));
+            artworkFolders.Add(new ArtworkLabel("Box - Front - Reconstructed", "Box - Front - Reconstructed"));
+            artworkFolders.Add(new ArtworkLabel("Cart - 3D", "Cart - 3D"));
+            artworkFolders.Add(new ArtworkLabel("Cart - Back", "Cart - Back"));
+            artworkFolders.Add(new ArtworkLabel("Cart - Front", "Cart - Front"));
+            artworkFolders.Add(new ArtworkLabel("Disc", "Disc"));
+            artworkFolders.Add(new ArtworkLabel("Fanart - Box - Back", "Fanart - Box - Back"));
+            artworkFolders.Add(new ArtworkLabel("Fanart - Box - Front", "Fanart - Box - Front"));
+            artworkFolders.Add(new ArtworkLabel("Fanart - Cart - Back", "Fanart - Cart - Back"));
+            artworkFolders.Add(new ArtworkLabel("Fanart - Cart - Front", "Fanart - Cart - Front"));
+            artworkFolders.Add(new ArtworkLabel("Fanart - Disc", "Fanart - Disc"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Game Over", "Screenshot - Game Over"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Game Select", "Screenshot - Game Select"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Game Title", "Screenshot - Game Title"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay", "Screenshot - Gameplay"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - High Scores", "Screenshot - High Scores"));
+            artworkFolders.Add(new ArtworkLabel("Steam Banner", "Steam Banner"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Cabinet", "Screenshot - Gameplay - Cabinet"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Controls", "Screenshot - Gameplay - Controls"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - CP", "Screenshot - Gameplay - CP"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - GameOver", "Screenshot - Gameplay - GameOver"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Marquee", "Screenshot - Gameplay - Marquee"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - PCB", "Screenshot - Gameplay - PCB"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Score", "Screenshot - Gameplay - Score"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Select", "Screenshot - Gameplay - Select"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Snap", "Screenshot - Gameplay - Snap"));
+            artworkFolders.Add(new ArtworkLabel("Screenshot - Gameplay - Title", "Screenshot - Gameplay - Title"));
+
+            backgroundFolders.Add(new ArtworkLabel("Background", "Background"));
+            backgroundFolders.Add(new ArtworkLabel("Fanart - Background", "Fanart - Background"));
+
+            manualFolders.Add(new ArtworkLabel("Manuals", "Game Manual"));
+
+            videoFolders.Add(new ArtworkLabel("Videos", "Game Video"));
+            videoFolders.Add(new ArtworkLabel("Videos (Platform)", "System Video"));
+        }
+
+        protected override String getMainDBsubPath()
+        {
+            return @"\Data\Platforms.xml";
+        }
+
+        protected override String getSystemDBsubPath(String system)
+        {
+            return @"\Data\Platforms\" + system + ".xml";
+        }
+
+        public override void renameFrontendSystem(String old_system_name, String new_system_name, String new_system_description)
+        {
+            //Renaming systems isn't supported yet
+            return;
+        }
+
+        public override void createSystemDatabase(String system, List<GameXml> games, bool overwrite)
+        {
+            //Creating databases isn't supported yet
+            return;
+        }
+
+        //LOADING SYSTEMS FROM XML FILE
+        public override List<String> loadSystems()
+        {
+            List<String> systems = new List<String>();
+
+            String dbFile = getMainDBFullPath();
+            if (File.Exists(dbFile))
+            {
+                if (dbFile.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    using (XmlReader reader = XmlReader.Create(getMainDBFullPath()))
+                    {
+                        bool insidePlatform = false;
+
+                        while (reader.Read())
+                        {
+                            if (reader.IsStartElement() && !reader.IsEmptyElement)
+                            {
+                                if (!insidePlatform)
+                                {
+                                    insidePlatform = reader.Name.Equals("Platform", StringComparison.InvariantCultureIgnoreCase);
+                                }
+
+                                if (insidePlatform)
+                                {
+                                    switch (reader.Name)
+                                    {
+                                        case "Name":
+                                            String name = reader.ReadString().Trim();
+                                            if (!systems.Contains(name))
+                                                systems.Add(name);
+                                            else
+                                                duplicateSystemFound(name);
+                                            break;
+                                    }
+                                }
+                            }
+                            else if (reader.IsEndElement("Platform")) //End Element for Platform
+                            {
+                                insidePlatform = false;
+                            }
+                        }
+                    }
+                }
+            }
+            return systems;
+        }
+
+        //LOADING GAMES FROM XML FILE
+        public override ObservableCollection<GameXml> loadGames(String system, out bool loaded)
+        {
+            ObservableCollection<GameXml> gameList = new ObservableCollection<GameXml>();
+            loaded = true;
+
+            String xmlfile = getSystemDBFullPath(system);
+            if (File.Exists(xmlfile))
+            {
+                FileInfo fi = new FileInfo(xmlfile);
+                List<GameXml> lst = new List<GameXml>();
+
+                filesize = fi.Length;
+
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreWhitespace = true;
+                settings.IgnoreComments = true;
+                XmlReader reader = XmlReader.Create(xmlfile, settings);
+
+                using (reader)
+                {
+                    GameXml gx = null;
+                    bool insideGame = false;
+
+                    while (reader.Read())
+                    {
+                        // Only detect start elements.
+                        if (reader.IsStartElement() && !reader.IsEmptyElement)
+                        {
+                            if (!insideGame)
+                            {
+                                insideGame = reader.Name.Equals("Game", StringComparison.InvariantCultureIgnoreCase);
+                                gx = new GameXml("", "", "", "", "", "", "");
+                            }
+
+                            // Get element name and switch on it.
+                            if (insideGame)
+                            {
+                                switch (reader.Name)
+                                {
+                                    case "Title":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            gx.description = reader.Value.Trim();
+                                        }
+                                        break;
+                                    case "ApplicationPath":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            String appPath = reader.Value.Trim();
+                                            if (appPath.Length > 0)
+                                            {
+                                                String romName = Path.GetFileNameWithoutExtension(appPath);
+                                                gx.name = romName;
+                                            }
+                                        }
+                                        break;
+                                    case "Genre":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            gx.genre = reader.Value.Trim();
+                                        }
+                                        break;
+                                    case "Developer":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            gx.manufacturer = reader.Value.Trim();
+                                        }
+                                        break;
+                                    case "Publisher":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            if (gx.manufacturer == null || gx.manufacturer.Length == 0)
+                                            {
+                                                gx.manufacturer = reader.Value.Trim();
+                                            }
+                                        }
+                                        break;
+                                    case "Platform":
+                                        // Next read will contain text.
+                                        if (reader.Read())
+                                        {
+                                            gx.system = reader.Value.Trim();
+                                        }
+                                        break;
+                                }
+                            }
+                        }
+                        else if (reader.IsEndElement("Game")) //End Element for Game
+                        {
+                            insideGame = false;
+                            if (gx != null && gx.system.Equals(system))
+                            {
+                                lst.Add(gx);
+                            }
+                            gx = null;
+                        }
+                    }
+                }
+                lst.Sort();
+
+                foreach (GameXml g in lst)
+                {
+                    if (!gameList.Contains(g))
+                    {
+                        gameList.Add(g);
+                    }
+                    else
+                    {
+                        duplicateGameFound(g.name, system);
+                    }
+                }
+                currentGamesList = gameList;
+                loaded = true;
+            }
+            else
+            {
+                currentGamesList = gameList;
+                loaded = true;
+            }
+
+            return currentGamesList;
+        }
+
+        //PATH TO WHEEL IMAGE RELATIVE TO THE FRONTEND FOLDER
+        public override String getSystemLogoSubPath(String system)
+        {
+            String path1 = @"Images\" + system + @"\Clear Logo\" + system;
+            String path2 = @"Images\Platforms\" + system + @"\Clear Logo\" + system;
+
+            String pathToReturn = null;
+            foreach (String ext in new String[] { ".png", ".jpg", ",jpeg", ".gif" })
+            {
+                if (File.Exists(path1 + ext))
+                {
+                    return path1 + ext;
+                }
+                else if (File.Exists(path2 + ext))
+                {
+                    return path2 + ext;
+                }
+            }
+            return pathToReturn;
+        }
+    }
+
+}
+

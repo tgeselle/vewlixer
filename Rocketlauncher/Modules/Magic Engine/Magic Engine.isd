@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Windowed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Simulated Fullscreen mode, No=Normal Fullscreen mode - Simulated Fullscreen mode is preferred, it still looks fullscreen</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="WideScreenMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Enable, N=Disable</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="DesktopMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Enable, No=Disable - This is basically what sets fullscreen mode. Set to n to show emu in a small window</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FullscreenStretch" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Enable, N=Disable - This stretches the game screen while keeping the aspect ratio</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="HighResMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Enable, No=Disable</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Filter" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>1=Bilinear Filtering , 0=Disable</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Disabled">0</VALUE>
+								<VALUE description="Bilinear">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="TripleBuffer" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Yes=Enable, No=Disable (DirectX only)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Zoom" required="false" nullable="false" minLength="0" maxLength="4">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>4=zoom max , 0=no zoom, use any value between 0 and 4</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Zoom">0</VALUE>
+								<VALUE description="1x">1</VALUE>
+								<VALUE description="2x">2</VALUE>
+								<VALUE description="3x">3</VALUE>
+								<VALUE description="4x">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="scanlines" required="false" nullable="false" minLength="0" maxLength="40">
+							<KEYTYPE>Decimal</KEYTYPE>
+							<DESCRIPTION>0=none, 40=black, use any value in between 0 and 40</DESCRIPTION>
+						</KEY>
+						<KEY name="vSync" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>0=disable, 1=enable, 2=vsync + timer (special vsync for windowed mode)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Disable">0</VALUE>
+								<VALUE description="Enable">1</VALUE>
+								<VALUE description="VSync+Timer">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="vDriver" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>0=DirectX, 1=OpenGL</DESCRIPTION>
+							<VALUES>
+								<VALUE description="DirectX">0</VALUE>
+								<VALUE description="OpenGL">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="xRes" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Width of the desired resolution </DESCRIPTION>
+						</KEY>
+						<KEY name="yRes" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Height of the desired resolution </DESCRIPTION>
+						</KEY>
+						<KEY name="bitDepth" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Color Depth or Bit depth. If in doubt choose 32.</DESCRIPTION>
+						</KEY>
+						<KEY name="DisplayRes" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Display screen resolution for troubleshooting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Yes">y</VALUE>
+								<VALUE description="No">n</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="UseNoMousy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Use NoMousy tool to hide the mouse. If false, will move mouse off the screen instead</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelTopOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the top of your playing screen increase this value. If your playing screen is hidden at the top decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelBottomOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the bottom of your playing screen increase this value. If your playing screen is hidden at the bottom decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelLeftOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the left of your playing screen increase this value. If your playing screen is hidden at the left decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelRightOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the right of your playing screen increase this value. If your playing screen is hidden at the right decrease it.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

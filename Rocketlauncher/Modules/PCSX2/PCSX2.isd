@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="AspectRatio" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the relation between width and height you'd like the game presented on your display.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Fit to Window/Screen">Stretch</VALUE>
+								<VALUE description="4:3">4:3</VALUE>
+								<VALUE description="16:9">16:9</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PerGameMemoryCards" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Support for Per-Game Memory Card support. Make sure you first create a "default.ps2" memory card in the folder you store your memory cards in.</DESCRIPTION>
+						</KEY>
+						<KEY name="noGUI" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, the GUI window will not show, DO NOT SET THIS AS TRUE, currently pcsx2 doesn't close properly when you exit in this mode. Make sure this option is set to default or false for normal usage, it is only for testing purposes.</DESCRIPTION>
+						</KEY>
+						<KEY name="fullboot" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Disables fast booting and shows the bios screen.</DESCRIPTION>
+						</KEY>
+						<KEY name="HideConsole" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables hiding of console window that can appear while in windowed mode or using bezels.</DESCRIPTION>
+						</KEY>
+						<KEY name="AutoCreateINIDir" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the module to automatically create per game ini directories for each game in the defined DefaultINISPath directory.</DESCRIPTION>
+						</KEY>
+						<KEY name="DefaultINISPath" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to default INIS folder of PCSX2. The INIS files in there will be copied in a new game config folder if AutoCreateINIDir is true, and if it doesn't already exist. If it's empty, it will use the inis subfolder in PCSX2 folder.</DESCRIPTION>
+						</KEY>
+						<KEY name="cfgpath" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Specifies the base config folder. Applies to pcsx2 + plugins. Default will be a subfolder inside your emuPath called "Game Configs". In this folder should reside more folders named after each game and contain any custom dll plugin inis.</DESCRIPTION>
+						</KEY>
+						<KEY name="VD_CDVD_Plugin" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>In order to support multiple types of images in a single collection, the module needs to know what your CDVD plugin is called when using games mounted with a Virtual Drive. Usually you set this to use cdvdGigaherz.dll (the plugin that supports virtual mounted images)</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="Image_CDVD_Plugin" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>In order to support multiple types of images in a single collection, the module needs to know what your CDVD plugin is called when using images directly loaded by your CDVD plugin. Usually you set this to use CDVDnull.dll (the plugin that supports loading images directly)</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="Linuz_CDVD_Plugin" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>If different than your Image_CDVD_Plugin, point this setting to your Linuz dll. In order to support multiple types of images in a single collection, the module needs to know what your CDVD plugin is called when using BZ2 formatted images, which are directly loaded by your CDVD plugin. Usually you set this to use cdvdiso.dll (the plugin that supports loading BZ2 directly)</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="gs" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default GS plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="pad" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default PAD plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="spu2" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default SPU2 plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="usb" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default USB plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="fw" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default FW plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="dev9" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default DEV9 plugin set in the emu for all games, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Settings"/>
+						<GROUP name="GS Plugin HW Hacks"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="AspectRatio" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the relation between width and height you'd like the game presented on your display.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Fit to Window/Screen">Stretch</VALUE>
+								<VALUE description="4:3">4:3</VALUE>
+								<VALUE description="16:9">16:9</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VDOveride" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>This is an override for Virtual Drive support. It allows per-game support for Virtual Drives. Set to true to force this game to use a Virtual Drive or false to disable it.</DESCRIPTION>
+						</KEY>
+						<KEY name="nohacks" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>disables all speedhacks</DESCRIPTION>
+                        </KEY>
+						<KEY name="fullboot" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Disables fast booting and shows the bios screen.</DESCRIPTION>
+						</KEY>
+						<KEY name="gamefixes" group="Settings" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use the specified comma or pipe-delimited list of gamefixes: "VuAddSub | VuClipFlag | FpuCompare | FpuMul | FpuNeg | EETiming | SkipMpeg | OPHFlag | DMABusy | VIFFIFO | VI | FMVinSoftware"</DESCRIPTION>
+						</KEY>
+						<KEY name="gs" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default GS plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="pad" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default PAD plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="spu2" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default SPU2 plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="cdvd" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default CDVD plugin set in the emu, only for this rom, by setting one here. This will also override all the global CDVD plugins set for this module.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="usb" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default USB plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="fw" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default FW plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="dev9" group="Settings" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Override the default DEV9 plugin set in the emu, only for this rom, by setting one here.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>dll</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="MSAA" group="GS Plugin HW Hacks" required="false" nullable="false" minLength="0" maxLength="16">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Adds anti-aliasing of the selected level to every surface rendered. This is very demanding of video card memory.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="0x">0</VALUE>
+								<VALUE description="2x">2</VALUE>
+								<VALUE description="4x">4</VALUE>
+								<VALUE description="8x">8</VALUE>
+								<VALUE description="16x">16</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Skipdraw" group="GS Plugin HW Hacks" required="false" nullable="false" minLength="0" maxLength="100">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Skips drawing some surfaces based on how likely they are to cause issues. This option may help with removing ghost images or other post-processing effect rendered incorrectly. You should specify how many surfaces need to be skipped after the first problematic one is found. Always try lower values (like 1-3) first before using higher ones, max of 100. The side effect is the increased possibility for broken/missing graphics and effects. This hack may cause random performance boosts as well.</DESCRIPTION>
+						</KEY>
+						<KEY name="Half-pixel_Offset" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This hack adds a 0.5 pixel offset to all surfaces so some common up-scaling issues may be fixed. You can try it when blur or halo effects seem to appear shifted to the upper-left corner from where they should be.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Wild_Arms_Offset" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Lowers GS precision to avoid gaps in pixels when upscaling. It's known to help with upscaling problems for some 2D games.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Fast_Accurate_Blending" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Relies on undefined hardware behavior to accelerate accurate blending operations. Provides a major boost to the Xenosaga series.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Alpha_Stencil" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This setting will disable partial transparency or prevent drawing some elements. May improve drawing shadows.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Align_Sprite" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Fixes issues with upscaling (vertical lines) in Namco games like Ace Combat, Tekken, Soul Calibur, etc.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Alpha" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Different alpha handling. Try this if your game has issues with fog-like effects or shadows.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Preload_Data_Frame" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Uploads GS data when rendering a new frame to reproduce some effects accurately. Fixes black screen issues in games like Armored Core: Last Raven.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">1</VALUE>
+								<VALUE description="false">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Round_Sprite" group="GS Plugin HW Hacks" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Corrects the sampling of 2D sprite textures when upscaling. Fixes lines in sprites when upscaling in games like Ar tonelico. Half option is for flat sprites, full is for all sprites.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="Half">1</VALUE>
+								<VALUE description="Full">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Sprite" group="GS Plugin HW Hacks" required="false" nullable="false" minLength="0" maxLength="2">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Helps get rid of black inner lines in some filtered sprites. Half option is the preferred one. Use it for Mana Khemia or Ar tonelico. Full can be used for Tales of Destiny.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="Half">1</VALUE>
+								<VALUE description="Full">2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="TC_Offset" group="GS Plugin HW Hacks" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting can help fix some misaligned textures when upscaling. They will correct textures in some games, including Persona 3, Haunting Ground and Xenosaga. (Enter the value found in the GS ini file after setting the offsets within the plugin ui of PCSX2). 32768500 - fixes Persona 3 minimap, helps Haunting Ground. 65536000 - fixes Xenosaga hair edges (DX10+ issue).</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

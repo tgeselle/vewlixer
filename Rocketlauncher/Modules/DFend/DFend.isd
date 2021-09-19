@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_IP" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the IP address here.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_Port" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the Port here.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Enable_Network_Play" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, when this game is launched, will give an option if you want to play Single or Multi-Player.</DESCRIPTION>
+						</KEY>
+						<KEY name="Network_Executable" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If this game requires a different executable to be run for network support, fill the name.ext here. (Ex: IPXSetup.exe). Assumes this executable is in the same folder as the original executable. Currently there is no support if it is not.</DESCRIPTION>
+						</KEY>
+						<KEY name="Network_Protocol" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>The protocol this game uses for network play. Currently only IPX is supported and is the default value.</DESCRIPTION>
+							<VALUES>
+								<VALUE>IPX</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

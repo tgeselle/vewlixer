@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="DefaultCfgFile" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Default CFG file to use. This file must reside inside the Configs in your emulator folder. If not set defaults to WinArcadia.ini.</DESCRIPTION>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>ini</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="ShowDebugger" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Debugger Console</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowSidebar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables SideBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowMenuBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables MenuBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowMousePointer" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Mouse Pointer</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowStatusBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables StatusBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowTitleBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables TitleBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowToolBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables ToolBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowScanlines" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Scanlines</DESCRIPTION>
+						</KEY>
+						<KEY name="WindowedZoomLevel" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE>1</VALUE>
+								<VALUE>2</VALUE>
+								<VALUE>3</VALUE>
+								<VALUE>4</VALUE>
+								<VALUE>5</VALUE>
+								<VALUE>6</VALUE>
+							</VALUES>
+							<DESCRIPTION>Sets zoom level to use while in windowed mode</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="%SystemName%" required="false">
+		<INITYPE>System</INITYPE>
+			<SYSTEMS>
+				<SYSTEM>Coleco Telstar</SYSTEM>
+			</SYSTEMS>
+			<SECTIONS>
+				 <SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="DefaultCfgFile" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Default CFG file to use. This file must reside inside the Configs in your emulator folder. If not set defaults to WinArcadia.ini.</DESCRIPTION>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>ini</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="ShowDebugger" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Debugger Console</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowSidebar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables SideBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowMenuBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables MenuBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowMousePointer" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Mouse Pointer</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowStatusBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables StatusBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowTitleBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables TitleBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowToolBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables ToolBar</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowScanlines" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Scanlines</DESCRIPTION>
+						</KEY>
+						<KEY name="WindowedZoomLevel" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE>1</VALUE>
+								<VALUE>2</VALUE>
+								<VALUE>3</VALUE>
+								<VALUE>4</VALUE>
+								<VALUE>5</VALUE>
+								<VALUE>6</VALUE>
+							</VALUES>
+							<DESCRIPTION>Sets zoom level to use while in windowed mode</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Pong" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BatSize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Changes the Bat Size</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Short">0</VALUE>
+								<VALUE description="Tall">1</VALUE>
+								<VALUE description="Short/Tall">2</VALUE>
+								<VALUE description="Tall/Short">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BallSpeed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Changes the Ball Speed</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Slow">0</VALUE>
+								<VALUE description="Fast">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Serving" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Changes Serving from automatic to manual</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Auto">0</VALUE>
+								<VALUE description="Manual">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BallAngles" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Changes the amount of angles for this system</DESCRIPTION>
+							<VALUES>
+								<VALUE>2</VALUE>
+								<VALUE>4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LockHorizontal" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, horizontal movement won't be possible</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>
+

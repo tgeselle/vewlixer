@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, launches Yabause in full screen mode</DESCRIPTION>
+						</KEY>
+						<KEY name="IniFolderSearchType" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Default is AppData. RocketLauncher looks for the yabause.ini stored in %LOCALAPPDATA%\yabause (on Win7/8 and XP) or %USERPROFILE%\Local Settings\Application Data\yabause (on WinXP only)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Settings stored in %USER%\AppData\Local\yabause">1</VALUE>
+								<VALUE description="Settings stored in %USER%\Local Settings\Application Data\yabause">0</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="HideBars" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, will hide Yabause's Menubar and Toolbar. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomBios" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<DESCRIPTION>Set a BIOS for all Yabause games to use</DESCRIPTION>
+							<FULLROW>true</FULLROW>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="CustomBios" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<DESCRIPTION>Set a BIOS for just this game to use</DESCRIPTION>
+							<FULLROW>true</FULLROW>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

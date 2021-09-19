@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="DiskBasicLocation" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<PATHTYPE>Any</PATHTYPE>
+							<DESCRIPTION>Location of disk Basic required for many games.</DESCRIPTION>
+						</KEY>
+						<KEY name="UraDOSLocation" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<PATHTYPE>Any</PATHTYPE>
+							<DESCRIPTION>Location of UraDOS boot disk required for some games.</DESCRIPTION>
+						</KEY>
+						<KEY name="AspectRatioAdjustment" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Aspect Ratio Adjustment.</DESCRIPTION>
+						</KEY>
+						<KEY name="ShowStatusBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable the emulator status bar. This can be useful to have enabled when testing games so you can see what's happening.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine model to use for this game</DESCRIPTION>
+							<VALUES>
+								<VALUE description="FM-7">1|0|0</VALUE>
+								<VALUE description="FM77AV">2|3|1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Command" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Used if rom requires a command after loading is complete to start the game. Use standard AutoHotkey key names, use {Wait} to pause 500 milliseconds between words/characters. ie, "R{Wait}C" to press the R and C keys with a slight delay between them. Useful for navigating through menus or issuing load/run commands.</DESCRIPTION>
+						</KEY>
+						<KEY name="BootMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="Basic">0</VALUE>
+								<VALUE description="DOS">1</VALUE>
+							</VALUES>														
+							<DESCRIPTION>Some games require specific boot modes in order to run properly.</DESCRIPTION>
+						</KEY>	
+						<KEY name="RequiresBootFromBasicDisk" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Choose Yes if this game requires Basic to be loaded from disk prior to the game.</DESCRIPTION>
+						</KEY>
+						<KEY name="RequiresBootFromUraDOS" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Choose Yes if this game requires UraDOS to be loaded from disk prior to the game.</DESCRIPTION>
+						</KEY>
+						<KEY name="UseMouse" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Choose Yes if this game requires the use of a mouse.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>
+

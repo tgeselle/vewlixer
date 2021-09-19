@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Default is Windowed. This setting controls fullscreen method for all games. </DESCRIPTION>
+							<VALUES>
+								<VALUE description="Windowed Fullscreen">true</VALUE>
+								<VALUE description="Windowed">false</VALUE>
+								<VALUE description="True Fullscreen (Not compatible with HyperPause)">fullscreen</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BezelMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choices are AAE or RocketLauncher bezels. If left blank, RocketLauncher will be used by default. "AAE" allows AAE to use it's built-in layout support, where-as "RocketLauncher" only uses RocketLauncher bezels. Can be overwritten by the per-rom setting.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Use AAE built-in Bezels">Layout</VALUE>
+								<VALUE description="Use RocketLauncher Bezels">FixResMode</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Artwork_Crop" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cropping of artwork to the game screen area only for the entire system. Can be overwritten by the per-rom setting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Use_Artwork" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables AAE built-in Bezels for the entire system. RocketLauncher bezels will take precedence over AAE bezels if you have them enabled. Can be overwritten by the per-rom setting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Use_Overlays" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Overlay for the entire system. Can be overwritten by the per-rom setting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Exit_Mode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Selects the way RocketLauncher will close the emulator. WinClose can only be used if you use Esc on your exit emulator key, if you don't you might want to change this to ProcessClose. Be aware that using ProcessClose might cause issues, like scores or game settings to not save as it will force close the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>WinClose</VALUE>
+								<VALUE>ProcessClose</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BezelMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choices are AAE or RocketLauncher bezels. If left blank, RocketLauncher will be used by default. "AAE" allows AAE to use it's built-in layout support, where-as "RocketLauncher" only uses RocketLauncher bezels.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Use AAE built-in Bezels">Layout</VALUE>
+								<VALUE description="Use RocketLauncher Bezels">FixResMode</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Artwork_Crop" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cropping of artwork to the game screen area only for the entire system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Use_Artwork" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables AAE built-in Bezels for the entire system. RocketLauncher bezels will take precedence over AAE bezels if you have them enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Use_Overlays" required="false" nullable="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Overlay for the entire system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

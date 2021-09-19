@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="ViewMode" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Allows users to select the view type they wish to use with SumatraPDF.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Book View">book view</VALUE>
+								<VALUE description="Continuous Book View">continuous book view</VALUE>
+								<VALUE description="Single Page">single page</VALUE>
+								<VALUE description="Continuous Single Page">continuous single page</VALUE>
+								<VALUE description="Facing">facing</VALUE>
+								<VALUE description="Continuous Facing">continuous facing</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

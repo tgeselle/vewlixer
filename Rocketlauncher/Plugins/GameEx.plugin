@@ -1,0 +1,138 @@
+MCRC := "D2E9FD"
+MVersion := "1.0.0"
+
+; General Plugin Building Instructions:
+; 1) If the frontend has info about the game:
+;		1.1) You should create a gameInfo object with this info following the structure defined bellow:
+;		1.2) The game info object must have this structure:
+; 			- gameInfo[%LabelName%].Label := %LabelName%
+; 			- gameInfo[%LabelName%].Value := %Value%
+;		1.3) The database formated game name should be obrigatorily defined on the gameInfo labeled "Name":
+;			- gameInfo["Name"].Value := %Game_name_obtained_from_the_frontend_database%
+;		1.4) For rom mapping menu support it is required to create a BuildDatabaseTable function capable of creating the gameinfo object:
+;			- This function should have as the inputs four parameters, on this order obrigatorily: BuildDatabaseTable(game,system,ByRef frontendDatabaseFields, ByRef frontendDatabaseLabels)
+;			- This function should return the gameInfo object
+; 2) If the frontend has art assets:
+;		2.1) You must provide the path and labels for each file assets on the following object:
+;			- feMedia["Logos"].feLogo1.Label := "feLogo1"
+;			- feMedia["Logos"].feLogo1.Path1 := "c:\aaa.png"	
+;			- feMedia["Logos"].feLogo1.Ext1 := "png"	
+;			- feMedia["Logos"].feLogo1.TotalItems := 1	
+
+
+; GameEx Plugin
+
+PluginInit:
+	Log("PluginInit - Started")
+
+	; Load Plugin settings
+	frontendPlugin := pluginName
+	frontendWinTitle := "GameEx|"
+	
+	;Content assets (not required)
+	; format: one index for each asset with path and label info: Array[1,"Path"], Array[1,"Label"]
+	feMedia := {}
+	
+	; Game Info (not required)
+	; format: gameInfo["Label"] := "Value"
+	gameInfo := Object()
+	
+	; ***********************
+	; *********************** NEED TO FIGURE OUT HOW MEDIA PATHS WORK FOR DEFAULT VALUES HERE. IT LOOKS LIKE ALL PATHS ARE DEFINABLE IN GAMEEX SETUP SO MIGHT HAVE TO READ FROM AN INI TO GET THEM FIRST *************
+	; ***********************
+/*
+	;----------Loading FrontEnd asset labels
+	feLogoLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Logo_Labels", "Game Logo|System Logo")   ; if label "keepFileName" the filename will be used as label
+	feArtworkLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Artwork_Labels", "Box Art|Cartridge|Flyers|Letters|Other")
+	feBackgroundsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Backgrounds_Labels", "")
+	feControllerLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Controller_Labels", "")
+	feGuidesLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Guides_Labels", "")
+	feManualsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Manuals_Labels", "")
+	feVideosLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Videos_Labels", "VIDEOS")
+	feDiscArtworkLabel:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "GameEx", "Fe_Disc_Artwork_Label", "Artwork1")
+	
+	;----------Acquiring GameEx Paths and defining respective labels------------
+	;Acquiring Logos
+	feMedia.Logos := BuildAssetsTable(frontendPath . "\Media\" . systemName . "\Images\Wheel\" . dbName . ".png" . "|" . frontendPath . "\Media\Main Menu\Images\Wheel\" . systemName . ".png",feLogoLabels,"game|system","png")
+
+	;Acquiring ArtWork
+	feMedia.Artwork := BuildAssetsTable(frontendPath . "\Media\" . systemName . "\Images\Artwork1\" . dbName . ".png" . "|" . frontendPath . "\Media\" . systemName . "\Images\Artwork2\" . dbName . ".png" . "|" . frontendPath . "\Media\" . systemName . "\Images\Artwork3\" . dbName . ".png" . "|" . frontendPath . "\Media\" . systemName . "\Images\Artwork4\" . dbName . ".png" . "|" . frontendPath . "\Media\" . systemName . "\Images\Letters"  . "|" . frontendPath . "\Media\" . systemName . "\Images\Other",feArtworkLabels,"game|game|game|game|system|system","png")
+		
+	;Acquiring Videos
+	IniRead, hsGameVideoPath, frontendPath . "\Settings\" . systemName . ".ini", video defaults, path		; read video path for game videos, if not exist, set default
+	hsGameVideo := if FileExist(hsGameVideoPath) ? hsGameVideoPath . dbName : frontendPath . "\Media\" . systemName . "\Video\" . dbName 
+	IniRead, hsSystemVideoPath, frontendPath . "\Settings\Main Menu.ini", video defaults, path		; read video path for system videos, if not exist, set default
+	hsSystemVideo := if FileExist(hsSystemVideoPath) ? hsSystemVideo . dbName : frontendPath . "\Media\Main Menu\Video\" . systemName 
+	feMedia.Videos := BuildAssetsTable(hsGameVideo . ".mp4" "|" . hsGameVideo . ".flv" . "|" . hsSystemVideo . ".mp4" . "|" . hsSystemVideo . ".flv",feVideosLabels,"game|game|system|system","mp4,flv")
+
+	;Acquiring Backgrounds (not available on HyperSpin)
+	;Acquiring Controller (not available on HyperSpin)
+	;Acquiring Guides (not available on HyperSpin)
+	;Acquiring Manuals (not available on HyperSpin)
+*/	
+	; Game Info
+	gameInfo := BuildDatabaseTable(dbName,systemName,"Description|Cloneof|Manufacturer|Year|Genre|Rating","Name|Cloneof|Publisher|Year|Genre|Rating")
+	Log("PluginInit - Ended")
+Return	
+
+
+BuildDatabaseTable(game,system,ByRef frontendDatabaseFields, ByRef frontendDatabaseLabels){ ; required for rom mapping menu name 
+	Log("BuildDatabaseTable - Started - Building Table for: " . frontendDatabaseLabels,4)
+	Global frontendPath, logLevel	
+	infoObject := Object()
+	StringSplit, label, frontendDatabaseLabels, |
+	systemSQL := CheckFile(frontendPath . "\DATA\EMULATORS\" . system . ".db3")	; path to database
+	DB := new SQLiteDB	; create a new SQLiteDB object and store it
+	If !DB.OpenDB(systemSQL,"Read","False") {		; open the database in read mode and do not create it if missing
+		Log("BuildDatabaseTable - SQLite Error Opening - Msg: - " . DB.ErrorMsg . " - Code - " . DB.ErrorCode,3)
+		Return
+	}
+	allDBLabels :=
+	Loop, Parse, frontendDatabaseLabels,|
+		allDBLabels .= (If A_Index=1?"":",") . A_LoopField	; build fields to lookup in SQL
+	SQL := "SELECT " . allDBLabels . " FROM GameData WHERE Name=""" . game . """;" 	; Retrieve desired fields from the GameData table for our game and store it as object Result
+	If !DB.GetTable(SQL, Result){
+		Log("BuildDatabaseTable - SQLite Error - Msg: - " . DB.ErrorMsg . " - Code - " . DB.ErrorCode,3)
+		Return
+	}
+
+	Log("BuildDatabaseTable - Searching for a ""Game Name"" in the database",4)
+	If !Result.HasRows { ; no info found, setting name info to the game value
+		currentobj:={}
+		currentobj.Label := "Name"
+		currentobj.Value := game
+		infoObject.Insert(currentobj["Label"], currentobj)
+		Log("BuildDatabaseTable - Ended - no ""Game Name"" found. Assigning """ . game . """ to the label ""Name""",2)
+		Return infoObject
+	} Else
+		Log("BuildDatabaseTable - Found ""Game Name"" in the database!",4)
+
+	Loop, Parse, frontendDatabaseFields,|
+	{	currentLabel := label%A_index%
+		currentIndex := A_Index
+		Log("BuildDatabaseTable - Searching database for: " . currentLabel,4)
+		for a,SQLDbInfo in Result.Rows[1]	; parse through all the data retrieved and store it into a new Rows array lining it up with the column ID/Name
+		{	
+			If (currentIndex = A_Index) {	; this lines up db fields with the db labels
+				; msgbox % "a index: " . a . "`nSQLDbInfo: " . SQLDbInfo . "`nLabel: " . currentLabel . "`nA_Loopfield: " . A_Loopfield
+				If (currentLabel="Date")	; remove the time value from the date if it is present
+					RegExMatch(SQLDbInfo,"^\d{4,}",SQLDbInfo)	; pull only year out of date field
+				Else If (currentLabel="Description")	; remove any whitespaces, newlines or carriage returns from the end of the description
+					SQLDbInfo := RTrim(SQLDbInfo,"`r`n`t")
+				currentobj := {}
+				currentobj.Label := currentLabel
+				currentobj.Value := SQLDbInfo
+				infoObject.Insert(currentobj["Label"], currentobj)
+				Log("BuildDatabaseTable - Found """ . currentLabel . """ with a value: """ . SQLDbInfo . """",4)
+			}
+		}
+	}
+	Result.Free()	; free the resources
+	If (logLevel >= 5) {
+		For attribute,value in infoObject
+			gameInfoLog := % gameInfoLog . "`r`n`t`t`t`t`tGameInfo Label: " . attribute . " | GameInfo Value: " . value
+		Log("PluginInit - GameInfo:" gameInfoLog ,5)
+	}
+	Return, infoObject
+}
+

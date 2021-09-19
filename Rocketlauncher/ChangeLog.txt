@@ -1,0 +1,1469 @@
+﻿===========================================================================
+   __            _        _     __                        _               
+  /__\ ___   ___| | _____| |_  / /  __ _ _   _ _ __   ___| |__   ___ _ __ 
+ / \/// _ \ / __| |/ / _ \ __|/ /  / _` | | | | '_ \ / __| '_ \ / _ \ '__|
+/ _  \ (_) | (__|   <  __/ |_/ /__| (_| | |_| | | | | (__| | | |  __/ |   
+\/ \_/\___/ \___|_|\_\___|\__\____/\__,_|\__,_|_| |_|\___|_| |_|\___|_|   
+
+===========================================================================
+                               Release History                             
+===========================================================================
+
+2017/01/29
+ * Window.ahk (Class) updated to v1.2.5
+  - Added Center method
+
+2017/01/28
+ * Registry.ahk updated to v1.0.2
+  - Added Delete and SetRegView methods
+
+2017/01/23
+ * Pause.ahk updated to v1.2.18
+  - Added variable to differentiate emulator and master sound mute state to deal with auto playing pause music bug
+
+2017/01/16
+ * Bezel.ahk updated to v1.2.11
+  - All log entries now use Log class
+ * Fade.ahk updated to v1.2.3
+  - All log entries now use Log class
+  - Refactored lib for future upgrades
+ * Pause.ahk updated to v1.2.17
+  - All log entries now use Log class
+ * 7z.ahk updated to v1.1.4
+  - Added is7zExtension method
+
+2017/01/15
+ * Fade.ahk updated to v1.2.2
+  - Fixed bug with Front End not resuming process when an error occurred and RL had to end early
+
+2017/01/11
+ * File.ahk (Class) updated to v1.6.4
+  - Added GetVersion method
+ * Shared.ahk updated to v1.5.1
+  - StartModule() now handles when roms are found by extension and no longer reverts romName to dbName.
+
+2017/01/05
+ * RocketLauncher.ahk (Class) updated to v1.7.6
+  - Added all XML read/write DLL wrapper methods
+
+2017/01/04
+ * Process.ahk (Class) updated to v1.5.3
+  - Added ProcessClose and ProcessWaitClose methods
+ * Bezel.ahk updated to v1.2.10
+  - HideWindowDecorators was being called with the wrong variable for multi screen bezels
+
+2017/01/03
+ * StringUtils.ahk (Class) updated to v1.5.5
+  - Defaulting TitleCase parameter in Lower and Upper functions
+ * RocketLauncher.dll updated to v1.1.0.0
+  - Updated to use .NET 4.0
+  - Added several new methods to handle XML reading/writing using XPath expressions
+
+2017/01/02
+ * RocketlauncherUI, HyperSpin and HyperPin plugins (version 1.0.2)
+  - Added support for xml game name search using either escaped or unescaped xml invalid characters on the database files. 
+ * ArchiveFile.ahk (Class) initial release
+ * FileUtils.ahk (Class) initial release
+ * XmlFile.ahk (Class) initial release
+
+2016/12/18
+ * ArrayUtils.ahk (Class) initial release
+ * LocaleUtils.ahk (Class) initial release
+  - Moved i18n method here
+
+2016/12/02
+ * RocketLauncher.ahk (Class) updated to v1.7.5
+  - Added new getFileInfo method
+
+2016/11/28
+ * RocketLauncher.dll updated to v1.0.1.1
+  - Fixed bug causing pdf conversion to fail on fails containing the % on their name
+  - Added new getFileInfo method
+
+2016/11/25
+ * Pause.ahk updated to v1.2.16
+  - Fix for bug on pause media object construction that in under circumstances caused items on pause submenus to be incompletely defined.
+  - Fix for pause video start when pause menu launches directly to the video menu.
+
+2016/11/23
+ * Shared.ahk updated to v1.5.0
+  - Added translation of Open and Start to StartModule() so it is no longer needed on each module it's needed in
+  - Removed i18n function in favor of MiscUtils class method
+ * MiscUtils.ahk (Class) updated to v1.1.3
+  - TaskBar method now supports i18n translations from \Data\Language\Localization.ini so hiding of taskbar button should now hide it for non-english systems
+ * Localization.ini updated
+  - Added translations for "Start"
+
+2016/11/22
+ * Pause.ahk updated to 1.2.15
+  - Extra logs added.
+ * LaunchBox, RocketlauncherUI, HyperSpin and HyperPin plugins (same version as before)
+  - Updated wrong CRC values
+ * Xhotkey.ahk updated to 1.0.6 and XHotKeyInit.ahk updated to 1.0.4
+  - Improved Keyboard hotkey code
+
+2016/11/21
+ * Pause.ahk updated to 1.2.14
+  - Added customizable pause main menu labels for Change Disc
+ *** Users need to include the new Change Disc label to the pause main menu labels field or follow the warning instructions in their logs to adapt their settings to the newly added customizable Change Disc label feature.
+  - Added log warnings for possible errors on the pause main menu labels definition.
+  - Removed statistics menu extra leading double quote on game statistics and trailing double quote on average time played.
+ 
+2016/11/19
+ * RocketLauncher.ahk (Class) updated to v1.7.4
+  - Refactored some functions
+ * File.ahk (Class) updated to v1.6.3
+  - Refactored some functions
+ * CLR_L.ahk (extension) updated
+  - Refactored some functions
+
+2016/11/18
+ * LaunchBox plugin updated to v1.0.3 and RocketlauncherUI, HyperSpin and HyperPin plugins updated to 1.0.1
+  - Fixed bug on database search for games with apostrophe in their names
+ * Pause.ahk updated to 1.2.13
+  - Fixed bug on the help text placement and size calculation 
+  - Added support for help text bottom and right margins
+  - Fixed bug with pause menu logos not being properly parsed
+  - Added support for pause menu logos at game, system and default levels. They all share the RocketLauncher default media structure, for example, the pause menu logos for an specific game should be located at: RocketLauncher\Media\Pause\Menu Logos\SystemName\GameName\Artwork - Selected.png 
+ *** Adding support for the extra pause menu logo folders require to the users to move their previous pause menu logos location to the following folder: RocketLauncher\Media\Pause\Menu Logos\_Default 
+
+2016/11/15
+ * RocketLauncher updated to v1.2.0.1
+  - Added support for PropertiesFile Class
+  - Changed log about missing user functions from Warning to Info
+  - Adjusted behavior and logging during launches where a frontend path is supplied but not found
+  - Archive extensions now get automatically added into the romExtensions when 7z is enabled so they don't need to be defined for each system
+  - Added new setting: 7z_Extensions - The supported archive extensions RocketLauncher will search for when 7z is enabled. These extensions do not need to be added to the emulator's extension list as they will automatically be added to the front of searched extensions only when 7z is enabled for that system.
+ * StringUtils.ahk (Class) updated to v1.5.4
+ * Shared.ahk updated to v1.4.9
+  - Fixed module header in log from not showing correct MAuthor, MSystem, MURL and MID
+
+2016/11/12
+ * PropertiesFile.ahk (Class) initial release
+ * DemulShooter.ahk (Class) updated to v1.0.1
+  - Fixed parameters string construction on Launch method
+ * Process.ahk (Class) updated to v1.5.2
+  - Automatically add leading space to params when constructing the parameters string, right now user was forced to type a leading space in params which was confusing
+
+2016/11/11
+ * File.ahk (Class) updated to v1.6.2
+  - Added GetSize method
+
+2016/11/10
+ * Pause.ahk updated to v1.2.12
+  - Fixed bug avoiding the user to disable the save and load state pause menus
+
+2016/11/07
+ * LaunchBox plugin updated to v1.0.2
+  - Fixed bug causing images and info not to display when there were special characters in the game path
+ * Window.ahk (Class) updated to v1.2.4
+  - Added ControlSend function
+
+2016/11/06
+ * RocketLauncher updated to v1.2.0.0
+  - Version change to 1.2.x.x series
+
+2016/10/14
+ * Window.ahk (Class) updated to v1.2.3
+  - Added support for the Wait functions to silence errors when you simply want to wait for a window and not react to it not showing.
+  - Changed Maximize function to always remove the menubar rather than toggling which in some scenarios may re-enable the menubar if previoulsy removed.
+ * StringUtils.ahk (Class) updated to v1.5.3
+  - Updated SplitPath function to not require outFileName
+
+2016/10/05
+ * 7z.ahk updated to v1.1.3
+  - Added support for the option 7z_Delete_per_System. If attach system name is true and this option is enabled, the last # played games will be kept at a system basis (where # is the number of games defined on the 7z Games to Keep option) 
+ * pause.ahk updated to 1.2.11
+  - Fixed bug with IPAC loading profile.
+  - Fixed bug with multigame compressed discs.
+
+2016/09/22
+ * 7z.ahk updated to v1.1.2
+  - Added support for deleting games extracted, except for the last # games, were # is a number defined by the user. Just set the option 7z_Games_to_Keep to any number in order to define the number of files to be kept.
+
+2016/09/22
+ * Pause.ahk updated to v1.2.10
+  - Fixed bug with PauseMediaObj not being created when some pause menus were disabled by the user.
+  
+2016/09/21
+ * Pause.ahk updated to v1.2.9
+  - Added support for main menu bar logo images. Images should be placed at RocketLauncher\Media\Logos\Pause\_Default folder, and follow the naming convention: "[menu item label] - selected.png" and "[menu item label] - disabled.png". For example: C:\RocketLauncher\Media\Logos\Pause\_Default\Artwork - selected.png. The disabled logo image is not required.   
+  - Fixed bug with save states description wrong displayed for non existent inis.
+
+2016/09/21
+ * Pause.ahk updated to v1.2.8
+  - Added support for defining alternative main menu bar label names.
+  - Fixed bug with ini settings loading and saving.
+
+2016/09/20
+ * LaunchBox.plugin updated to v1.0.1
+  - Added support for new database info location. LaunchBox version 6.10 or up is required to use the plugin.
+
+2016/09/19
+ * Bezel.ahk updated to v1.2.9
+  - Added support for setting a custom aspect ratio on the Extra_FullScreen_Bezel option.
+  - Values admited: true, fill or an aspect ratio in the format "numberXnumber". True or fill forces the game window to fill the monitor area. 16x9, 4x3, 21x9, or any other aspect ratio resizes the game window to match the desired aspect ratio.  
+
+2016/09/18
+ * RocketLauncher.ahk (Class) updated to v1.7.3
+ * Logger.ahk (Class) updated to v1.1.1
+ * MiscTools.ahk (Class) updated to v1.1.2
+ * MessageUtils.ahk (Class) updated to v1.0.1
+ * Registry.ahk (Class) updated to v1.0.1
+ * TimerUtils.ahk (Class) updated to v1.0.1
+ * StringUtils.ahk (Class) updated to v1.5.2
+ * Process.ahk (Class) updated to v1.5.1
+ * IniFile.ahk (Class) updated to v1.0.1
+ * Folder.ahk (Class) updated to v1.0.1
+ * File.ahk (Class) updated to v1.6.1
+ * Emulator.ahk (Class) updated to v1.1.1
+ * RIniFile (Class) updated to v1.1.3
+ * KeyUtils.ahk (Class) updated to v1.0.2
+ * Control.ahk (Class) updated to v1.2.2
+ * Window.ahk (Class) updated to v1.2.2
+ * WindowTitle.ahk (Class) updated to v1.0.1
+ * 7z.ahk updated to v1.1.1
+ * Bezel.ahk updated to v1.2.8
+ * Fade Animations.ahk updated to v1.2.5
+ * Fade.ahk updated to v1.2.1
+ * Fade Init.ahk updated to v1.0.4
+ * Keymapper Init updated to v1.0.7
+ * Keymapper updated to v1.1.6
+ * MultiGame Init.ahk updated to v1.0.1
+ * MultiGame.ahk updated to v1.1.1
+  - Fixed 7z not extracting files on games chosen from MG
+ * MultiPlayer.ahk updated to v1.0.9
+ * Password.ahk updated to v1.0.5
+ * Pause Init updated to v1.0.4
+ * Pause.ahk updated to v1.2.6
+ * Rom Mapping Launch Menu.ahk updated to v1.0.8
+ * Shader Init updated to v1.0.2
+ * Shader.ahk updated to v1.0.3
+ * Shared.ahk updated to v1.4.8
+ * Statistics.ahk updated to v1.0.5
+ * Virtual Drive.ahk updated to v1.0.7
+ * XHotkey Init updated to v1.0.3
+ * XHotkey updated to v1.0.5
+  - Removed global declarations and refactored function parameters for all above libs/classes
+
+2016/09/12
+ * Updated all RL plugins to add CRC and Version info
+
+2016/09/07
+ * RIni Extension Library updated
+  - Created new function (RIni_GetRLKeyValue) that will return better error codes than the default ones
+  - Currently it wasn't possible to use ini key values of -2,-3 or -10
+ * RIniFile (Class) updated to v1.1.2
+  - Modified Read function to use the new RIni_GetRLKeyValue from RIni
+ * CustomFunction.ahk (Class) updated to v1.0.3
+  - Updated methods to call the new class based custom user functions
+ * UserFunction (Class) created
+  - Base class that all custom user functions should extend
+ * GameFunction (Class) created
+  - Base class that game specific user functions should extend
+ * User Functions (Example) updated
+  - The User Functions feature was expanded to use a class based hierarquical file system instead of relying on a single file
+  - Check the new User Functions (Example) folder for examples
+ *** All users will need to manually move and rename their User Functions.ahk file located in RocketLauncher\Lib\User Functions.ahk to RocketLauncher\Lib\User Functions\Global.ahk. Besides that the actual code also needs to be updated, make sure you read about all the details BEFORE updating at: www.rlauncher.com/forum/showthread.php?4039.
+
+2016/09/06
+ * Bezel.ahk updated to v1.2.7
+  - Fixed bezel offset bug
+  - Updated code to use shared.ahk moveWindow function
+ * Shader.ahk updated to v1.0.2
+  - Added extra logs and adjusted log levels
+
+2016/09/05
+ * LaunchBox.plugin updated
+  - Fixed disable media search bug
+  
+2016/09/02
+ * LaunchBox.plugin updated
+  - Moved FE media assets not required at fade to the function loadAdditionalFEAssets() to be called when necessary 
+  - Replaced relative path function with dll call
+ * Pause.ahk updated to v1.2.6
+  - Added call to function loadAdditionalFEAssets.
+ * Shader Init updated to v1.0.1
+  - Removed A_ThisFunc reference from log call
+ * CustomFunction.ahk (Class) updated to v1.0.2
+  - Added new wrapper methods: PreBezelDraw, SetFullscreenPostLaunch, SetFullscreenPreLaunch, HaltGame and RestoreGame
+
+2016/09/01
+ * RocketLauncher updated to v1.1.1.2
+  - emuFullPath is now converted to absolute even when skipchecks is Rom and Emu and PCLauncher is used
+  - Added new settings: Cursor_Size, 7z_Games_to_Keep, 7z_Delete_per_System
+  - Now checks for crc on Front End Plugins
+
+2016/08/30
+ * RocketLauncher DLL updated to v1.0.1.0
+  - Added new methods to hide window borders and title bar
+  - Fixed unhandled condition in getDisplayScalingPercentage where a registry key might not exist
+ * Bezel.ahk updated to v1.2.6
+  - Updated BezelDraw to use new hide methods from the DLL instead of using AHK WinSet commands
+  - Extracted code to hide window decorators and menuBar to a single function
+  - Added CustomFunction.PreBezelDraw() call
+ * RocketLauncher.ahk (Class) updated to v1.7.2
+  - Added hideWindowBorder and hideWindowTitleBar methods
+ * CustomFunction.ahk updated to v1.0.1
+  - Added new wrapper methods: PreStart, PostStop, PrePauseStart and PostPauseStop
+ * Pause.ahk updated to v1.2.5
+  - Using CustomFunction class for Start/Stop Pause user functions instead of calling them directly
+ * Fade.ahk updated to v1.2.0
+  - Using CustomFunction class for Start/Stop Global user functions instead of calling them directly
+
+2016/08/29
+ * Window.ahk (Class) updated to v1.2.1
+  - Improved RemoveTitlebar function
+
+2016/08/23
+ * Control.ahk (Class) updated to v1.2.1
+  - Added support for TopMost controls
+
+2016/08/22
+ * Virtual Drive.ahk updated to v1.0.6
+  - Added support for Damon Tools Lite 10.4
+
+2016/07/17
+ * DemulShooter (Class) initial release
+  - Still in development
+ * AttractMode plugin initial release for RL and RLUI (ArcadeBliss)
+
+2016/07/10
+ * RocketLauncher updated to v1.1.1.1
+  - Added new setting: DemulShooter_Path
+ * RocketLauncher.ahk (Class) updated to v1.7.1
+  - Added getRelativePathFromFull method
+
+2016/07/05
+ * StringUtils.ahk (Class) updated to v1.5.1
+  - Defaulting Replacement parameter to empty string in RegExReplace and RegExReplaceX functions
+ * Fade Animations.ahk updated to v1.2.4
+  - Fixed FadeSounds setting not always having an effect when set to false
+
+2016/07/04
+ * 7z.ahk updated to v1.1.0
+  - Fixed scenario when rom was not compressed and fade would not show correctly when enabled.
+ * Fade.ahk updated to v1.1.9
+  - Changed some logs to show correct info
+
+2016/07/03
+ * 7z.ahk updated to v1.0.9
+  - Fixed scenario when fadein/out were disabled and 7z was enabled that extraction sounds would play.
+
+2016/06/27
+ * MiscUtils.ahk (Class) updated to v1.1.1
+  - Added SetErrorMode method
+
+2016/06/26
+ * RocketLauncher updated to v1.1.1.0
+  - Updated base ahk version to 1.1.13.0
+ * Bezel.ahk updated to v1.2.5
+  - Fixed layer bug with extra fixed width bezel used for VMU display
+
+2016/06/25
+ * RIniFile.ahk (Class) updated to v1.1.1
+  - Fixed Read method condition causing the function not to work properly when default value was 0
+  - Fixed Read method bug that was causing ini values not to be read when they contained some specific strings
+
+2016/06/24
+ * KeyUtils.ahk (Class) updated to v1.0.1
+  - Forcing WaitCommandOffset to 0 when set to an empty string in SendCommand
+ * Fade Animations.ahk updated to v1.2.3
+  - Fixed regression causing Fade-In to freeze when using Fade_7z_Progress_Mode=custom
+ * Shared.ahk updated to v1.4.7
+  - Forcing WaitCommandOffset to 0 when set to an empty string in SendCommand
+ * RIni Extension Library updated
+  - Updated library to support trailing spaces on ini keys (Read function)
+
+2016/06/21
+ * LaunchBox plugin updated
+  - Update to take into account additional media folders add by the LaunchBox developer. 
+  - Warning: if you get slowdowns while launching games through LaunchBox disable some of the artwork labels on the plugin options. The LaunchBox plugin checks for a huge amount of possible media file locations because the way that the frontend was designed, what could cause delay when launching games.
+  - Warning 2: the current plugin does not support user defined media paths.
+
+2016/06/16
+ * File.ahk (Class) updated to v1.6
+  - Changed order of parameters for Copy function
+
+2016/06/11
+ * Bezel.ahk updated to v1.2.4
+  - Added the key modifier ~ to all bezel and IC keys automatically
+
+2016/06/05
+ * RocketLauncher updated to v1.1.0.7a
+  - Removed Shader_Change_Key as it's not ready yet.
+  - ExitScriptKey can now be disabled by setting it to "none"
+  - Fixed settings made in Game Options.ini not taking effect
+  - Fixed LaunchLock working opposite when DirectOnly mode was set on a specific game
+
+2016/06/04
+ * Pause.ahk updated to v1.2.4
+  - Fixed bug with clone game use of parent media.
+  - Added restriction to avoid exiting pause while disabling keys to avoid problems with the pause keys disabled when returning to the game.
+ * LaunchBox.plugin added
+  - Added first version of the LaunchBox FrontEnd RocketLauncher plugin.
+
+2016/05/24
+ * Process.ahk (Class) updated to v1.5
+  - Added option to use RunWait with RunDirect function
+
+2016/05/23
+ * Window.ahk (Class) updated to v1.2
+  - Added titleMode option to some of the methods
+
+2016/05/22
+ * RocketLauncher updated to v1.1.0.7
+  - Fixed bug where defining a relative path to a module in an emulators ini was not being converted to absolute properly
+ * Emulator.ahk (Class) updated to v1.1
+  - Adjusted __New log order to be before Process
+  - Will now error if you try to create an emulator object when skipchecks is set to skip the emulator and no path was also provided
+ * File.ahk (Class) updated to v1.5
+  - Adjusted __New log order to be immediate
+ * Process.ahk (Class) updated to v1.4
+  - Adjusted __New log order to be before File
+ * RocketLauncher.ahk (Class) updated to v1.7
+  - getFullPathFromRelative will now allow usage when just the relativePath is absolute in case the basePath needs to be tacked on as well
+ * StringUtils.ahk (Class) updated to v1.5
+  - IsRelative method returns no value instead of 0 when a path is not relative
+
+2016/05/18
+ * Pause.ahk updated to v1.2.3
+  - Fixed jpg supported images bug
+
+2016/05/17
+ * Control.ahk (Class) updated to v1.2
+  - Added GetPos method
+
+2016/05/15
+ * 7z.ahk updated to v1.0.8
+  - Fixed wrong romname sent when Match Extension is enabled and Delete Temp is false
+
+2016/05/14
+ * Emulator class initial release
+ * Fade.ahk updated to v1.1.8
+  - Added support for PostLoad()
+ * MiscUtils.ahk (Class) updated to v1.1
+  - Added a couple new functions
+ * User Functions (Example).ahk updated
+  - Added 4 new functions that can be called from any module at certain points. This is the same as PCLauncher PreLaunch/PostLaunch/PostExit scripts, but on a global basis for every module.
+
+2016/05/12
+ * Process.ahk (Class) updated to v1.3
+  - Fixed double log triggering on Process method
+ * StringUtils.ahk (Class) updated to v1.4
+  - Added ParsePCTitle method
+ * Steam.ahk updated to v1.0.3
+  - Steam now reports when it's not isntalled and will not attempt to launch it if it is not
+ * CustomFunction class initial release
+
+2016/05/09
+ * RIniFile class initial release
+ * Shared.ahk updated to v1.4.5
+  - Changes to support new Rini Class for all class-based modules
+
+2016/05/07
+ * RocketLauncher updated to v1.1.0.6
+  - Fixed exception when debug console enabled
+  - Fixed missing ini keys not being written to file
+  - Updated some default Fade settings
+  - Removed ModuleIniFileFinder class lib as it is no longer used
+  - Added CustomFunction Class which is ran from all modules that were rewritten to be class-based
+ * RocketLauncher.ahk (Class) updated to v1.6
+  - Fixed getFullPathFromRelative triggering exception when there are none
+ * Fade Animations.ahk updated to v1.2.2
+  - Fixed fade mp3 sound bug. 
+ *** All users should rename their fade sounds located on RocketLauncher\Media\Fade\ folders to follow the naming convention: Loading start*.mp3 and Loading complete*.mp3 for sounds to be played on normal fade screens. 7z extracting*.mp3 and 7z complete*.mp3 for sounds to be played on fade extraction screens. '*' represents any string defined by the user.
+
+2016/05/05
+ * RocketLauncher updated to v1.1.0.5
+  - New setting: Logging_Include_DLL_Logs, which when enabled, includes DLL logs into the RL log
+  - New setting: Error_Sounds, which when enabled, plays a random sound effect when an RL error occurs
+  - Fixed splitpath exception thrown when skipchecks set to "Rom and Emu"
+  - Fixed Log not appending [code] brackets to the top properly
+  - Fixed SplitPath exception caused by rom mapping not finding your db's rom name and inserting it into the rom map table
+  - Front End will no longer magically disappear from this dimension when Fade In is disabled
+ * RocketLauncher.ahk (Class) updated to v1.5
+  - Added logging for most methods when DLL logging is enabled
+ * Logger.ahk (Class) updated to v1.1
+  - Added new logging level for DLL logging only
+ * Bezel.ahk updated to v1.2.3
+  - Fixed FixResMode bezel and shader bug
+ * Shader.ahk updated to v1.0.1
+  - Fixed FixResMode bezel and shader bug
+ * Shared.ahk updated to v1.4.4
+  - Changes to support error sound toggling
+ * Process.ahk (Class) updated to v1.2
+  - Fixed Process() Method to return PID properly when Wait is used
+
+2016/05/02
+ * RocketLauncher.ahk (Class) updated to v1.4
+  - Added logging for splitPath, setLogMode, and setLogFilename methods
+ * StringUtils.ahk (Class) updated to v1.3
+  - Updated SplitPath method to use new array return from DLL, which is faster than old loop method
+
+2016/05/01
+ * RocketLauncher updated to v1.1.0.4
+  - SplitPath calls now use class method
+  - Moved DLL log to address DLL errors on launch when logging is enabled
+ * Control.ahk (Class) updated to v1.1
+  - Added Send method
+  - Fixed GetText and SetText methods from looking for invalid wintitles
+ * RocketLauncher.ahk (Class) updated to v1.3
+  - Added splitPath method
+ * Window.ahk (Class) updated to v1.1
+  - Fixed OpenROM method parameters, did not need a wintitle passed to it
+ * Shared.ahk updated to v1.4.3
+  - SplitPath() remapped to use StringUtils class
+  - GetFullName() remapped to use DLL method
+  - AbsoluteFromRelative() remapped to use DLL method
+ * File.ahk (Class) updated to v1.4
+  - Will now error out if a blank parameter is sent to to instantiate the class
+
+2016/04/30
+ * RocketLauncher updated to v1.1.0.3
+  - Now using DLL method to convert relative paths to absolute
+  - Fixed potential wasted I/O operations when using a base rom path and no system rom path
+ * Bezel.ahk updated to v1.2.2
+  - Fixed shader bug on bezel change
+  - Improved bezel change code
+  - Fixed instructions card not displaying bug
+  - Removed Bezel "fake" fullscreen from bezels aleatory choosen at startup
+ * Pause.ahk updated to v1.2.2
+  - Updated code to restore new bezel GUIs properly
+ * RocketLauncher.ahk (Class) updated to v1.2
+  - Added getFullPathFromRelative method
+ * File.ahk (Class) updated to v1.3
+  - Now using DLL method to convert relative paths to absolute
+ * StringUtils.ahk (Class) updated to v1.2
+  - Added IsBoolean method
+  - Changed regex on SplitPath method with paths to fix whdload issue (agent47)
+
+2016/04/29
+ * RocketLauncher updated to v1.1.0.2
+  - Added warning to log when System Local is set to Japanese due to this being a Unicode locale which RL does not support.
+  - Fixed Rom Mapping Launch Menu not showing when enabled
+  - Changes to start supporting new ini class functionality
+  - Many plugins updated with these ini changes as well
+ * Shared.ahk updated to v1.4.2
+  - Changes to start supporting new ini class functionality
+
+2016/04/28
+ * Process.ahk (Class) updated to v1.1
+  - Fixed showing command window that logging option is enabled. Will no longer give an error about not creating a window correctly.
+ * Shared.ahk updated to v1.4.1
+  - Fixed OpenROM function not selecting the correct Edit1 field (agent47)
+
+2016/04/25
+ * RocketLauncher updated to v1.1.0.1
+  - Log is now created before dll is instantiated
+ * RocketLauncher.ahk (Class) updated to v1.1
+  - Removed debug log
+ * File.ahk (Class) updated to v1.2
+  - Now uses SplitPath from StringUtils class on initialization which is more reliable than ahk's built-in command
+ * Folder.ahk (Class) initial release
+ * StringUtils.ahk (Class) updated to v1.1
+  - Updated SplitPath method
+ * 7z.ahk updated to v1.0.7
+  - Updated for Class support
+ * Fade Animations.ahk updated to v1.2.1
+  - Updated for Class support
+ * MultiGame.ahk updated to v1.1.0
+  - Updated for Class support
+ * Password.ahk updated to v1.0.4
+  - Updated for Class support
+ * Pause.ahk updated to v1.2.1
+  - Updated for Class support
+ * Virtual Drive.ahk updated to v1.0.5
+  - Updated for Class support
+
+2016/04/22
+ * File.ahk updated to v1.1
+  - Fixed CheckFolder method
+
+2016/04/21
+ * Fade.ahk updated to v1.1.7 & Pause.ahk updated to v1.2.0
+  - Fixed conflicting var name causing all File instances to fail when Fade was enabled
+
+2016/04/20
+ * RocketLauncher updated to v1.1.0.0
+  - Start of code restructure
+  - Added new kill option to HideTaskbar which will kill it instead of just hiding it.
+  - Shortened CRC logging lines.
+ * Fade Init.ahk updated to v1.0.3
+  - Changes required for mouse buttons to interrupt fade
+ * Fade.ahk updated to v1.1.6
+  - Added support for Front End process suspending/resuming
+  - When detecting fade interrupts, mouse buttons will not be taken into account if you have "anykey" as your fade interrupt key.
+ * Keymapper updated to v1.1.5
+  - Using DetectHiddenWindows from class now
+ * BinHexRW updated to v1.0.2
+  - Removed some unnecessary logs
+
+2016/04/06
+ * Shared.ahk updated to v1.4.0
+  - Fixed WinIPAC not wrapping profile in double quotes
+
+2016/04/01
+* Scanlines
+  - Added new default Scanlines-1080p in Media\Shaders folder (Sub-Zero)
+
+2016/03/22
+* Global Emulators (Example).ini
+  - Fixed Save/Load keys for MAME (abique)
+
+2016/03/03
+* Shader.ahk and Shader Init.ahk released (v0.0.1) and Pause.ahk updated to v1.1.9
+  - Added rocketlauncher shader support to bezel screens.
+* Bezel.ahk updated to v1.2.1
+  - Fixed bezel change bug, background change bug, and improved bezel overlay code.
+  - Added changes to support shader on bezel.
+
+2016/01/22
+ * RocketLauncher updated to v1.0.1.5b (Internal release)
+  - RocketLauncher now records Compatibility Flags set by the user to the exe
+  - RocketLauncher now records DPI scaling set globally in windows
+  - Setting changes: 7z_Sounds is now called Fade_Sounds and found in the [Fade] section
+  - Setting changes: Fade_Bar_Non_7z_ProgressTime is now called Fade_Progress_Duration
+  - New Setting: Fade_7z_Progress_Mode
+  - Module checks will now pass again when required function calls start with some whitespace
+  - BaseRomPath will no longer tack on the systemName to the end when this setting was never set
+  - Logging changed so Debug1 is now Debug, and Debug2 is now Trace
+  - Much of the logging that was formerly Debug, is now Info level. This will give default logging a bit more robust flavor!
+ * Bezel.ahk updated to v1.2.0
+  - Added BezelEnabled() function
+ * Fade Animations.ahk updated to v1.2.0
+  - Added changes to support the new custom fade 7z progress bar
+ * Shared.ahk updated to v1.4.0
+  - WriteProperty now logs the key and value it changed to
+  - Toggle cursor hotkey will again correctly toggle the cursor!
+  - Global IniRead function now showing correct value in log
+ * 7z.ahk updated to v1.0.4
+  - Added changes to support the new custom fade 7z progress bar
+
+2016/01/20
+ * Bezel.ahk updated to v1.1.11
+  - Fixed issue with VMU bezels extra fixed res bug caused by the last monitor handling bezel update
+
+2016/01/18
+ * Shared.ahk updated to v1.3.9
+  - Fixed WinIPAC not loading correct profiles
+
+2016/01/17
+ * RocketLauncher updated to v1.0.1.5a
+  - Fixed mouse cursor not restoring right on exit
+ * Keymapper Init updated to v1.0.6
+  - Fixed bug with preferred controller list not using the correct profile
+  - Fixed bug where keymapper would unload when it was never loaded due to another error occurring first
+ * Keymapper updated to v1.1.4
+  - Added check for a proper full path to chosen keymapper
+ * Shared.ahk updated to v1.3.8
+  - Fixed bug where keymapper would unload when it was never loaded due to another error occurring first
+
+2016/01/11
+ * Keymapper Init updated to v1.0.5
+  - Refactored lib for future upgrades
+  - JoyIds will no longer error if field is blank in RLUI. It will automatically populate use_global so the global setting is used instead.
+ * Keymapper updated to v1.1.3
+  - Refactored lib for future upgrades
+ * Password.ahk updated to v1.0.3
+  - DLL calls now use Lib
+
+2016/01/09
+ * Pause.ahk updated to v1.1.8
+  - Fixed description text position when an offset is applied to the main pause menu bar.
+  - Added option to choose the pause sub menu appearance speed.  
+  - Adapted pause force resolution code to new resolution functions.
+  - DLL calls now use Lib
+ * Bezel.ahk updated to v1.1.10
+  - Fixed bezel background being draw above game window. 
+  - Fixed bug on bezel change background switch not happening when the ini coordinates didn't changed between bezels.
+
+2016/01/08
+ * Fade Animations.ahk updated to v1.1.12
+  - Added support for Fade aleatorily chosen mp3 files. The file name should follow the naming convention: Loading*.mp3, Loading complete*.mp3, 7z extracting*.mp3 and 7z complete*.mp3, where * could be any string defined by the user.
+  - DLL calls now use Lib
+ * Fade.ahk updated to v1.1.5
+  - Added support for Fade aleatorily chosen mp3 files. The file name should follow the naming convention: Loading*.mp3, Loading complete*.mp3, 7z extracting*.mp3 and 7z complete*.mp3, where * could be any string defined by the user.
+ * Pause.ahk updated to v1.1.7
+  - Renamed RINI related variables to avoid conflict with RL variable names. This change demanded a huge code line replacement so we ask please any user to report if they find any pause or statistics settings that does not hold their values.
+ * Statistics.ahk updated to v1.0.4
+  - Renamed RINI related variables to avoid conflict with RL variable names. This change demanded a huge code line replacement so we ask please any user to report if they find any pause or statistics settings that does not hold their values.
+ * Shared.ahk updated to v1.3.8
+  - updated CheckForNearestSupportedRes function to work with new monitor functions
+  - DLL calls now use Lib
+ * Bezel.ahk updated to v1.1.9
+  - Added support for bezel game monitor setting. If bezel is enable and a valid bezel is found the game screen will be displayed at the user selected monitor defined on this option. By default, the game will be displayed on the primary monitor.  
+
+2016/01/04
+ * Fade Animations.ahk updated to v1.1.11, Shared.ahk updated to v1.3.7 and HyperSpin, GameEx, HyperPin and PinballX plugins updated  
+  - Added support for new RL media folders: Genre, Publisher, Developer, Rating and Year media support
+  - Removed Manufacturer media references on RL in favor of Publisher.
+ *** All fade image found on the RocketLauncher\Media\Fade\_Default\Genre should be moved to the RocketLauncher\Media\Genre folder. The same is applied to the Manufacturer, Rating, System and Year sub-folders.
+ *** The RL Manufacturer media folder is deprecated in favor of the correct Publisher and Developer terms. Any user that had a custom fade animation that makes use of the deprecated Manufacturer info, should now refer to it as the Publisher, and also move any Manufacturer logo to the RocketLauncher\Media\Publisher folder.
+ *** Invalid file name characters are now replaced by hyphen or removed from the file names in order to be able to have media assets for them. For example, the database genre named Sports\Baseball will have its logo found on: RocketLauncher\Media\Genre\Sports-Baseball.png file. Details about the replaced chars can be found on the RocketLauncher update announcement thread.  
+
+2015/12/28
+ * Virtual Drive.ahk updated to v1.0.4
+  - Added support for Daemon Tools 4 Ultra
+  - Refactored lib for future upgrades
+  - DLL calls now use Lib
+
+2015/12/20
+ * Gdip_Alt.ahk updated to v1.0.3
+  - Fixed invalid function declaration in Gdip_Alt_DrawImage
+
+2015/12/08
+ * 7z.ahk updated to v1.0.3
+  - Now logs how much time it took to perform an extraction
+  - Refactored lib for future upgrades
+  - DLL calls now use Lib
+ * Bezel.ahk updated to v1.1.8
+  - Added some logs when bezels windows are moved
+  - Fixing punctuation on ahk commands
+
+2015/11/17
+ * RocketLauncher updated to v1.0.1.5
+  - RL Dll version now logged
+  - Added WinIPAC and UltraMap support
+  - Added new feature to restore resolution on exit
+  - New settings: Base_Rom_Path, WinIPAC_Path, WinIPAC_Enabled, UltraMap_Path, UltraMap_Enabled, Restore_Resolution_On_Exit, Fade_Rom_Info_Developer, Fade_Rom_Info_Publisher, Fade_Rom_Info_Text_7_Options
+  - RL now logs these system settings to assist with troubleshooting: System Locale, Windows UI Language, Formats Locale, Text Encoding
+  - -o CLI switch added to always restore cursor on exit even if HideCursor is set to an option to prevent it
+  - HideCursor and HideTaskbar now have additional options to not restore on exit
+  - Quite a bit of refactoring done to support future upgrades
+  - Fade_Rom_Info_Order default value changed from "Description|SystemName|Year|Manufacturer|Genre|Rating" to "Description|SystemName|Year|Developer|Genre|Rating|Publisher"
+  - Show_Info default value changed from "HistoryDatDescription|HistoryDatTechnical|HistoryDatTrivia|HistoryDatSeries|HighScores" to "Cloneof|Crc|Developer|Publisher|Year|Genre|Rating|HistoryDatDescription|HistoryDa tTechnical|HistoryDatTrivia|HistoryDatSeries|Histo ryDatSources|HighScores"
+  - Removed this setting as it's not longer needed: Fade_Rom_Info_Manufacturer
+  - Added log on exit letting user know what RL sees as active window
+ * Shared.ahk updated to v1.3.6
+  - Added WinIPAC and UltraMap support
+ * Pause.ahk updated to v1.1.6
+  - Added WinIPAC and UltraMap support
+ * MultiGame.ahk updated to v1.0.9
+  - Added WinIPAC and UltraMap support
+  - DLL calls now use Lib
+ * MultiPlayer.ahk updated to v1.0.8
+  - Added WinIPAC and UltraMap support
+ * Rom Mapping Launch Menu.ahk updated to v1.0.7
+  - Added WinIPAC and UltraMap support
+
+2015/11/16
+ * Bezel.ahk updated to v1.1.7
+  - Fixed mistype variable bug introduced on previous version that caused games to launch miniaturized if the bezel option save last selection was set to false.
+
+2015/11/15
+ * Bezel.ahk updated to v1.1.6
+  - Fixed bug with transparent full screen bezel when it is the first RocketLauncher bezel loaded.
+
+2015/11/14
+ * Bezel.ahk updated to v1.1.5
+  - Improved bezel background handling to avoid the use of bezel specific backgrounds on other alternative bezels.
+
+2015/11/13
+ * Shared.ahk updated to v1.3.5
+  - Fixed ledblinky not working on start and exit of module thread
+
+2015/11/08
+ * Shared.ahk updated to v1.3.4
+  - Added MaximizeWindow function
+  - Changed DxwndRun function to start DxwndRun in the system tray
+  - Added DxwndUpdateIniPath function. Dxwnd will now search for cfg files named after the system before using the default dxwnd.ini
+
+2015/11/05
+ * Fade animations.ahk updated to v1.1.10
+  - Replaced RocketLauncher Wheels folder references by the updated Media\Logos folder and fixed frontend logo images bug.
+
+2015/10/31
+ * Virtual Drive.ahk updated to v1.0.3
+  - Updated VCDMount (Clone Drive) support so it works with any version in the 5.x series
+  
+2015/10/22
+ * Bezel.ahk updated to v1.1.4
+  - Fixed bezel fullscreen bug
+  
+2015/10/15
+ * BinHexRW updated to v1.0.1
+  - Small update to logging to be more descriptive.
+ * Fade Init updated to v1.0.2; Fade updated to 1.1.4; Fade animations updated to 1.1.9 
+  - Add support for new option to allow fade guis to be "transparent" to mouse clicks allowing some problematic post launching scripts to work.
+
+2015/10/13
+ * Shared updated to v1.3.3
+  - New functions to globally support split screen and moving windows
+  - LEDBlinky now supports sending an alternate system name than the one sent from your Front End
+  - LEDBlinky now supports sending Game Start and Game End events with the new "All" option. Use this instead of your Front End's ledblinky handling for these events.
+ * 7z updated to v1.0.2
+  - Added ToolTip for extraction percentage when troubleshooting logging is enabled
+ * MultiPlayer updated to v1.0.7
+  - Added local-link support
+  - Can now go back a menu by using your exit key. You can also exit this menu to close RL by pressing your exit key from the main menu.
+
+2015/10/04
+ * RocketLauncher updated to v1.0.1.4
+  - Fixed bug with ahk and JSON when there were too many alternates on Rom Mapping inis
+  - Added new Rom Mapping settings: Game_Name_Text_Font, Game_Name_Text_Options, & Hide_Parent
+  - Added new Fade setting: Fade_Click_Through 
+  - Added new LEDBlinky setting: LEDBlinky_System_Name
+  - Added new Dxwnd setting: Dxwnd_Path
+  - Fixed an AHK bug that was thinking your FE was active when it was not
+  - Added new Module Extension to help debug objects and arrays: Array.ahk
+ * Rom Mapping Launch Menu updated to v1.0.6
+  - Fixed broken Rom Mapping Launch Menu
+  - Added support for user to choose between using HiToText or hi2txt programs for acquiring High Scores
+ * Pause updated to v1.1.5
+  - Fixed save and load state not working when statistics were disabled
+  - Fixed clone media support
+  - Fixed bug preventing High Score menu to be displayed
+  - Added support for user to choose between using HiToText or hi2txt programs for acquiring High Scores
+ * Fade updated to v1.1.3
+  - Fixed clone media support
+ * Bezel updated to v1.1.3
+  - Fixed clone media support
+  - Added support for looking at emulator specific folders for bezels
+ * HyperSpin.plugin updated
+  - Filled the variables frontendDatabaseFields and frontendDatabaseLabels to support the rom mapping menu changes
+  - Fixed a log bug on HyperSpin plugin
+
+2015/09/28
+ * RocketLauncher DLL updated to v1.0.1
+  - Added support for RAR5
+  - Fixed bug in validateCUE function, track names no longer need to be enclosed in double quotes
+
+2015/09/20
+ * Virtual Drive updated to v1.0.2
+  - Added support for Daemon Tools 6 Pro
+
+2015/09/13
+ * Fade updated to v1.1.2
+  - Fade Interrupt Key behavior changed so interrupting fade is only possible when this key is set to the specific key you want to use or when set to "anykey"
+
+2015/08/05
+ * Virtual Drive updated to v1.0.1
+  - Added support for Daemon Tools 10!
+ * Shared updated to v1.3.2
+  - ServoStik updates for new methods and setting
+  - COM Refactoring
+  - Fixed bug in SendCommand
+ * Pause updated to v1.1.4
+  - COM Refactoring
+ * Pause Init updated to v1.0.3
+  - COM Refactoring
+ * MultiGame updated to v1.0.8
+  - COM Refactoring
+ * Fade updated to v1.1.1
+  - COM Refactoring
+ * Fade Animations updated to v1.1.7
+  - COM Refactoring
+ * Passwprd updated to v1.0.2
+  - COM Refactoring
+ * XHotkey updated to v1.0.4
+  - COM Refactoring
+  - Removing Exit_Emulator_Key_Wait and Force_Hold_Key references
+ * XHotkeyInit updated to v1.0.2
+  - Removing Exit_Emulator_Key_Wait and Force_Hold_Key references
+ * 7z updated to v1.0.1
+  - COM Refactoring
+ * Fade Animations updated to v1.1.8
+  - Fixed bug in the Transition Animation "LegacayFadeInTransition" and "LegacayFadeInTransition" preventing Stretch and Lose Aspect mode to work
+
+2015/07/27
+ * XHotkey updated to v1.0.4
+  - Added logging for XHotkeyAllKeysPressed
+
+2015/07/27
+ * RocketLauncher updated to v1.0.1.3
+  - Now if a frontend or plugin sent over CLI was not found, defaults to the Default plugin. Which does not use a database at all.
+  - Fixed - RocketLauncher will no longer hide your Front End when the setting Hide Front End is not enabled on the Settings->Main Settings tab in RLUI. Previously it would hide it when troubleshooting logging was enabled.
+  - RLUI will not be restored on exit if the Front End path was defaulted because your Front End exe was not found or the supplied plugin from CLI was not found.
+  - Added ServoStik_Exit_Mode setting
+  - exitEmulatorKeyWait now has a minimum of 1000 milliseconds
+  - Now logs latest .Net version installed
+  - Trying to put the FE back in focus but failing will now timeout after 5 seconds
+  - Moved Exit_Emulator_Key from General Settings to Global/System settings
+  - Removed Exit_Emulator_Key_Wait and Force_Hold_Key settings because these are no longer needed with the Exit_Emulator_Key change
+
+2015/07/19
+ * Shared updated to v1.3.1
+  - Fixed logging command windows when exe had spaces in it
+  - Added logs to ToggleMenu
+
+2015/07/11
+ * Shared updated to v1.3.0
+  - Added LEDBlinky support to NumberOfPlayersSelectionMenu function used in some modules
+
+2015/07/07
+ * RocketLauncher updated to v1.0.1.2
+  - Fix for another HyperSpin 1.3 scenario using romonly HS setting and a full path gets sent to RL
+  - Fixed bug when no 7zExtractPath is set but it triggers the error that rompath and extract path are the same
+ * Pause updated to v1.1.3
+  - Fix for wrong broadcast messages (bleasby)
+  - Added LEDBlinky support to change to the RL profile and back
+ * Shared updated to v1.2.9
+  - Fix for wrong broadcast messages (bleasby)
+  - Added support for system and game messages (bleasby)
+  - Updated LEDBlinky support for proper CLI to change profiles when loading RL features and back to the game (jonnieboyrevel)
+ * MultiGame updated to v1.0.7
+  - Added LEDBlinky support to change to the RL profile and back
+ * MultiPlayer updated to v1.0.6
+  - Added LEDBlinky support to change to the RL profile and back
+ * Rom Mapping Launch Menu updated to v1.0.5
+  - Added LEDBlinky support to change to the RL profile and back
+
+2015/06/29
+ * Pause updated to v1.1.2
+  - Fix for not being able to enter pause after resuming game
+
+2015/06/27
+ * RocketLauncher updated to v1.0.1.1
+  - Fix for HyperSpin 1.3 launching and not trimming the . from the rom name
+
+2015/06/17
+ * RocketLauncher updated to v1.0.1
+  - Restore Frontend On Exit, Restore selection, was not working as designed. Now selecting Restore will restore a minimized front end as well
+  - New setting: JoyIDs_Preferred_Controllers_On_Exit
+  - Fixed when using HyperSpin 1.3.x with romonly option, RL would trim extensions when it shouldn't be
+  - Fixed when using HyperSpin 1.3.x and using a proper -f switch and no -s and -r switches, will not check for legacy cli mode (bleasby)
+ * Shared updated to v1.2.8
+  - Support for JoyIDs_Preferred_Controllers_On_Exit
+  - Initial broadcast Messaging support (bleasby)
+ * Pause updated to v1.1.1
+  - Support for setting Pause to use an alternate monitor (bleasby)
+  - New setting: Pause_Monitor & Pause_Screen_Rotation_Angle (bleasby)
+  - Added broadcast messages (bleasby)
+ * Gdip_Alt updated to v1.0.2
+  - Updated dependencies for Pause (bleasby)
+ * Bezel updated to v1.1.2
+  - Fixed issue when IC was enabled, but default IC artwork did not exist and a ".ini" file was created in root of drive. (bleasby)
+  - Default IC artwork is now created in code if missing from media folder (bleasby)
+ * Fade updated to v1.1.0
+  - Fixed missing console layer (bleasby)
+
+2015/05/29
+ * RocketLauncher updated to v1.0.0.1
+  - Removed file check for your VD application on all launches where VD is used but not enabled.
+  - New setting: Virtual_Drive_Drive_Letter, The drive letter you want your defined virtual drive software to use. This does not apply to Daemon Tools 4 as you define the letter in the Daemon Tools application.
+ * RocketLauncherUI updated to v1.0.0.2
+  - See its changelog for complete changes
+ * UserFunctions
+  - StartPauseUserFeatures and StopPauseUserFeatures are 2 new areas where users can inject their own code to run before Pause starts and after Pause ends.
+ * Shared updated to v1.2.6
+  - Run command default options were not being set correctly to "useerrorlevel". Default changed to no options used.
+  - Added RunWait RL command
+  - Removed duplicate gdip cleanup which has the chance to cause random crashes on errors
+  - Removed a legacy HS XML function no longer used
+  - 7z moved to its own lib file
+  - Virtual Drive moved to its own lib file
+ * Pause updated to v1.1.0
+  - Implemented StartPauseUserFeatures and StopPauseUserFeatures support
+ * Plugins
+  - Added basic AttractMode plugin for RocketLauncher launching only
+
+2015/05/21
+ * Keymapper Init updated to v1.0.4
+  - Fixed a scripterror window size from now showing the entire error when preferred controllers were defined and no profiles found.
+ * Keymapper updated to v1.1.2
+  - Fixed when your defined keymapper application was defined, but not found on disk. RL would still attempt to run it causing an AHK error.
+  - Uncommented a log that shows what profiles will be searched for. Not sure why it was commented to begin with.
+
+2015/05/11
+ * Bezel updated to v1.1.1
+  - Added new Bezel_Delay setting to give time for emu to draw itself before bezels take over
+
+2015/05/03
+ * v1.0.0.0 - RocketLauncher initial release!
+  - Many modules that did not have "Hide Emulator" support now do
+  - DaemonTools is now known as VirtualDrive so future support can be added to other applications in the future
+  - BetaBrite_Params setting changed default to "usb {AUTO}%FRONTEND%" which will replace FRONTEND with the plugin name so it can be used across any FE
+  - Fixed a bug when ServoStik_Enabled & Hide_Cursor were set per-game, would take affect for other games
+  - Fixed direct launching system selection not showing due to new system xml structure changes
+  - Fixed bug in direct launch where it would show values that were not system names in drop down box
+  - Exit_Script_Key default value changed from Q+S to PageUp+PageDown
+  - Fade_Layer_4_W (Animated Image - Image Width) default changed from 128 to 200 because it was making the Rating image too narrow on default Fade
+  - Fade_Layer_4_X (Animated Image - Animation X) default changed from 1792|952 to 1715|952 so the animated image would be on screen by default
+  - Fade_Layer_4_Y (Animated Image - Animation Y) default changed from 891|1596 to 720|1596 so the animated image would be on screen by default
+  - SaveProperties changed so it does not cause delays and only writes to HDD once.
+  - Added systemDbName as it comes from the Front End in case media needs to be loaded from that name when an alternate systen name is mapped
+  - PacDrive and DXwnd file checks moved into their functions and only verify existance when those features are used.
+  - Added ability to trigger ScriptError w/o closing the module which can let the module handle errors and exiting properly from its environment
+  - Now automatically copies example inis over to their working versions when CheckFile() is used to check their existence. Note, this is not used on example module inis because those inis are never required.
+ * HyperLaunchHQ.plugin
+  - HyperLaunchHQ.plugin (now known as RocketLauncherUI.plugin)
+ * Bezel updated to v1.1.0
+ * Fade updated to v1.1.0
+ * Fade Animations updated to v1.1.2
+ * HyperPause renamed to Pause and updated to v1.0.9
+ * HyperPause init renamed to Pause Init and updated to v1.0.2
+ * Keymapper updated to v1.1.1
+ * Keymapper Init updated to v1.0.3
+ * MultiGame updated to v1.0.7
+ * MultiPlayer updated to v1.0.5
+ * Password updated to v1.0.1
+ * Rom Mapping Launch Menu updated to v1.0.4
+ * Shared updated to v1.2.4
+ * Statistics updated to v1.0.3
+ * XHotkey updated to v1.0.3
+ * User Fade Animations
+ * Module Extensions
+  - RocketLauncher.dll
+  - Origin updated to v1.0.2
+  - Steam updated to v1.0.2
+ * Updated Daemon
+  - HyperLaunchDaemon renamed to RocketLauncherDaemon
+
+
+2015/03/01
+ * HyperLaunch (updated to v3.1.0.5)
+  - HideCursor was changed to a globally allow per-game control over it. Set it by configuring settings on that game in the Games tab.
+  - Fixed Keymapper_FrontEnd_Profile_Name was always writing the first pluginname sent to HL, this is supposed to by default be empty to allow HL to work with multiple FEs.
+  - Added new CLI switch "-c" which changes the context of HL on exit an option of giving focus to your FE or load an FE keymapper profile on exit.
+  - Fixed ahk error when bezels are turned off using the NullDC module and ExtraFixedResBezelGUI() was called.
+  - Added WMI check and will not attempt to use the WMI service if it is not running.
+  - Added file check for your emulator/application executable. Previously you would get an ahk error if the path was wrong.
+  - Fixed decrypting Steam/Origin credentials
+ * HyperLaunch.dll
+  - Updated to support WMI check
+ * Keymapper.ahk (updated to v1.1.0)
+  - Updated to support the -c switch
+ * Shared.ahk (updated to v1.2.2)
+  - Added a few checks to HideEmu to make sure the windows that it is trying to hide, actually become hidden
+  - Updates to remove PCLauncher HideCursor control, which now can be controlled per-game globally
+  - Added ability to hide logs when running executables
+  - 7zCleanUp will now be triggered when an error occurs
+ * Origin.ahk (updated to v1.0.1)
+  - Will no longer show credentials in log
+ * Steam.ahk (updated to v1.0.1)
+  - Will no longer show credentials in log
+
+2015/01/21
+ * HyperLaunch (updated to v3.1.0.4)
+  - Rom names with [ or ] in them will no longer error, but instead give a warning in the log
+  - Warning logs added when showing and logging command window settings are enabled
+  - Added a few more res batch files for nircmd in module extensions
+  - New method of creating default inis and writing missing settings, which allows far less disk writes than before
+  - Daemon Tools is now set to false by default to keep it in line with other 3rd party tools support
+  - ServoStik support was not mentioned in prior update notes (oops), but it is there now and allows adjusting your Ultimarc ServoStiks automatically. Latest MAME module already has automatic support when this is enabled.
+  - ServoStik support can now be set on a per-game basis as well as global and per-system.
+  - LEDBlinky support was another one I forgot to mention and support for it was added when launching any of the HL features, like HyperPause, MultiGame, etc, when Navigational keys are used. The ledblinky dev was supposed to add support for directly switching to profiles w/o using all the animations but I don't think this has been added yet.
+  - JoyIDs_Preferred_Controllers key now sets use_global for the system HyperLaunch.ini when the key is created.
+  - Custom user fade animations should now be placed in the file Lib\User Fade Animations.ahk. They will no longer be looked for at the bottom of Fade Animations.ahk. This is to be more consistent with how User Functions works. Also Fade Animations.ini was renamed to User Fade Animations.ini
+  - HyperLaunch.dll updated to reflect the above change
+  - HyperLaunchHQ also updated to reflect the above change
+ * Fade Animations.ahk (updated to v1.1.0)
+  - Removed 7zSounds from a conditional it wasn't needed on
+ * Keymapper.ahk (updated to v1.0.9)
+  - xpadder and joytokey automatically have command windows skipped if they are enabled because they do not work right with them
+  - This fixes some users have posted when having this window enabled and getting stuck when xpadder was launched
+ * Shared.ahk (updated to v1.2.1)
+  - Run() added ability to bypass command windows if enabled
+  - rIniIndex was not global, preventing default plugin key values from being written to plugin inis
+  - Rewrote handling and fixed command windows not closing properly
+  - Fixed SendCommand Up never working (wahoobrian)
+  - Fixed SendCommand when spaces inside commands were used, command would become invalid (wahoobrian)
+  - Fixed ExitEmulatorKey from working when a ScriptError was triggered
+  - 7z now logs when system name was attached to your extract path
+  - Added logging for cursor changing
+ * Bezel (updated to v1.0.8)
+  - Improved bezel GUI destroy code that was not being called in certain cases, what could cause a very small memory leak if the user had bezel enabled and no bezel image.
+  - Added three functions to handle a extra fixed resolution bezel image (used on the VMU draw on NullDC and demul modules).
+  - Fixed bug with initialization of instruction cards (thanks dustind900 http://www.hyperlaunch.net/forum/showthread.php?432-Help-displaying-single-IC)
+  - Added support for _Default\Vertical and _Default\Horizontal folder use on system and global search for bezels and backgrounds.
+  - Removed unnecessary functions from the code.
+ * HyperPause (updated to v1.0.7)
+  - Added code to avoid moving the menu is last rendering is not complete
+  - Fixed bug showing only the first of multiple images originated from the frontend media 
+  - Fixed bug in menu up and down navigation for multiple images and pdf files
+  - Changed resolution scaling to improve profile sharing between different resolutions
+  - Added support for four new hyperpause options to disable the extra label for displaying the file name or page number on the artwork, controller, manuals and guides menu while displaying multiple images, pdfs, CBR and CBZ files (requested by brolly).
+  - Fixed HP hide FE code. Hides FE even if the monitor resolution changes.
+  - Added support for _Default\Vertical and _Default\Horizontal folder use on system and global image search for the cases where the user choose a screen portrait or landscape rotation.
+ * Fade animations.ahk (updated to v1.1.1)
+  - Fixed scaling bugs on layer 3, layer 3 static image and layer 4 
+  - Added width and height settings to layer 3, static 3 and 4.
+ * Fade.ahk (updated to v1.0.9)
+  - Changed resolution scaling to improve profile sharing between different resolutions
+  - Fixed scaling bugs on layer 2
+  - Fixed fade out resize bug
+  - Added width and height settings to layer 2.
+  - Added support for _Default\Vertical and _Default\Horizontal folder use on system and global image search for the cases where the user choose a screen portrait or landscape rotation.
+ * MultiGame.ahk (updated to v1.0.6)
+  - Changed resolution scaling to improve profile sharing between different resolutions
+ * MultiPlayer.ahk (updated to v1.0.2)
+  - Currently selected field now has a highlight around it to make it easier to see what number you are currently editing
+  - Added a wait screen used on modules when a server needs to wait for clients to connect so the host is aware what's going on. For now only used in Retroarch
+  - Modified what variables are filled when using multiplayer
+  - gdip_alt.ahk module extension updated to support the above change
+ * Fade Profiles
+  - default.ini and legacy.ini fade profiles updated (need to be revised after HLHQ has being updated to include the new keys)
+ * Plugins:
+  - Added HyperPin plugin (bleasby)
+
+2015/01/06
+ * HyperLaunch (updated to v3.1.0.3)
+  - Rom names with [ or ] in them will no longer error, but instead give a warning in the log
+  - Warning logs added when showing and logging command window settings are enabled
+  - Added a few more res batch files for nircmd in module extensions
+ * Fade Animations.ahk (updated to v1.1.0)
+  - Removed 7zSounds from a conditional it wasn't needed on
+ * Keymapper.ahk (updated to v1.0.9)
+  - xpadder and joytokey automatically have command windows skipped if they are enabled because they do not work right with them
+  - This fixes some users have posted when having this window enabled and getting stuck when xpadder was launched
+ * Shared.ahk (updated to v1.2.1)
+  - Run() added ability to bypass command windows if enabled
+  - rIniIndex was not global, preventing default plugin key values from being written to plugin inis
+  - Rewrote handling and fixed command windows not closing properly
+
+2014/12/31
+ * HyperLaunch (updated to v3.1.0.2)
+ * MultiPlayer.ahk (updated to v1.0.1)
+  - Fixed Keymapper not switching to HyperLaunch profiles when Player Select Menu was used
+ * Keymapper.ahk (updated to v1.0.8)
+ * Shared.ahk (updated to v1.2.0)
+  - Fixed Keymapper not switching to HyperLaunch profiles when Player Select Menu was used (thanks Ghutch)
+
+2014/12/29
+ * HyperLaunch (updated to v3.1.0.1)
+  - Rom Extension are now allowed to have a period in the middle of an extension, but will still error if it starts with one
+  - New Feature - HyperLaunch Daemon - See Wiki http://www.hyperlaunch.net/wiki/index.php?title=HyperLaunch_Daemon
+ * Fade
+  - Added logs to show when fadeInExitDelay starts and stops
+
+2014/12/24
+ * HyperLaunch (updated to v3.1.0.0 BETA):
+  - Add support for different screen orientations for vertical games, rotating monitors and cocktail cabs. HyperPause, fade, instruction cards, password, multigame and rom mapping launch menu works on 0º, 90º, 180º and 270º.
+  - HyperLaunchLog shows a warning when User Functions.ahk or User Functions Init.ahk are missing.
+  - i18n localization support: Non-English users now have certain parts of the modules converted automatically in memory to their language. For example "Open" converts to "Abrir" if you use a Portuguese Windows.
+  - New file that provides the translation mapping: HyperLaunch\Data\Language\Localization.ini
+  - HyperLaunch now supports launching the MultiGame feature on launch. This gives you the ability to only have one disc for example, in your database and give a disc selection instead. You must have MG enabled, and also the new setting MultiGame_On_Launch.
+  - HyperLaunch will error if you set your keymapper to something other than xpadder or joytokey (like if it's blank)
+  - Log now states if the User Functions.ahk is not found
+  - Fixed a bug that HL would think a rom was picked from rom mapping when it wasn't
+  - Fixed a bug when Fade was enabled but Statistics was not, would cause a missing function error.
+  - Fixed a couple RomTableCheck scenarios that would stall HL when it shouldn't be.
+  - 7z will no longer try to determine if you have enough free space on a network drive to extract to as this number is not visible to windows.
+  - 7z now creates the 7zExtractPath if it does not exist already and reports correctly when the drive does not exist or it couldn't write to that drive.
+  - When debug or greater logging is enabled, the extraction progress of 7z gets dumped to the log.
+  - ExitModule now declares when it has started to prevent other functions from starting during the exit routine when they shouldn't be.
+  - The default font is now automatically installed if it was not installed already. This will also install any fonts residing in the HL Media's Font folder too if they are used.
+  - PCLauncher uses its own HideCursor setting, so when using this module and you want to control the mouse visibility, it must be set in PCLauncher module settings. The normal HL setting will not apply.
+  - CreateRomTable will no longer be created on exit. This should speed up exiting in some scenarios when it was unnecessarily being created.
+  - Fixed a bug when using the Rom Map menu and a valid extension was not found from your defined extensions.
+  - Player Select Menu GUI now can be called from any module
+  - HyperLaunch now accepts a system xml when a default (Hyperspin Main Menu.xml) is not found. File should be located in .\Data\Databases\Systems.xml. For convenience, it should be the same format as the Hyperspin Main Menu.xml
+  - When a Hyperspin Main Menu.xml nor a HyperLaunch Systems.xml can be found and direct launching the HyperLaunch.exe, the system selection drop down list is replaced with an edit box where user can type in a system name manually.
+  - HideEmu now logs each unique window it finds and hides as a debug log entry.
+  - HideEmu now hides emus on exit when enabled.
+  - Replaced all Includes with FileReads. This should eliminate the bug where ahk would randomly try to include a file with the wrong path. No performance hit in this change.
+  - Only files are allowed by default when a CheckFile() is called.
+  - HyperLaunch now skips checking for romPaths and a romExtension if a fullpath to your rom was supplied via CLI. This can speed up launching slightly, especially if you have a lot of paths and extensions defined in HLHQ. Some FEs support this.
+  - HyperLaunch now errors if the rom name contains the characters [ or ]
+  - Version info for libraries are now reported to the log when troubleshooting mode is enabled.
+  - New protection in place to prevent users from setting their 7zExtractTemp anywhere inside (above) their romPath. This would cause someone to delete their rom folder.
+  - New Function - OpenROM - standardizes and replaces the old loop method used to interact with an emulators "Open" rom window. Module authors can call this method instead of recreating the lengthy and confusing loop method.
+  - New Function - SetKeyDelay - standardizes and logs the use of SetKeyDelay and also allows HL to keep track of the current pressDelay in effect.
+  - New Function - SendCommand - TBA
+  - New Function - SplitPath - Supports UNC/SMB paths and multiple periods in the filename.
+  - New Function - GetHLMediaFiles - Standardizes and logs gathering of all the media files HL uses.
+  - New Function - Steam - Steam was removed from PCLauncher and made into its own function and able to be called from any module
+  - New Function - Origin - Origin was removed from PCLauncher and made into its own function and able to be called from any module
+  - New Function - DxwndIniRW/DxwndRun/DxwndClose - DXWnd can now be called from any module as it is considered an extension and has been provided its own set of functions to control it.
+  - New Function - Rotate - Allows global support for rotating your screen on any module that calls it.
+  - New Feature - HyperLaunch now has a Debug Console to show the log in real-time!
+  - New Feature - HyperLaunch will validate cue and gdi files when using Daemon Tools support. It will also not allow mounting of images with mp3 audio tracks as DT does not support these.
+  - New Feature - HyperLaunch now accepts proper CLI switches and in any order to better support other FEs simultaneously and multiple methods of launching. -s <System_Name>, -r <Database_Name>, -m <HL_Mode>, -p <Plugin>, -f <FE_Path>
+  - New Feature - HyperLaunch now accepts a new CLI switch "-e", which will force a game to load via the sent mapped Emulator name or full path to a Emulator you want to load. Usage -e <Emulator_Name> or -e "<Emulator_Full_Path>"
+  - New Feature - HyperLaunch now accepts a new CLI switch "-d", which will force a game to load via the sent mapped Module name or full path to a module you want to load. Usage -d <Module_Name> or -d "<Module_Full_Path>"
+  - New Feature - Custom cursors can now be loaded by placing a cursor file into your HL Media Cursor folder. (ex. HyperLaunch\Media\Cursors\Nintendo DS\_Default\stylusred.cur)
+  - New Feature - Lock Launch - Can be applied globally, per system, or per game.
+  - Standard (true) lock - Prevent games from launching that you want to keep in your database but do not want to remove. Will simply return to your FE if you launch one of these.
+  - Password lock - Need to input a password to launch. Password is any combination of directional keys (your HyperLaunch Navigation keys) up to 15 keys in length.
+  - DirectOnly - Prevented from being launched normally, but can launch HP, MG, or Fade normally to view those features without actually launching the game.
+ * HyperPause (updated to v1.0.6):
+  - Fix to bug avoiding multigame to use hyperlaunch artwork located at HyperLaunch\Multigame\systemname\gamename folder.
+  - Support for media\_Default folders on videos, artwork, controllers, guides and manuals (requested by potts43).
+  - Improved save state overwritten images code (made a list of images to be deleted and try to empty the list at every HyperPause exit).
+  - Changed screenshot function. (thks horseyhorsey, http://www.hyperspin-fe.com/forum/sh...en-grabs/page3).
+  - Added support for saving screenshot as BMP,DIB,RLE,JPG,JPEG,JPE,JFIF,GIF,TIF,TIFF and PNG (the default now is jpg because the smaller footprint) (If saving as jpg (JPG,JPEG,JPE,JFIF) then quality can be 1-100 with default at maximum quality). Controlled by the hyperpause ini keys: Screenshot_Extension and Screenshot_JPG_Quality (these should be moved to HyperLaunch ini files on a final release).
+  - Improved code to make sure that bezel is restored well after HyperPause exit. (thks horseyhorsey, http://www.hyperspin-fe.com/forum/sh...-after-HP-exit).
+  - Added support for creating a color behind the HyperPause background, for filling the screen if a background image is smaller than the screen resolution. (requested by wiggles http://www.hyperspin-fe.com/forum/sh...kground-images). (controled by hyperpause ini key Background_Color on ini section: [Main Menu Appearance Options].
+  - Fix to statistics game names overlap.
+  - Updated. If no HyperSpin game video is found, HyperPause will look for its parent video (http://www.hyperspin-fe.com/forum/showthread.php?34389-HyperPause-Videos)
+  - Updated. Changed HyperPause mute when start code to only mute the sound coming from the emulator (only supported at Windows Vista and above, on XP the master sound will be muted instead).
+  - Updated. Added font exist check.
+  - Small changes in the code for diverse motives.
+  - Updated. HyperPause now only mutes the emulator sound while loading if this option is selected. It works for vista and above. For XP and bellow it still works like previously mutting the master sound instead of only the emulator sound.
+  - General description:
+  - HyperPause is now completly FrontEnd independent.
+  - In order to do it I had to complete rewrite the code that handles the assets to be shown on the HyperPause Menus. 
+  - I REALLY NEED A HUGE BETA TESTING EFFORT FOR FINDING ANY ISSUES BECAUSE OF TE HUGE AMOUNT OF CHANGES THAT THIS REQUIRED.
+  - Added support for using parent media on all HyperPause media assets. Set HyperPause_Use_Parent_Game_Media_Assets to true to enable it. (Requested by Turranius http://www.hyperlaunch.net/forum/showthread.php?187-HyperPause-media-for-clones&p=2143&viewfull=1#post2143 )
+  - Added support for automatically use any plugin defined FrontEnd Assets on HyperPause (backgrounds, wheels, artwork, controller images, manuals, guides, videos).
+  - Added support for the Moves List sub menu to enter in full screen mode from the submenu entry directly (Requested by Dogway).
+  - Added support for the History sub menu to enter in full screen mode from the submenu entry directly (Requested by Dogway).
+  - Added support for the Video sub menu to enter in full screen mode from the submenu entry directly (Requested by Dogway).
+  - Added support for render PDF pages only when you are above the respective label. Set HyperPause_Load_PDF_On_Label to true to enable it. (Requested by Dogway).
+  - Screenshots are now showed for last on the artwork menu. (Requested by Dogway).
+  - Added changes to create the screenshots folder only when necessary. (Requested by Dogway).
+  - Changed wheel code on HyperPause to use only game wheels defined by the AssetType
+  - Changed background on HyperPause to use only game (fe and hp media), and if not found, use system files
+  - NEW - Added CBR and CBZ support for menus on hyperpause (manuals, guides, artwork, controller).
+  - NEW - Updated pdf ghoscript call to use the maximumHeight parameter
+  - FIXED - bug on 7z images compressed not working
+  - FIXED - HyperPause bug with pdf entire conversion code.
+  - NEW - Added support for hyperpause disc change to use fe media assets.
+  - FIXED - HyperPause multidisc multiple entries bug. Thanks rfancella for finding and reporting it.
+  - NEW - Added pdf page layout support. Now you can define how your pdf files will be displayed on HyperPause. (Requested by Dogway). Brolly did most of the hard work for adding that. Options are:
+  - 1page - Displays 1 page at a time (what we have now)
+  - 2pages - Displays 2 page at a time horizontally
+  - coverup - Same as 2pages, but the first page will be displayed as a single page
+  - frompdf - Reads page layout info from the actual PDF file and follows that setting
+  - Changed the temp hyperpause folders to include the systemName (requested by brolly).
+  - Added: while loading a new pdf page that is not yet converted, the previous page will remain in the screen and a centered text message will say "Loading New Page" while the page is being loaded (requested by brolly).
+ * Fade (updated to v1.0.5):
+  - Added support for Zero Dreams fade animation. Make sure that you have the required files on your media folder, and just load the hyperlaunchhq fade profile named "Zero Dreams fade.ini" to use this fade screen instead of the default one. To reload the default one you just need to load the profile named "Default fade.ini".
+  - Added support for showing extraction remaining and elapsed time on fade screen (Requested by Sir Cyrano: http://www.hyperspin-fe.com/forum/showthread.php?33512-Progress-Bar-With-Timer&highlight=remaining)
+  - Added support for producing the efects introduced by Unknown50862 on the fade loading screen automatically for any system. (Controlled by the option Fade_Layer_3_Shadow_Image_Transparency. http://www.hyperspin-fe.com/forum/showthread.php?33058-Unified-Megatheme-Fade-Loading-Screens&highlight=Unified+Megatheme+Fade%2FLoading+Screens).
+  - Updated. Added support for mute emulator sounds while fade is active (only supported at Windows Vista and above, on XP the master sound will be muted instead).
+  - Updated. Complete GUI code and fade animation rewrite to support fade animations to work during the fade in delay and fade in exit delay.
+  - NEW - Added the possibility to use the background images on the HyperLaunch\Bckgrounds folder as fade layer 1 background. Controlled by ini key named: Fade_Use_Backgrounds, default = false (Allows use of media placed in the Backgrounds folder for Fade backgrounds.).
+  - NEW - Added support for using plugin defined feMedia background assets.
+ * Bezel (updated to v1.0.7):
+  - Fixed bug with layout mode.
+  - Fixed multiscreens bug with Pico drive.
+  - Added support for overlay on multiscreens mode.
+  - Added screen offset support for multiscreens bezels.
+  - Fixed bug with games that have numeric names being wrongly considered as multiscreen games.
+  - A few improvements to avoid running code without need to speed up a little things.
+  - Fixed bug with instruction card scrolling text showing after exiting instruction card menu.
+  - Changed the IC menu scale factor to be calculated from the height of the screen because it made more sense than using the screen width.
+  - Added option to start game with ICs showing, randomly or not. Requested by mmg1design ( the instruction cards maker ) (http://www.hyperspin-fe.com/forum/showthread.php?29509-Instruction-Card-with-Cheats-Info-Display-question)
+  - Added option to enable ICs random Slide Show. The default value is 0 (=disable). You can change it for the amount of milliseconds that you between ICs changes. If you press any of the IC change keys the slide sho will stop. Requested by mmg1design. (http://www.hyperspin-fe.com/forum/showthread.php?29509-Instruction-Card-with-Cheats-Info-Display-question)
+  - Added support for defining ICs scalling through file name.
+  - Added support for new file name convention
+  - Updated. Background and overlay files named equal and at the same folder of the currrent selected bezel have priority to be showed. Requested by rfancella.
+  - Updated. Added support for saving bezel selected (if true, everytime that you open a game the last choosen bezel will be loaded at beginning)
+  - Updated. Added support for saving ICs selected (if true, everytime that you open a game the last choosen ICs will be showed). You should combine it with enabling the "display on startup" option to take advantage of it.
+  - Updated. Added support for option Extra_FullScreen_Bezel. If true, it creates automatically a transparent bezel that fills the entire screen. This is useful to simulate a full screen windowed game. (this is very emulator dependable, and it will work better with emus that support normal bezel mode).
+  - Updated. Added support on clone games for looking for bezel and ICs on parent folders.
+  - NEW - added the possibility to use the background images on the HyperLaunch\Bckgrounds folder as bezel background. Controlled by the bezel ini key named: Use_Backgrounds, default = false (Allows use of media placed in the Backgrounds folder for Bezel backgrounds.).
+  - NEW - Bezel now supports more image files: png, gif, tif, bmp and jpg (before it would only support png files). New ini key: Bezel_Supported_Image_Files, limits the image extensions that should be searched on the bezel code.
+  - NEW - Added a if statement on the beginning of all bezel functions for checking if bezelEnabled = "true". This will allow to change at any time before the bezelDraw function call the bezel state at a game basis. In the future this could be handled either directly by hyperlaunch or through a module code settings (in order to work on a module, it requires that the bezel is enabled on HLHQ, because the bezel files will be only included on hyperlaunch on that case.
+  - NEW - Added support for using plugin defined feMedia background assets.
+  - NEW - Added setting to enable/disable IC cards from being used, even if they exist. Default is disabled. So for those who use ICs, be sure to enable this option globally or for just those systems you want to use them on.
+ * MultiGame (updated to v1.0.5):
+  - The Multigame menu is now Frontend independent.
+  - Replaced the hyperspin window class reference for the plugin defined variable.
+  - Removed the obsolete mgArtworkDir option.
+  - Added support for using plugin defined feMedia background assets.
+  - Added support for using plugin defined feMedia disc asset.
+ * Keymapper (updated to v1.0.6):
+  - Updated Keymapper.ahk. Fixed a bug with controller names that have trailing white spaces in their names in the registry. Fixed a dllcall that would prompt the uac when running from a shared drive. (thanks Ghutch)
+  - All uses of "Process" are now using the HyperLaunch function and now the straight ahk command.
+  - Fixed unloading of ahk profiles
+ * XHotkey (updated to v1.0.2):
+  - XHotkey library updated to show some basic logs on when it is used and what keys use standard or extended hotkey support.
+ * Rom Mapping Launch Menu (updated to v1.0.3):
+  - Fixed some bugs
+  - Added support for game info details and HyperSpinXML on rom mapping HyperSpin naming scheme.
+  - NEW - added support for using plugin defined feMedia background assets.
+ * Statistics (updated to v1.0.2):
+  - Fix for tracking when MultiGame is used
+ * Statistics Init (updated to v1.0.1):
+  - Removed all code as it's not necessary anymore
+ * Fade Init (updated to v1.0.1):
+  - Removed all includes
+ * HyperPause Init (updated to v1.0.1):
+  - Removed all includes
+ * Plugins
+  - Added AssetType atribute to feMedia and hpMedia
+  - Replaced wheel references to use the word logo instead on the plugin file and HyperPause
+  - Added plugin ini media labels to the HS plugin
+
+2014/06/01
+ * HyperLaunch (updated to v3.0.1.0):
+  - Added - Checks for some required dll files.
+  - Fixed - Some languages still reporting letter codes, rather than actual language in log.
+  - Fixed - When Direct launching HyperLaunch.exe, the system selection would not parse out some system names correctly from the main menu.xml and in certain scenarios allowed extra text to sneak in.
+  - Fixed - Missing HyperLaunch.ini were not being written to the file.
+  - Fixed - Moved ToggleCursor label to the module thread as it didn't seem to work in the HL thread. You can now toggle your cursor again with your toggleCursorKey if you have it set. This also now is an xHotkey key and can be configured multiple methods like all the rest (needs an HLHQ update to support this change)
+  - Changed - romPath is always sent to module now even if no rom is found and skipchecks is enabled.
+  - Changed - Hiding of mouse cursor is now done entirely in the module thread. The method used to hide a cursor is not practical to have both threads control its visibility due to many static variables to keep track of when it's hidden and when not. When HideCursor is enabled, the initial hidden state now gets triggered in StartModule() instead of right before the module is built. Tests show this made no visible difference on launch.
+  - Changed - Zinc as a System Name has changed and NO LONGER SUPPORTS NUMBERED ROMS IN THE XML. Yes you heard that right. The module now maps the correct short rom names in the updated xml to the numbers which zinc needs to launch each game. This means for anyone running zinc now, they need to get the new xml and module and change all their media to match the updated rom names in the xml.
+ * Bezel.ahk
+  - Added - Support for bezel key change (thanks to Manson and Thooperman for the help and ideas)
+  - Added - [COLOR="#FF0000"]Full support for Instruction Cards (thanks to Manson and Thooperman for the help and ideas)[/COLOR]. See attached image to see it in action
+  - Fixed - GUI drawing problems with fade in and fade out (thanks Noshgar for the help)	
+ * HyperPause.ahk
+  - Added - New HyperPause menu to show contents of history.dat. If you have HyperLaunch already installed you will need to change in the Hyperlaunch\Settings\Global HyperPause.ini files, in the section [Main Menu Appearance Options], this key value: Main_Menu_Items=Controller|Change Disc|Save State|Load State|HighScore|Artwork|Guides|Manuals|Videos|Sound|Statistics|Moves List|History|Shutdown (requested by jkonami - [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=252228&viewfull=1#post252228[/url])
+  - Fixed - HyperPause Moves List Incorrect Icon Names. Don't forget to update the "HyperLaunch Update Media and data files.zip" contents to your hyperlaunch media folder. (tahnsk brandsizzle - [url]http://www.hyperspin-fe.com/forum/showthread.php?27345-HyperPause-Moves-List-Incorrect-Icon-Names[/url])
+  - Changed - HyperPause Moves List folder structure to follow HL media structure and support different moves list icons per system or game. Please delete the folder HyperLaunch\Media\Moves List\Icons and copy the contents from the file "HyperLaunch Update Media and data files.zip".
+  - Fixed - Shutdown bug on DrawSubMenu (added workaround to avoid it - requested by Cruel Moose and HillJackBob - [url]http://www.hyperspin-fe.com/forum/showthread.php?26201-Nintendulator-and-HyperPause&p=251337&viewfull=1#post251337[/url] and [url]http://www.hyperspin-fe.com/forum/showthread.php?26862-Small-High-Score-Issue-Found-in-HyperPause[/url]
+  - Added - HyperPause videos and music volume control. You need to set the volume level on HLHQ, the default is set to 100%. (requested by windowlicker11 - [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=249629&viewfull=1#post249629[/url])
+  - Added - Pause on music playing while in videos menu (reuqested by NEODAN - [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=259584&viewfull=1#post259584[/url]) 
+  - Changed - Default screenshot saved to png file instead of bmp files (requested by horseyhorsey - [url]http://www.hyperspin-fe.com/forum/showthread.php?27301-Some-questions-about-saves-amp-their-screen-grabs&p=260296&viewfull=1#post260296[/url])
+  - Added - Support for call to save and load state scripts from HyperPause menus. If the emulator module have the labels SaveSateSlot1, SaveSateSlot2,.. and LoadSateSlot1, LoadSateSlot2,... HyperPause will call these labels whenever you choose the save or load state buttons instead of trying to use the key send commands defined on the emulators.ini files. (requested by horseyhorsey - [url]http://www.hyperspin-fe.com/forum/showthread.php?27301-Some-questions-about-saves-amp-their-screen-grabs&p=260296&viewfull=1#post260296[/url])
+  - Added - Option to disable saving screenshots on save state. You need to choose to not save the screenshots on HLHQ, the default is set to save them. (requested by horseyhorsey - [url]http://www.hyperspin-fe.com/forum/showthread.php?27301-Some-questions-about-saves-amp-their-screen-grabs&p=260380&viewfull=1#post260380[/url])
+  - Fixed - Statistics last time played bug (requested by mameshane - [url]http://www.hyperspin-fe.com/forum/showthread.php?27273-statistics-Error[/url])
+  - Fixed - Multigame artwork bug (requested by wiggles, jvlk and jbsoum - [url]http://www.hyperspin-fe.com/forum/showthread.php?27514-HyperPause-Freezes-When-Highlighting-Change-Disc[/url] and [url]http://www.hyperspin-fe.com/forum/showthread.php?27514-HyperPause-Freezes-When-Highlighting-Change-Disc[/url])
+  - Added - Option to set HyperPause own independent resolution. This is not recommended, use it at your own risk. Default is set to not change current resolution. You must provide a monitor compatible resolution in the format width|height|colors|frequency (for example: 1280|1024|32|60 for 1280x1024 pixels with 32 bit colors and 60Hz frequency). (requested by Hi! and alexd74 - [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=258661&viewfull=1#post258661[/url] and [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=262490&viewfull=1#post262490[/url])
+  - Changed - Default context font value to be a fixed width font in order to avoid any misalignment on txt guides. If you have HyperLaunch already installed you will need to change in the HLHQ the Content Text Font at Hyperpause -> Appearance 2 tab to Lucida Console. If you don't change that, it is possible that some contents of the guides txt files would be cropped when useing the Arial font instead. (requested by LapRocket and Brolly - fixed by wiggles - [url]http://www.hyperspin-fe.com/forum/showthread.php?27589-Hyperpause-txt-docs-for-guides-question[/url])
+  - Fixed - Multigame issues on HyperPause (requested by brolly and djvj).
+  - Fixed - HyperPause gamepad control bugs. (requested by lank.g01 and urbangangsta101 - fixed by windowlicker11 - [url]http://www.hyperspin-fe.com/forum/showthread.php?27394-Weird-glitches-with-Hyperpause-and-xpadder-profiles[/url])
+  - Added - Changes to support the new bezel features.
+  - Added - Progress bar support for multigame changes that requires 7z extraction.
+  - Added - Support for selecting a control profile different from the default loaded from all available profiles on your folders. You just need to go to the controller banner and press left (or right) to show a list of possible profiles. Pressing select you will choose the profile that you want to be loaded on the hyperpause exit. Many Thanks to ghutch for the implementation of necessary changes both on keymapper.ahk and hyperpause.ahk files. Keymapper must be enabled in order to access the controller config menu. (requested by bob.records - added by ghutch - [url]http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=258975&viewfull=1#post258975[/url])
+ * Shared.ahk
+  - Added - Changes to support the new bezel features.
+  - Added - Another scenario with rom mapping when 7z is enabled, and there is no valid rom names or extensions, so you have skipchecks enabled. Previously this would error out in 7z, but now it gets through. The scenario for this would be when you wanted to use alternate archived names for an arcade or scummvm game, where the archive contains no roms or extensions that match the name in your db.
+  - Added - 7z extractions now check for free space before performing an extraction. Will error out if you run out of space in your 7zExtractPath. This prevents a 7z.exe error that you might of not known the cause.
+  - Added - IniReadCheck in the module thread now accepts multiple sections separated by |. The function will read each section in the ini and treat each consecutive section checked as the preferred value if it exists. Most commonly used to allow Global/system/rom or Global/rom module settings by only needing one function call in the module.
+  - Fixed - Log in Shared.ahk StartModule() not showing correct romName.
+  - Fixed - Log in Shared.ahk CreateRomTable() not showing "*."
+  - Fixed - When 7z is enabled, yet wasn't needed because rom was either not compressed or already extracted in temp folder, you would get an ahk error about your animation label not found.
+  - Fixed - When logging command windows, because all applications ran are logged, this would cause an issue with logs already being used. Now command logs are sequential. You may notice multiple command logs in your HL root folder if this is enabled.
+  - Fixed - When showing command windows and multiples were open, HL would only close the first one. I now keep track of all of them and close each one on exit.
+  - Changed - Module settings in log now include section name.
+  - Changed - Rewrote how Fade finds it's Layer 1 and 2 images, shrinking code down by about 50%.
+  - Changed - GetFadePicPosition() moved from Fade.ahk to Shared.ahk so the MFME module can use it when Fade is disabled.
+  - Changed - Closing the module thread on ScriptError's now calls ExitModule() instead of ExitApp which has a very small chance to cause multiple errors if you have multiple problems, but no need to duplicate code to clean up on errors. Before, it would close after the first error and that's it. Now it will cleanly exit and restore proper keymaps if enabled.
+  - Changed - Cancelling a 7z extraction now closes the module thread through ExitModule() instead of ExitApp. This should help prevent any issues with things lingering around after a cancel.
+ * XHotkey.ahk
+  - Fixed - Bug with hold key option.
+ * Multigame.ahk
+  - Changed - MultiGame now behaves exactly like HyperPause menus drawing.
+  - Changed - Complete rewrite of how MultiGame finds Game Art, removing all duplicate code. In order to properly log everything, this was required. This will also speed up MG launch by a few ms, as less I/O checks are taking place.
+  - Changed - AHK remaps are now independent from the other keymappers (xpadder and joytokey) and can be used on its own or in conjunction with the others. This means you can now use AHK and xpadder if you wish. See the new key Keymapper_AHK_Enabled. (needs an HLHQ update to configure this new option)
+  - Added - Changes to support the new bezel features.
+  - Added - Automatic resize multigame options for different resolutions. Set the image adjust scale to "0" (zero), and all multigame components will be resized to your current screen resolution assuming that the original values were made for a 1920x1080 resolution.
+  - Added - Progress bar support for multigame changes that requires 7z extraction. This means that when you swap discs, and 7z is used for extraction, you will now see a progress bar.
+  - Added - MultiGame now logs everywhere it's looking and the images it finds that will be used.
+  - Fixed - One path where MultiGame scans for Game Art images was not correct.
+ * Fade.ahk
+  - Added - A brief window when exiting an emu that runs fullscreen to attempt to prevent your front end or desktop from flashing in before your fadeOut image appears. See the new setting Fade_Out_Extra_Screen.
+ * Fade animations.ahk
+  - Fixed - Changes to fix statistics last time played bug
+  - Fixed - Progress Bar text 1 options using incorrect variable
+  - Fixed - Statistics extra line jumps bug appearing when launching a game for the first time.	
+ * Statistics.ahk
+  - Added - Changes to fix statistics last time played bug	
+
+2014/05/01
+ * HyperLaunch - v3.0.0.9
+  - Fixed - VJoy profiles, was using a variable that was removed awhile back and no vjoy profiles could be found.
+  - Fixed - 7z bug introduced from 3.0.0.8 that would try to extract a rom already found in the 7z temp folder.
+  - Fixed - IniFileEdit was not replacing some values that got confused for regex.
+  - Fixed - Left in some MultiGame settings I had hardcoded in to test, this prevented you from being able to customize a lot of MG's font parameters.
+  - Fixed - MultiGame did not support multiple rom paths, it does now!
+  - Fixed - Bug in Fade Animations.ahk that caused an ahk error in a specific scenario with MG and HP enabled and after selecting a game in MG.
+  - Fixed - Bug in FadeInStart that would not pre-load locations of multiple discs into the table (at launch) if HP or Fade was disabled.
+  - Fixed - Double creation of romTable when MG was enabled.
+  - Added - Logs to show each VJoy profile HL is looking for.
+  - Added - Logs to show your screen's current resolution and emu size before MultiGame draws it's screen.
+  - Added - Logs added in MultiGame to show where it's scanning for background images.
+  - Added - More MultiGame logs to give more info on what it is doing.
+  - Added - More Rom Mapping Launch Menu logs to give more info on what it is doing.
+  - Added - Daemon Tools now logs the file it received.
+  - Added - Logs to show what GetFadePicFile is looking for for your Fade Layer images.
+  - Added - Check if HyperLaunch was used correctly and sent a systemName and romName.
+  - Added - When RestoreFE is used, will now send a mouse click to your front end on exit. Should fix issues when a simple left click was needed to put focus back to Hyperspin.
+  - Added - Player 2 navigation keys.
+  - Added - Support for Player 2 navigation keys in MultiGame, Rom Map Launch Menu, and HyperPause.
+  - Added - Rom Mapping and Launch menu support for Having a list of mame clones where only your parents are show in your wheel. You would define all the clones on the rom map ini.
+  - Changed - Log now shows the actual OS language rather than a language code. I had to remove 2 language code translations as it made the expression too long for ahk: (0443 = Uzbek_Latin and 0843 = Uzbek_Cyrillic), I 
+  - Changed - Always logs errors
+ * Shared.ahk:
+  - Added one line change (line 528), to reset the description value when the game is not found on the database.
+  - Fixed the statistics reset bug, after passing 24 hours of gameplay.
+ * Rom Mapping Launch Menu.ahk:
+  - Added code to avoid running filters and additional info functions if there is no naming scheme defined on the rom map ini file.
+ * Fade.ahk:
+  - Changed GetFadePicFile function to support random choice of all Fade Layer images (images should be named layer 1*.png, e.g. layer 1 - balblabla.png, layer 1 second options.png,...).
+ * HyperPause.ahk:
+  - Added support for save and load state screenshot show (brownvim request - http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-Requests&p=250127&viewfull=1#post250127).
+  - Added support for highscores with more then 3 columns (HillJackBob request - http://www.hyperspin-fe.com/forum/showthread.php?26862-Small-High-Score-Issue-Found-in-HyperPause).
+  - Added support for main menu bar verticall offset (Angelus_EV request - http://www.hyperspin-fe.com/forum/showthread.php?26173-640x480&p=250243&viewfull=1#post250243) (controlled by Bar_Vertical_Offset ini option).
+  - Fullscreen images now uses the most of the screen available size at 100% level of zoom (requested by DrMoney - http://www.hyperspin-fe.com/forum/showthread.php?26074-HyperPause-Feature-
+  - Added option to hide the full screen help text after some time, or disable it completly (requested by Gikachon - http://www.hyperspin-fe.com/forum/showthread.php?26892-Question-about-controls-
+  - Added support for restoring HyperPause to exactly the same point were you left it for the last time while in the same game session (requested by lank.g01 - http://www.hyperspin-fe.com/forum/sh...l=1#post258708).
+  - Small fixes to menu drawing bugs.
+  - Corrected folder path on the error message when the default HyperPause font is not used.
+
+2014/04/01
+ * HyperLaunch - v3.0.0.8
+  - Added - Log which shows the run (CLI) command sent to BetaBrite and another when exiting HL
+  - Added - Log which shows the run (CLI) command sent to CPWizard and another when exiting HL
+  - Added - Log which shows the run (CLI) command sent to VJoy and another when exiting HL
+  - Added - Logs to identify what method of the Main thread HyperLaunch used where it branches off depending on what SkipChecks is used.
+  - Fixed - CLI for BetaBrite support on launch, removed an extra path being sent to betabrite.
+  - Fixed - SkipChecks method was looking for "Rom" not "Rom Only"
+
+2014/03/01
+ * HyperLaunch - v3.0.0.7
+  - Fixed - StopGlobalUserFeatures moved to FadeOutExit instead of FadeInExit. It would not trigger if emu closed w/o pressing the exit emu key. Also if fadeOut was disabled, would not trigger.
+  - Fixed - IniFileEdit bug that would not correctly locate the end of line characters on all ini-type files.
+
+2014/02/01
+ * HyperLaunch - v3.0.0.6
+  - Added - A new method to troubleshoot launching emus. For the most part, this eliminates the need to create batch files when you need to test running an emu directly to read the output in a command window.
+  - Added - New setting to control showing the command window, Logging_Show_Command_Window. See the HL site for more info: https://sites.google.com/site/hyperlaunch2/home/first-steps/keys?pli=1#TOC-Logging-
+  - Once HLHQ is updated with the new setting, you can set this in the Logging section. For now, you can only turn it on/off manually in the Settings\HyperLaunch.ini.
+  - Changed - WinClose function now also does a winwaitclose with a quick timeout so it can properly return errorlevel if required in the module.
+  - Added - A library I had to create to read from INI-type config files w/o any [sections] defined. I made this so I can read/write to the RetroArch cfg as it uses an assinine method to store settings. New function calls available for use include ReadProperty, WriteProperty, and SaveProperty. See how to use them in the new RetroArch module or by reading them in shared.ahk.
+
+2014/01/01
+ * HyperLaunch - v3.0.0.5
+  - 7z has been completely rewritten and optimized because of a couple bugs found. This gave me the opportunity to remove a lot of duplicate code (shrunk by 50%) that I just didn't want to bother doing before, but now I had to in order to fix said bugs.
+  - 7z should no longer create 3 romName folders deep if your rom is inside a folder in the archive. Yuck, I know...
+  - 7z now does a size compare of the contents of an archive and what's already extracted in your temp folder. If they differ, it will extract the game again, otherwise it loads the already extracted rom.
+  - 7z has had many more logs added/changed to track what's going on.
+  - Keymapper will no longer error if an AHK profile is not found. It will instead give a warning in the log. This will make it so you don't have to create profiles for every game once enabled or a blank default one.
+  - "Rom Extensions" is now a working choice for Skip Checks. It is used for systems like scummvm when your games are zipped and the file matches the database but roms inside do not.
+  - romExtensions variable is now send on every launch even when Skip Checks is used. On some scenarios it was still needed by the module or some features.
+  - Rom Mapping now logs the rom it found rather than only the files it looks for. It also logs if and how many roms it found for the map table.
+  - Fade Animation's default animation logs when a sound is played.
+  - Fixed bug in Rom Map Launch Menu that it would not destroy the gui when FadeIn was disabled
+  - Fixed bug in Rom Map Launch Menu that it would not restore your exit emu key to control CloseProcess on its exit and would trigger ExitModule() prematurely when key was pressed.
+  - MultiGame's table creation call moved so it doesn't only trigger when FadeIn is enabled
+
+2013/12/01
+ * HyperLaunch - v3.0.0.4
+  - Module Extensions\HyperLaunch.dll updated to add some new functions used in the near future.
+  - If Skipchecks is enabled in any way, will convert romPaths to absolute if relative
+  - Added a new Setting in HL to turn on or off the 7z extracting and complete sounds on a global or per-system basis
+  - Fade option "Detect Error" has had some additional functionality added. If true (default), will error if there is a problem with the module and waiting for a window to appear. If you disable this, it will not error, but the module may get stuck if something is wrong like an incompatbile error.
+  - All WinWait and WinWaitActive calls in the modules will log detailed information about the currently active window before and after the command is run. This is only done when debug or higher logging level is set.
+  - The log will now warn you if you have a different system name than what is supported by the module.
+ * HyperPause
+  - Esrb has been changed to Rating in your HyperPause Game Info Item List options (If you were using this choice, please fix this otherwise you will not see Ratings)
+  - All Data\Game Info\*.ini files have been changed to reflect the above change
+  - Added Earth Bound (USA) (Proto) rom info in the Data\Game Info\Nintendo Entertainment System.ini (Thanks Cruel Moose)
+ * Libs
+  - Lib\xhotkey.ahk - had a wrong crc number
+  - Fixed errorlevel being set and causing problems in the ePSXe module and triggering a scripterror because HL thought errorlevel was set when it shouldn't be.
+  - Lib\Shared.ahk - added some screen manipulation functions and an updated togglemenu function
+  - Lib\HyperPause.ahk - contains a fix for the xp bug that brolly and others were having. Also fixed some bugs reported by windowlicker11.
+  - Lib\Bezel.ahk - contains functions to deal with three window emus (Sega Pico).
+  - Lib\Fade Animations.ahk - updated to now search for wheel images in in Media\Wheels folder as a primary source and HyperSpin Media folders as a secondary source. Further detaching HL from HS.
+  - Media\Fade\_Default\System folder can be deleted if you were using it. Use the above folder instead now.
+  - Lib\Keymapper.ahk - Fixed incorrect path for AHK and JoyToKey system profiles
+  - Lib\User Functions.ahk - Added StartGlobalUserFeatures() and StopGlobalUserFeatures().
+  - These Functions now allow you to define code that will run globally in every module. You would use the Stop function if there is something you need to do on exit.
+ * Media
+  - Media\Bezels\Sega Pico - contains bezel images for the Sega Pico system
+ * Keymapper
+  - System JoyIDsPreferredControllers key changed to a default value of "use_global"
+
+2013/11/01
+ * HyperLaunch - v3.0.0.3
+  - Bug Fix - If CPWizard and BetaBrite were enabled but had empty paths, checkfiles would return blank.
+
+2013/10/01
+ * HyperLaunch - v3.0.0.2
+  - Bug Fix - now erroring after finding correct rom because loop was not ending and continued searching for a rom.
+
+2013/09/01
+ * HyperLaunch - v3.0.0.1
+  - Quick hotfix to address an issue where no error thrown when Match Extension = true and rom was not found, it would still load emu with no rom.
+
+2013/08/01
+ * HyperLaunch - v3.0.0.0
+  - Initial Release

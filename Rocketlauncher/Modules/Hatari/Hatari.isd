@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="StatusBar" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>show floppy status bar at bottom of emu window</DESCRIPTION>
+						</KEY>
+						<KEY name="Borders" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>ST/STE only - show screen borders (for low/med resolution overscan demos), false will help stretch the game to fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="ConfigFile" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Set this if you want to use a custom config file. By default Atari800 will load configurations from the global and user configuration files which are located at %EmulatorPath%\etc\atari.cfg and %HOMEPATH%\.hatari\hatari.cfg respectively. Should be a path relative to the emulator's folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>cfg</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="Zoom" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>zoom low resolution</DESCRIPTION>
+						</KEY>
+						<KEY name="DesktopST" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Whether fullscreen mode uses desktop resolution to avoid: messing multi-screen setups, several seconds delay needed by LCD monitors resolution switching and the resulting sound break. As Hatari ST/E display code doesn't support zooming (except low-rez doubling), it doesn't get scaled (by Hatari or monitor) when this is enabled. Therefore this is mainly useful only if you suffer from the described effects, but still want to grab mouse and remove other distractions from the screen just by toggling fullscreen mode.
+							</DESCRIPTION>
+						</KEY>
+						<KEY name="FastFloppy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Speed up floppy disk access emulation (can break some programs). Turned off by default</DESCRIPTION>
+						</KEY>
+						<KEY name="WarpKey" required="false" nullable="false">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>toggle warp speed</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="MachineType" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Machine Type ST, STE</DESCRIPTION>
+							<VALUES>
+								<VALUE description="ST">st</VALUE>
+								<VALUE description="STE">ste</VALUE>								
+							</VALUES>							
+						</KEY>
+						<KEY name="MemorySize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Memory size of emulated Atari ST</DESCRIPTION>
+							<VALUES>
+								<VALUE description="512K">0</VALUE>
+								<VALUE description="1M">1</VALUE>
+								<VALUE description="2M">2</VALUE>								
+								<VALUE description="4M">4</VALUE>
+								<VALUE description="8M">8</VALUE>
+								<VALUE description="14M">14</VALUE>		
+							</VALUES>							
+						</KEY>
+						<KEY name="TOSImage" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>TOS/System Rom Image to use</DESCRIPTION>
+							<VALUES>
+								<VALUE>Tos100.img</VALUE>
+								<VALUE>Tos102.img</VALUE>
+								<VALUE>Tos104.img</VALUE>
+								<VALUE>Tos162.img</VALUE>
+								<VALUE>Tos102us.img</VALUE>
+								<VALUE>Tos206.img</VALUE>								
+								<VALUE>Tos206us.img</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="CPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU to use.  Must use TOSImage 2.06 for CPU 68010 and above</DESCRIPTION>
+							<VALUES>
+								<VALUE description="68000">0</VALUE>
+								<VALUE description="68010">1</VALUE>
+								<VALUE description="68020">2</VALUE>
+								<VALUE description="68030">3</VALUE>
+								<VALUE description="68040">4</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="CPUClock" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU Clock to use.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="8 Mhz">8</VALUE>
+								<VALUE description="16 Mhz">16</VALUE>
+								<VALUE description="32 Mhz">32</VALUE>
+							</VALUES>							
+						</KEY>
+						<KEY name="UseSingleDrive" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Only relevant for multi disk games.  If this is true, only one drive will be used.  Otherwise, the second disk will be loaded in Drive B at emu start.  Set to true if game can only read from a single drive.</DESCRIPTION>
+						</KEY>
+						<KEY name="Monitor" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE>mono</VALUE>
+								<VALUE>rgb</VALUE>
+								<VALUE>vga</VALUE>
+								<VALUE>tv</VALUE>
+							</VALUES>
+							<DESCRIPTION>Some games require specific monitor types, like hi-res.</DESCRIPTION>
+						</KEY>
+						<KEY name="WriteProtectFloppy" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE>on</VALUE>
+								<VALUE>off</VALUE>
+								<VALUE>auto</VALUE>
+							</VALUES>
+							<DESCRIPTION>Some games require the game disk to be write protected in order to boot properly.  on/off is self explanatory.  auto will use the file attributes of the actual disk image on your computer.</DESCRIPTION>
+						</KEY>
+						<KEY name="FastFloppy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Speed up floppy disk access emulation (can break some programs). Turned off by default</DESCRIPTION>
+						</KEY>
+						<KEY name="AssociatedCartName" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Very unique scenario where a game boots from disk, but also requires a specific cartridge to be mounted as a way of copy protection.  Use full path.</DESCRIPTION>
+						</KEY>						
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

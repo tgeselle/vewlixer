@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen. Borderless windowed mode is used when fullscreen is disabled.</DESCRIPTION>
+						</KEY>
+						<KEY name="Fullscreen_Width" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The width you want to force in fullscreen mode. If an unsupported width is used, the default will be used, which is your monitor's width.</DESCRIPTION>
+						</KEY>
+						<KEY name="Fullscreen_Height" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The height you want to force in fullscreen mode. If an unsupported height is used, the default will be used, which is your monitor's height.</DESCRIPTION>
+						</KEY>
+						<KEY name="External_DMD" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Turning this on will allow the module to hide the window components of the external DMD. To customize placement on the screen, set the other DMD settings in this window. Default is false.</DESCRIPTION>
+						</KEY>
+						<KEY name="DMD_X" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The X location you want the DMD to appear at. Default is the right side of your primary monitor. So if your desktop width is 1920, this value will default to 1920.</DESCRIPTION>
+						</KEY>
+						<KEY name="DMD_Y" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The Y location you want the DMD to appear at.</DESCRIPTION>
+						</KEY>
+						<KEY name="DMD_Width" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The horizontal width of the DMD.</DESCRIPTION>
+						</KEY>
+						<KEY name="DMD_Height" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>The vertical height of the DMD.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

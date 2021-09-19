@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true emulator will run fullscreen.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="MachineType" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Define what machine you are using. Default is Oric-1.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Oric atmos">atmos</VALUE>
+								<VALUE description="Oric-1">oric1</VALUE>
+								<VALUE description="Oric-1 16k">o16k</VALUE>
+								<VALUE description="Telestrat">telestrat</VALUE>
+								<VALUE description="Pravetz 8D">pravetz</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ManualTapeLoad" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>CLI doesn't work for some tape games, but will work when loaded via the emulator 'Insert Tape' feature.  Setting this to true loads the tape after the emu has started.  Default is false.</DESCRIPTION>
+						</KEY>
+						<KEY name="Command" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Used if rom requires a command after loading is complete to start the game. Use standard AutoHotkey key names, use {Wait} to pause 500 milliseconds between words/characters. ie, "R{Wait}C" to press the R and C keys with a slight delay between them. Useful for navigating through menus.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>				
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

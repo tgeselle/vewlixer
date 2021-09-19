@@ -1,0 +1,278 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Xml;
+
+using RocketLauncher.UI.Entity;
+
+namespace RocketLauncher.UI.Database
+{
+    [DisplayName("RetroFE")]
+    [FrontendExecutable("retrofe.lnk")]
+    [PluginDescription("Loads from RetroFE databases")]
+    [RocketLauncherPluginName("RetroFE")]
+    [PluginVersion("1.0.1")]
+    public class RetroFEPlugin : DefaultDatabasePlugin
+    {
+        public RetroFEPlugin(String RLpath)
+            : base(RLpath)
+        {}
+
+        protected override String getMainDBsubPath()
+        {
+            String menu_xml = FEpath + @"\Menu.xml";
+            if (File.Exists(menu_xml))
+                return @"\Menu.xml";
+            else
+                return @"\Collections\Main\Menu.txt";
+        }
+
+        protected override String getSystemDBsubPath(String system)
+        {
+            return @"\Collections\" + system + @"\Include.txt";
+        }
+
+        public override void renameFrontendSystem(String old_system_name, String new_system_name, String new_system_description)
+        {
+            //Renaming systems isn't supported yet
+            return;
+        }
+
+        public override void createSystemDatabase(String system, List<GameXml> games, bool overwrite)
+        {
+            //Creating databases isn't supported yet
+            return;
+        }
+
+        //LOADING SYSTEMS FROM MAIN MENU INI FILE
+        public override List<String> loadSystems()
+        {
+            List<String> systems = new List<String>();
+
+            String dbFile = getMainDBFullPath();
+            if (File.Exists(dbFile))
+            {
+                if (dbFile.EndsWith(".xml", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    using (XmlReader reader = XmlReader.Create(getMainDBFullPath()))
+                    {
+                        bool proceed = reader.ReadToFollowing("menu");
+
+                        while (proceed)
+                        {
+                            proceed = reader.ReadToFollowing("item");
+                            if (proceed)
+                            {
+                                string name = reader.GetAttribute("collection");
+                                if (!systems.Contains(name))
+                                    systems.Add(name);
+                                else
+                                    duplicateSystemFound(name);
+                            }
+                            else
+                            {
+                                proceed = false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    StreamReader reader = new System.IO.StreamReader(dbFile);
+                    String line = "";
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (line.Trim().Length > 0)
+                        {
+                            string name = line.Trim();
+                            if (!systems.Contains(name))
+                                systems.Add(name);
+                            else
+                                duplicateSystemFound(name);
+                        }
+                    }
+                    reader.Close();
+                }
+            }
+            return systems;
+        }
+
+        //LOADING GAMES FROM SYSTEM XML FILE
+        public override ObservableCollection<GameXml> loadGames(String system, out bool loaded)
+        {
+            System.IO.StreamReader file = null;
+            ObservableCollection<GameXml> gameList = new ObservableCollection<GameXml>();
+
+            try
+            {
+                loaded = true;
+
+                //Cache.db (For Meta-Data)
+                FileInfo cachedb = new FileInfo(FEpath + @"\meta.db");
+                Dictionary<String, GameXml> cached_games = new Dictionary<String, GameXml>();
+
+                if (cachedb.Exists)
+                {
+                    String sql = "SELECT * FROM Meta WHERE collectionName = '" + system + "';";
+                    var conn = new System.Data.SQLite.SQLiteConnection("Data Source=" + cachedb.FullName + ";Version=3;");
+                    try
+                    {
+                        conn.Open();
+                        System.Data.SQLite.SQLiteCommand command = new System.Data.SQLite.SQLiteCommand(sql, conn);
+                        System.Data.SQLite.SQLiteDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            String name = (String)reader["name"];
+                            String title = (String)reader["title"];
+                            String year = (String)reader["year"];
+
+                            if (!cached_games.ContainsKey(name))
+                            {
+                                GameXml game = new GameXml(name, title, "", "", "", system);
+                                cached_games.Add(name, game);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+
+                //Exclude.txt
+                List<String> excluded_games = new List<String>();
+                FileInfo fexc = new FileInfo(FEpath + @"\Collections\" + system + @"\Exclude.txt");
+                if (fexc.Exists)
+                {
+                    //Exclude.txt exists
+                    string line;
+                    // Read the file line by line.
+                    file = new System.IO.StreamReader(fexc.FullName);
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.Trim().Length > 0)
+                            excluded_games.Add(line.Trim());
+                    }
+                    file.Close();
+                    file = null;
+                }
+
+                //Include.txt
+                FileInfo finc = new FileInfo(FEpath + @"\Collections\" + system + @"\Include.txt");
+                bool readFromRomPath = true;
+                int lineCount = 0;
+
+                if (finc.Exists)
+                {
+                    //Include.txt exists
+                    string line;
+                    // Read the file line by line.
+                    file = new System.IO.StreamReader(finc.FullName);
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        String trimmedLine = line.Trim();
+                        if (!trimmedLine.StartsWith("#") && trimmedLine.Length > 0) //Lines starting with # are comments
+                        {
+                            readFromRomPath = false; //At least one entry found so all roms need to be listed on this file
+                            if (!excluded_games.Contains(line.Trim()))
+                            {
+                                GameXml gm = cached_games.ContainsKey(line.Trim()) ? cached_games[line.Trim()] : new GameXml(line.Trim(), line.Trim(), "", "", "", system);
+                                gameList.Add(gm);
+                            }
+                            lineCount++;
+                        }
+                    }
+                    file.Close();
+                    file = null;
+                }
+
+                //No entries on Include.txt so add all entries from database
+                if (lineCount == 0)
+                {
+                    foreach (String name in cached_games.Keys)
+                    {
+                        if (!excluded_games.Contains(name))
+                        {
+                            gameList.Add(cached_games[name]);
+                        }
+                    }
+                }
+
+                //We want to use RetroFE databases for auditing, not list all roms that it can find.
+                /*if (readFromRomPath)
+                {
+                    //Read from rom path
+                    FileInfo listconf = new FileInfo(FEpath + @"\Collections\" + system + @"\Settings.conf");
+                    if (listconf.Exists)
+                    {
+                        string line;
+                        // Read the file line by line.
+                        file = new System.IO.StreamReader(listconf.FullName);
+                        String path = null;
+                        String extensions = null;
+
+                        while ((line = file.ReadLine()) != null)
+                        {
+                            if (line.Trim().StartsWith("list.path"))
+                            {
+                                String[] paths = line.Split('=');
+                                if (paths.Length == 2)
+                                    path = paths[1].Trim();
+                            }
+                            else if (line.Trim().StartsWith("list.extensions"))
+                            {
+                                String[] exts = line.Split('=');
+                                if (exts.Length == 2)
+                                    extensions = exts[1].Trim();
+                            }
+                            if (path != null && extensions != null)
+                                break; //no need to read any further
+                        }
+                        file.Close();
+                        file = null;
+
+                        if (path != null && path.Length > 0 && extensions != null && extensions.Length > 0)
+                        {
+                            //List all files with valid extensions in the rom path and add them to the list
+                            DirectoryInfo dinfo = new DirectoryInfo(path);
+                            if (dinfo.Exists)
+                            {
+                                String[] exts = extensions.Split(',');
+                                IEnumerable<String> base_Files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(f => exts.Any(x => f.EndsWith(x, StringComparison.OrdinalIgnoreCase)));
+                                foreach (String f in base_Files)
+                                {
+                                    String name = Path.GetFileNameWithoutExtension(f);
+                                    if (!excluded_games.Contains(name))
+                                    {
+                                        GameXml gm = cached_games.ContainsKey(name) ? cached_games[name] : new GameXml(name, name, "", "", "", system);
+                                        gameList.Add(gm);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }*/
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (file != null)
+                    file.Close();
+            }
+            return gameList;
+        }
+
+        //PATH TO WHEEL IMAGE RELATIVE TO THE FRONTEND FOLDER
+        public override String getSystemLogoSubPath(String system)
+        {
+            return null;
+        }
+
+    }
+}

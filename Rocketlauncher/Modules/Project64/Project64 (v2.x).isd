@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="EmuVersion" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the full version of the emu so RocketLauncher can find the window. So if your emu version is 2.2.1, enter exactly 2.2.1</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelDelay" required="false" minLength = "1" maxLength = "10000">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Amount of time in milliseconds to give Project64 time to draw its window before bezel takes over. If the emu window is not being sized correctly to the bezel window, try increasing this sleep in increments of 100</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="UseCustomWiimoteProfiles" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to use custom Wiimote profiles for Wii games</DESCRIPTION>
+						</KEY>
+						<KEY name="UseCustomGCPadProfiles" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to use custom Gamecube Pad profiles for Gamecube games</DESCRIPTION>
+						</KEY>
+						<KEY name="HideMouse" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Hides mouse cursor in the emu options</DESCRIPTION>
+						</KEY>
+						<KEY name="RefreshKey" required="false" nullable="true">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>Hotkey to "Refresh" Wiimotes, delete the key to disable it</DESCRIPTION>
+						</KEY>
+						<KEY name="Timeout" required="false" minLength = "1">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Amount in seconds we should wait for the PairKey and Refresh key to timeout</DESCRIPTION>
+						</KEY>
+						<KEY name="Render_To_Main" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Default false for legacy support. If true, renders the game in the main Dolphin window. When false, dolphin will open a 2nd window and emulate the game to that.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Controls" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Control_Type_Port_1" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for all games in Port 1.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_2" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for all games in Port 2.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_3" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for all games in Port 3.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_4" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for all games in Port 4.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Network" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Enable_Network_Play" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, when this game is launched, will give an option if you want to play Single or Multi-Player.</DESCRIPTION>
+						</KEY>
+						<KEY name="NetPlay_Nickname" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets the Nickname you will appear as in Multi-Player.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_IP" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the IP address here. If no IP is entered on the GUI, this is the IP used.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_Port" required="false" nullable="true" minLength="0" maxLength="65535">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the Port here. Servers must make sure this port is forwarded through all firewalls.</DESCRIPTION>
+						</KEY>
+						<KEY name="Get_WAN_IP" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Will retrieve your WAN IP automatically, which is different than your LAN IP when behind a router. If you get a windows firewall prompt to allow RocketLauncher or Autohotkey to talk out, please allow it. You only really need this enabled if you are acting as a server and need to tell your clients your IP. Default is true.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="VBA Link" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="VBAExePath" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your VBA-M emulator executable.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="VBABiosPath" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your VBA Bios file.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="VBADelay" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Increase this delay if your Game Boy Advanced Windows appear frozen after load. Default value is 500 milliseconds.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="profile" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Only add a game to this ini if it needs a profile that is not your default. Profile name is the ini file, without the .ini extension</DESCRIPTION>
+						</KEY>
+						<KEY name="enableVBALink" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables Nintendo Game Boy Advance Link with Gamecube.</DESCRIPTION>
+						</KEY>
+						<KEY name="Control_Type_Port_1" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for this game in Port 1.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_2" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for this game in Port 2.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_3" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for this game in Port 3.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Control_Type_Port_4" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This setting allows you to force the control type to be used for this game in Port 4.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="Standard Controller">6</VALUE>
+								<VALUE description="GameCube Adapter for Wii U">12</VALUE>
+								<VALUE description="Steering Wheel">8</VALUE>
+								<VALUE description="Dance Mat">9</VALUE>
+								<VALUE description="DK Bongos">10</VALUE>
+								<VALUE description="GBA">5</VALUE>
+								<VALUE description="Keyboard">7</VALUE>
+								<VALUE description="AM Baseboard">11</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

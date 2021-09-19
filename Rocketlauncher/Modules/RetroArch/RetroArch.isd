@@ -1,0 +1,1089 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="HideConsole" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Hiding of the Console Window</DESCRIPTION>
+						</KEY>
+						<KEY name="ConfigFolder" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>This points to the config folder. Different RetroArch versions had different names and this helps support multiple versions of the emu instead of hardcoding a single path. If not set, will default to the ".\config" folder in your emu path.</DESCRIPTION>
+						</KEY>
+						<KEY name="Single_Core_Options" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to True if you want a single retroarch_core_options.cfg file to be used for all configurations. This file is located in the emulator root directory.</DESCRIPTION>
+						</KEY>
+						<KEY name="Eject_Toggle_Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets the key that will be used to eject the disk in Retroarch. Make sure to use a key that Retroarch and AHK will understand.</DESCRIPTION>
+						</KEY>
+						<KEY name="Next_Disk_Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets the key that will be used to go to the next disk in Retroarch. Make sure to use a key that Retroarch and AHK will understand.</DESCRIPTION>
+						</KEY>
+						<KEY name="Previous_Disk_Key" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets the key that will be used to go to the previous disk in Retroarch. Make sure to use a key that Retroarch and AHK will understand.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Network" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Enable_Network_Play" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, when this game is launched, will give an option if you want to play Single or Multi-Player.</DESCRIPTION>
+						</KEY>
+						<KEY name="NetPlay_Nickname" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets the Nickname you will appear as in Multi-Player.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_IP" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the IP address here. If no IP is entered on the GUI, this is the IP used.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_Port" required="false" nullable="true" minLength="0" maxLength="65535">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the Port here. Servers must make sure this port is forwarded through all firewalls.</DESCRIPTION>
+						</KEY>
+						<KEY name="Get_WAN_IP" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Will retrieve your WAN IP automatically, which is different than your LAN IP when behind a router. If you get a windows firewall prompt to allow RocketLauncher or Autohotkey to talk out, please allow it. You only really need this enabled if you are acting as a server and need to tell your clients your IP. Default is true.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%SystemName%" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="LibRetro_Core" required="false" nullable="true">
+							<KEYTYPE>FileNameNoExt</KEYTYPE>
+							<DESCRIPTION>The name of the core dll you want to use for this system. (Do NOT include the .dll extension.) This file should be in the same folder as your emulator or in the cores folder. This setting is optional. Only set this if you do not want to use the default core chosen by the module.</DESCRIPTION>
+						</KEY>
+						<KEY name="SuperGameBoy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this to true if this entire system should enable Super Game Boy mode in RetroArch. Make sure the rom "Super Game Boy (World).sfc" is located in the bios folder in your emuPath.</DESCRIPTION>
+						</KEY>
+						<KEY name="Overlay" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>cfg</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<DESCRIPTION>Set this to the Retroarch overlay you would like to use with this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="VideoShader" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>cgp</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<DESCRIPTION>Set this to the Retroarch video shader you would like to use with this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="AspectRatioIndex" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the aspect ratio you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="4:3">0</VALUE>
+								<VALUE description="16:9">1</VALUE>
+								<VALUE description="16:10">2</VALUE>
+								<VALUE description="16:15">3</VALUE>
+								<VALUE description="1:1">4</VALUE>
+								<VALUE description="2:1">5</VALUE>
+								<VALUE description="3:2">6</VALUE>
+								<VALUE description="3:4">7</VALUE>
+								<VALUE description="4:1">8</VALUE>
+								<VALUE description="4:4">9</VALUE>
+								<VALUE description="5:4">10</VALUE>
+								<VALUE description="6:5">11</VALUE>
+								<VALUE description="7:9">12</VALUE>
+								<VALUE description="8:3">13</VALUE>
+								<VALUE description="8:7">14</VALUE>
+								<VALUE description="19:12">15</VALUE>
+								<VALUE description="19:14">16</VALUE>
+								<VALUE description="30:17">17</VALUE>
+								<VALUE description="32:9">18</VALUE>
+								<VALUE description="Config">19</VALUE>
+								<VALUE description="4:3 (1:1 PAR)">20</VALUE>
+								<VALUE description="Core Provided">21</VALUE>
+								<VALUE description="Custom">22</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="CustomViewportWidth" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the width you would like the viewport to be for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportHeight" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the height you would like the viewport to be for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportX" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the x coordinate you would like the viewport to be located for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportY" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the y coordinate you would like the viewport to be located for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="StretchToFillBezel" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to stretch the Retroarch viewport to fill the bezel viewport.</DESCRIPTION>
+						</KEY>
+						<KEY name="IntegerScale" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use integer scaling for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="VSync" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use vsync for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="ThreadedVideo" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use threaded video for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="CropOverscan" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to crop overscan for this system.</DESCRIPTION>
+						</KEY>
+						<KEY name="Rotation" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to the rotation you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Normal">0</VALUE>
+								<VALUE description="90 deg">1</VALUE>
+								<VALUE description="180 deg">2</VALUE>
+								<VALUE description="270 deg">3</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="General"/>
+						<GROUP name="VideoOptions"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="LibRetro_Core" required="false" nullable="true">
+							<KEYTYPE>FileNameNoExt</KEYTYPE>
+							<DESCRIPTION>The name of the core dll you want to use for this rom. (Do NOT include the .dll extension.) This file should be in the same folder as your emulator or in the cores folder. This setting is optional. Only set this if you do not want to use the core chosen by the module.</DESCRIPTION>
+						</KEY>
+						<KEY name="SuperGameBoy" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this to true if this game should enable Super Game Boy mode in RetroArch. Make sure the rom "Super Game Boy (World).sfc" is located in the bios folder in your emuPath.</DESCRIPTION>
+						</KEY>
+						<KEY name="Overlay" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>cfg</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<DESCRIPTION>Set this to the Retroarch overlay you would like to use with this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="VideoShader" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>cgp</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<DESCRIPTION>Set this to the Retroarch video shader you would like to use with this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="AspectRatioIndex" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the aspect ratio you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="4:3">0</VALUE>
+								<VALUE description="16:9">1</VALUE>
+								<VALUE description="16:10">2</VALUE>
+								<VALUE description="16:15">3</VALUE>
+								<VALUE description="1:1">4</VALUE>
+								<VALUE description="2:1">5</VALUE>
+								<VALUE description="3:2">6</VALUE>
+								<VALUE description="3:4">7</VALUE>
+								<VALUE description="4:1">8</VALUE>
+								<VALUE description="4:4">9</VALUE>
+								<VALUE description="5:4">10</VALUE>
+								<VALUE description="6:5">11</VALUE>
+								<VALUE description="7:9">12</VALUE>
+								<VALUE description="8:3">13</VALUE>
+								<VALUE description="8:7">14</VALUE>
+								<VALUE description="19:12">15</VALUE>
+								<VALUE description="19:14">16</VALUE>
+								<VALUE description="30:17">17</VALUE>
+								<VALUE description="32:9">18</VALUE>
+								<VALUE description="Config">19</VALUE>
+								<VALUE description="4:3 (1:1 PAR)">20</VALUE>
+								<VALUE description="Core Provided">21</VALUE>
+								<VALUE description="Custom">22</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="CustomViewportWidth" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the width you would like the viewport to be for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportHeight" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the height you would like the viewport to be for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportX" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the x coordinate you would like the viewport to be located for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="CustomViewportY" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the y coordinate you would like the viewport to be located for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="StretchToFillBezel" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to stretch the Retroarch viewport to fill the bezel viewport.</DESCRIPTION>
+						</KEY>
+						<KEY name="IntegerScale" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use integer scaling for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="VSync" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use vsync for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="ThreadedVideo" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to use threaded video for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="CropOverscan" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to crop overscan for this rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="Rotation" required="false" nullable="false" group="VideoOptions">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to the rotation you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Normal">0</VALUE>
+								<VALUE description="90 deg">1</VALUE>
+								<VALUE description="180 deg">2</VALUE>
+								<VALUE description="270 deg">3</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="MAME" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%SystemName%" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BIOS_Roms_Folder" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>This needs to point to the folder with all your MAME BIOS roms. RetroArch needs these to use the MAME core. Defaults to use your Rom Path if not set.</DESCRIPTION>
+						</KEY>
+						<KEY name="Hide_Nag_Screen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Requires a MAME core compiled with this option. This will disable the nag screen if true.</DESCRIPTION>
+						</KEY>
+						<KEY name="Hide_Info_Screen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Requires a MAME core compiled with this option. This will disable the info screen if true.</DESCRIPTION>
+						</KEY>
+						<KEY name="Hide_Warning_Screen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Requires a MAME core compiled with this option. This will disable the Warning screen if true.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Nintendo 64" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%SystemName%" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Mupen_Gfx_Plugin" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the graphics plugin you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>auto</VALUE>
+								<VALUE>glide64</VALUE>
+								<VALUE>gln64</VALUE>
+								<VALUE>rice</VALUE>
+								<VALUE>angrylion</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_RSP_Plugin" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the RSP plugin you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>auto</VALUE>
+								<VALUE>hle</VALUE>
+								<VALUE>cxd4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_CPU_Core" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the CPU core you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>dynamic_recompiler</VALUE>
+								<VALUE>cached_interpreter</VALUE>
+								<VALUE>pure_interpreter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_1" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 1.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_2" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 2.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_3" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 3.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_4" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 4.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Gfx_Accuracy" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the graphics accuracy you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>low</VALUE>
+								<VALUE>medium</VALUE>
+								<VALUE>high</VALUE>
+								<VALUE>veryhigh</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Disable_Exp_Memory" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, disables expansion memory for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">yes</VALUE>
+								<VALUE description="false">no</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Texture_Filtering" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the texture filtering you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>automatic</VALUE>
+								<VALUE>N64 3-point</VALUE>
+								<VALUE>bilinear</VALUE>
+								<VALUE>nearest</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_VI_Refresh" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the VI refresh you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1500</VALUE>
+								<VALUE>2200</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Framerate" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the framerate you would like to use for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE>original</VALUE>
+								<VALUE>fullspeed</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Resolution" required="false" nullable="false">
+                            <KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the resolution you would like to use for the mupen core.</DESCRIPTION>
+							<VALUES>
+									<VALUE>640x480</VALUE>
+									<VALUE>320x200</VALUE>
+									<VALUE>320x240</VALUE>
+									<VALUE>400x256</VALUE>
+									<VALUE>512x384</VALUE>
+									<VALUE>640x200</VALUE>
+									<VALUE>640x350</VALUE>
+									<VALUE>640x400</VALUE>
+									<VALUE>800x600</VALUE>
+									<VALUE>960x720</VALUE>
+									<VALUE>856x480</VALUE>
+									<VALUE>512x256</VALUE>
+									<VALUE>1024x768</VALUE>
+									<VALUE>1280x1024</VALUE>
+									<VALUE>1600x1200</VALUE>
+									<VALUE>400x300</VALUE>
+									<VALUE>1152x864</VALUE>
+									<VALUE>1280x960</VALUE>
+									<VALUE>1600x1024</VALUE>
+									<VALUE>1920x1440</VALUE>
+									<VALUE>2048x1536</VALUE>
+									<VALUE>2048x2048</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Polygon_Offset_Factor" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the polygon offset factor you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>-3.0</VALUE>
+										<VALUE>-3.5</VALUE>
+										<VALUE>-4.0</VALUE>
+										<VALUE>-4.5</VALUE>
+										<VALUE>-5.0</VALUE>
+										<VALUE>5.0</VALUE>
+										<VALUE>4.5</VALUE>
+										<VALUE>4.0</VALUE>
+										<VALUE>3.5</VALUE>
+										<VALUE>3.0</VALUE>
+										<VALUE>2.5</VALUE>
+										<VALUE>2.0</VALUE>
+										<VALUE>1.5</VALUE>
+										<VALUE>1.0</VALUE>
+										<VALUE>0.5</VALUE>
+										<VALUE>0.0</VALUE>
+										<VALUE>-0.5</VALUE>
+										<VALUE>-1.0</VALUE>
+										<VALUE>-1.5</VALUE>
+										<VALUE>-2.0</VALUE>
+										<VALUE>-2.5</VALUE>
+								</VALUES>
+						</KEY>
+						<KEY name="Mupen_Polygon_Offset_Units" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the polygon offset units you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>-3.0</VALUE>
+										<VALUE>-3.5</VALUE>
+										<VALUE>-4.0</VALUE>
+										<VALUE>-4.5</VALUE>
+										<VALUE>-5.0</VALUE>
+										<VALUE>5.0</VALUE>
+										<VALUE>4.5</VALUE>
+										<VALUE>4.0</VALUE>
+										<VALUE>3.5</VALUE>
+										<VALUE>3.0</VALUE>
+										<VALUE>2.5</VALUE>
+										<VALUE>2.0</VALUE>
+										<VALUE>1.5</VALUE>
+										<VALUE>1.0</VALUE>
+										<VALUE>0.5</VALUE>
+										<VALUE>0.0</VALUE>
+										<VALUE>-0.5</VALUE>
+										<VALUE>-1.0</VALUE>
+										<VALUE>-1.5</VALUE>
+										<VALUE>-2.0</VALUE>
+										<VALUE>-2.5</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_VI_Overlay" required="false" nullable="false">
+								<KEYTYPE>Boolean</KEYTYPE>
+								<DESCRIPTION>If true, enables VI overlay used by Angrylion.</DESCRIPTION>
+								<VALUES>
+										<VALUE description="true">enabled</VALUE>
+										<VALUE description="false">disabled</VALUE>
+								</VALUES>
+						</KEY>
+						<KEY name="Mupen_Analog_Deadzone" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the analog deadzone you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>15</VALUE>
+										<VALUE>20</VALUE>
+										<VALUE>25</VALUE>
+										<VALUE>30</VALUE>
+										<VALUE>0</VALUE>
+										<VALUE>5</VALUE>
+										<VALUE>10</VALUE>
+								</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Mupen_Gfx_Plugin" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the graphics plugin you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>auto</VALUE>
+								<VALUE>glide64</VALUE>
+								<VALUE>gln64</VALUE>
+								<VALUE>rice</VALUE>
+								<VALUE>angrylion</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_RSP_Plugin" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the RSP plugin you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>auto</VALUE>
+								<VALUE>hle</VALUE>
+								<VALUE>cxd4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_CPU_Core" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the CPU core you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>dynamic_recompiler</VALUE>
+								<VALUE>cached_interpreter</VALUE>
+								<VALUE>pure_interpreter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_1" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 1.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_2" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 2.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_3" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 3.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Pak_4" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the expansion pack you would like to use for controller 4.</DESCRIPTION>
+							<VALUES>
+								<VALUE>none</VALUE>
+								<VALUE>memory</VALUE>
+								<VALUE>rumble</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Gfx_Accuracy" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>ffSet this to the graphics accuracy you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>low</VALUE>
+								<VALUE>medium</VALUE>
+								<VALUE>high</VALUE>
+								<VALUE>veryhigh</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Disable_Exp_Memory" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true, disables expansion memory for this system.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="true">yes</VALUE>
+								<VALUE description="false">no</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Texture_Filtering" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the texture filtering you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>automatic</VALUE>
+								<VALUE>N64 3-point</VALUE>
+								<VALUE>bilinear</VALUE>
+								<VALUE>nearest</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_VI_Refresh" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the VI refresh you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1500</VALUE>
+								<VALUE>2200</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Framerate" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the framerate you would like to use for this rom.</DESCRIPTION>
+							<VALUES>
+								<VALUE>original</VALUE>
+								<VALUE>fullspeed</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Resolution" required="false" nullable="false">
+                            <KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set this to the resolution you would like to use for the mupen core.</DESCRIPTION>
+							<VALUES>
+									<VALUE>640x480</VALUE>
+									<VALUE>320x200</VALUE>
+									<VALUE>320x240</VALUE>
+									<VALUE>400x256</VALUE>
+									<VALUE>512x384</VALUE>
+									<VALUE>640x200</VALUE>
+									<VALUE>640x350</VALUE>
+									<VALUE>640x400</VALUE>
+									<VALUE>800x600</VALUE>
+									<VALUE>960x720</VALUE>
+									<VALUE>856x480</VALUE>
+									<VALUE>512x256</VALUE>
+									<VALUE>1024x768</VALUE>
+									<VALUE>1280x1024</VALUE>
+									<VALUE>1600x1200</VALUE>
+									<VALUE>400x300</VALUE>
+									<VALUE>1152x864</VALUE>
+									<VALUE>1280x960</VALUE>
+									<VALUE>1600x1024</VALUE>
+									<VALUE>1920x1440</VALUE>
+									<VALUE>2048x1536</VALUE>
+									<VALUE>2048x2048</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_Polygon_Offset_Factor" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the polygon offset factor you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>-3.0</VALUE>
+										<VALUE>-3.5</VALUE>
+										<VALUE>-4.0</VALUE>
+										<VALUE>-4.5</VALUE>
+										<VALUE>-5.0</VALUE>
+										<VALUE>5.0</VALUE>
+										<VALUE>4.5</VALUE>
+										<VALUE>4.0</VALUE>
+										<VALUE>3.5</VALUE>
+										<VALUE>3.0</VALUE>
+										<VALUE>2.5</VALUE>
+										<VALUE>2.0</VALUE>
+										<VALUE>1.5</VALUE>
+										<VALUE>1.0</VALUE>
+										<VALUE>0.5</VALUE>
+										<VALUE>0.0</VALUE>
+										<VALUE>-0.5</VALUE>
+										<VALUE>-1.0</VALUE>
+										<VALUE>-1.5</VALUE>
+										<VALUE>-2.0</VALUE>
+										<VALUE>-2.5</VALUE>
+								</VALUES>
+						</KEY>
+						<KEY name="Mupen_Polygon_Offset_Units" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the polygon offset units you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>-3.0</VALUE>
+										<VALUE>-3.5</VALUE>
+										<VALUE>-4.0</VALUE>
+										<VALUE>-4.5</VALUE>
+										<VALUE>-5.0</VALUE>
+										<VALUE>5.0</VALUE>
+										<VALUE>4.5</VALUE>
+										<VALUE>4.0</VALUE>
+										<VALUE>3.5</VALUE>
+										<VALUE>3.0</VALUE>
+										<VALUE>2.5</VALUE>
+										<VALUE>2.0</VALUE>
+										<VALUE>1.5</VALUE>
+										<VALUE>1.0</VALUE>
+										<VALUE>0.5</VALUE>
+										<VALUE>0.0</VALUE>
+										<VALUE>-0.5</VALUE>
+										<VALUE>-1.0</VALUE>
+										<VALUE>-1.5</VALUE>
+										<VALUE>-2.0</VALUE>
+										<VALUE>-2.5</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Mupen_VI_Overlay" required="false" nullable="false">
+								<KEYTYPE>Boolean</KEYTYPE>
+								<DESCRIPTION>If true, enables VI overlay used by Angrylion.</DESCRIPTION>
+								<VALUES>
+										<VALUE description="true">enabled</VALUE>
+										<VALUE description="false">disabled</VALUE>
+								</VALUES>
+						</KEY>
+						<KEY name="Mupen_Analog_Deadzone" required="false" nullable="false">
+								<KEYTYPE>String</KEYTYPE>
+								<DESCRIPTION>Set this to the analog deadzone you would like to use for the mupen core.</DESCRIPTION>
+								<VALUES>
+										<VALUE>15</VALUE>
+										<VALUE>20</VALUE>
+										<VALUE>25</VALUE>
+										<VALUE>30</VALUE>
+										<VALUE>0</VALUE>
+										<VALUE>5</VALUE>
+										<VALUE>10</VALUE>
+								</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Nintendo Entertainment System" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+					<SECTION name="%SystemName%" required="false">
+							<SECTIONTYPE>System</SECTIONTYPE>
+							<KEYS>
+							</KEYS>
+					</SECTION>
+					<SECTION name="Nestopia" required="false">
+							<SECTIONTYPE>Global</SECTIONTYPE>
+							<KEYS>
+									<KEY name="Nestopia_Blargg_NTSC_Filter" required="false" nullable="false">
+											<KEYTYPE>String</KEYTYPE>
+											<DESCRIPTION>Set this to the blargg NTSC filter you would like to use for this system.</DESCRIPTION>
+											<VALUES>
+													<VALUE>disabled</VALUE>
+													<VALUE>composite</VALUE>
+													<VALUE>svideo</VALUE>
+													<VALUE>rgb</VALUE>
+											</VALUES>
+									</KEY>
+									<KEY name="Nestopia_Palette" required="false" nullable="false">
+											<KEYTYPE>String</KEYTYPE>
+											<DESCRIPTION>Set this to the palette you would like to use for this system.</DESCRIPTION>
+											<VALUES>
+													<VALUE>canonical</VALUE>
+													<VALUE>consumer</VALUE>
+													<VALUE>alternative</VALUE>
+													<VALUE>rgb</VALUE>
+											</VALUES>
+									</KEY>
+									<KEY name="Nestopia_Remove_Sprites_Limit" required="false" nullable="false">
+											<KEYTYPE>Boolean</KEYTYPE>
+											<DESCRIPTION>Set this to true to remove the sprites per-scanline limit for this system.</DESCRIPTION>
+											<VALUES>
+													<VALUE description="false">disabled</VALUE>
+													<VALUE description="true">enabled</VALUE>
+											</VALUES>
+									</KEY>
+							</KEYS>
+					</SECTION>
+					<SECTION name="%RomName%" required="false">
+							<SECTIONTYPE>Rom</SECTIONTYPE>
+							<GROUPS>
+									<GROUP name="Nestopia"/>
+							</GROUPS>
+							<KEYS>
+									<KEY name="Nestopia_Blargg_NTSC_Filter" required="false" nullable="false" group="Nestopia">
+											<KEYTYPE>String</KEYTYPE>
+											<DESCRIPTION>Set this to the blargg NTSC filter you would like to use for this rom.</DESCRIPTION>
+											<VALUES>
+													<VALUE>disabled</VALUE>
+													<VALUE>composite</VALUE>
+													<VALUE>svideo</VALUE>
+													<VALUE>rgb</VALUE>
+											</VALUES>
+									</KEY>
+									<KEY name="Nestopia_Palette" required="false" nullable="false" group="Nestopia">
+											<KEYTYPE>String</KEYTYPE>
+											<DESCRIPTION>Set this to the palette you would like to use for this rom.</DESCRIPTION>
+											<VALUES>
+													<VALUE>canonical</VALUE>
+													<VALUE>consumer</VALUE>
+													<VALUE>alternative</VALUE>
+													<VALUE>rgb</VALUE>
+											</VALUES>
+									</KEY>
+									<KEY name="Nestopia_Remove_Sprites_Limit" required="false" nullable="false" group="Nestopia">
+											<KEYTYPE>Boolean</KEYTYPE>
+											<DESCRIPTION>Set this to true to remove the sprites per-scanline limit for this rom.</DESCRIPTION>
+											<VALUES>
+													<VALUE description="false">disabled</VALUE>
+													<VALUE description="true">enabled</VALUE>
+											</VALUES>
+									</KEY>
+							</KEYS>
+					</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Atari Lynx" required="false">
+		<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<GROUPS>
+							<GROUP name="Handy"/>
+					</GROUPS>
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Handy_Rotation" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Screen rotation for vertically oriented games. Does not rotate your desktop.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">None</VALUE>
+								<VALUE description="Rotate Left">90</VALUE>
+								<VALUE description="Rotate Right">240</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Sony PlayStation" required="false">
+		<INITYPE>System</INITYPE>
+			<SECTIONS>
+			<SECTION name="%SystemName%" required="false">
+				
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="PSX_CD_Image_Cache" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Preloads the entire CD image into memory at startup. It causes a small delay at start-up but alleviates small hiccups that can be caused by emulated CD access. This setting is recommended unless you have a system with very low memory.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Enabled">enabled</VALUE>
+								<VALUE description="Disabled">disabled</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PSX_Memcard_Handling" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets how user data and memory cards are handled, either using libretro's built-in functions or Mednafen's. Unless you have a specific reason to change this, it is best to just allow libretro to handle data on its own.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="libretro">libretro</VALUE>
+								<VALUE description="Mednafen">mednafen</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PSX_Dualshock_Analog_Toggle" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This setting enables the Mode button in the DualShock controller, otherwise analogs are always enabled. Toggle the analog mode by pressing Select + Start + L1 + L2 + R1 + R2 at the same time.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Enabled">enabled</VALUE>
+								<VALUE description="Disabled">disabled</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P1_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 1 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P2_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 2 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P3_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 3 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P4_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 4 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P5_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 5 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P6_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 6 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P7_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 7 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P8_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 8 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+
+				<SECTION name="%RomName%" required="false">
+					<GROUPS>
+							<GROUP name="Mednafen"/>
+					</GROUPS>
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="PSX_CD_Image_Cache" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Preloads the entire CD image into memory at startup. It causes a small delay at start-up but alleviates small hiccups that can be caused by emulated CD access. This setting is recommended unless you have a system with very low memory.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Enabled">enabled</VALUE>
+								<VALUE description="Disabled">disabled</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PSX_Memcard_Handling" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Sets how user data and memory cards are handled, either using libretro's built-in functions or Mednafen's. Unless you have a specific reason to change this, it is best to just allow libretro to handle data on its own.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="libretro">libretro</VALUE>
+								<VALUE description="Mednafen">mednafen</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PSX_Dualshock_Analog_Toggle" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This setting enables the Mode button in the DualShock controller, otherwise analogs are always enabled. Toggle the analog mode by pressing Select + Start + L1 + L2 + R1 + R2 at the same time.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Enabled">enabled</VALUE>
+								<VALUE description="Disabled">disabled</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P1_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 1 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P2_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 2 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P3_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 3 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P4_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 4 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P5_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 5 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P6_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 6 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P7_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 7 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="P8_Controller_Type" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Controller type for Player 8 to use for this game. Defaults to DualShock.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="PS1 Joypad">1</VALUE>
+								<VALUE description="DualAnalog">261</VALUE>
+								<VALUE description="DualShock">517</VALUE>
+								<VALUE description="FlightStick">773</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

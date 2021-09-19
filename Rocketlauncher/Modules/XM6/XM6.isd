@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="StretchFullscreen" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Change this to influence the multiplication factor of the full screen. Use this if the screen is too small or too large. Default is 2 (x 1.5).</DESCRIPTION>
+							<VALUES>
+								<VALUE description="x1.0">0</VALUE>
+								<VALUE description="x0.5">1</VALUE>
+								<VALUE description="x1.5">2</VALUE>
+								<VALUE description="x1.8">3</VALUE>
+								<VALUE description="x2.0">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="StretchBezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Change this to influence the multiplication factor of the screen when using bezel. Use this if the screen is too small or too large. Default is 0 (x 1).</DESCRIPTION>
+							<VALUES>
+								<VALUE description="x1.0">0</VALUE>
+								<VALUE description="x0.5">1</VALUE>
+								<VALUE description="x1.5">2</VALUE>
+								<VALUE description="x1.8">3</VALUE>
+								<VALUE description="x2.0">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="StretchWindow" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Change this to influence the multiplication factor of the windowed screen. Use this if the screen is too small or too large. Default is 0 (x 1).</DESCRIPTION>
+							<VALUES>
+								<VALUE description="x1.0">0</VALUE>
+								<VALUE description="x0.5">1</VALUE>
+								<VALUE description="x1.5">2</VALUE>
+								<VALUE description="x1.8">3</VALUE>
+								<VALUE description="x2.0">4</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="DualDiskLoad" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Choose Yes if this game requires two disks to be loaded simultaneously.</DESCRIPTION>
+						</KEY>
+						<KEY name="MultipleDiskSlot" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Choose the FDD slot where MultiGame needs to change the disk</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Floppy #0">0</VALUE>
+								<VALUE description="Floppy #1">1</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

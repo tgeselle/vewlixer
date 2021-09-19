@@ -1,0 +1,1694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="Commodore Amiga CD32" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="ScreenMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="Full Screen">true</VALUE>
+								<VALUE description="Windowed mode">false</VALUE>
+								<VALUE description="Full Screen Windowed">fullwindow</VALUE>
+							</VALUES>
+							<DESCRIPTION>Screen Mode.&#13;&#13;If you have bezels enabled, this will be forced to "Full Screen Windowed".&#13;&#13;Special Notes:&#13;In "Full Screen Windowed", the X and Y resolutions in "Display" has no effect.&#13;In "Windowed mode", setting X and Y resolutions to "native" in "Display" has no effect.</DESCRIPTION>
+						</KEY>
+						<KEY name="Options" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want.</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Top_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Bottom_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Right_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Left_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Display" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="VideoMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>						
+						<KEY name="XResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="BlackerThanBlack" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Settings"/>
+						<GROUP name="Display"/>
+						<GROUP name="RAM"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="UseMouse" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Mouse for this game, the UAE configuration file that's loaded will depend on this value.</DESCRIPTION>
+						</KEY>
+						<KEY name="DelayHack" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true for those games that will only boot when inserted during the cd32 bios boot screen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Options" group="Settings" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want for that particular game.</DESCRIPTION>
+						</KEY>
+						<KEY name="VideoMode" group="Display" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode for this game (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="XResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="BlackerThanBlack" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" group="Display" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="FastMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Fast RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Commodore CDTV" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="ScreenMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="Full Screen">true</VALUE>
+								<VALUE description="Windowed mode">false</VALUE>
+								<VALUE description="Full Screen Windowed">fullwindow</VALUE>
+							</VALUES>
+							<DESCRIPTION>Screen Mode.&#13;&#13;If you have bezels enabled, this will be forced to "Full Screen Windowed".&#13;&#13;Special Notes:&#13;In "Full Screen Windowed", the X and Y resolutions in "Display" has no effect.&#13;In "Windowed mode", setting X and Y resolutions to "native" in "Display" has no effect.</DESCRIPTION>
+						</KEY>
+						<KEY name="Options" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want.</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Top_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Bottom_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Right_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Left_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Display" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="VideoMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>						
+						<KEY name="XResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="BlackerThanBlack" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Settings"/>
+						<GROUP name="Display"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="UseMouse" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Mouse for this game, the UAE configuration file that's loaded will depend on this value.</DESCRIPTION>
+						</KEY>
+						<KEY name="DelayHack" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true for those games that will only boot when inserted during the cd32 bios boot screen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Options" group="Settings" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want for that particular game.</DESCRIPTION>
+						</KEY>
+						<KEY name="VideoMode" group="Display" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode for this game (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="XResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="BlackerThanBlack" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" group="Display" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="%SystemName%" required="false">
+			<INITYPE>System</INITYPE>
+			<SYSTEMS>
+				<SYSTEM>Commodore Amiga</SYSTEM>
+				<SYSTEM>Commodore Amiga CD</SYSTEM>
+				<SYSTEM>Commodore Amiga Demos</SYSTEM>
+			</SYSTEMS>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="ScreenMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="Full Screen">true</VALUE>
+								<VALUE description="Windowed mode">false</VALUE>
+								<VALUE description="Full Screen Windowed">fullwindow</VALUE>
+							</VALUES>
+							<DESCRIPTION>Screen Mode.&#13;&#13;If you have bezels enabled, this will be forced to "Full Screen Windowed".&#13;&#13;Special Notes:&#13;In "Full Screen Windowed", the X and Y resolutions in "Display" has no effect.&#13;In "Windowed mode", setting X and Y resolutions to "native" in "Display" has no effect.</DESCRIPTION>
+						</KEY>
+						<KEY name="QuickStartMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>If the system requires a specific quick-start mode define it here. By default AGA games will start in a1200,1 and non-AGA in a500,1 modes.&#13;Quickstart modes:&#13;--> a500,0 = 1.3 ROM, OCS, 512KB Chip + 512KB Slow RAM (most common) (Runs most games and demos produced for the 1st gen. hardware) only few exceptions need a different config. eg the oldest games tend to be incompatible with this config.&#13;--> a500,1 = 1.3 ROM, ECS Agnus, 512KB Chip RAM + 512KB Slow RAM (Later hardware revision of the A500. Nearly 100% compatible with the previous config.)&#13;--> a500,2 = 1.3 ROM, ECS Agnus, 1MB Chip RAM (Few newer games and demos require this config.)&#13;--> a500,3 = 1.3 ROM, OCS Agnus, 512KB Chip RAM (Very old (pre-1988) games and demos may require this config.)&#13;--> a500,4 = 1.2 ROM, OCS Agnus, 512KB Chip RAM (As available for the A1000, and installed on the first A500 and A2000 series. Some very old programs only work correctly with this configuration. This system ROM version can only boot from floppy disk.&#13;--> a500,5 = 1.2 ROM, OCS Agnus, 512KB Chip RAM + 512KB Slow RAM (This config. adds expansion memory to the first A500 produced. Try this if your game does not work with newer configurations, but works with the previous one. It could also add some features to the game, including faster loading times. This system ROM version can only boot from floppy disk.&#13;--> a500+,0 = Basic non-expanded configuration. A500+ adds an ECS Agnus Chip, 1 MB of chip RAM and a 2.0 ROM to the A500. Many A500 games and demos won't work properly on A500+.&#13;--> a500+,1 = 2MB Chip RAM expanded configuration. A500+ with 2MB of chip RAM&#13;--> a500+,2 = 4MB Fast RAM expanded configuration. A500+ with 4MB of fast RAM.&#13;--> a600,0 = Basic non-expanded configuration. A600 is smaller than the A500+ and has an updated 2.0 ROM.&#13;--> a600,1 = 2MB Chip RAM expanded configuration. A600 with 2MB of chip RAM.&#13;--> a600,2 = 4MB Fast RAM expanded configuration. A600 with 4MB of fast RAM.&#13;--> a1000,0 = 512 KB Chip RAM. The A1000 was the first model produced with a configuration equivalent to an A500 with OCS chipset. No need to use this configuration, unless you are nostalgic and want to hear the short A1000 boot tune.&#13;--> a1000,1 = 'ICS' Denise without EHB support. Very first A1000 models had Denise without EHB capability.&#13;--> a1000,2 = 256 KB Chip RAM. Unexpanded A1000. All later A1000 were sold with a 256K RAM expansion built-in.&#13;--> a1200,0 = Basic non-expanded configuration (Use this configuration to run most AGA demos and games).&#13;--> a1200,1 = 4MB Fast RAM expanded configuration (Some newer AGA games and demos need an expanded A1200 to run).&#13;--> a3000,0 = 1.4 ROM, 2MB Chip + 8MB Fast.&#13;--> a3000,1 = 2.04 ROM, 2MB Chip + 8MB Fast.&#13;--> a3000,2 = 3.1 ROM, 2MB Chip + 8MB Fast.&#13;--> a4000,0 = 68030, 3.1 ROM, 2MB Chip + 8MB Fast.&#13;--> a4000,1 = 68040, 3.1 ROM, 2MB Chip + 8MB Fast.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="A500 - 1.3 ROM, OCS, 512KB Chip + 512KB Slow RAM (most common)">a500,0</VALUE>
+								<VALUE description="A500 - 1.3 ROM, ECS Agnus, 512KB Chip RAM + 512KB Slow RAM">a500,1</VALUE>
+								<VALUE description="A500 - 1.3 ROM, ECS Agnus, 1MB Chip RAM">a500,2</VALUE>
+								<VALUE description="A500 - 1.3 ROM, OCS Agnus, 512KB Chip RAM">a500,3</VALUE>
+								<VALUE description="A500 - 1.2 ROM, OCS Agnus, 512KB Chip RAM">a500,4</VALUE>
+								<VALUE description="A500 - 1.2 ROM, OCS Agnus, 512KB Chip RAM + 512KB Slow RAM">a500,5</VALUE>
+								<VALUE description="A500+ - Basic non-expanded configuration">a500+,0</VALUE>
+								<VALUE description="A500+ - 2MB Chip RAM expanded configuration">a500+,1</VALUE>
+								<VALUE description="A500+ - 4MB Fast RAM expanded configuration">a500,2</VALUE>
+								<VALUE description="A600 - Basic non-expanded configuration">a600,0</VALUE>
+								<VALUE description="A600 - 2MB Chip RAM expanded configuration">a600,1</VALUE>
+								<VALUE description="A600 - 4MB Fast RAM expanded configuration">a600,2</VALUE>
+								<VALUE description="A1000 - 512 KB Chip RAM">a1000,0</VALUE>
+								<VALUE description="A1000 - 'ICS' Denise without EHB support">a1000,1</VALUE>
+								<VALUE description="A1000 - 256 KB Chip RAM">a1000,2</VALUE>
+								<VALUE description="A1200 - Basic non-expanded configuration">a1200,0</VALUE>
+								<VALUE description="A1200 - 4MB Fast RAM expanded configuration">a1200,1</VALUE>
+								<VALUE description="A3000 - 1.4 ROM, 2MB Chip + 8MB Fast">a3000,0</VALUE>
+								<VALUE description="A3000 - 2.04 ROM, 2MB Chip + 8MB Fast">a3000,1</VALUE>
+								<VALUE description="A3000 - 3.1 ROM, 2MB Chip + 8MB Fast">a3000,2</VALUE>
+								<VALUE description="A4000 - 68030, 3.1 ROM, 2MB Chip + 8MB Fast">a4000,0</VALUE>
+								<VALUE description="A4000 - 68040, 3.1 ROM, 2MB Chip + 8MB Fast">a4000,1</VALUE>
+							</VALUES>
+						</KEY>	
+						<KEY name="KickstartFile" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Full path to the kickstart rom file to use. Path is relative to emulator folder.&#13;&#13;In general, you do not need to set this if you've scanned your roms in WinUAE. It will then use the proper file for the system selected in QuickStartMode above.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="PathToWorkBenchBase" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your default workbench drive. Defaults to EmuPath\HDD\Workbench31_Lite.vhd. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="PathToExtraDrive" required="false" nullable="false">
+							<KEYTYPE>FileOrFolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to an extra HDD file or folder you might want to add. This will be plugged as the last hard disk to WinUAE. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="Options" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want.</DESCRIPTION>
+						</KEY>						
+						<KEY name="Bezel_Top_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Bottom_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="FloppySpeed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Floppy drive speed in percent. Default is turbo.</DESCRIPTION>
+							<VALUES>
+								<VALUE>turbo</VALUE>
+								<VALUE>100</VALUE>
+								<VALUE>200</VALUE>
+								<VALUE>400</VALUE>
+								<VALUE>800</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="UseGui" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Show the GUI before starting. This can be used to tweak settings manually before starting the Amiga. Default is false. Note that this is only for testing troublesome games and might cause other issues with fade/bezels etc.</DESCRIPTION>
+						</KEY>						
+						<KEY name="Bezel_Right_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Left_Offset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Display" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="VideoMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>						
+						<KEY name="XResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect at all.&#13;Screen Mode set to "Windowed mode" = "native" has no effect.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="BlackerThanBlack" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="CPU" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="CPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU to use. You should only set this if you want to change whatever CPU you are using from the quick start mode you selected, like for example running an A4000 with a 68060 CPU.</DESCRIPTION>
+							<VALUES>
+								<VALUE>68000</VALUE>
+								<VALUE>68010</VALUE>
+								<VALUE>68020</VALUE>
+								<VALUE>68030</VALUE>
+								<VALUE>68040</VALUE>
+								<VALUE>68060</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="CpuSpeed" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU Emulation Speed. Real means "Approximate A500/A1200 or cycle-exact". Max is Fastest possible emulation. Default is real.</DESCRIPTION>
+							<VALUES>
+								<VALUE>real</VALUE>
+								<VALUE>max</VALUE>
+							</VALUES>
+						</KEY>	
+						<KEY name="CpuCycleExact" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable CPU Cycle Exact.</DESCRIPTION>
+						</KEY>	
+						<KEY name="CpuCompatible" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>"More Compatible". Set to true if you want to use CPU Compatible mode (Prefetch Emulation), this should normally be disabled.</DESCRIPTION>
+						</KEY>	
+						<KEY name="MMU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables the MMU. Requires a 68030 CPU or better. Default is false.</DESCRIPTION>
+						</KEY>
+						<KEY name="DisableUnimplementedCPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulate CPU unimplemented instructions. Requires a 68060 CPU. Default, when a 68060 CPU is set, is false (enabled).</DESCRIPTION>
+						</KEY>	
+						<KEY name="FPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>FPU to use. Requires a 68020 or 68030 CPU set. Only some rare demos or later 3D games might require a FPU so normally you won't need to change this setting. Default is no FPU.</DESCRIPTION>
+							<VALUES>
+								<VALUE>68881</VALUE>
+								<VALUE>68882</VALUE>
+								<VALUE description="CPU Internal">internal</VALUE>
+							</VALUES>
+						</KEY>					
+						<KEY name="MoreCompatibleFPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables slower but more compatible FPU. Requires a FPU set. Default is false.</DESCRIPTION>
+						</KEY>	
+						<KEY name="DisableUnimplementedFPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulate FPU unimplemented instructions. Requires a FPU set. Default is true (disabled).</DESCRIPTION>
+						</KEY>									
+						<KEY name="CacheSize" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enable JIT by defining this to anything other then 0. The value is in KB, so to enable JIT with 8MB cache, type 8192. Requires at least a 68020 CPU and will override any Cycle exact modes.</DESCRIPTION>
+						</KEY>					
+						<KEY name="24-BitAddressing" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If you want to use Z3 memory, you need to set this to False. Default is true.</DESCRIPTION>
+						</KEY>	
+					</KEYS>
+				</SECTION>	
+				<SECTION name="Chipset" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>	
+					<KEYS>						
+						<KEY name="CycleExact" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Chipset Cycle-exact. This sets the entire system to cycle-exact so set to true if you want to enable global Cycle Exact. This will be automatically disabled if either CpuCycleExact or BlitterCycleExact in the CPU tab is set.</DESCRIPTION>
+						</KEY>					
+						<KEY name="ImmediateBlitter" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable Immediate Blittler. This is mostly useful for some WHDLoad games that will show some random graphics glitches.</DESCRIPTION>
+						</KEY>
+						<KEY name="BlitterCycleExact" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable Blitter Cycle Exact.</DESCRIPTION>
+						</KEY>							
+						<KEY name="CollisionLevel" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the desired collision level, very few games require changing this setting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">none</VALUE>
+								<VALUE description="Sprites Only">sprites</VALUE>
+								<VALUE description="Sprites and Sprites vs. Playfield">playfields</VALUE>
+								<VALUE description="Full">full</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="RAM" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>	
+					<KEYS>	
+						<KEY name="ChipMemory" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Chip RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="256 KB">0</VALUE>
+								<VALUE description="512 KB">1</VALUE>
+								<VALUE description="1 MB">2</VALUE>
+								<VALUE description="1.5 MB">3</VALUE>
+								<VALUE description="2 MB">4</VALUE>
+								<VALUE description="4 MB">5</VALUE>
+								<VALUE description="8 MB">6</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FastMemory" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Fast RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoConfigFastMemory" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want Fast Memory to be auto-configured</DESCRIPTION>
+						</KEY>
+						<KEY name="SlowMemory" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Slow RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="512 KB">2</VALUE>
+								<VALUE description="1 MB">4</VALUE>
+								<VALUE description="1.5 MB">6</VALUE>
+								<VALUE description="1.8 MB">7</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Z3FastMemory" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Z3 Fast RAM you want to use. Requires at least a 68030 CPU. If set, 24-Bit Addressing (CPU) will be set to false automatically.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="384 MB">384</VALUE><!--256+128-->
+								<VALUE description="512 MB">512</VALUE>
+								<VALUE description="768 MB">768</VALUE><!--512+256-->
+								<VALUE description="768 MB">768</VALUE>
+								<VALUE description="1 GB">1024</VALUE>
+								<VALUE description="1.5 GB">1536</VALUE><!--1024+512-->
+							</VALUES>
+						</KEY>
+						<KEY name="MegaChipMemory" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Mega Chip RAM you want to use (aka 32-bit Chip RAM)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="384 MB">384</VALUE>
+								<VALUE description="512 MB">512</VALUE>
+								<VALUE description="768 MB">768</VALUE>
+								<VALUE description="1 GB">1024</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ProcessorSlotFast" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Processor Slot Fast RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="Expansions" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>	
+					<KEYS>
+						<KEY name="RTGCardType" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="UAE Zorro II">ZorroII</VALUE>
+								<VALUE description="UAE Zorro III">ZorroIII</VALUE>
+								<VALUE description="Picasso II Zorro II">PicassoII</VALUE>
+								<VALUE description="Picasso II+ Zorro II">PicassoII+</VALUE>
+								<VALUE description="Piccolo Zorro II">Piccolo_Z2</VALUE>
+								<VALUE description="Piccolo Zorro III">Piccolo_Z3</VALUE>
+								<VALUE description="Piccolo SD64 Zorro II">PiccoloSD64_Z2</VALUE>
+								<VALUE description="Piccolo SD64 Zorro III">PiccoloSD64_Z3</VALUE>
+								<VALUE description="EGS-28/24 Spectrum Zorro II">Spectrum28/24_Z2</VALUE>
+								<VALUE description="EGS-28/24 Spectrum Zorro III">Spectrum28/24_Z3</VALUE>
+								<VALUE description="Picasso IV Zorro II">PicassoIV_Z2</VALUE>
+								<VALUE description="Picasso IV Zorro III">PicassoIV_Z3</VALUE>
+							</VALUES>
+							<DESCRIPTION>Select the RTG Graphics card to use if the game requires one.</DESCRIPTION>
+						</KEY>
+						<KEY name="RTGVRAMSize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="none">0</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="512 MB">512</VALUE>
+							</VALUES>
+							<DESCRIPTION>Graphics card memory for RTG emulation.</DESCRIPTION>
+						</KEY>						
+						<KEY name="RTGHardwareSprite" required="false" nullable="true">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enable/Disable hardware sprite emulation for the RTG graphics card.</DESCRIPTION>
+						</KEY>
+					</KEYS>					
+				</SECTION>
+				<SECTION name="WHDLoad" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>	
+					<KEYS>
+						<KEY name="PathToWHDFolder" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your WHD installation folder, defaults to EmuPath\HDD\WHD. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="WHDLoadOptions" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Global WHDLoad startup options.</DESCRIPTION>
+						</KEY>
+						<KEY name="NeverExtract" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to never extract ROMs. This might be needed for some WHDLoad games that cannot be extracted under Windows.</DESCRIPTION>
+						</KEY>						
+					</KEYS>					
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Settings"/>
+						<GROUP name="Display"/>
+						<GROUP name="CPU"/>
+						<GROUP name="Chipset"/>
+						<GROUP name="RAM"/>
+						<GROUP name="Expansions"/>
+						<GROUP name="WHDLoad"/>
+						<GROUP name="CD-Rom"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="ScreenMode" group="Settings" required="false" nullable="false">						
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="Full Screen">true</VALUE>
+								<VALUE description="Windowed mode">false</VALUE>
+								<VALUE description="Full Screen Windowed">fullwindow</VALUE>
+							</VALUES>
+							<DESCRIPTION>Screen Mode.&#13;&#13;If you have bezels enabled, this will be forced to "Full Screen Windowed".&#13;&#13;Special Notes:&#13;In "Full Screen Windowed", the X and Y resolutions in "Display" has no effect.&#13;In "Windowed mode", setting X and Y resolutions to "native" in "Display" has no effect.</DESCRIPTION>
+						</KEY>						
+						<KEY name="QuickStartMode" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>If the system requires a specific quick-start mode define it here. By default AGA games will start in a1200,1 and non-AGA in a500,1 modes.&#13;Quickstart modes:&#13;--> a500,0 = 1.3 ROM, OCS, 512KB Chip + 512KB Slow RAM (most common) (Runs most games and demos produced for the 1st gen. hardware) only few exceptions need a different config. eg the oldest games tend to be incompatible with this config.&#13;--> a500,1 = 1.3 ROM, ECS Agnus, 512KB Chip RAM + 512KB Slow RAM (Later hardware revision of the A500. Nearly 100% compatible with the previous config.)&#13;--> a500,2 = 1.3 ROM, ECS Agnus, 1MB Chip RAM (Few newer games and demos require this config.)&#13;--> a500,3 = 1.3 ROM, OCS Agnus, 512KB Chip RAM (Very old (pre-1988) games and demos may require this config.)&#13;--> a500,4 = 1.2 ROM, OCS Agnus, 512KB Chip RAM (As available for the A1000, and installed on the first A500 and A2000 series. Some very old programs only work correctly with this configuration. This system ROM version can only boot from floppy disk.&#13;--> a500,5 = 1.2 ROM, OCS Agnus, 512KB Chip RAM + 512KB Slow RAM (This config. adds expansion memory to the first A500 produced. Try this if your game does not work with newer configurations, but works with the previous one. It could also add some features to the game, including faster loading times. This system ROM version can only boot from floppy disk.&#13;--> a500+,0 = Basic non-expanded configuration. A500+ adds an ECS Agnus Chip, 1 MB of chip RAM and a 2.0 ROM to the A500. Many A500 games and demos won't work properly on A500+.&#13;--> a500+,1 = 2MB Chip RAM expanded configuration. A500+ with 2MB of chip RAM&#13;--> a500+,2 = 4MB Fast RAM expanded configuration. A500+ with 4MB of fast RAM.&#13;--> a600,0 = Basic non-expanded configuration. A600 is smaller than the A500+ and has an updated 2.0 ROM.&#13;--> a600,1 = 2MB Chip RAM expanded configuration. A600 with 2MB of chip RAM.&#13;--> a600,2 = 4MB Fast RAM expanded configuration. A600 with 4MB of fast RAM.&#13;--> a1000,0 = 512 KB Chip RAM. The A1000 was the first model produced with a configuration equivalent to an A500 with OCS chipset. No need to use this configuration, unless you are nostalgic and want to hear the short A1000 boot tune.&#13;--> a1000,1 = 'ICS' Denise without EHB support. Very first A1000 models had Denise without EHB capability.&#13;--> a1000,2 = 256 KB Chip RAM. Unexpanded A1000. All later A1000 were sold with a 256K RAM expansion built-in.&#13;--> a1200,0 = Basic non-expanded configuration (Use this configuration to run most AGA demos and games).&#13;--> a1200,1 = 4MB Fast RAM expanded configuration (Some newer AGA games and demos need an expanded A1200 to run).&#13;--> a3000,0 = 1.4 ROM, 2MB Chip + 8MB Fast.&#13;--> a3000,1 = 2.04 ROM, 2MB Chip + 8MB Fast.&#13;--> a3000,2 = 3.1 ROM, 2MB Chip + 8MB Fast.&#13;--> a4000,0 = 68030, 3.1 ROM, 2MB Chip + 8MB Fast.&#13;--> a4000,1 = 68040, 3.1 ROM, 2MB Chip + 8MB Fast.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="A500 - 1.3 ROM, OCS, 512KB Chip + 512KB Slow RAM (most common)">a500,0</VALUE>
+								<VALUE description="A500 - 1.3 ROM, ECS Agnus, 512KB Chip RAM + 512KB Slow RAM">a500,1</VALUE>
+								<VALUE description="A500 - 1.3 ROM, ECS Agnus, 1MB Chip RAM">a500,2</VALUE>
+								<VALUE description="A500 - 1.3 ROM, OCS Agnus, 512KB Chip RAM">a500,3</VALUE>
+								<VALUE description="A500 - 1.2 ROM, OCS Agnus, 512KB Chip RAM">a500,4</VALUE>
+								<VALUE description="A500 - 1.2 ROM, OCS Agnus, 512KB Chip RAM + 512KB Slow RAM">a500,5</VALUE>
+								<VALUE description="A500+ - Basic non-expanded configuration">a500+,0</VALUE>
+								<VALUE description="A500+ - 2MB Chip RAM expanded configuration">a500+,1</VALUE>
+								<VALUE description="A500+ - 4MB Fast RAM expanded configuration">a500,2</VALUE>
+								<VALUE description="A600 - Basic non-expanded configuration">a600,0</VALUE>
+								<VALUE description="A600 - 2MB Chip RAM expanded configuration">a600,1</VALUE>
+								<VALUE description="A600 - 4MB Fast RAM expanded configuration">a600,2</VALUE>
+								<VALUE description="A1000 - 512 KB Chip RAM">a1000,0</VALUE>
+								<VALUE description="A1000 - 'ICS' Denise without EHB support">a1000,1</VALUE>
+								<VALUE description="A1000 - 256 KB Chip RAM">a1000,2</VALUE>
+								<VALUE description="A1200 - Basic non-expanded configuration">a1200,0</VALUE>
+								<VALUE description="A1200 - 4MB Fast RAM expanded configuration">a1200,1</VALUE>
+								<VALUE description="A3000 - 1.4 ROM, 2MB Chip + 8MB Fast">a3000,0</VALUE>
+								<VALUE description="A3000 - 2.04 ROM, 2MB Chip + 8MB Fast">a3000,1</VALUE>
+								<VALUE description="A3000 - 3.1 ROM, 2MB Chip + 8MB Fast">a3000,2</VALUE>
+								<VALUE description="A4000 - 68030, 3.1 ROM, 2MB Chip + 8MB Fast">a4000,0</VALUE>
+								<VALUE description="A4000 - 68040, 3.1 ROM, 2MB Chip + 8MB Fast">a4000,1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="KickstartFile" group="Settings" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Full path to the kickstart rom file to use. Path is relative to emulator folder.&#13;&#13;In general, you do not need to set this if you've scanned your roms in WinUAE. It will then use the proper file for the system selected in QuickStartMode above.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="PathToWorkBenchBase" group="Settings" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your the workbench drive specific to this game. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="PathToExtraDrive" required="false" nullable="false">
+							<KEYTYPE>FileOrFolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to an extra HDD file or folder you might want to add specific to this game. This will be plugged as the last hard disk to WinUAE. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="RequiresWB" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if game requires WorkBench to run. Make sure you have a HDD file with WorkBench installed.</DESCRIPTION>
+						</KEY>
+						<KEY name="Options" group="Settings" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Add any extra WinUAE CLI options we might want.</DESCRIPTION>
+						</KEY>
+						<KEY name="FloppySpeed" group="Settings" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Floppy drive speed in percent. Default is turbo.</DESCRIPTION>
+							<VALUES>
+								<VALUE>turbo</VALUE>
+								<VALUE>100</VALUE>
+								<VALUE>200</VALUE>
+								<VALUE>400</VALUE>
+								<VALUE>800</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="UseGui" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Show the GUI before starting. This can be used to tweak settings manually before starting the Amiga. Default is false. Note that this is only for testing troublesome games and might cause other issues with fade/bezels etc.</DESCRIPTION>							
+						</KEY>
+						<KEY name="Bezel_Top_Offset" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Bottom_Offset" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Right_Offset" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="Bezel_Left_Offset" group="Settings" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="VideoMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Video Mode (PAL/NTSC).</DESCRIPTION>
+							<VALUES>
+								<VALUE>PAL</VALUE>
+								<VALUE>NTSC</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="XResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect.&#13;Screen Mode set to "Windowed mode" = "native" has no effect at all.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the first octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>					
+						<KEY name="YResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Resolution. Leave empty for native when Screen Mode is set to "Full Screen".&#13;&#13;Special cases:&#13;Screen Mode set to "Full Screen Windowed" = No effect.&#13;Screen Mode set to "Windowed mode" = "native" has no effect at all.&#13;Bezels enabled = No effect at all.&#13;&#13;The value we want here is the second octave of the resolutions.&#13; &#13;Common Resolutions:&#13;640x480&#13;720x480&#13;720x576&#13;800x600&#13;1024x768&#13;1152x864&#13;1280x720&#13;1280x768&#13;1280800&#13;1280x960&#13;1280x1024&#13;1360x768&#13;1366x768&#13;1600x900&#13;1600x1024&#13;1600x1200&#13;1680x1050&#13;1920x1080&#13;1920x1200</DESCRIPTION>
+						</KEY>
+						<KEY name="BlackerThanBlack" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Borderblank black is blacker than display area black. Default is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="RemoveInterlaceArtifacts" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulates interlace mode internally as progressive, removing all interlace artifacts.</DESCRIPTION>
+						</KEY>
+						<KEY name="FilteredLowResolution" group="Display" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables filtered low resolution. When scaling hires to lores or superhires to hires, show average color of pixel instead of dropping every other pixel.</DESCRIPTION>
+						</KEY>
+						<KEY name="ResolutionMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Change the resolution mode. Some particular games might require low resolution mode to be active in order to look correctly.</DESCRIPTION>
+							<VALUES>
+								<VALUE>superhires</VALUE>
+								<VALUE>hires</VALUE>
+								<VALUE>lores</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="LineMode" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Linemode for the display. Set this if you want double lines or scanlines.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Single">none</VALUE>
+								<VALUE description="Double">double</VALUE>
+								<VALUE description="Scanlines">scanlines</VALUE>
+								<VALUE description="Double, fields">scanlines2p</VALUE>
+								<VALUE description="Double, fields+">scanlines3p</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to scale if you want the display to fill the emulator window. This will be forced to "scale" if you have bezels enabled.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="No Scaling">none</VALUE>
+								<VALUE description="Fullscreen (TV)">standard</VALUE>
+								<VALUE description="Fullscreen (Max)">max</VALUE>
+								<VALUE description="Automatic Scaling">scale</VALUE>
+								<VALUE description="Automatic Resize">resize</VALUE>
+								<VALUE description="Automatic Center">center</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShader" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set your filter shader. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">no</VALUE>
+								<VALUE description="Scale 2x">scale2x</VALUE>
+								<VALUE description="HQ 2x">hq2x</VALUE>
+								<VALUE description="HQ 3x">hq3x</VALUE>
+								<VALUE description="HQ 4x">hq4x</VALUE>
+								<VALUE description="SuperEagle">supereagle</VALUE>
+								<VALUE description="SuperEagle2xSaI">super2xsai</VALUE>
+								<VALUE description="2xSaI">2xsai</VALUE>
+								<VALUE description="PAL">pal</VALUE>
+								<VALUE description="D3D:2xSaI+Bump">D3D:2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:2xSaI+Scanlines">D3D:2xSaI+Scanlines.fx</VALUE>
+								<VALUE description="D3D:2xSaI">D3D:2xSaI.fx</VALUE>
+								<VALUE description="D3D:2xSaI_sRGB">D3D:2xSaI_sRGB.fx</VALUE>
+								<VALUE description="D3D:2xSaL">D3D:2xSaL.fx</VALUE>
+								<VALUE description="D3D:2xSaL2xAA">D3D:2xSaL2xAA.fx</VALUE>
+								<VALUE description="D3D:2xSaLAA">D3D:2xSaLAA.fx</VALUE>
+								<VALUE description="D3D:2xSaL_Ls">D3D:2xSaL_Ls.fx</VALUE>
+								<VALUE description="D3D:4xSaL">D3D:4xSaL.fx</VALUE>
+								<VALUE description="D3D:4xSoft">D3D:4xSoft.fx</VALUE>
+								<VALUE description="D3D:4xSoft_PS3.0">D3D:4xSoft_PS3.0.fx</VALUE>
+								<VALUE description="D3D:5xBR-v3.5a">D3D:5xBR-v3.5a.fx</VALUE>
+								<VALUE description="D3D:AA+SF1">D3D:AA+SF1.fx</VALUE>
+								<VALUE description="D3D:AA+SF2">D3D:AA+SF2.fx</VALUE>
+								<VALUE description="D3D:AA+SF3">D3D:AA+SF3.fx</VALUE>
+								<VALUE description="D3D:AdvancedAA">D3D:AdvancedAA.fx</VALUE>
+								<VALUE description="D3D:AmiGT">D3D:AmiGT.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D.bright">D3D:CRT.D3D.bright.fx</VALUE>
+								<VALUE description="D3D:CRT.D3D">D3D:CRT.D3D.fx</VALUE>
+								<VALUE description="D3D:GS2x">D3D:GS2x.fx</VALUE>
+								<VALUE description="D3D:GS2xFilter">D3D:GS2xFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xLS">D3D:Gs2xLS.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter">D3D:Gs2xSmartFilter.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter2">D3D:Gs2xSmartFilter2.fx</VALUE>
+								<VALUE description="D3D:Gs2xSmartFilter3">D3D:Gs2xSmartFilter3.fx</VALUE>
+								<VALUE description="D3D:GS2xSuper">D3D:GS2xSuper.fx</VALUE>
+								<VALUE description="D3D:GS2xTwo">D3D:GS2xTwo.fx</VALUE>
+								<VALUE description="D3D:GS4x">D3D:GS4x.fx</VALUE>
+								<VALUE description="D3D:GS4xColorScale">D3D:GS4xColorScale.fx</VALUE>
+								<VALUE description="D3D:GS4xFilter">D3D:GS4xFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xHqFilter">D3D:GS4xHqFilter.fx</VALUE>
+								<VALUE description="D3D:GS4xScale">D3D:GS4xScale.fx</VALUE>
+								<VALUE description="D3D:GS4xSoft">D3D:GS4xSoft.fx</VALUE>
+								<VALUE description="D3D:hq2x">D3D:hq2x.fx</VALUE>
+								<VALUE description="D3D:Lanczos">D3D:Lanczos.fx</VALUE>
+								<VALUE description="D3D:Lanczos12">D3D:Lanczos12.fx</VALUE>
+								<VALUE description="D3D:Lanczos16">D3D:Lanczos16.fx</VALUE>
+								<VALUE description="D3D:Scale2x+SF">D3D:Scale2x+SF.fx</VALUE>
+								<VALUE description="D3D:scale2x">D3D:scale2x.fx</VALUE>
+								<VALUE description="D3D:Scale2xPlus">D3D:Scale2xPlus.fx</VALUE>
+								<VALUE description="D3D:Scale4x">D3D:Scale4x.fx</VALUE>
+								<VALUE description="D3D:SimpleAA">D3D:SimpleAA.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI+Bump">D3D:Super2xSaI+Bump.fx</VALUE>
+								<VALUE description="D3D:Super2xSaI">D3D:Super2xSaI.fx</VALUE>
+								<VALUE description="D3D:SuperEagle">D3D:SuperEagle.fx</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FilterShaderScale" group="Display" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the scale of the shaders. The default is what you have setup in the emulator.</DESCRIPTION>
+							<VALUES>
+								<VALUE>1x</VALUE>
+								<VALUE>2x</VALUE>
+								<VALUE>3x</VALUE>
+								<VALUE>4x</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ShaderMask" group="Display" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Set shader mask you would like to use. The path should be \Plugins\masks\ The default is what you have setup in the emulator.</DESCRIPTION>
+							<BASEPATH>%EmulatorPath%\Plugins\masks</BASEPATH>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>png</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="CPU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU to use. You should only set this if you want to change whatever CPU you are using from the quick start mode you selected, like for example running an A4000 with a 68060 CPU.</DESCRIPTION>
+							<VALUES>
+								<VALUE>68000</VALUE>
+								<VALUE>68010</VALUE>
+								<VALUE>68020</VALUE>
+								<VALUE>68030</VALUE>
+								<VALUE>68040</VALUE>
+								<VALUE>68060</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="CpuSpeed" group="CPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>CPU Emulation Speed. Real means "Approximate A500/A1200 or cycle-exact". Max is Fastest possible emulation. Default is real.</DESCRIPTION>
+							<VALUES>
+								<VALUE>real</VALUE>
+								<VALUE>max</VALUE>
+							</VALUES>
+						</KEY>	
+						<KEY name="CpuCycleExact" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable CPU Cycle Exact.</DESCRIPTION>
+						</KEY>	
+						<KEY name="CpuCompatible" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>"More Compatible". Set to true if you want to use CPU Compatible mode (Prefetch Emulation), this should normally be disabled.</DESCRIPTION>
+						</KEY>	
+						<KEY name="MMU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables the MMU. Requires a 68030 CPU or better. Default is false.</DESCRIPTION>
+						</KEY>
+						<KEY name="DisableUnimplementedCPU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulate CPU unimplemented instructions. Requires a 68060 CPU. Default, when a 68060 CPU is set, is false (enabled).</DESCRIPTION>
+						</KEY>	
+						<KEY name="FPU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>FPU to use. Requires a 68020 or 68030 CPU set. Only some rare demos or later 3D games might require a FPU so normally you won't need to change this setting. Default is no FPU.</DESCRIPTION>
+							<VALUES>
+								<VALUE>68881</VALUE>
+								<VALUE>68882</VALUE>
+								<VALUE description="CPU Internal">internal</VALUE>
+							</VALUES>
+						</KEY>					
+						<KEY name="MoreCompatibleFPU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables slower but more compatible FPU. Requires a FPU set. Default is false.</DESCRIPTION>
+						</KEY>	
+						<KEY name="DisableUnimplementedFPU" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Emulate FPU unimplemented instructions. Requires a FPU set. Default is true (disabled).</DESCRIPTION>
+						</KEY>									
+						<KEY name="CacheSize" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enable JIT by defining this to anything other then 0. The value is in KB, so to enable JIT with 8MB cache, type 8192. Requires at least a 68020 CPU and will override any Cycle exact modes.</DESCRIPTION>
+						</KEY>					
+						<KEY name="24-BitAddressing" group="CPU" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If you want to use Z3 memory, you need to set this to False. Default is true.</DESCRIPTION>
+						</KEY>	
+						<KEY name="CycleExact" group="Chipset" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Chipset Cycle-exact. This sets the entire system to cycle-exact so set to true if you want to enable global Cycle Exact. This will be automatically disabled if either CpuCycleExact or BlitterCycleExact in the CPU tab is set.</DESCRIPTION>
+						</KEY>					
+						<KEY name="ImmediateBlitter" group="Chipset" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable Immediate Blittler. This is mostly useful for some WHDLoad games that will show some random graphics glitches.</DESCRIPTION>
+						</KEY>
+						<KEY name="BlitterCycleExact" group="Chipset" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to enable Blitter Cycle Exact.</DESCRIPTION>
+						</KEY>							
+						<KEY name="CollisionLevel" group="Chipset" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set the desired collision level, very few games require changing this setting</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">none</VALUE>
+								<VALUE description="Sprites Only">sprites</VALUE>
+								<VALUE description="Sprites and Sprites vs. Playfield">playfields</VALUE>
+								<VALUE description="Full">full</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ChipMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Chip RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="256 KB">0</VALUE>
+								<VALUE description="512 KB">1</VALUE>
+								<VALUE description="1 MB">2</VALUE>
+								<VALUE description="1.5 MB">3</VALUE>
+								<VALUE description="2 MB">4</VALUE>
+								<VALUE description="4 MB">5</VALUE>
+								<VALUE description="8 MB">6</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="FastMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Fast RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="AutoConfigFastMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want Fast Memory to be auto-configured</DESCRIPTION>
+						</KEY>
+						<KEY name="SlowMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Slow RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="512 KB">2</VALUE>
+								<VALUE description="1 MB">4</VALUE>
+								<VALUE description="1.5 MB">6</VALUE>
+								<VALUE description="1.8 MB">7</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Z3FastMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Z3 Fast RAM you want to use. Requires at least a 68030 CPU. If set, 24-Bit Addressing (CPU) will be set to false automatically.</DESCRIPTION>							
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="384 MB">384</VALUE><!--256+128-->
+								<VALUE description="512 MB">512</VALUE>
+								<VALUE description="768 MB">768</VALUE><!--512+256-->
+								<VALUE description="768 MB">768</VALUE>
+								<VALUE description="1 GB">1024</VALUE>
+								<VALUE description="1.5 GB">1536</VALUE><!--1024+512-->
+							</VALUES>
+						</KEY>
+						<KEY name="MegaChipMemory" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Mega Chip RAM you want to use (aka 32-bit Chip RAM)</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="384 MB">384</VALUE>
+								<VALUE description="512 MB">512</VALUE>
+								<VALUE description="768 MB">768</VALUE>
+								<VALUE description="1 GB">1024</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="ProcessorSlotFast" group="RAM" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>How much Processor Slot Fast RAM you want to use</DESCRIPTION>
+							<VALUES>
+								<VALUE description="None">0</VALUE>
+								<VALUE description="1 MB">1</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="RTGCardType" group="Expansions" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="UAE Zorro II">ZorroII</VALUE>
+								<VALUE description="UAE Zorro III">ZorroIII</VALUE>
+								<VALUE description="Picasso II Zorro II">PicassoII</VALUE>
+								<VALUE description="Picasso II+ Zorro II">PicassoII+</VALUE>
+								<VALUE description="Piccolo Zorro II">Piccolo_Z2</VALUE>
+								<VALUE description="Piccolo Zorro III">Piccolo_Z3</VALUE>
+								<VALUE description="Piccolo SD64 Zorro II">PiccoloSD64_Z2</VALUE>
+								<VALUE description="Piccolo SD64 Zorro III">PiccoloSD64_Z3</VALUE>
+								<VALUE description="EGS-28/24 Spectrum Zorro II">Spectrum28/24_Z2</VALUE>
+								<VALUE description="EGS-28/24 Spectrum Zorro III">Spectrum28/24_Z3</VALUE>
+								<VALUE description="Picasso IV Zorro II">PicassoIV_Z2</VALUE>
+								<VALUE description="Picasso IV Zorro III">PicassoIV_Z3</VALUE>
+							</VALUES>
+							<DESCRIPTION>Select the RTG Graphics card to use if the game requires one.</DESCRIPTION>
+						</KEY>
+						<KEY name="RTGVRAMSize" group="Expansions" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<VALUES>
+								<VALUE description="none">0</VALUE>
+								<VALUE description="2 MB">2</VALUE>
+								<VALUE description="4 MB">4</VALUE>
+								<VALUE description="8 MB">8</VALUE>
+								<VALUE description="16 MB">16</VALUE>
+								<VALUE description="32 MB">32</VALUE>
+								<VALUE description="64 MB">64</VALUE>
+								<VALUE description="128 MB">128</VALUE>
+								<VALUE description="256 MB">256</VALUE>
+								<VALUE description="512 MB">512</VALUE>
+							</VALUES>
+							<DESCRIPTION>Graphics card memory for RTG emulation.</DESCRIPTION>
+						</KEY>						
+						<KEY name="RTGHardwareSprite" group="Expansions" required="true" nullable="true">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enable/Disable hardware sprite emulation for the RTG graphics card.</DESCRIPTION>
+						</KEY>
+						<KEY name="PathToWHDFolder" group="WHDLoad" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your WHD installation folder, defaults to EmuPath\HDD\WHD. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+						<KEY name="WHDLoadOptions" group="WHDLoad" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Global WHDLoad startup options.</DESCRIPTION>
+						</KEY>
+						<KEY name="NeverExtract" group="WHDLoad" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to never extract ROMs. This might be needed for some WHDLoad games that cannot be extracted under Windows.</DESCRIPTION>
+						</KEY>
+						<KEY name="CDRomImage" group="CD-Rom" required="false" nullable="false">
+							<KEYTYPE>FileName</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Applicable to Amiga CD games only. The iso you want to load into the CD Drive, by default module will load an iso with the same name of your hdf/vhd file. Make sure you have hdf/vhd extensions set BEFORE the iso/cue extensions in RLUI otherwise this won't work. This file must be in the same folder as the game's hdf/vhd file.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

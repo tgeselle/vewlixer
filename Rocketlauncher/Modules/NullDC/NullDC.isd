@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Users/Greg/Desktop/Modules/_Module%20Ini%20Schemas/IniSchema.xsd">
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="NullDC" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="DualMonitors" required="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables DualMonitors</DESCRIPTION>
+						</KEY>
+						<KEY name="autoStart" required="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables autoStart</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="noConsole" required="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables noConsole</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="autoHideMenu" required="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables autoHideMenu</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="alwaysOnTop" required="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables alwaysOnTop</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="showVMU" required="false">
+							<KEYTYPE>Binary</KEYTYPE>
+							<DESCRIPTION>Enables/Disables showVMU</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VMUHideKey" required="false" nullable="true">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>Hotkey to hide the VMU. The default is F10.</DESCRIPTION>
+						</KEY>
+						<KEY name="VMU1Pos" required="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>VMU1 Position. Default is topLeft.</DESCRIPTION>
+							<VALUES>
+								<VALUE>topRight</VALUE>
+								<VALUE>topCenter</VALUE>
+								<VALUE>topLeft</VALUE>
+								<VALUE>leftCenter</VALUE>
+								<VALUE>bottomLeft</VALUE>
+								<VALUE>bottomCenter</VALUE>
+								<VALUE>bottomRight</VALUE>
+								<VALUE>rightCenter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VMU2Pos" required="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>VMU2 Position. Default is topRight.</DESCRIPTION>
+							<VALUES>
+								<VALUE>topRight</VALUE>
+								<VALUE>topCenter</VALUE>
+								<VALUE>topLeft</VALUE>
+								<VALUE>leftCenter</VALUE>
+								<VALUE>bottomLeft</VALUE>
+								<VALUE>bottomCenter</VALUE>
+								<VALUE>bottomRight</VALUE>
+								<VALUE>rightCenter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VMU3Pos" required="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>VMU3 Position. Default is bottomLeft.</DESCRIPTION>
+							<VALUES>
+								<VALUE>topRight</VALUE>
+								<VALUE>topCenter</VALUE>
+								<VALUE>topLeft</VALUE>
+								<VALUE>leftCenter</VALUE>
+								<VALUE>bottomLeft</VALUE>
+								<VALUE>bottomCenter</VALUE>
+								<VALUE>bottomRight</VALUE>
+								<VALUE>rightCenter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VMU4Pos" required="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>VMU4 Position. Default is bottomRight.</DESCRIPTION>
+							<VALUES>
+								<VALUE>topRight</VALUE>
+								<VALUE>topCenter</VALUE>
+								<VALUE>topLeft</VALUE>
+								<VALUE>leftCenter</VALUE>
+								<VALUE>bottomLeft</VALUE>
+								<VALUE>bottomCenter</VALUE>
+								<VALUE>bottomRight</VALUE>
+								<VALUE>rightCenter</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="loadDefaultImage" required="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>loadDefaultImage</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="patchRegion" required="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>patchRegion. Default is true.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Off">0</VALUE>
+								<VALUE description="On">1</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PerGameMemoryCards" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Support for Per-Game Memory Card support. If the file "vmu_default.bin" doesn't exist in the EmuPath\Data directory, nothing will happen.  The default for this feature is true.</DESCRIPTION>
+						</KEY>
+						<KEY name="memCardPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Relative path to your memory card folder, defaults to EmuPath\Game VMU. Path relative to the emulator folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Cable" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Games can have a custom Cable Type (per game). Not all games work on VGA, so use this option to choose the correct cable for your game. Cable can be 0 (VGA(0)(RGB)), 1 (VGA(1)(RGB)), 2 (TV(RGB)) or 3 (TV(VBS/Y+S/C)), default is 0.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="VGA(0)(RGB)">0</VALUE>
+								<VALUE description="VGA(1)(RGB)">1</VALUE>
+								<VALUE description="TV(RGB)">2</VALUE>
+								<VALUE description="TV(VBS/Y+S/C)">3</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

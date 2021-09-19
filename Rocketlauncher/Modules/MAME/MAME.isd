@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="LegacyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>When enabled, only sends the rom name, fullscreen, cheat, and volume parameters to MAME globally for all systems using this module. This mode allows the module to work with very old MAME versions.</DESCRIPTION>
+						</KEY>
+						<KEY name="MAME_BIOS_Path" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This should point to your BIOS roms required for all system for MAME. Default points to the roms subfolder where your mame.exe is found.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+						</KEY>
+						<KEY name="HLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables HLSL filters globally for all systems using this module. Set to ini if you want to use the setting defined in your MAME ini files.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="GLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables GLSL filters globally for all systems using this module. Only use this if you have Videomode set to opengl. Set to ini if you want to use the setting defined in your MAME ini files. This setting requires MAME 0.160 or higher.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Volume" required="false" nullable="true" minLength="-32" maxLength="0">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the volume of MAME globally for all systems using this module. It can range between -32db and 0db, 0db being the loudest and the default.</DESCRIPTION>
+						</KEY>
+						<KEY name="Videomode" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choices are gdi,ddraw,d3d,opengl. If left blank, MAME uses d3d by default. Set to ini if you want to use the setting defined in your MAME ini files. If you set this to ini it's highly suggested that you also set both HLSL and GLSL settings to ini.</DESCRIPTION>
+							<VALUES>
+								<VALUE>d3d</VALUE>
+								<VALUE>ddraw</VALUE>
+								<VALUE>gdi</VALUE>
+								<VALUE>opengl</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BilinearFilter" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true applies a bilinear filter to the game's screen making it blurry.</DESCRIPTION>
+						</KEY>
+						<KEY name="CheatMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cheats in Mame provided you placed the cheat.7z in the same folder as the mame executable. When in mame you can check if cheat mode was successfully loaded by going into the TAB menu and seeing that there is a new menu entry named "Cheat". High Scores DO NOT SAVE when cheats are enabled!</DESCRIPTION>
+						</KEY>
+						<KEY name="CheatModeKey" required="false" nullable="true">
+							<KEYTYPE>xHotkey</KEYTYPE>
+							<DESCRIPTION>If you set a CheatModeKey, it will only enable Mame cheats if you hold this key down before Mame is launched. High Scores DO NOT SAVE when cheats are enabled!</DESCRIPTION>
+						</KEY>
+						<KEY name="pauseMethod" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the pause method that works best on your machine (preferred methods 1 and 2)&#xA;1 = Win7 and Win8 OK - Problems with Win XP&#xA;2 = preferred method for WinXP - Problems in Win7&#xA;3 and 4 = same as 1 and 2&#xA;5 = only use If you have a direct input version of mame&#xA;6 = It could crash mame in some computers</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Method 1 (PostMessage 212 &amp; restore disabled - Preferred on Win7 &amp; Win8)">1</VALUE>
+								<VALUE description="Method 2 (PostMessage 212 - Preferred on WinXP)">2</VALUE>
+								<VALUE description="Method 3 (PostMessage 400 &amp; restore disabled)">3</VALUE>
+								<VALUE description="Method 4 (PostMessage 400)">4</VALUE>
+								<VALUE description="Method 5 (Pause MAME)">5</VALUE>
+								<VALUE description="Method 6 (Suspend MAME process)">6</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BezelMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choose what type of bezels you want to use globally. RocketLauncher bezels or MAME bezels. Default is MAME bezels.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Use MAME built-in Bezels">layout</VALUE>
+								<VALUE description="Use RocketLauncher Bezels">normal</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Autosave" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Auto-Saving and Auto-Loading of game sessions. When enabled, upon exiting mame, your state will be saved and automatically resumed next time you run this game.</DESCRIPTION>
+						</KEY>
+						<KEY name="VerticalRotationMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting if you want to have the screen automatically rotated for vertical games.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Rotate screen to match game's original orientation.">original</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the right (clockwise)">right</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the left (anti-clockwise)">left</VALUE>
+								<VALUE description="No rotation">none</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="UseControllerRemap" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Controller Remap Support</DESCRIPTION>
+						</KEY>
+						<KEY name="ControllerRemapPath" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<DESCRIPTION>Controller Remap Exe File</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>exe</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<FULLROW>true</FULLROW>
+						</KEY>
+						<KEY name="ControllerRemapConfigPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Controller Remap Configuration folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<FULLROW>true</FULLROW>
+						</KEY>
+						<KEY name="MAMECtrlrPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Mame Ctrlr folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+							<FULLROW>true</FULLROW>
+						</KEY>
+						
+					</KEYS>
+				</SECTION>
+				<SECTION name="Link/Network" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Enable_Link_Play" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select a number that will set the max allowable players selectable. If enabled, when this module is launched, will give an option if you want to play Single or Multi-Player. Read module notes on how to link a game.</DESCRIPTION>
+							<VALUES>
+								<VALUE>false</VALUE>
+								<VALUE>2</VALUE>
+								<VALUE>3</VALUE>
+								<VALUE>4</VALUE>
+								<VALUE>5</VALUE>
+								<VALUE>6</VALUE>
+								<VALUE>7</VALUE>
+								<VALUE>8</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Enable_NVRAM_Automation" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables NVRAM handling by the module. This will automatically make each player unique for each local-linked (same PC) session for all supported games. See module notes for additional info.</DESCRIPTION>
+						</KEY>
+						<KEY name="Max_Players_Per_monitor" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>When multiple instances of the emulator are launched, this number is how many you want to keep on each monitor.</DESCRIPTION>
+						</KEY>
+						<KEY name="SplitScreen_2_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>horizontal = p1 in top, vertical = p1 on the left</DESCRIPTION>
+							<VALUES>
+								<VALUE>horizontal</VALUE>
+								<VALUE>vertical</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SplitScreen_3_Players" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>For Player 1 screen to be on left: P1left. For Player1 screen to be on top: P1top. For Player1 screen to be on bottom: P1bottom. For Player1 screen to be on right: P1right.</DESCRIPTION>
+							<VALUES>
+								<VALUE>P1top</VALUE>
+								<VALUE>P1left</VALUE>
+								<VALUE>P1bottom</VALUE>
+								<VALUE>P1right</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Local_Port" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Default is 15111. The port the local host (or player 1) will listen on in link enabled games. For LAN or WAN Multiplayer Link games, this will be the port you opened in your firewall to listen for incoming connections.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_IP" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server as a client, put the IP address here. If no IP is entered on the GUI, this is the IP used.</DESCRIPTION>
+						</KEY>
+						<KEY name="Default_Server_Port" required="false" nullable="true" minLength="0" maxLength="65535">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you always connect to the same server port as a client, put the Port here. Servers must make sure this port is forwarded through all firewalls.</DESCRIPTION>
+						</KEY>
+						<KEY name="Get_WAN_IP" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Will retrieve your WAN IP automatically, which is different than your LAN IP when behind a router. If you get a windows firewall prompt to allow RocketLauncher or Autohotkey to talk out, please allow it. You only really need this enabled if you are acting as a server and need to tell your clients your IP. Default is true.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%SystemName%" required="false">
+					<SECTIONTYPE>System</SECTIONTYPE>
+					<KEYS>
+						<KEY name="LegacyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>When enabled, only sends the rom name, fullscreen, cheat, and volume parameters to MAME for just this system. This mode allows the module to work with very old MAME versions.</DESCRIPTION>
+						</KEY>
+						<KEY name="StaticParameters" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra command line parameters for that system. These parameters will be concatenated with any rom specific parameters you might set.</DESCRIPTION>
+						</KEY>
+						<KEY name="Parameters" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra command line parameters for that system. These parameters will be overriden by any rom specific parameters you might set.</DESCRIPTION>
+						</KEY>
+						<KEY name="Volume" required="false" nullable="true" minLength="-32" maxLength="0">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the volume of MAME for this system. It can range between -32db and 0db, 0db being the loudest and the default.</DESCRIPTION>
+						</KEY>
+						<KEY name="BilinearFilter" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true applies a bilinear filter to the game's screen making it blurry.</DESCRIPTION>
+						</KEY>
+						<KEY name="HLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables HLSL filters for this particular system. Set to ini if you want to use the setting defined in your MAME ini files.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="GLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables GLSL filters for particular. Only use this if you have Videomode set to opengl. Set to ini if you want to use the setting defined in your MAME ini files. This setting requires MAME 0.160 or higher.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BezelMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choose what type of bezels you want this system to use. RocketLauncher bezels or MAME bezels. Default is MAME bezels. This setting takes precedence over the global setting.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Use MAME built-in Bezels">layout</VALUE>
+								<VALUE description="Use RocketLauncher Bezels">normal</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Autosave" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Auto-Saving and Auto-Loading of game sessions. When enabled, upon exiting mame, your state will be saved and automatically resumed next time you run any game on this system. Overwrites the global setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="VerticalRotationMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting if you want to have the screen automatically rotated for vertical games.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Rotate screen to match game's original orientation.">original</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the right (clockwise)">right</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the left (anti-clockwise)">left</VALUE>
+								<VALUE description="No rotation">none</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Artwork_Crop" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cropping of artwork to the game screen area only for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Bezels" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Bezel Image for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Overlays" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Overlay for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Backdrops" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Backdrops for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Cpanels" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the display of control panels for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Marquees" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the display of marquees for the entire system. Can be overwritten by the per-rom setting of the same name.</DESCRIPTION>
+						</KEY>						
+						<KEY name="UseSoftwareList" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to launch the game using MAME Software list, if you set this to true MAKE SURE you have a proper rom mapping file that maps your rom names to MAME names. Either that or manually edit the respective software list under MAME\hash to your rom names.</DESCRIPTION>
+						</KEY>
+						<KEY name="IniPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+							<DESCRIPTION>If you want to use different ini files per system, select the folder where you will store all the ini files for the current system.</DESCRIPTION>
+						</KEY>
+						<KEY name="HashPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+							<DESCRIPTION>If you want to use different hash files per system, select the folder where you will store the hash file for the current system.</DESCRIPTION>
+						</KEY>
+						<KEY name="UseControllerRemap" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Controller Remap Support</DESCRIPTION>
+						</KEY>
+						<KEY name="ControllerRemapPath" required="false" nullable="false">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<DESCRIPTION>Controller Remap Exe File</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>exe</FILEEXTENSION>
+							</FILEEXTENSIONS>
+							<FULLROW>true</FULLROW>
+						</KEY>
+						<KEY name="ControllerRemapConfigPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Controller Remap Configuration folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<FULLROW>true</FULLROW>
+						</KEY>
+						<KEY name="MAMECtrlrPath" required="false" nullable="false">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<DESCRIPTION>Mame Ctrlr folder.</DESCRIPTION>
+							<PATHTYPE>Relative</PATHTYPE>
+							<BASEPATH>%EmulatorPath%</BASEPATH>
+							<FULLROW>true</FULLROW>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="General"/>
+						<GROUP name="Link/Network"/>
+						<!--<GROUP name="Car"/>-->
+					</GROUPS>
+					<KEYS>
+						<KEY name="Parameters" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra command line parameters for that game. You can use this to change the controller configured on each slot for instance. Take a look at the SLOT DEVICES section in your MAME.ini file to find out the keys/values to use. For instance on Atari 2600 to change the controller on joyport 1 to the wheel controller, you'd type "-joyport1 wheel" on this setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="LegacyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>When enabled, only sends the rom name, fullscreen, cheat, and volume parameters to MAME for just this game. This mode allows the module to work with very old MAME versions.</DESCRIPTION>
+						</KEY>
+						<KEY name="HLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables HLSL filters for this particular game. Set to ini if you want to use the setting defined in your MAME ini files.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="GLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables GLSL filters globally for this particular game. Only use this if you have Videomode set to opengl. Set to ini if you want to use the setting defined in your MAME ini files. This setting requires MAME 0.160 or higher.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="BezelMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Choose what type of bezels you want this rom to use. RocketLauncher bezels or MAME bezels. Default is MAME bezels. This setting takes precedence over the system setting.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Use MAME built-in Bezels">layout</VALUE>
+								<VALUE description="Use RocketLauncher Bezels">normal</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="VerticalRotationMode" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Use this setting if you want to have the screen automatically rotated for this vertical game.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Rotate screen to match game's original orientation.">original</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the right (clockwise)">right</VALUE>
+								<VALUE description="Rotate screen 90 degrees to the left (anti-clockwise)">left</VALUE>
+								<VALUE description="No rotation">none</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Volume" required="false" nullable="true" minLength="-32" maxLength="0">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the volume of MAME for this game. It can range between -32db and 0db, 0db being the loudest and the default.</DESCRIPTION>
+						</KEY>
+						<KEY name="MameRomName" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>For games that require they be named the original rom's name, set this key to the original rom name. Likewise you also set a "-rompath PATH" in the Params key to the path the rom can be found so mame will look there for the alternate rom.</DESCRIPTION>
+						</KEY>
+						<KEY name="Artwork_Crop" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cropping of artwork to the game screen area only for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Bezels" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Bezel Image for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Overlays" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Overlay for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Backdrops" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Backdrops for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Cpanels" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the display of control panels for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Marquees" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables the display of marquees for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="UseSoftwareList" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to launch the game using MAME Software list, if you set this to true MAKE SURE you have a proper rom mapping file that maps your rom names to MAME names. Either that or manually edit the respective software list under MAME\hash to your rom names.</DESCRIPTION>
+						</KEY>
+						<KEY name="Autosave" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Auto-Saving and Auto-Loading of game sessions. When enabled, upon exiting mame, your state will be saved and automatically resumed next time you run this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Enable_Link_Play" required="false" nullable="false" group="Link/Network">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select a number that will set the max allowable players selectable. If enabled, when this game is launched, will give an option if you want to play Single or Multi-Player. Read module notes on how to link a game.</DESCRIPTION>
+							<VALUES>
+								<VALUE>false</VALUE>
+								<VALUE>2</VALUE>
+								<VALUE>3</VALUE>
+								<VALUE>4</VALUE>
+								<VALUE>5</VALUE>
+								<VALUE>6</VALUE>
+								<VALUE>7</VALUE>
+								<VALUE>8</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Enable_NVRAM_Automation" required="false" nullable="false" group="Link/Network">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables NVRAM handling by the module. This will automatically make each player unique for each local-linked (same PC) session for this game. See module notes for additional info.</DESCRIPTION>
+						</KEY>
+						<KEY name="Max_Players_Per_monitor" required="false" nullable="false" group="Link/Network">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>When multiple instances of the emulator are launched, this number is how many you want to keep on each monitor.</DESCRIPTION>
+						</KEY>
+						<KEY name="SplitScreen_2_Players" required="false" nullable="false" group="Link/Network">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>horizontal = p1 in top, vertical = p1 on the left</DESCRIPTION>
+							<VALUES>
+								<VALUE>horizontal</VALUE>
+								<VALUE>vertical</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SplitScreen_3_Players" required="false" nullable="false" group="Link/Network">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>For Player 1 screen to be on left: P1left. For Player1 screen to be on top: P1top. For Player1 screen to be on bottom: P1bottom. For Player1 screen to be on right: P1right.</DESCRIPTION>
+							<VALUES>
+								<VALUE>P1top</VALUE>
+								<VALUE>P1left</VALUE>
+								<VALUE>P1bottom</VALUE>
+								<VALUE>P1right</VALUE>
+							</VALUES>
+						</KEY>
+						<!--
+						<KEY name="Car_1_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_2_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_3_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_4_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_5_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_6_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_7_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Car_8_Color" required="false" nullable="false" group="Car">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the desired color for this car. It's a good idea, but necessary, to keep each car color unique. Default is no change to what's already saved in nvram.</DESCRIPTION>
+							<VALUES>
+								<VALUE>Red</VALUE>
+								<VALUE>Blue</VALUE>
+								<VALUE>Yellow</VALUE>
+								<VALUE>Green</VALUE>
+								<VALUE>Black</VALUE>
+								<VALUE>Pink</VALUE>
+								<VALUE>SkyBlue</VALUE>
+								<VALUE>Orange</VALUE>
+							</VALUES>
+						</KEY>
+						-->
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Acorn Electron" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="AutoBootDelay" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enter the delay in seconds before MAME tries to input the command to boot from the tape. Faster systems should be able to use lower values. Default is 2 seconds.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Commodore MAX Machine" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="AutoBootDelay" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enter the delay in seconds before MAME tries to input the command to boot from the tape. Faster systems should be able to use lower values. Default is 2 seconds.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="MGT Sam Coupe" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="AutoBootDelay" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enter the delay in seconds before MAME tries to input the command to boot from the tape. Faster systems should be able to use lower values. Default is 2 seconds.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Amstrad CPC" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="AutoBootDelay" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Enter the delay in seconds before MAME tries to input the command to boot from the tape. Faster systems should be able to use lower values. Default is 2 seconds.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="LaunchProgram" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add the program on the disk to launch once the system is loaded. Use the 'CAT' on the CPC command line to identify the program. The common programs to run are those with a .BIN or .BAS extension and usually the smaller of the files on the disk image. Defaults to 'disk' as this will load some games.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Bally Astrocade" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BlueRAMBasicRom" required="false" nullable="true">
+							<KEYTYPE>FileName</KEYTYPE>
+							<DESCRIPTION>Filename for the Blue RAM Basic rom, this must be on the same folder as the game rom. Defaults to Blue RAM Basic v1.1 (USA).bin</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Parameters" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra command line parameters for that game. You can use this to change the controller configured on each slot for instance. Take a look at the SLOT DEVICES section in your MAME.ini file to find out the keys/values to use. For instance on Atari 2600 to change the controller on joyport 1 to the wheel controller, you'd type "-joyport1 wheel" on this setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="RequiresReset" required="false" nullable="true">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If a game requires a reset in order to start change this to true.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Texas Instruments TI 99-4A" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="true">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="ExpansionCartLocation" required="false" nullable="true">
+							<KEYTYPE>FolderPath</KEYTYPE>
+							<PATHTYPE>Any</PATHTYPE>
+							<DESCRIPTION>Location of expansion carts required for many games (extended_basic.rpk, mini_mem.rpk, etc...). Defaults to %RomPath%\System.</DESCRIPTION>
+						</KEY>
+						<KEY name="CommandWaitOffset" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This is an offset (in milliseconds) that you can add to all wait times defined in the Command setting. You can make use of this if you are using a pre-defined ini file and the wait times are too slow for your machine, so adjust it here globally instead of manually editing the command setting for every single game.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>			
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Expansion_Cart" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Expansion_Cart if you need a different extended basic cart for a specific game use add this entry</DESCRIPTION>
+						</KEY>
+						<KEY name="Command" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Used if rom requires a command after loading is complete to start the game. Use standard AutoHotkey key names, use {Wait} to pause 500 milliseconds between words/characters. ie, "R{Wait}C" to press the R and C keys with a slight delay between them. Useful for navigating through menus or issuing load/run commands.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Apple IIGS" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="External_OS" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true for games without OS included, this game will then always use %romPath%\System6.2mg as its OS</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Applied Technology MicroBee" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="MicroBee_Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to the model of MicroBee this game was made for.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="MicroBee 32 IC (default)">mbeeic</VALUE>
+								<VALUE description="MicroBee 16 Standard">mbee</VALUE>
+								<VALUE description="MicroBee 32 PC">mbeepc</VALUE>
+								<VALUE description="MicroBee 32 PC85">mbeepc85</VALUE>
+								<VALUE description="MicroBee 56">mbee56</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="Magnavox Odyssey 2" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Bios" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>for all games, we use the default bios (odyssey2). Some games might require different bios like Odyssey2's Jopac games use the videopac bios instead.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="SNK Neo Geo AES" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="BIOS_Region" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>The region BIOS this rom should use. This can affect the language of the in game menus. Default is Asia.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Asia">asia</VALUE>
+								<VALUE description="Japan">japan</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="NEC TurboGrafx-CD" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="TGCDSystemCard" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to the CD Boot rom you want to use for NEC TurboGrafx-CD. File must be a ".pce", ".bin" or ".zip/.7z" with the rom inside. Default rom is "Super CD-ROM2 System V3.01 (U).pce" stored in the rom subdirectory where your MAME.exe is located.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>pce</FILEEXTENSION>
+								<FILEEXTENSION>bin</FILEEXTENSION>
+								<FILEEXTENSION>zip</FILEEXTENSION>
+								<FILEEXTENSION>7z</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="NEC PC Engine-CD" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="PCECDSystemCard" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to the CD Boot rom you want to use for NEC PC Engine-CD. File must be a ".pce", ".bin" or ".zip/.7z" with the rom inside. Default rom is "Super CD-ROM2 System V3.0 (J).pce" stored in the rom subdirectory where your MAME.exe is located.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>pce</FILEEXTENSION>
+								<FILEEXTENSION>bin</FILEEXTENSION>
+								<FILEEXTENSION>zip</FILEEXTENSION>
+								<FILEEXTENSION>7z</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="%SystemName%" required="false">
+			<INITYPE>System</INITYPE>
+			<STANDALONE>false</STANDALONE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Parameters" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Add any extra command line parameters for that game. You can use this to change the controller configured on each slot for instance. Take a look at the SLOT DEVICES section in your MAME.ini file to find out the keys/values to use. For instance on Atari 2600 to change the controller on joyport 1 to the wheel controller, you'd type "-joyport1 wheel" on this setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="HLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables HLSL filters for this particular game. Set to ini if you want to use the setting defined in your MAME ini files.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="GLSL" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Enables/Disables GLSL filters globally for this particular game. Only use this if you have Videomode set to opengl. Set to ini if you want to use the setting defined in your MAME ini files. This setting requires MAME 0.160 or higher.</DESCRIPTION>
+							<VALUES>
+								<VALUE>true</VALUE>
+								<VALUE>false</VALUE>
+								<VALUE>ini</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Artwork_Crop" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables cropping of artwork to the game screen area only for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Bezels" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Bezel Image for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Overlays" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Overlay for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="Use_Backdrops" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Backdrops for just this game. Overwrites the system setting.</DESCRIPTION>
+						</KEY>
+						<KEY name="UseSoftwareList" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to launch the game using MAME Software list, if you set this to true MAKE SURE you have a proper rom mapping file that maps your rom names to MAME names. Either that or manually edit the respective software list under MAME\hash to your rom names.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

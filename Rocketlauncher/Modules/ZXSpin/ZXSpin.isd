@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true to enable fullscreen.</DESCRIPTION>
+						</KEY>
+						<KEY name="Model" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Default model to use. This is set to 48K by default. Can be overriden as a per rom setting.</DESCRIPTION>
+							<VALUES>
+								Model|Issue2Emulation
+								<VALUE description="16K">0|0</VALUE>
+								<VALUE description="48K">1|1</VALUE>
+								<VALUE description="48K+">1|0</VALUE>
+								<VALUE description="128K">2|0</VALUE>
+								<VALUE description="+2">3|0</VALUE>
+								<VALUE description="+2A">4|0</VALUE>
+								<VALUE description="+3">5|0</VALUE>
+								<VALUE description="+3e">6|0</VALUE>
+								<VALUE description="Pentagon 128">7|0</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Model" required="false" nullable="false" minLength="1" maxLength="59">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Model to use for this particular game</DESCRIPTION>
+							<VALUES>
+								<VALUE description="16K">0|0</VALUE>
+								<VALUE description="48K">1|1</VALUE>
+								<VALUE description="48K+">1|0</VALUE>
+								<VALUE description="128K">2|0</VALUE>
+								<VALUE description="+2">3|0</VALUE>
+								<VALUE description="+2A">4|0</VALUE>
+								<VALUE description="+3">5|0</VALUE>
+								<VALUE description="+3e">6|0</VALUE>
+								<VALUE description="Pentagon 128">7|0</VALUE>
+							</VALUES>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="UseBIOS" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true SSF will use the real BIOS otherwise it will use an emulated one. Some games might require the real BIOS to run properly so it's suggested to have this enabled. Having it enabled will also show the bios loading screen though.</DESCRIPTION>
+						</KEY>
+						<KEY name="BilinearFiltering" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Bilinear Filtering. This makes the game textures appear smoother.</DESCRIPTION>
+						</KEY>
+						<KEY name="WideScreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables WideScreen Support</DESCRIPTION>
+						</KEY>
+						<KEY name="Stretch" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true Stretches game to fill screen losing aspect ratio.</DESCRIPTION>
+						</KEY>
+						<KEY name="AutoFieldSkip" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true prevents the game from running too fast.</DESCRIPTION>
+						</KEY>
+						<KEY name="EnforceAspectRatioWindow" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true forces the correct aspect ratio when using windowed mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="EnforceAspectRatioFullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true forces the correct aspect ratio when using fullscreen mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="FixedWindowResolution" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true forces a set resolution size when using windowed mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="FixedFullscreenResolution" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true forces a set resolution size when using fullscreen mode.</DESCRIPTION>
+						</KEY>
+						<KEY name="VSynchWaitWindow" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If you are getting clipping in windowed mode, set the this to true. True by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="VSynchWaitFullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If you are getting clipping in fullscreen mode, set the this to true. True by default.</DESCRIPTION>
+						</KEY>
+						<KEY name="CDDrive" required="false" nullable="true" minLength="0">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Make sure you have your CDDrive set to whatever number you use for your games. 0 may be your hardware drive, while 1 may be your virtual drive (depending on how many you have). If you get a black screen, try different numbers starting from 0. If you keep getting the CD Player BIOS screen, you have the CDDrive variable set wrong.</DESCRIPTION>
+						</KEY>
+						<KEY name="WindowSize" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Determines the gameplay window size in windowed mode. It can be 0, 1 or 2.</DESCRIPTION>
+							<VALUES>
+								<VALUE>0</VALUE>
+								<VALUE>1</VALUE>
+								<VALUE>2</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="bezelTopOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the top of your playing screen increase this value. If your playing screen is hidden at the top decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelBottomOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the bottom of your playing screen increase this value. If your playing screen is hidden at the bottom decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelLeftOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the left of your playing screen increase this value. If your playing screen is hidden at the left decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelRightOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the right of your playing screen increase this value. If your playing screen is hidden at the right decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="defaultRegion" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>If any of your roms do not have a region tag, the module will use this region as it's default. If you still get a black screen for this rom, add a correct region tag to the rom's file name.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="America, Canada, Brazil">1</VALUE>
+								<VALUE description="Japan, Taiwan, Korea, Philippines">2</VALUE>
+								<VALUE description="Europe, Australia, South Africa">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Scanlines" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enable/Disable Scanlines.</DESCRIPTION>
+						</KEY>
+						<KEY name="ScanlineRatio" maxLength="100" minLength="0" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the scanlines ratio from 0 to 100. Default is 70.</DESCRIPTION>
+						</KEY>
+						<KEY name="DeleteCachedSettings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this to true if you want any cached settings for the game you are about to launch to be deleted before running the emulator. This refers to the settings files that are stored in the Setting\Saturn folder.</DESCRIPTION>
+						</KEY>
+						<KEY name="LegacyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>SSF v0.09 Alpha and lower use binary configuration files so they cannot be edited by the module. If you are using such versions make sure you set this mode to true. If you do this you'll have to configure everything inside SSF as no module configurations will be applied to it.</DESCRIPTION>
+						</KEY>
+						<KEY name="USBios" required="true" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to your USA Bios file.</DESCRIPTION>
+						</KEY>
+						<KEY name="EUBios" required="true" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to your European Bios file.</DESCRIPTION>
+						</KEY>
+						<KEY name="JPBios" required="true" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to your Japanese Bios file.</DESCRIPTION>
+						</KEY>
+						<KEY name="WorldBios" required="true" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to your Multinorm Bios file (All regions).</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="UseBIOS" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>If true SSF will use the real BIOS otherwise it will use an emulated one. Some games might require the real BIOS to run properly so it's suggested to have this enabled. Having it enabled will also show the bios loading screen though.</DESCRIPTION>
+						</KEY>
+						<KEY name="SH2enabled" required="false" nullable="true">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if game requires SH2 to be enabled.</DESCRIPTION>
+						</KEY>
+						<KEY name="ForceRegion" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>The module will try to select the region/area based on the rom names, but if you want to override it and force a specific region for a game you can set it here. If you select "World, No Region" make sure you have the path to the multinorm bios set.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="America, Canada, Brazil">1</VALUE>
+								<VALUE description="Japan, Taiwan, Korea, Philippines">2</VALUE>
+								<VALUE description="Europe, Australia, South Africa">3</VALUE>
+								<VALUE description="World, No Region">4</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="DeleteCachedSettings" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set this to true if you want any cached settings for the game you are about to launch to be deleted before running the emulator. This refers to the settings files that are stored in the Setting\Saturn folder.</DESCRIPTION>
+						</KEY>
+						<KEY name="BusWait" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if game requires BusWait.</DESCRIPTION>
+						</KEY>
+						<KEY name="LegacyMode" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>SSF v0.09 Alpha and lower use binary configuration files so they cannot be edited by the module. If you are using such versions make sure you set this mode to true. If you do this you'll have to configure everything inside SSF as no module configurations will be applied to it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelTopOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the top of your playing screen increase this value. If your playing screen is hidden at the top decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelBottomOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the bottom of your playing screen increase this value. If your playing screen is hidden at the bottom decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelLeftOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the left of your playing screen increase this value. If your playing screen is hidden at the left decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="bezelRightOffset" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you see part of the emulator window at the right of your playing screen increase this value. If your playing screen is hidden at the right decrease it.</DESCRIPTION>
+						</KEY>
+						<KEY name="Scanlines" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enable/Disable Scanlines.</DESCRIPTION>
+						</KEY>
+						<KEY name="ScanlineRatio" maxLength="100" minLength="0" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the scanlines ratio from 0 to 100. Default is 70.</DESCRIPTION>
+						</KEY>
+					</KEYS>						
+				</SECTION>					
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

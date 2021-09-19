@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="false">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="Settings" required="false">
+					<SECTIONTYPE>Global</SECTIONTYPE>
+					<KEYS>
+						<KEY name="Fullscreen" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen</DESCRIPTION>
+						</KEY>
+						<KEY name="WindowSize" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Changes the size of the window when running in windowed mode</DESCRIPTION>
+							<VALUES>
+								<VALUE description="100%">1</VALUE>
+								<VALUE description="200%">2</VALUE>
+								<VALUE description="300%">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="KeyDelay" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the key delay duration in milliseconds that should be used for each simulated keypress when sending the Command to load the game. Higher values will mean slower typing, but also minimizes the risk of some key presses not being read by SpudACE which seems to be something that happens commonly with this emulator.</DESCRIPTION>
+						</KEY>
+						<KEY name="KeyPressDuration" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set the key press duration (how long you keep a key pressed) in milliseconds that should be used for each simulated keypress when sending the Command to load the game. Higher values will mean slower typing, but also minimizes the risk of some key presses not being read by SpudACE which seems to be something that happens commonly with this emulator.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+				<SECTION name="%RomName%" required="false">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<KEYS>
+						<KEY name="ModelType" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Select the Jupiter ACE model for this particular game. Default model is 3K.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="3K">0</VALUE>
+								<VALUE description="19K">1</VALUE>
+								<VALUE description="35K">2</VALUE>
+								<VALUE description="51K">3</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="Command" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Used if rom requires a command after loading is complete to start the game. Use standard AutoHotkey key names, use {Wait} to pause 500 milliseconds between words/characters. ie, "R{Wait}C" to press the R and C keys with a slight delay between them. Useful for navigating through menus.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

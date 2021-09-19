@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<INISCHEMA>
+	<INIFILES>
+		<INIFILE name="%ModuleName%" required="true">
+			<INITYPE>Module</INITYPE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="true">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Application"/>
+						<GROUP name="Pre/Post Launch"/>
+						<GROUP name="Bezel"/>
+						<GROUP name="Misc"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="Application" group="Application" required="true" nullable="false">
+							<KEYTYPE>ExeTarget</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>The directory and executable, batch, or shortcut (lnk file) to your application. (this must end with the applications 3-letter extension). If an exe on an image is defined here, the image defined below will be mounted with your Virtual Drive first then this exe will be ran. If no exact path to the exe is defined, it will assume it is found on the root folder of the mounted image. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="AppWaitExe" group="Application" required="false" nullable="true">
+							<KEYTYPE>ProcessName</KEYTYPE>
+							<DESCRIPTION>This will be the exe, if different then the Application, that you want the script to wait to close. This would be needed if launching a bat file, which in turn launches another exe, where the exe is the game. Leave this blank if the module works fine with the exe from the Application key.</DESCRIPTION>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>exe</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="WorkingFolder" group="Application" required="false" nullable="true">
+							<KEYTYPE>ExeStartIn</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Mostly for GoG games, allows you to set a different working directory then the default directory (the one Application exists in).</DESCRIPTION>
+						</KEY>
+						<KEY name="DiscImage" group="Application" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to a disc image (ccd,cdi,cue,iso,isz,nrg) if required by a game, usually for a cd check. Only fill this key if a cd/dvd image is required by your game.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>ccd</FILEEXTENSION>
+								<FILEEXTENSION>cdi</FILEEXTENSION>
+								<FILEEXTENSION>cue</FILEEXTENSION>
+								<FILEEXTENSION>iso</FILEEXTENSION>
+								<FILEEXTENSION>isz</FILEEXTENSION>
+								<FILEEXTENSION>nrg</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="Parameters" group="Application" required="false" nullable="true">
+							<KEYTYPE>ExeParams</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your application.</DESCRIPTION>
+						</KEY>
+						<KEY name="ExitMethod" group="Application" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Define an alternate way to exit your Application in case it doesn't close with your Front End's exit keys using the default WinClose. WinClose methods are suggested as they will cleanly close a window, whereas Process methods force close it (many apps do not like to be force closed). Alt+F4 is an app-friendly method also, but some applications will disable this. InGame will disable any RL exit keys and you must exit through the ingame menus. Choose the one that works best for your scenario. WARNING, before enabling Fade_Out on exit, make sure you test your ExitMethod first, otherwise you might get a blank screen while game never closed.</DESCRIPTION>
+							<VALUES>
+								<VALUE>WinClose Application</VALUE>
+								<VALUE>WinClose AppWaitExe</VALUE>
+								<VALUE>Process Close Application</VALUE>
+								<VALUE>Process Close AppWaitExe</VALUE>
+								<VALUE>Send Alt+F4</VALUE>
+								<VALUE>InGame</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SteamID" group="Application" required="false" nullable="true">
+							<KEYTYPE>Long</KEYTYPE>
+							<DESCRIPTION>If you are launching a steam game, provide the ID of the game here. This will turn on steam mode if not blank. Steam only understands AppIDs for games, not rom names. See here for more info on finding a steam ID for your game: https://support.steampowered.com/kb_article.php?ref=3729-WFJZ-4175</DESCRIPTION>
+						</KEY>
+						<KEY name="OriginGame" group="Application" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if this game uses the Origin service. If true, it will automatically login to Origin so you do not get stuck at a login prompt while loading.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunch" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application before launching the Application. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunch" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application after the Application has launched, but before the module waits for it to close. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExit" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application after the Application has closed. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunchParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PreLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunchMode" group="Pre/Post Launch" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This allows you to control wether the PreLaunch application will pause RocketLauncher from continuing until it closes (runwait) or continue running even though the PreLaunch application may still be running. Utilize the PreLaunchSleep to pause RocketLauncher a certain amount of time when using "run" mode only. Default is Run.</DESCRIPTION>
+							<VALUES>
+								<VALUE>run</VALUE>
+								<VALUE>runwait</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PreLaunchSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PreLaunch app for a set amount of time, put that here (1000=1 second). Only applies if PreLaunchMode is set to "run" or "default".</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunchParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PostLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunchSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PostLaunch app for a set amount of time, put that here (1000=1 second).</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExitParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PostLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExitSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PostLaunch app for a set amount of time, put that here (1000=1 second).</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelTopOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelBottomOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelLeftOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelRightOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelFixedResMode" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the game requires fixed resolution bezel mode. Do this if the game window cannot be resized</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowTitleBar" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the title bar of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowBorder" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the border of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowMenuBar" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the menu bar of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowBorderFirst" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the this game requires that its border is hidden before the title bar. Defaults to false, only change this setting if you aren't able to hide the border or title bar of the game's window</DESCRIPTION>
+						</KEY>
+						<KEY name="HideDecoratorsAfterWindowMove" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the this game requires that the window decorators are hidden only after the window being moved/resized. Defaults to false, only change this setting if you aren't able to hide the border or title bar of the game's window. What normally happens is that the border/title of the window will become visible again anytime the window is moved or resized.</DESCRIPTION>
+						</KEY>
+						<KEY name="Fullscreen" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen. This setting will only take effect if you also create a custom user function to configure the game to start in fullscreen or windowed mode (if the game supports it). This is done by implementing either the SetFullscreenPostLaunch or SetFullscreenPreLaunch functions in the Game User Functions script file for this specific game.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitle" group="Misc" required="false" nullable="true">
+							<KEYTYPE>WinTitle</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This is the Window Title &amp; Class of your application. To find the Title/Class, click the button to the right of this field to launch a script that copies the active window's title and class to your clipboard. You can also use the AutoIt3 Window Spy utility installed with AutoHotKey or my utility @ http://www.rlauncher.com/forum/downloads.php?do=file&amp;id=7</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitleWaitTillActive" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if you don't want the fade title to wait until the window becomes active. This is set to true by default, but some specific loaders might require this to be set to false instead, like Game Loader All for Taito Type X games.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitleTimeout" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Amount of seconds to wait for the FadeTitle window to appear before exiting with a timeout. This is set to 30 seconds by default, if the game takes too long to start then you should increase this value.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeInExitSleep" group="Misc" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This is needed for some applications that may start, but not appear, ending FadeInExit prematurely. It keeps the fade screen up for the defined length.</DESCRIPTION>
+						</KEY>
+						<KEY name="DXWndGame" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if this game should be launched with DXWnd to run in windowed mode. It is your responsibility to make sure this game is already configured in DXWnd software (in the Module Extensions folder). You also need to make sure the game works with DXWnd first.</DESCRIPTION>
+						</KEY>
+						<KEY name="DXWndMaximizeWindow" group="Misc" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to Keep Aspect Ratio or Stretch Window if you want the game's window to be maximized to fill your screen, set false otherwise. This is only applicable if you also set the DXWndGame setting to true.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Keep Aspect Ratio">aspect</VALUE>
+								<VALUE description="Stretch Window">stretch</VALUE>
+								<VALUE description="False">false</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="HideConsole" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to hide the DOS console when launching bat files. This will only be applicable if your ApplicationPath is pointing to a file with .bat extension.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+		<INIFILE name="%SystemName%" required="false">
+			<INITYPE>System</INITYPE>
+			<SECTIONS>
+				<SECTION name="%RomName%" required="true">
+					<SECTIONTYPE>Rom</SECTIONTYPE>
+					<GROUPS>
+						<GROUP name="Application"/>
+						<GROUP name="Pre/Post Launch"/>
+						<GROUP name="Bezel"/>
+						<GROUP name="Misc"/>
+					</GROUPS>
+					<KEYS>
+						<KEY name="Application" group="Application" required="true" nullable="false">
+							<KEYTYPE>ExeTarget</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>The directory and executable, batch, or shortcut (lnk file) to your application. (this must end with the applications 3-letter extension). If an exe on an image is defined here, the image defined below will be mounted with your Virtual Drive first then this exe will be ran. If no exact path to the exe is defined, it will assume it is found on the root folder of the mounted image. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="AppWaitExe" group="Application" required="false" nullable="true">
+							<KEYTYPE>ProcessName</KEYTYPE>
+							<DESCRIPTION>This will be the exe, if different then the Application, that you want the script to wait to close. This would be needed if launching a bat file, which in turn launches another exe, where the exe is the game. Leave this blank if the module works fine with the exe from the Application key.</DESCRIPTION>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>exe</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="WorkingFolder" group="Application" required="false" nullable="true">
+							<KEYTYPE>ExeStartIn</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Mostly for GoG games, allows you to set a different working directory then the default directory (the one Application exists in).</DESCRIPTION>
+						</KEY>
+						<KEY name="DiscImage" group="Application" required="false" nullable="true">
+							<KEYTYPE>FilePath</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>Path to a disc image (ccd,cdi,cue,iso,isz,nrg) if required by a game, usually for a cd check. Only fill this key if a cd/dvd image is required by your game.</DESCRIPTION>
+							<PATHTYPE>Any</PATHTYPE>
+							<FILEEXTENSIONS>
+								<FILEEXTENSION>ccd</FILEEXTENSION>
+								<FILEEXTENSION>cdi</FILEEXTENSION>
+								<FILEEXTENSION>cue</FILEEXTENSION>
+								<FILEEXTENSION>iso</FILEEXTENSION>
+								<FILEEXTENSION>isz</FILEEXTENSION>
+								<FILEEXTENSION>nrg</FILEEXTENSION>
+							</FILEEXTENSIONS>
+						</KEY>
+						<KEY name="Parameters" group="Application" required="false" nullable="true">
+							<KEYTYPE>ExeParams</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your application.</DESCRIPTION>
+						</KEY>
+						<KEY name="ExitMethod" group="Application" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Define an alternate way to exit your Application in case it doesn't close with your Front End's exit keys using the default WinClose. WinClose methods are suggested as they will cleanly close a window, whereas Process methods force close it (many apps do not like to be force closed). Alt+F4 is an app-friendly method also, but some applications will disable this. InGame will disable any RL exit keys and you must exit through the ingame menus. Choose the one that works best for your scenario. WARNING, before enabling Fade_Out on exit, make sure you test your ExitMethod first, otherwise you might get a blank screen while game never closed.</DESCRIPTION>
+							<VALUES>
+								<VALUE>WinClose Application</VALUE>
+								<VALUE>WinClose AppWaitExe</VALUE>
+								<VALUE>Process Close Application</VALUE>
+								<VALUE>Process Close AppWaitExe</VALUE>
+								<VALUE>Send Alt+F4</VALUE>
+								<VALUE>InGame</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="SteamID" group="Application" required="false" nullable="true">
+							<KEYTYPE>Long</KEYTYPE>
+							<DESCRIPTION>If you are launching a steam game, provide the ID of the game here. This will turn on steam mode if not blank. Steam only understands AppIDs for games, not rom names. See here for more info on finding a steam ID for your game: https://support.steampowered.com/kb_article.php?ref=3729-WFJZ-4175</DESCRIPTION>
+						</KEY>
+						<KEY name="OriginGame" group="Application" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if this game uses the Origin service. If true, it will automatically login to Origin so you do not get stuck at a login prompt while loading.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunch" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application before launching the Application. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunch" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application after the Application has launched, but before the module waits for it to close. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExit" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>URI</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This can be used to run another application after the Application has closed. This will usually be blank. Can be a relative or absolute path, and include any parameters on this one line. Can also be a URL or Steam Browser Protocol.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunchParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PreLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PreLaunchMode" group="Pre/Post Launch" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This allows you to control wether the PreLaunch application will pause RocketLauncher from continuing until it closes (runwait) or continue running even though the PreLaunch application may still be running. Utilize the PreLaunchSleep to pause RocketLauncher a certain amount of time when using "run" mode only. Default is Run.</DESCRIPTION>
+							<VALUES>
+								<VALUE>run</VALUE>
+								<VALUE>runwait</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="PreLaunchSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PreLaunch app for a set amount of time, put that here (1000=1 second). Only applies if PreLaunchMode is set to "run" or "default".</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunchParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PostLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostLaunchSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PostLaunch app for a set amount of time, put that here (1000=1 second).</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExitParameters" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>This can be any number of parameters that you want to supply to your PostLaunch application.</DESCRIPTION>
+						</KEY>
+						<KEY name="PostExitSleep" group="Pre/Post Launch" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>If you need the script to wait after launching your PostLaunch app for a set amount of time, put that here (1000=1 second).</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelTopOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set top offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelBottomOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set bottom offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelLeftOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set right offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelRightOffset" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Set left offset for bezel in pixels</DESCRIPTION>
+						</KEY>
+						<KEY name="BezelFixedResMode" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the game requires fixed resolution bezel mode. Do this if the game window cannot be resized</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowTitleBar" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the title bar of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowBorder" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the border of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowMenuBar" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if the menu bar of the game's window should not be hidden. Defaults to true</DESCRIPTION>
+						</KEY>
+						<KEY name="HideWindowBorderFirst" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the this game requires that its border is hidden before the title bar. Defaults to false, only change this setting if you aren't able to hide the border or title bar of the game's window</DESCRIPTION>
+						</KEY>
+						<KEY name="HideDecoratorsAfterWindowMove" group="Bezel" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if the this game requires that the window decorators are hidden only after the window being moved/resized. Defaults to false, only change this setting if you aren't able to hide the border or title bar of the game's window. What normally happens is that the border/title of the window will become visible again anytime the window is moved or resized.</DESCRIPTION>
+						</KEY>
+						<KEY name="Fullscreen" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Enables/Disables Fullscreen. This setting will only take effect if you also create a custom user function to configure the game to start in fullscreen or windowed mode (if the game supports it). This is done by implementing either the SetFullscreenPostLaunch or SetFullscreenPreLaunch functions in the Game User Functions script file for this specific game.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitle" group="Misc" required="false" nullable="true">
+							<KEYTYPE>WinTitle</KEYTYPE>
+							<FULLROW>true</FULLROW>
+							<DESCRIPTION>This is the Window Title &amp; Class of your application. To find the Title/Class, click the button to the right of this field to launch a script that copies the active window's title and class to your clipboard. You can also use the AutoIt3 Window Spy utility installed with AutoHotKey or my utility @ http://www.rlauncher.com/forum/downloads.php?do=file&amp;id=7</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitleWaitTillActive" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to false if you don't want the fade title to wait until the window becomes active. This is set to true by default, but some specific loaders might require this to be set to false instead, like Game Loader All for Taito Type X games.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeTitleTimeout" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>Amount of seconds to wait for the FadeTitle window to appear before exiting with a timeout. This is set to 30 seconds by default, if the game takes too long to start then you should increase this value.</DESCRIPTION>
+						</KEY>
+						<KEY name="FadeInExitSleep" group="Misc" required="false" nullable="true">
+							<KEYTYPE>Integer</KEYTYPE>
+							<DESCRIPTION>This is needed for some applications that may start, but not appear, ending FadeInExit prematurely. It keeps the fade screen up for the defined length.</DESCRIPTION>
+						</KEY>
+						<KEY name="DXWndGame" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if this game should be launched with DXWnd to run in windowed mode. It is your responsibility to make sure this game is already configured in DXWnd software (in the Module Extensions folder). You also need to make sure the game works with DXWnd first.</DESCRIPTION>
+						</KEY>
+						<KEY name="DXWndMaximizeWindow" group="Misc" required="false" nullable="false">
+							<KEYTYPE>String</KEYTYPE>
+							<DESCRIPTION>Set to Keep Aspect Ratio or Stretch Window if you want the game's window to be maximized to fill your screen, set false otherwise. This is only applicable if you also set the DXWndGame setting to true.</DESCRIPTION>
+							<VALUES>
+								<VALUE description="Keep Aspect Ratio">aspect</VALUE>
+								<VALUE description="Stretch Window">stretch</VALUE>
+								<VALUE description="False">false</VALUE>
+							</VALUES>
+						</KEY>
+						<KEY name="HideConsole" group="Misc" required="false" nullable="false">
+							<KEYTYPE>Boolean</KEYTYPE>
+							<DESCRIPTION>Set to true if you want to hide the DOS console when launching bat files. This will only be applicable if your ApplicationPath is pointing to a file with .bat extension.</DESCRIPTION>
+						</KEY>
+					</KEYS>
+				</SECTION>
+			</SECTIONS>
+		</INIFILE>
+	</INIFILES>
+</INISCHEMA>

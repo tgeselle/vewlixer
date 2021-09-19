@@ -1,0 +1,3 @@
+allow for scrolling (i.e. single row that doesn't show all chars) - need row_len/col_len props
+allow for text instead of images
+fix presets

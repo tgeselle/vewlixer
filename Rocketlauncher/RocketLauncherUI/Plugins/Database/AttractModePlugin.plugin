@@ -1,0 +1,194 @@
+/////////////////////////////////////////////////////////////////////////////////
+// = The plugin reads your emulators folder and uses those as 
+//   the system entries
+// = The corresponding romlist to the emulator will be read from
+//   the romlist folder in Attract mode
+// = If a corresponding romlist for the emulator is not found,
+//   it will read all romlists looking for entries that use the 
+//   emulator. This was necessary because Attractmode can have
+//   multi-emulator romlists. - Duplicate entries are 
+//   automatically detected and removed from the RLUI system 
+//   list.
+
+using RocketLauncher.UI.Entity;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using RocketLauncher.UI.Util.Extensions;
+using RocketLauncher.UI.Util;
+
+// = The plugin reads your emulators folder and uses those as the system entries
+// = The corresponding romlist to the emulator will be read from the romlist folder
+  // in Attract mode
+// =  If a corresponding romlist for the emulator is not found,
+  // it will read all romlists looking for entries that use the 
+  // emulator. This was necessary because Attractmode can have
+  // multi-emulator romlists. - Duplicate entries are 
+  // automatically detected and removed from the RLUI system 
+  // list.
+
+
+
+namespace RocketLauncher.UI.Database
+{
+    [DisplayName("AttractMode")]
+    [FrontendExecutable("attract.exe")]
+    [PluginDescription("Loads from AttractMode romlists")]
+    [RocketLauncherPluginName("")]
+    [PluginVersion("1.0.0")]
+    
+	public class AttractModePlugin : DefaultDatabasePlugin
+    {
+        private long filesize = 0;
+        private ObservableCollection<GameXml> currentGamesList = new ObservableCollection<GameXml>();
+
+        public AttractModePlugin(String RLpath)
+            : base(RLpath)
+        {}
+
+        protected override String getMainDBsubPath()
+        {
+            return @"\attract.cfg";
+        }
+
+        protected override String getSystemDBsubPath(String system)
+        {
+            return @"\romlists\" + system + ".txt";
+        }
+
+        public override void renameFrontendSystem(String old_system_name, String new_system_name, String new_system_description)
+        {
+            //Renaming systems isn't supported yet
+            return;
+        }
+
+        public override void createSystemDatabase(String system, List<GameXml> games, bool overwrite)
+        {
+            //Creating databases isn't supported yet
+            return;
+        }
+
+		//Read the emulators from the attract.cfg file and add to the systems list
+		public override List<String> loadSystems()
+        {
+			//Find all systems declared in the emulators folder
+			List<String> systemsList = new List<String>();
+			String dir = Path.GetDirectoryName(getMainDBFullPath()) + @"\emulators";
+
+			// get the name of each file located in the emulators directory
+			String [] emulatorfiles = Directory.GetFiles(dir, "*.cfg");
+			
+			//copy each name (without the path or extension) to the systems list
+			foreach(string fileName in emulatorfiles)
+			{	
+				//remove the path and extension data
+				String file = Path.GetFileNameWithoutExtension(fileName);
+				
+				//ensure duplicates are not added to the systems list
+				if (!systemsList.Contains(file))
+					systemsList.Add(file);
+				else
+					duplicateSystemFound(file);
+			}
+			return systemsList;
+		}
+		
+        // Add the games to the SystemDB in RL
+		// romlists files named the same as the emulator will be read and all others ignored.
+		// if an a romlist file does not exits that matches the name of the emulator, every 
+		// romlist file will be read because romlists can contain multiple emulators
+		public override ObservableCollection<GameXml> loadGames(String system, out bool loaded)
+        {
+            ObservableCollection<GameXml> gamesList = new ObservableCollection<GameXml>();
+            loaded = true;
+
+            // Get romlist file location
+			String file = getSystemDBFullPath(system);
+			
+			if (File.Exists(file)) // An emulator file exists that matches the romlist name
+            {
+				
+				// read the romlist contents and build the game list
+				//romlist Format is #Name;Title;Emulator;CloneOf;Year;Manufacturer;Category;Players;Rotation;Control;Status;DisplayCount;DisplayType;AltRomname;AltTitle;Extra;Buttons
+                
+				// Open the romlist file
+				StreamReader reader = new StreamReader(file);
+                String line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    // read the line from the romlist and create an array using ";" as the delimiter
+					String[] fields = line.Split(';');
+					
+					//Attractmode can have combined gamelists. Ensure only the games where the emulator and system matches
+					// are mapped to the game list
+					if (fields[2].ToLower() == system.ToLower())
+					{
+						//map each romlist field to the game list fields
+						String name = fields[0];
+						String desc = fields[1];
+						String clone = fields[3];
+						String year = fields[4];
+						String manufacturer = fields[5];
+						String genre = fields[6];
+				
+						//add the game to the gamelist 
+						GameXml gamexml = new GameXml(name, desc, genre, manufacturer, clone, system);
+						
+						//check for duplicate games in the list
+						if (!gamesList.Contains(gamexml))
+							gamesList.Add(gamexml);
+					}
+                }
+			reader.Close(); 
+				
+			} else { // An emulator file does not exists that matches the romlist name
+				
+				// loop thru each romlist file to create a list based on entries matching the emulator
+				//romlist Format is #Name;Title;Emulator;CloneOf;Year;Manufacturer;Category;Players;Rotation;Control;Status;DisplayCount;DisplayType;AltRomname;AltTitle;Extra;Buttons
+                
+				//get filenames of each romlist file
+				String dir = Path.GetDirectoryName(file);
+				String [] romListFiles = Directory.GetFiles(dir, "*.txt");
+				
+				//loop thru each file name
+				foreach (string fileName in romListFiles)
+				{
+					
+					StreamReader reader = new StreamReader(fileName);
+					String line;
+					while ((line = reader.ReadLine()) != null)
+					{
+						// read the line from the romlist and create an array using ";" as the delimiter
+						String[] fields = line.Split(';');
+						
+						//Attractmode can have combined gamelists. Ensure only the games where the emulator and system matches
+						// are mapped to the game list
+						if (fields[2].ToLower() == system.ToLower())
+						{
+							//map each romlist field to the game list fields
+							String name = fields[0];
+							String desc = fields[1];
+							String clone = fields[3];
+							String year = fields[4];
+							String manufacturer = fields[5];
+							String genre = fields[6];
+					
+							//add the game to the gamelist 
+							GameXml gamexml = new GameXml(name, desc, genre, manufacturer, clone, system);
+							
+							//check for duplicate games in the list
+							if (!gamesList.Contains(gamexml))
+								gamesList.Add(gamexml);
+						}
+					}
+					reader.Close();
+				}
+			}
+            return gamesList;
+        }
+    }
+}		

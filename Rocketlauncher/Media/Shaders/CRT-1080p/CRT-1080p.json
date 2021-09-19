@@ -1,0 +1,29 @@
+{
+  "overlays": [
+    {
+      "solid-color": "00000000"
+    },
+    {
+      "filename": "Scanline.png",
+      "size-mode": "tile",
+	  "alpha-channel": "",
+	  "matrix": "",
+	  "orientation": ""
+    },
+    {
+      "filename": "Horizontal.png",
+      "size-mode": "stretch",
+	  "alpha-channel": "",
+	  "matrix": "",
+	  "orientation": "horizontal"
+    },
+    {
+      "filename": "Vertical.png",
+      "size-mode": "stretch",
+	  "alpha-channel": "",
+	  "matrix": "",
+	  "orientation": "vertical"
+    }
+	]
+}
+

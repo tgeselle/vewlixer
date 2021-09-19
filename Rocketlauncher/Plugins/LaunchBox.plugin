@@ -1,0 +1,186 @@
+MCRC := "522BEDFD"
+MVersion := "1.0.3"
+
+; LaunchBox Plugin (by bleasby)
+; Requires at least LaunchBox version 6.10
+#MaxMem 256
+
+PluginInit:
+	Log("PluginInit - Started")
+
+	;---- FrontEnd Information
+	frontendPlugin := "LaunchBox" 
+	frontendPID := Process("Exist","LaunchBox.exe") ? Process("Exist","LaunchBox.exe") : Process("Exist","BigBox.exe")
+	WinGet, windowIDList, list, Ahk_pid %frontendPID% 
+	loop, % windowIDList
+	{	WinGetTitle, frontendWinTitle, % "Ahk_id " . windowIDList%a_index%
+		if (InStr(frontendWinTitle, "LaunchBox Premium")) or (InStr(frontendWinTitle, "LaunchBox Games Database")) or (InStr(frontendWinTitle, "LaunchBox Big Box")){
+			WinGetClass, frontendWinClass, % "Ahk_id " . windowIDList%a_index%
+			break
+		}
+	}
+	
+	;---- Game Info
+	frontendDatabaseFields := "Developer|Notes|Platform|Publisher|Rating|ReleaseDate|StarRating|Title|Version|Series|PlayMode|Genre|Status|Source|Region|Favorite|Completed|Portable|Clone"
+	frontendDatabaseLabels := "Developer|Notes|Platform|Publisher|Rating|Year|StarRating|Name|CloneOf|Series|PlayMode|Genre|Status|Source|Region|Favorite|Completed|Portable|CloneOf"
+	gameInfo := Object()
+	gameInfo := BuildDatabaseTable(dbName,systemName,frontendDatabaseFields,frontendDatabaseLabels)
+	
+	;----------Loading FrontEnd asset labels
+	feMedia := {}
+	feLogoLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Logo_Labels", "Game Logo|System Logo")   ; if label "keepFileName" the filename will be used as label
+	feBackgroundsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Backgrounds_Labels", "Background|Fanart - Background")
+	feDiscArtworkLabel:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Disc_Artwork_Label", "")
+	
+	;Acquiring Logos
+	logoPath := frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Clear Logo"
+	systemLogoPath := frontendPath . "\Images\Platforms\" . gameInfo["Platform"].Value . "\Clear Logo"
+	feMedia.Logos := launchboxProcessExtraFiles(logoPath . "|" . systemLogoPath, feLogoLabels, "game|system", "png|bmp|gif|jpg|tif")
+	
+	;Acquiring Backgrounds 
+	gameBackgroundsPath := frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Background\Background"
+	gameFanartBackgroundPath := frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Background"
+	feMedia.Backgrounds := launchboxProcessExtraFiles(gameBackgroundsPath . "|" . gameFanartBackgroundPath,feBackgroundsLabels,"game|game","png|bmp|gif|jpg|tif")
+
+	;Acquiring Disc artwork (not available or location unknown on LaunchBox folders)
+
+	Log("PluginInit - Ended")
+Return
+
+BuildDatabaseTable(game,system,ByRef frontendDatabaseFields, ByRef frontendDatabaseLabels){ ; required for rom mapping menu name
+	Log("BuildDatabaseTable - Started - Building Table for: " . frontendDatabaseLabels,4)
+	Global frontendPath, logLevel, dbName, romPath, romExtension, RLObject
+	infoObject := Object()
+	stringSplit, label, frontendDatabaseLabels, |
+	systemXML := CheckFile(frontendPath . "\Data\Platforms\" . system . ".xml")
+	FileRead, xmlContents, %systemXML%
+	;search for a relative game path in relation with launchbox if the game is on the same drive as Launchbox (required because the way Launchbox saves the ApplicationPath info)
+	if (substr(frontendPath,1,1) = substr(romPath . "\" . dbName . romExtension, 1, 1))
+		searchStringStart := RLObject.getRelativePathFromFull(frontendPath, romPath . "\" . dbName . romExtension)
+	else
+		searchStringStart := romPath . "\" . dbName . romExtension
+	; Replacing XML invalid characters
+	replace :=   {"&":"&amp;"}
+	;replace :=   {"&":"&amp;","'":"&apos;","<":"&lt;",">":"&gt;","""":"&quot;"} ; there is no need for replacing other invalid xml characters either because they are invalid file names or because LaunchBox does not replace them on its databases
+	For what, with in replace
+		StringReplace, searchStringStart, searchStringStart, %what%, %with%, All
+	searchStringStart := "<ApplicationPath>" . searchStringStart . "</ApplicationPath>"	
+	Log("BuildDatabaseTable - Searching LaunchBox database file for XML section: " . searchStringStart,4)
+	searchStringEnd := "</Game>"
+	GameXMLInfo := StrX(xmlContents,searchStringStart,1,0,searchStringEnd,1,0)	; full game section from HS xml
+	if !(GameXMLInfo) { ; no info found, setting name info to the game value
+		currentobj:={}
+		currentobj.Label := "Name"
+		currentobj.Value := game
+		infoObject.Insert(currentobj["Label"], currentobj)
+		Log("BuildDatabaseTable - Ended - no ""Game Name"" found. Assigning """ . game . """ to the label ""Name""",2)
+		Return infoObject
+	} Else
+		Log("BuildDatabaseTable - Found ""Game Name"" in the database!",4)
+	; game xml info
+	loop, parse, frontendDatabaseFields,|, 
+	{	currentLabel := label%A_index%
+		Log("BuildDatabaseTable - Looking database for: " . currentLabel,4)
+		XMLDbInfo := StrX(GameXMLInfo,"<" . A_Loopfield . ">",1,StrLen("<" . A_Loopfield . ">"),"</" . A_Loopfield . ">"d,1,StrLen("</" . A_Loopfield . ">"))
+		XMLDbInfo := RegexReplace( XMLDbInfo, "^\s+|\s+$" )
+		;post processing some of the LaunchBox database info
+		if (currentLabel="Year")
+			XMLDbInfo :=  SubStr(XMLDbInfo,1,4)
+		currentobj:={}
+		currentobj.Label := currentLabel
+		currentobj.Value := XMLDbInfo
+		infoObject.Insert(currentobj["Label"], currentobj)
+		if (XMLDbInfo)
+			Log("BuildDatabaseTable - Found """ . currentLabel . """ with a value: """ . XMLDbInfo . """",4)
+	}
+	;platform info
+	if (infoObject["Platform"].Value){
+		searchStringStart := "<Name>" . infoObject["Platform"].Value . "</Name>"
+		searchStringEnd := "</Platform>"
+		platformPathInfo := StrX(xmlContents,searchStringStart,1,0,searchStringEnd,1,0)
+		mediaFoldersXMLKeys := "VideosFolder|FrontImagesFolder|BackImagesFolder|ClearLogoImagesFolder|FanartImagesFolder|ScreenshotImagesFolder|BannerImagesFolder|SteamBannerImagesFolder|ManualsFolder|MusicFolder"
+		mediaFoldersLabels := "Videos_Path|Front_Path|Back_Path|ClearLogo_Path|Fanart_Path|Screenshot_Path|Banner_Path|SteamBanner_Path|Manuals_Path|Music_Path"
+		stringSplit, label, mediaFoldersLabels, |
+		loop, parse, mediaFoldersXMLKeys,|, 
+		{	currentLabel := label%A_index%
+			Log("BuildDatabaseTable - Looking database for platform path for: " . currentLabel,4)
+			XMLDbInfo := StrX(platformPathInfo,"<" . A_Loopfield . ">",1,StrLen("<" . A_Loopfield . ">"),"</" . A_Loopfield . ">"d,1,StrLen("</" . A_Loopfield . ">"))
+			currentobj:={}
+			currentobj.Label := currentLabel
+			currentobj.Value := XMLDbInfo
+			infoObject.Insert(currentobj["Label"], currentobj)
+			if (XMLDbInfo)
+				Log("BuildDatabaseTable - Found """ . currentLabel . """ with a value: """ . XMLDbInfo . """",4)
+		}
+	}
+	if (logLevel>=5){
+		for index, element in infoObject
+			gameInfoLog := % gameInfoLog . "`r`n`t`t`t`t`tGameInfo Label: " . element.Label . " | GameInfo Value: " . element.Value
+		Log("PluginInit - GameInfo:" gameInfoLog ,5)
+	}
+	Log("BuildDatabaseTable - Ended",4)
+	Return infoObject
+}
+
+launchboxProcessExtraFiles(list,label,AssetType,extensions){
+	Global gameInfo, romName
+	obj := {}
+	StringSplit, labelArray, label, |,
+	StringSplit, AssetTypeArray, AssetType, |,
+	Loop, Parse, list,|
+	{ 	currentLabel := A_Index
+		If !(labelArray%currentLabel% = "#disabled#"){	
+			If (AssetTypeArray%currentLabel% = "game"){
+				;adding dbnamed assets
+				obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["Name"].Value . ".*",labelArray%currentLabel%,AssetTypeArray%currentLabel%,extensions, obj)
+				Loop, 9
+					obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["Name"].Value . "-0" . a_index . ".*",labelArray%currentLabel% . "-0" . a_index,AssetTypeArray%currentLabel%,extensions, obj)
+				if (parentDbName){
+					obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["CloneOf"].Value . ".*","Parent " . labelArray%currentLabel%,AssetTypeArray%currentLabel%,extensions, obj)
+					Loop, 9
+						obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["CloneOf"].Value . "-0" . a_index . ".*","Parent " . labelArray%currentLabel% . "-0" . a_index,AssetTypeArray%currentLabel%,extensions, obj)
+				}
+				;adding rom named assets
+				obj := BuildAssetsTable(A_loopfield . "\" . romName . ".*","Rom " . labelArray%currentLabel%,AssetTypeArray%currentLabel%,extensions, obj)
+				Loop, 9
+					obj := BuildAssetsTable(A_loopfield . "\" . romName . "-0" . a_index . ".*","Rom " . labelArray%currentLabel% . "-0" . a_index,AssetTypeArray%currentLabel%,extensions, obj)
+			} else { ;system assets
+				obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["Platform"].Value . ".*",labelArray%currentLabel%,AssetTypeArray%currentLabel%,extensions, obj)
+				Loop, 9
+					obj := BuildAssetsTable(A_loopfield . "\" . gameInfo["Platform"].Value . "-0" . a_index . ".*",labelArray%currentLabel% . "-0" . a_index,AssetTypeArray%currentLabel%,extensions, obj)
+			}
+		}
+	}
+	Return obj
+}
+
+loadAdditionalFEAssets(){
+	Global additionalFEAssetsLoaded, feMedia, frontendPath, gameInfo
+	
+	;Loading labels from ini files
+	feArtworkLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Artwork_Labels", "Advertisement Flyer - Back|Advertisement Flyer - Front|Arcade - Cabinet|Arcade - Circuit Board|Arcade - Control Panel|Arcade - Controls Information|Arcade - Marquee|Banner|Box - 3D|Box - Back|Box - Back - Reconstructed|Box - Front|Box - Front - Reconstructed|Cart - 3D|Cart - Back|Cart - Front|Disc|Fanart - Box - Back|Fanart - Box - Front|Fanart - Cart - Back|Fanart - Cart - Front|Fanart - Disc|Screenshot - Game Over|Screenshot - Game Select|Screenshot - Game Title|Screenshot - Gameplay|Screenshot - High Scores|Steam Banner|Screenshot - Gameplay - Cabinet|Screenshot - Gameplay - Controls|Screenshot - Gameplay - CP|Screenshot - Gameplay - GameOver|Screenshot - Gameplay - Marquee|Screenshot - Gameplay - PCB|Screenshot - Gameplay - Score|Screenshot - Gameplay - Select|Screenshot - Gameplay - Snap|Screenshot - Gameplay - Title")
+	feControllerLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Controller_Labels", "")
+	feGuidesLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Guides_Labels", "")
+	feManualsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Manuals_Labels", "Game Manual")
+	feVideosLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "LaunchBox", "Fe_Videos_Labels", "Game Video|System Video")
+	
+	;Acquiring ArtWork
+	feArtworkPaths1 := frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Advertisement Flyer - Back" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Advertisement Flyer - Front" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Arcade - Cabinet" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Arcade - Circuit Board" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Arcade - Control Panel" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Arcade - Controls Information" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Arcade - Marquee" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Banner" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Box - 3D" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Box - Back" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Box - Back - Reconstructed" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Box - Front" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Box - Front - Reconstructed" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Cart - 3D" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Cart - Back" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Cart - Front" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Disc"
+	feArtworkPaths2 := frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Box - Back" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Box - Front" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Cart - Back" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Cart - Front" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Fanart - Disc" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Game Over" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Game Select" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Game Title" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - High Scores" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Steam Banner" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Cabinet" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Controls" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\CP" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\GameOver" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Marquee" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\PCB" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Score" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Select" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Snap" . "|" . frontendPath . "\Images\" . gameInfo["Platform"].Value . "\Screenshot - Gameplay\Title" 
+	feMedia.Artwork := launchboxProcessExtraFiles(feArtworkPaths1 . "|" . feArtworkPaths2, feArtworkLabels, "game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game|game", "png|bmp|gif|jpg|tif")
+	
+	;Acquiring Videos
+	gameVideoPath := frontendPath . "\Videos\" . gameInfo["Platform"].Value
+	systemVideoPath := frontendPath . "\Videos\Platforms\" . gameInfo["Platform"].Value
+	feMedia.Videos := launchboxProcessExtraFiles(gameVideoPath . "|" . systemVideoPath,feVideosLabels,"game|system","mp4,flv")
+	
+	;Acquiring Manuals
+	gameManualPath := frontendPath . "\Manuals\" . gameInfo["Platform"].Value
+	feMedia.Manuals := launchboxProcessExtraFiles(gameManualPath,feManualsLabels,"game","pdf")
+
+	;Acquiring Controller (not available or location unknown on LaunchBox folders)
+	;Acquiring Guides (not available or location unknown on LaunchBox folders)
+	
+	additionalFEAssetsLoaded := true
+	Return
+}

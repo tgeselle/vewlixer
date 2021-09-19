@@ -1,0 +1,124 @@
+MCRC := "BEC0DB89"
+MVersion := "1.0.0"
+
+; AttractMode Plugin by ArcadeBliss
+
+; General Plugin Building Instructions:
+; 1) If the frontend has info about the game:
+;		1.1) You should create a gameInfo object with this info following the structure defined bellow:
+;		1.2) The game info object must have this structure:
+; 			- gameInfo[%LabelName%].Label := %LabelName%
+; 			- gameInfo[%LabelName%].Value := %Value%
+;		1.3) The database formated game name should be obrigatorily defined on the gameInfo labeled "Name":
+;			- gameInfo["Name"].Value := %Game_name_obtained_from_the_frontend_database%
+;		1.4) For rom mapping menu support it is required to create a BuildDatabaseTable function capable of creating the gameinfo object:
+;			- This function should have as the inputs four parameters, on this order obrigatorily: BuildDatabaseTable(game,system,ByRef frontendDatabaseFields, ByRef frontendDatabaseLabels)
+;			- This function should return the gameInfo object
+; 2) If the frontend has art assets:
+;		2.1) You must provide the path and labels for each file assets on the following object:
+;			- feMedia["Logos"].feLogo1.Label := "feLogo1"
+;			- feMedia["Logos"].feLogo1.Path1 := "c:\aaa.png"	
+;			- feMedia["Logos"].feLogo1.Ext1 := "png"	
+;			- feMedia["Logos"].feLogo1.TotalItems := 1	
+
+PluginInit:
+	Log("PluginInit - Started")
+
+	;---- Plugin Information
+	;frontend info (required)
+	frontendPlugin := "AttractMode" 
+	frontendWinTitle := "Attract-Mode"
+	frontendWinClass := "Attract-Mode ahk_class SFML_Window"
+	frontendInfoFile := frontendPath . "\rl_integration.txt"
+
+	frontendGamesDb := frontendPath . "\romlists\" . systemName . ".txt" ; determine which AM display is active to get the romlist
+	frontendSystemDb := frontendPath . "\emulators\*.cfg"	; no main menu list, instead each cfg file in this folder is another system
+	frontendMainMenuIni := frontendPath . "\attract.cfg"	; no real main menu cfg as far as I can tell
+	;frontendVideoExtensions := ["mp4"]	; order matters, preferred is found first
+	;frontendArtworkExtensions := ["png"]
+
+	;open AM rlauncher.txt file
+	attractModeFile := Object()
+
+	Loop, Read, %frontendInfoFile% ; This loop retrieves each line from the file, one at a time.
+	{
+		StringSplit, fileFields, A_LoopReadLine , |
+		
+		If (fileFields0 > 2)
+			attractModeFile.Insert(A_LoopReadLine) ; Append this line to the array.
+		Else
+			attractModeFile.Insert(fileFields1)
+
+	}
+
+	;Content assets (not required)
+	; format: one index for each asset with path and label info: Array[1,"Path"], Array[1,"Label"]
+	feMedia := {}
+
+	; Game Info (not required)
+	frontendDatabaseFields := "#Name|Title|Emulator|CloneOf|Year|Manufacturer|Category|Players|Rotation|Control|Status|DisplayCount|DisplayType|AltRomname|AltTitle|Extra|Buttons|Rating"
+	frontendDatabaseLabels := "Rom|Name|Emulator|CloneOf|Year|Publisher|Genre|Players|Rotation|Control|Status|DisplayCount|DisplayType|AltRomname|AltTitle|Extra|Buttons|Rating"
+	gameInfo := Object()
+	gameInfo := BuildDatabaseTable(dbName,systemName,frontendDatabaseFields,frontendDatabaseLabels,attractModeFile)
+
+	;----------Acquiring AttractMode Paths and defining respective labels------------
+
+	; RL Game and System Logos	
+	feLogoLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "AttractMode", "Fe_Logo_Labels", "Game Logo|System Logo")   ; if label "keepFileName" the filename will be used as label
+	feMedia.Logos := BuildAssetsTable(attractModeFile[4] . "|" . attractModeFile[5],feLogoLabels,"game|system","png,bmp,gif,jpg,tif")
+
+	; RL Artwork
+	feArtworkLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "AttractMode", "Fe_Artwork_Labels", "Marquee|Fanart|Flyer")
+	feMedia.Artwork := BuildAssetsTable(attractModeFile[7] . "|" . attractModeFile[8] . "|" +attractModeFile[9],feArtworkLabels,game|game|game,"png,bmp,gif,jpg,tif")
+
+	; RL Background
+	feBackgroundsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "AttractMode", "Fe_Backgrounds_Labels", "Background")
+	feMedia.Backgrounds := BuildAssetsTable(attractModeFile[3],feBackgroundsLabels,"game","png,bmp,gif,jpg,tif")
+
+	; RL Video
+	feVideosLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "AttractMode", "Fe_Videos_Labels", "Game Video")
+	feMedia.Videos := BuildAssetsTable(attractModeFile[6],feVideosLabels,"game","mp4,avi")
+
+	; feControllerLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "HyperSpin", "Fe_Controller_Labels", "")
+	; feGuidesLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "HyperSpin", "Fe_Guides_Labels", "")
+	; feManualsLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "HyperSpin", "Fe_Manuals_Labels", "")
+	; feVideosLabels:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "HyperSpin", "Fe_Videos_Labels", "Game Video|System Video")
+	; feDiscArtworkLabel:= RIniLoadVar("GlobalPluginsIni","SystemPluginsIni", "HyperSpin", "Fe_Disc_Artwork_Label", "Artwork1")	
+
+	Log("PluginInit - Ended")
+Return
+
+BuildDatabaseTable(game,system,ByRef frontendDatabaseFields, ByRef frontendDatabaseLabels, ByRef attractModeFile)
+{
+; Parse the rom list and map the information to the frontenDatabaseFields
+	Log("BuildDatabaseTable - Started - Building Table for: " . frontendDatabaseLabels,2)
+	Global frontendPath, logLevel
+	infoObject := Object()
+
+	Log("BuildDatabaseTable - Found ""Game Name"" in the database!",4)
+
+	gameEntry := attractModeFile[2]
+
+	StringSplit, gameEntryFields, gameEntry , |
+	StringSplit, label, frontendDatabaseLabels, |
+
+	Loop, Parse, frontendDatabaseFields,|
+	{	
+		currentLabel := label%A_index%
+		Log("BuildDatabaseTable - Searching for: " . currentLabel,4)
+		currentobj:={}
+		currentobj.Label := currentLabel 
+		Log("currentobj.Value := gameEntryFields%A_index%= " . gameEntryFields%A_index%,4)
+		currentobj.Value := gameEntryFields%A_index%
+		infoObject.Insert(currentobj["Label"], currentobj)
+		Log("BuildDatabaseTable - Found """ . currentLabel . """ with a value: """ . gameEntryFields%A_index% . """",4)
+	}
+
+	If (logLevel >= 5) {
+		For attribute,value in infoObject
+			gameInfoLog := gameInfoLog . "`r`n`t`t`t`t`tGameInfo Label: " . attribute . " | GameInfo Value: " . value
+		Log("PluginInit - GameInfo:" gameInfoLog ,4)
+	}
+	Return, infoObject
+}
+
