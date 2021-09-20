@@ -23,7 +23,13 @@ class GenerateGameList
 
   def add_game_to_rocketlauncher(game)
     @rocketlauncher.puts "[#{game.name}]"
-    @rocketlauncher.puts "Application=..\\Games\\TeknoParrot\\#{game.name}.bat"
+
+    if game.rocketlauncher_class.nil?
+      @rocketlauncher.puts "Application=#{game.exe_path}"
+    else
+      @rocketlauncher.puts "Application=..\\Games\\TeknoParrot\\#{game.name}.bat"
+    end
+
     @rocketlauncher.puts "ahk_class #{game.rocketlauncher_class}"
     @rocketlauncher.puts ""
   end
