@@ -1,5 +1,5 @@
 #NesicaGameList
-3D Cosplay Mahjong;3D Cosplay Mahjong;Nesica;;2014;TechArts;Mahjong;1-2;1.00;3;401300;;;Nesica;牌は逃さないッ　メンタンピン・ドラドララッ!;
+3D Cosplay Mahjong;3D Cosplay Mahjong;Nesica;;2014;TechArts;Mahjong;1-2;1.00;3;401300;;;Nesica;YAMETE!;
 Akai Katana Shin;Akai Katana Shin;Nesica;;2012;Cave;Shmup;1-2;1.00;4;302201;;;Nesica;赤い刀 真;
 Akai Katana Shin[302200];Akai Katana Shin;Nesica;Akai Katana Shin;2012;Cave;Shmup;1-2;1.00;4;302200;;;Nesica;赤い刀 真;
 Aquapazza Aqua plus Dream Match;Aquapazza Aqua plus Dream Match;Nesica;;2012;Examu;Fighting;1-2;2.01;4;301906;;;Nesica;アクアパッツァ アクアプラスドリームマッチ;

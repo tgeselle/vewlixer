@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////
-// 
+//
 // 2/4/2017
 // added more manufactures to db cleaned up some of the code
 ///1/20/2017
@@ -60,7 +60,7 @@
 
 // 2016-07-23 atrfate Changelog
 /// [Change] Seperated the the background form the menu controls , this way people have custom controls more easily
-/// [Change] Changed the Background image at some point the grid on the background was made of center 
+/// [Change] Changed the Background image at some point the grid on the background was made of center
 ///////////////////////////////////////////////////
 
 // 2016-07-23 ArcadeBliss Changelog
@@ -74,7 +74,7 @@
 ///===============================================================
 ////Changed enlarge to smaller number
 ////Changed placement of arrows in loading order ( no longer shows above artwork)
-////[Feature]chnages artwork rotate to video/title/flyer 
+////[Feature]chnages artwork rotate to video/title/flyer
 /// Not yet implemented making new frame for selection
 
 // 2016-07-22 ArcadeBliss Changelog
@@ -112,15 +112,15 @@
 class UserConfig </ help="Navigation controls: Up/Down (to move up and down) and Page Up/Page Down (to move left and right)" />{
 	</ label="Grid Artwork", help="The artwork to display in the grid", options="snap,marquee,flyer,wheel", order=1 />
 	art="wheel";
-	
+
 	</ label="Gane Selection Glow", help="Add a highlight effect to the select game", options="Yes,No", order=2 />
 	shader="false";
 	</ label="Preserve Grid Artwork Aspect Ration", help="Preserve grid artwork aspect ratio", options="Yes,No", order=3 />
-	aspect_ratio="No";	
-	
+	aspect_ratio="No";
+
 	</ label="Logo Artwork", help="The artwork to display in the upper right corner", options="logo,snap,marquee,flyer,wheel", order=4 />
 	logo="logo";
-	
+
     </ label="Flow", help="Select the flow direction of the grid", options="Horizontal,Vertical", order=7 />
 	flow="Horizontal";
 
@@ -133,7 +133,7 @@ class UserConfig </ help="Navigation controls: Up/Down (to move up and down) and
 	artRotate="custom1";
 	</ label="Buttons update", help="This controls what the buttons with update with either control field or the button field", options="Buttons,Con," order=11 />
 	nbuttons="Con";
-	
+
 }
 
 fe.load_module( "conveyor" );
@@ -162,9 +162,9 @@ local aspect_ratio = true;
 local Nbutton1 = ( my_config[ "nbuttons"] )
 if (my_config["aspect_ratio"] == "No")
 	aspect_ratio = false;
-	
 
-	
+
+
 ////////////////////////////////
 //
 //  Setup Conveyour Grid
@@ -193,7 +193,7 @@ if (my_config["aspect_ratio"] == "No")
 		jap_rss=null;
 		over_t=null;
 		prev_sel =0;
-		
+
 		constructor()
 		{
 			base.constructor();
@@ -201,9 +201,9 @@ if (my_config["aspect_ratio"] == "No")
 			sel_x = cols / 3;
 			sel_y = rows / 3;
 			stride = fe.layout.page_size = vert_flow ? rows : cols;
-	
-	
-			
+
+
+
 			try
 			{
 				transition_ms = my_config["ttime"].tointeger();
@@ -213,124 +213,124 @@ if (my_config["aspect_ratio"] == "No")
 				transition_ms = 220;
 			}
 		}
-		
+
 		function update_frame()
-		{			
+		{
 			// Pulsatining Aminamtion for the frame Glow
-			animation.add( PropertyAnimation( frameg, 
-				{   
+			animation.add( PropertyAnimation( frameg,
+				{
 					property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 255,
 					pulse = true,
 					time = transition_ms * 2
 
 				} ) );
-				
+
 			// Movement Animation for the frameg
-			animation.add( PropertyAnimation( frameg, 
-				{   
+			animation.add( PropertyAnimation( frameg,
+				{
 					property = "position",
-					tween = Tween.Linear, 
-					end = { 
-						x = (width * sel_x + ((fe.layout.width - (fe.layout.width / 1.105448275)) / 2)) - ((frame_width - (width))/2) + 20 - 2, 
+					tween = Tween.Linear,
+					end = {
+						x = (width * sel_x + ((fe.layout.width - (fe.layout.width / 1.105448275)) / 2)) - ((frame_width - (width))/2) + 20 - 2,
 						y = ((fe.layout.height / 1.51 + height * sel_y)) - ((frame_height - (height))/2)
-					}, 
-					time = transition_ms 
+					},
+					time = transition_ms
 				} ) );
-				
+
 			// Movement Animation for the frame
-			animation.add( PropertyAnimation( frame, 
-				{   
+			animation.add( PropertyAnimation( frame,
+				{
 					property = "position",
-					tween = Tween.Linear, 
-					end = { 
-						x = (width * sel_x + ((fe.layout.width - (fe.layout.width / 1.105448275)) / 2)) - ((frame_width - (width))/2) + 20 - 2, 
+					tween = Tween.Linear,
+					end = {
+						x = (width * sel_x + ((fe.layout.width - (fe.layout.width / 1.105448275)) / 2)) - ((frame_width - (width))/2) + 20 - 2,
 						y = ((fe.layout.height / 1.51 + height * sel_y)) - ((frame_height - (height))/2)
-					}, 
-					time = transition_ms 
+					},
+					time = transition_ms
 				} ) );
 				// Movement Animation for the Game Title
-			animation.add( PropertyAnimation( child_t, 
-				{   
+			animation.add( PropertyAnimation( child_t,
+				{
 					property = "position",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start = {
 						x =  fe.layout.height / 1.5
 						y =  fe.layout.height / -72
-					}, 
-					end = { 
+					},
+					end = {
 						x =  0
 						y =  fe.layout.height / -72
-					}, 
+					},
 					time = 225
 				} ) );
-				
-		
-				
+
+
+
 					// Movement Animation for the Game system
-			animation.add( PropertyAnimation( img_s, 
-				{   
+			animation.add( PropertyAnimation( img_s,
+				{
 				    property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 135,
 					pulse = false,
 					time = transition_ms * 3
 				} ) );
-	
-	
+
+
 		// Movement Animation for the bottom title
-			animation.add( PropertyAnimation( jap_rss, 
-				{   
+			animation.add( PropertyAnimation( jap_rss,
+				{
 					property = "position",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start = {
 						x =  1920
 						y =  fe.layout.height / 1.045  - 58
-					}, 
-					end = { 
+					},
+					end = {
 						x =  -1920
 						y =  fe.layout.height / 1.045  - 58
-					}, 
+					},
 					time = 14000
 					loop = true
 				} ) );
-	
-	
-	
-	
-			
+
+
+
+
+
 			// Update all of the text and artwork
-			bt_t.index_offset = img_t.index_offset = mfa_t.index_offset = child_t.index_offset  = num_t.index_offset = get_sel() - selection_index;	
-			name_t.set_index_offset(get_sel() - selection_index); 
+			bt_t.index_offset = img_t.index_offset = mfa_t.index_offset = child_t.index_offset  = num_t.index_offset = get_sel() - selection_index;
+			name_t.set_index_offset(get_sel() - selection_index);
 			wbts_t.index_offset = wbcs_t.index_offset = wbvs_t.index_offset = wbfs_t.index_offset = get_sel() - selection_index;
 			jap_rss.index_offset = jap_t.index_offset = over_t.index_offset = img_s.index_offset = get_sel() - selection_index;
 			net_t.index_offset = get_sel() - selection_index;
-			
-			
-			
+
+
+
 			ChangeArtwork.fade()
 			fadeanimation()
 		}
-		
-		
-		
+
+
+
 		// get the current position of the frame (is the same index for the snap under the frame)
 		function get_sel()
 		{
-			
+
 			return ( sel_x * rows + sel_y ) ;
 		}
-		
-	
+
+
 		// logic used to move the frame
 		function move_frame( direction )
 		{
 		    local Wheelclick = fe.add_sound("assets/sounds/Click.mp3")
-			    
-			switch ( direction )	
+
+			switch ( direction )
 			{
 			case "down":
 				transition_swap_point=0.0;
@@ -352,7 +352,7 @@ if (my_config["aspect_ratio"] == "No")
 				}
 				return true;
 				break;
-				
+
 			case "up":
 				transition_swap_point=0.0;
 				if ( vert_flow && ( sel_y < rows - 1 ))
@@ -373,7 +373,7 @@ if (my_config["aspect_ratio"] == "No")
 				}
 				return true;
 				break;
-				
+
 			case "left":
 				transition_swap_point=0.0;
 				if ( vert_flow && ( sel_x > 0 ))
@@ -394,7 +394,7 @@ if (my_config["aspect_ratio"] == "No")
 				}
 				return true;
 				break;
-				
+
 			case "right":
 				transition_swap_point=0.0;
 				if ( vert_flow && ( sel_x < cols - 1 ) )
@@ -418,31 +418,31 @@ if (my_config["aspect_ratio"] == "No")
 
 
 			case "select":
-			
+
 				default:
 				// Correct the list index if it doesn't align with
 				// the game our frame is on
 				//
 				enabled=false; // turn conveyor off for this switch
 				local frame_index = get_sel();
-			
+
 				fe.list.index += frame_index - selection_index;
 
 				set_selection( frame_index );
 				update_frame();
-				
+
 				enabled=true; // re-enable conveyor
 				break;
 
 			}
-			
+
 			// return the selected index offset of the current frame
 			return get_sel()- selection_index;
 		}
 
 		function set_slots( objs, sel_index=-1 )
 		{
-		
+
 			if (fe.overlay.is_up == false )
 			{
 			if ( sel_index < 0 )
@@ -460,17 +460,17 @@ if (my_config["aspect_ratio"] == "No")
 				m_objs[i].m_base_io = i - selection_index;
 
 				m_objs[i].reset_index_offset();
-				
+
 			    m_objs[i].on_progress( m_objs[i].m_base_progress, 0 );
 				//animate the slots into place
-				
+
 				//animate the items for the initail_setup
 			//	m_objs[i].initial_load_setup( m_objs[i].m_base_progress, 0 );
-				
+
 			}
 			}
 		}
-		
+
 		function on_transition( ttype, var, ttime )
 		{
 			switch ( ttype )
@@ -501,7 +501,7 @@ if (my_config["aspect_ratio"] == "No")
 				frame.alpha = 0;
 
 				break;
-				 
+
 			case Transition.FromOldSelection:
 			case Transition.ToNewList:
 
@@ -533,30 +533,30 @@ if (my_config["aspect_ratio"] == "No")
 		bloomActive = false;
 		sel_x=0;
 		sel_y=0;
-		
+
 		constructor( num )
 		{
-			
+
 			transition_ms = my_config["ttime"].tointeger();
-			
+
 			m_num = num;
 
 			snap = fe.add_artwork( my_config["art"], 0, 0, width - 4*PADX, height - 4*PADY );
 			snap.trigger = Transition.EndNavigation;
-			
+
 			original_snap_width = width - 4*PADX;
 			original_snap_height = height - 4*PADY;
-			
+
 			snap_width_delta = (original_snap_width * ENLARGE) / 2;
 			snap_height_delta = (original_snap_height * ENLARGE) / 2;
-			
+
 			base.constructor();
 		}
-		
 
-	
-					
-			
+
+
+
+
 		function on_progress( progress, var )
 		{
 
@@ -565,22 +565,22 @@ if (my_config["aspect_ratio"] == "No")
 
 			if ( abs( var ) < rows )
 			{
-		     //	  (colums position / game item width) + width of the game menu put in the middle of the screen - the 
-				
+		     //	  (colums position / game item width) + width of the game menu put in the middle of the screen - the
+
 				if (select_status)
 				{
-					snap.x = (c * width) + (fe.layout.width - (fe.layout.width / 1.105448275)) / 2 + 20 - (snap_width_delta) + 1; 
+					snap.x = (c * width) + (fe.layout.width - (fe.layout.width / 1.105448275)) / 2 + 20 - (snap_width_delta) + 1;
 					snap.y =  ((fe.layout.height / 1.51) + r * height) - (snap_height_delta) + 2;
 
 				} else {
 					snap.x = (c * width) + (fe.layout.width - (fe.layout.width / 1.105448275)) / 2 + 20;
 					snap.y =  ((fe.layout.height / 1.51) + r * height) + 2;
 				}
-			
 
-			
+
+
 			} else {
-			
+
 				local prog = ::gridc.transition_progress;
 				if ( prog > ::gridc.transition_swap_point )
 				{
@@ -599,35 +599,35 @@ if (my_config["aspect_ratio"] == "No")
 				 snap.x = ((c + prog) * width) + (fe.layout.width - (fe.layout.width / 1.105448275)) / 2 + 10;
 				 snap.y = ((fe.layout.height / 1.51) + r * height) + 2;
 				}
-				
-		
+
+
 			}
 		}
-		
-		
-		
+
+
+
 		function preserveAspect(value)
 		{
 			snap.preserve_aspect_ratio = value;
 			return
 		}
-		
+
 		function activateBloom()
 		{
 			local sh = null;
 			if (bloomActive && select_status)
 			{
 				sh = fe.add_shader( Shader.Fragment, "assets/shaders/bloom_shader.frag" );
-				sh.set_texture_param("bgl_RenderedTexture"); 
+				sh.set_texture_param("bgl_RenderedTexture");
 				snap.shader = sh;
 			} else {
 				sh = fe.add_shader( Shader.Empty, "assets/shaders/bloom_shader.frag" ) ;
 				snap.shader = sh;
 			}
-			
+
 			return
 		}
-		
+
 		function swap( other )
 		{
 			snap.swap( other.snap );
@@ -640,12 +640,12 @@ if (my_config["aspect_ratio"] == "No")
 
 		function reset_index_offset()
 		{
-			snap.rawset_index_offset( m_base_io ); 
+			snap.rawset_index_offset( m_base_io );
 		}
 
-		
+
 		// mute / unmute videos
-		function video_play(button) 
+		function video_play(button)
 		{
 			if (button == "ON") {
 				snap.video_flags= Vid.Default;
@@ -654,50 +654,50 @@ if (my_config["aspect_ratio"] == "No")
 			}
 			return;
 		}
-				
+
 		function grow()
 		{
 			select_status = true;
 			activateBloom();
 			snap.zorder=20;
-			animation.add( ScaleWidthHeight( snap, 
-			{   
+			animation.add( ScaleWidthHeight( snap,
+			{
 				property = "scale",
-				tween = Tween.Linear, 
-				end = { 
-					w = snap.width + (snap.width * ENLARGE), 
-					h = snap.height + (snap.height * ENLARGE) 
-				}, 
+				tween = Tween.Linear,
+				end = {
+					w = snap.width + (snap.width * ENLARGE),
+					h = snap.height + (snap.height * ENLARGE)
+				},
 				time = 1
 			} ) );
-			
-			
+
+
 			return;
 		}
-		
+
 		function shrink()
-		{	
+		{
 			select_status = false;
 			activateBloom();
 			snap.zorder=3;
-			animation.add( ScaleWidthHeight( snap, 
-			{   
+			animation.add( ScaleWidthHeight( snap,
+			{
 				property = "scale",
-				tween = Tween.Linear, 
-				end = { 
-					w = original_snap_width, 
-					h = original_snap_height 
-				}, 
-				time = transition_ms 
+				tween = Tween.Linear,
+				end = {
+					w = original_snap_width,
+					h = original_snap_height
+				},
+				time = transition_ms
 			} ) );
-			
+
 			return;
 		}
-               
+
 	}
 ////////////////////////////////////////
 //
-//Change Artwork using Configured button 
+//Change Artwork using Configured button
 //
 ///////////////////////////////////////
 	class ChangeArtwork
@@ -707,36 +707,36 @@ if (my_config["aspect_ratio"] == "No")
 		image_index = null;
 		_trigger = null;
 		test=0;
-		
+
 		constructor(trigger)
 		{
 			image_index = 0;
-			
+
 			_trigger = trigger;
-			
+
 			artWork_to_Rotate = ["snap","flyer","title"];
-			
+
 			foreach (i in artWork_to_Rotate)
 			{
 				image.push(fe.add_artwork( i, 0 , fe.layout.height / 20, fe.layout.width, fe.layout.height * 0.605 - 4));
 
 			}
-			
+
 			foreach (i in image)
 			{
 				i.preserve_aspect_ratio = true;
 				i.trigger = Transition.EndNavigation;
 				i.alpha = 0;
-	
+
 			}
-			
-			image[2].video_flags = Vid.ImagesOnly;	
+
+			image[2].video_flags = Vid.ImagesOnly;
 
 			image[image_index].alpha = 255;
-			
+
 			fe.add_signal_handler(this, "on_signal");
 		}
-		
+
 		function set_index_offset(value)
 		{
 			foreach (o in image)
@@ -745,15 +745,15 @@ if (my_config["aspect_ratio"] == "No")
 			}
 		}
 		function fade()
-		{	    
+		{
 		   if ( image[0].alpha == 255)
 		   {
 		   image[1].alpha = 0
 	    // Fadeanimation
 			animation.add( PropertyAnimation( image[0],
-				{   
+				{
 				    property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 255,
 					pulse = false,
@@ -765,9 +765,9 @@ if (my_config["aspect_ratio"] == "No")
 		   image[0].alpha = 0
 	    // Fadeanimation
 			animation.add( PropertyAnimation( image[1],
-				{   
+				{
 				    property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 255,
 					pulse = false,
@@ -775,17 +775,17 @@ if (my_config["aspect_ratio"] == "No")
 				} ) );
 				}
 		}
-	
-	
+
+
 		function rotate_image()
 		{
 			//hide current image
 			image[image_index].alpha = 0;
-			
+
 			//turn off snap audio if when hiding
 			if (image_index == 0)
 				image[image_index].video_flags = Vid.NoAudio;
-			
+
 			//show next image
 			image_index++ ;
 			if (image_index == artWork_to_Rotate.len())
@@ -795,30 +795,30 @@ if (my_config["aspect_ratio"] == "No")
 		  {
 	    // Fadeanimation
 			animation.add( PropertyAnimation( image[image_index],
-				{   
+				{
 				    property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 255,
 					pulse = false,
 					time = 225
 				} ) );
 		 }
-		
+
 			// if current selection is the video, turn on the sound
 			if (image_index == 0)
 				image[image_index].video_flags = 0 ;
-				
-		    //Play a sound to change images		
-				
+
+		    //Play a sound to change images
+
 	         local Artsort = fe.add_sound("assets/sounds/sort.mp3")
 		    Artsort.playing=true
-		
-		
-			
+
+
+
 			return;
 		}
-		
+
 		// set up the button to trigger the signal
 		function on_signal( signal )
 		{
@@ -827,37 +827,37 @@ if (my_config["aspect_ratio"] == "No")
 				this.rotate_image();
 			}
 		}
-		
-	}	
+
+	}
 
 
 //////////////////////////////////
 // Setup Artwork for Layout
 //////////////////////////////////
-	
+
 	// add background image
 	if ( my_config[ "bg_image" ].len() > 0 )
 	fe.add_image( my_config[ "bg_image" ],
 			0, 0, fe.layout.width, fe.layout.height );
-			
+
     //Gridbackground note flitertag is drawn after video
 	local bgforgrid = fe.add_image("assets/uielements/gridbackground.png", 0,0,fe.layout.width, fe.layout.height)
 	local bgforgrid2 = fe.add_image("assets/uielements/Grid Backgroundrss.png", 0,0,fe.layout.width, fe.layout.height)
 
-	
-	
+
+
 	// add selection arrows
 	local arrows = fe.add_image("assets/uielements/arrow.png", 0 ,fe.layout.height * 0.720 + 12,fe.layout.height / 12,fe.layout.height / 12);
 	local arrow2 = fe.add_image("assets/uielements/arrow2.png", fe.layout.width / 1.048034 ,fe.layout.height * 0.720 + 12,fe.layout.height / 12,fe.layout.height / 12);
-	
+
     // add MenuControls artwork
 	local menucontrols = fe.add_image("assets/uielements/Menucontrols.png",(fe.layout.width * ( -0.0260416666 )), fe.layout.height * 0.29166666666, fe.layout.width * 0.234375, 0);
      menucontrols.preserve_aspect_ratio=true
-	 
- 
-	
 
-	 
+
+
+
+
 	// Populate the conveyor
 	::gridc <- Grid();
 	local my_array = [];
@@ -866,14 +866,14 @@ if (my_config["aspect_ratio"] == "No")
 		my_array.push( MySlot( i ) );
 		if (my_config["shader"] == "Yes")
 			my_array[i].bloomActive = true;
-				
+
 		my_array[i].preserveAspect(aspect_ratio);
 	}
 	gridc.set_slots( my_array, gridc.get_sel() );
-	
+
 	//add rotatable artwork with a key
 	gridc.name_t =  ChangeArtwork(my_config["artRotate"]);
-	
+
 	   //Gridbackground flitertag
 	local bgforgrid2 = fe.add_image("assets/uielements/flitertag.png", 0,0,fe.layout.width, fe.layout.height)
 
@@ -885,22 +885,22 @@ if (my_config["aspect_ratio"] == "No")
 	// add top layout overlay
 	local bgoverlay = fe.add_image("assets/uielements/wings.png", 0 ,0 ,fe.layout.width ,fe.layout.height );
 	bgoverlay.preserve_aspect_ratio = true;
-	
+
 	// add network image
 	gridc.net_t = fe.add_image("[!network]", fe.layout.width / 360 , fe.layout.height /1.04347826087 , fe.layout.width / 42.6666666667 , fe.layout.height / 27  );
 	gridc.net_t.preserve_aspect_ratio = true
 	local networkimageclone = fe.add_clone (gridc.net_t)
     networkimageclone.set_pos(fe.layout.width / 1.02949061662,fe.layout.height /1.04347826087)
 	networkimageclone.preserve_aspect_ratio = true
-	
+
 	// add the infobox graphic
 	local Infobox1 = fe.add_image( "assets/uielements/INFOBOX2.png", fe.layout.width / 1.217 - 20, fe.layout.height / 4.245 + 10, 330 , 440);
-	
-	//Add FadeSurface For FadeAnimations 
+
+	//Add FadeSurface For FadeAnimations
 	local fadeitems = fe.add_surface(fe.layout.width,fe.layout.height)
 	local fadeitems2 = fe.add_surface(fe.layout.width,fe.layout.height)
 
-	
+
 
 	// add the logo artwork to the top left
 	gridc.mfa_t = fadeitems.add_artwork(my_config["logo"],  fe.layout.height / 72, fe.layout.height / 17, fe.layout.height / 2.91, fe.layout.width / 11.3408);;
@@ -908,23 +908,23 @@ if (my_config["aspect_ratio"] == "No")
 	gridc.mfa_t.trigger = Transition.EndNavigation;
 
 
-	
+
 	// add the game manufacturer logo
 	gridc.img_t = fadeitems.add_image( "[!publisher]", fe.layout.width / 1.25, fe.layout.height / 17, fe.layout.height / 2.91, fe.layout.height / 6.38);
 	gridc.img_t.preserve_aspect_ratio = true;
 	gridc.img_t.trigger = Transition.EndNavigation;
-	
-	
-	
-	
+
+
+
+
 		function fadeanimation()
 	{
-	
+
     // Fadeanimation
 			animation.add( PropertyAnimation( fadeitems,
-				{   
+				{
 				    property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  0,
 					end = 255,
 					pulse = false,
@@ -932,27 +932,27 @@ if (my_config["aspect_ratio"] == "No")
 				} ) );
 		 }
 
-	
 
-	
-	
+
+
+
 	// add the game system logo
 	gridc.img_s = fe.add_image( "[!systemg]", 5, fe.layout.height / 4.65, fe.layout.height / 8.5, fe.layout.width / 60);
 	gridc.img_s.trigger = Transition.EndNavigation;
 	gridc.img_s.preserve_aspect_ratio = true;
     gridc.img_s.alpha = 100;
 
-	// add the filter name text 
+	// add the filter name text
 	local sorting = fe.add_text( "[FilterName]", 0, fe.layout.height / 1.618, fe.layout.width, fe.layout.height / 36 )
 	sorting.font = "Squares Bold Free";
 	sorting.align = Align.Left
 
-	//add the game entry info 
+	//add the game entry info
    gridc.num_t = fe.add_text( "[ListEntry]/[ListSize]", fe.layout.width / - 1.185, fe.layout.height / 1.618, fe.layout.width, fe.layout.height / 36 )
    gridc.num_t.font = "Squares Bold Free";
    gridc.num_t.align = Align.Right;
 
-	
+
 	// add the number of players to the info box
 	gridc.wbvs_t = fadeitems2.add_text( "[Players]", fe.layout.width / 2.306 - 30, fe.layout.height / 3.829, fe.layout.width ,fe.layout.height / 32.7  );
 	gridc.wbvs_t.font = "Squares Bold Free";
@@ -960,7 +960,7 @@ if (my_config["aspect_ratio"] == "No")
 	// add the genre to the infobox
 	gridc.wbts_t = fadeitems2.add_text( "[!genre]", fe.layout.width / 2.306 - 30, fe.layout.height / 2.938, fe.layout.width ,fe.layout.height / 32.7  );
 	gridc.wbts_t.font = "Squares Bold Free";
-	
+
 	// add the year to the infobox
 	gridc.wbfs_t = fadeitems2.add_text( "[Year]", fe.layout.width / 2.306 - 30, fe.layout.height / 2.482, fe.layout.width ,fe.layout.height / 32.7  );
 	gridc.wbfs_t.font = "Squares Bold Free";
@@ -973,25 +973,25 @@ if (my_config["aspect_ratio"] == "No")
 	gridc.bt_t = fadeitems2.add_image("[!buttons]", fe.layout.width / 1.122 - 30, fe.layout.height / 1.92, fe.layout.height / 7.2, fe.layout.height / 7.2);
 	gridc.bt_t.preserve_aspect_ratio = true;
 	gridc.bt_t.trigger = Transition.EndNavigation;
-	
+
 	// add the japanese text to the lower bottom
 	gridc.jap_t = fe.add_text( "[AltTitle]", 0, fe.layout.height / 1.045 , fe.layout.width ,fe.layout.height / 30 );
 	gridc.jap_t.font = "MSMINCHO";
 	gridc.jap_t.style = Style.Bold
-	
+
 	// add the frame selection box
 	gridc.frame = fe.add_image( "assets/uielements/frame.png", frame_width * 2, frame_height * 2, frame_width, frame_height );
 	gridc.frame.alpha = 0;
 	// add the frame selection box glow
 	gridc.frameg = fe.add_image( "assets/uielements/frameglow.png", frame_width * 2, frame_height * 2, frameg_width, frameg_height );
 	gridc.frameg.alpha = 0;
-		
+
     gridc.jap_rss = fe.add_text( "[!rss]", 0, fe.layout.height / 1.045  - 58, fe.layout.width ,fe.layout.height / 30 );
 	gridc.jap_rss.font = "MSMINCHO";
 	gridc.jap_rss.style = Style.Bold
 
-	
-	
+
+
 	// Dynamically change the genre text
 	function genre(offset)
 	{
@@ -1010,9 +1010,9 @@ if (my_config["aspect_ratio"] == "No")
 			"sports": [ "sports", "boxing", "golf", "baseball", "football", "soccer" ],
 			"strategy": [ "strategy"],
 			"mahjong": [ "mahjong" ],
-		
+
 		}
-		
+
 		local matches = [];
 		foreach( key, val in supported )
 		{
@@ -1022,20 +1022,20 @@ if (my_config["aspect_ratio"] == "No")
 			}
 		}
 		if ( matches.len() > 0 )
-			result = matches[0];	
+			result = matches[0];
 
 		return result;
 	}
-	
-	
+
+
 		// Dynamically change th networktype
 	function network(offset)
 	{   local m = fe.game_info(Info.Status, offset) + 1;
-	 
+
 			if  (  m.tointeger()  > 3850000)
-	
+
 			m = "assets/uielements/networkoff.png";
-		
+
 		 else if (  m.tointeger()  < 10)
 		{
 			m = "assets/uielements/networkoff.png";
@@ -1045,11 +1045,11 @@ if (my_config["aspect_ratio"] == "No")
 			m = "assets/uielements/network.png";
 			}
 		return m;
-		
+
 	}
-	
-	
-	
+
+
+
 	// Dynamically change the Manufacturer rss text
 	function rss(offset)
 	{
@@ -1057,7 +1057,7 @@ if (my_config["aspect_ratio"] == "No")
 		local cat = " " + fe.game_info(Info.Manufacturer, offset);
 		local supported = {
 			//filename : [ match1, match2 ]
-			"デベロッパー / プロデューサー ARC SYSTEM WORKS / ゲーム情報については、http：/arcsystemworksu.com/ をご覧ください": [ "Arc System Works" ],
+			"デベロッパー / プロデューサー ARC SYSTEM WORKS / ゲーム情報については、http：/arcsystemworks.com/ をご覧ください": [ "Arc System Works" ],
 			"デベロッパー / プロデューサー CAVE Co., ltd. / ゲーム情報については、https://www.cave.co.jp/en/ をご覧ください。": [ "Cave" ],
 			"デベロッパー / プロデューサー EXAMU / ゲーム情報については、https://www.examu.co.jp/ をご覧ください。": [ "Examu" ],
 			"デベロッパー / プロデューサー TAITO CORP. / ゲーム情報については、http：//Nesica.net/ をご覧ください。": [ "Taito" ],
@@ -1089,9 +1089,9 @@ if (my_config["aspect_ratio"] == "No")
 			"デベロッパー / プロデューサー Paragon/ ゲーム情報については、Paragon をご覧ください。": [ "Paragon" ]
 			"デベロッパー / プロデューサー Team Shanghai Alice / ゲーム情報については、Touhou Project をご覧ください。": [ "Team Shanghai Alice" ]
           "mahjong": [ "mahjong" ],
-		
+
 		}
-		
+
 		local matches = [];
 		foreach( key, val in supported )
 		{
@@ -1101,11 +1101,11 @@ if (my_config["aspect_ratio"] == "No")
 			}
 		}
 		if ( matches.len() > 0 )
-			result = matches[0];	
+			result = matches[0];
 
 		return result;
 	}
-		
+
 	// Dynamically change the manufacturer artwork
 	function publisher(offset)
 	{
@@ -1114,7 +1114,7 @@ if (my_config["aspect_ratio"] == "No")
 			m = "assets/publisher logos/" + m + ".png";
 		return m;
 	}
-	
+
 		// Dynamically change the System artwork
 	function systemg(offset)
 	{
@@ -1125,44 +1125,44 @@ if (my_config["aspect_ratio"] == "No")
 	}
 
 
-	
-	
+
+
 	// Dynamically change the button artwork
 	function buttons(offset)
-	
+
 	{
 	if ( my_config["nbuttons"] == "Con" )
-	
+
 	{   local m = fe.game_info(Info.Buttons, offset);
-	    
+
 		if (m.len() > 0 )
 			m = "assets/buttons/" + m + "button.png";
 		else
 			m="assets/buttons/1button.png";
 		return m;
-		
+
 	}
 	else if ( my_config["nbuttons"] == "Buttons" )
-	{   
+	{
 	    local m = fe.game_info(Info.Control, offset);
 		if (m.len() > 0 )
-		
+
 			m = "assets/buttons/" + m + "button.png";
 		else
 			m="assets/buttons/1button.png";
 		return m;
 	}
 	}
-	
+
 		// add Free play text
 local free = fe.add_text( "FREE PLAY", fe.layout.width / 32 , fe.layout.height / 1.045 , fe.layout.width ,fe.layout.height / 28 );
 free.font = "futureforces";
 free.align = Align.Left
 	// Pulsatining Aminamtion for the free pulse
-			animation.add( PropertyAnimation( free, 
-				{   
+			animation.add( PropertyAnimation( free,
+				{
 					property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start =  10,
 					end = 255,
 					pulse = true,
@@ -1173,17 +1173,17 @@ local free2 = fe.add_text( "FREE PLAY",  fe.layout.width / - 32, fe.layout.heigh
 free2.font = "futureforces";
 free2.align = Align.Right
 	// Pulsatining Aminamtion for the free pulse
-			animation.add( PropertyAnimation( free2, 
-				{   
+			animation.add( PropertyAnimation( free2,
+				{
 					property = "alpha",
-					tween = Tween.Linear, 
+					tween = Tween.Linear,
 					start = 10,
 					end = 255,
 					pulse = true,
 					time = 1200
 
 				} ) );
-				
+
 ////////////////////////////////////////
 //
 //Configure Start Game Menu
@@ -1196,14 +1196,14 @@ free2.align = Align.Right
 	// translucent background
 	local overlayBackground = overlaySurface.add_image("assets/uielements/black.png",0,0, fe.layout.width  , fe.layout.height );
 	overlayBackground.alpha = 150;
-	
+
 	// create extra surface for the menu
 	local overlayMenuSur = overlaySurface.add_surface(577,360);
 	overlayMenuSur.set_pos(681.5, 360);
-	
+
 	// fade out the background
 	overlayMenuSur.add_image("assets/uielements/menuframe.png",0,0,557,360); // Add the menu frame
-	
+
 	// create the listbox for the menu including text colors and styles
 	local overlay_lb = overlayMenuSur.add_listbox(fe.layout.width / 640 + 60,fe.layout.height / 4.36 + 50,fe.layout.width / 4.42396, fe.layout.height / 13.5 - 80); //Add the listbox
 	overlay_lb.rows = 1; // the listbox will have 1 slot
@@ -1213,61 +1213,61 @@ free2.align = Align.Right
 	overlay_lb.font = "Squares Bold Free";
 	overlay_lb.set_sel_rgb( 255, 255, 255 );
 	overlay_lb.set_selbg_rgb( 80, 180 , 230);
-	
+
 	local overlayMenuTitle = overlayMenuSur.add_text("",0,0,322,35); //Add the menu title
 	overlayMenuTitle.charsize=30;
 	overlayMenuTitle.style = Style.Bold;
 	overlayMenuTitle.set_rgb(255,165,0);
-		
+
 	//Add Logo to the menu
-	gridc.over_t= overlaySurface.add_artwork( "wheel" ,fe.layout.width / 2.56 + 57, fe.layout.height / 2.5116 , fe.layout.width / 4.5714 - 110, 85); 
+	gridc.over_t= overlaySurface.add_artwork( "wheel" ,fe.layout.width / 2.56 + 57, fe.layout.height / 2.5116 , fe.layout.width / 4.5714 - 110, 85);
 	gridc.over_t.preserve_aspect_ratio = false;
 	gridc.over_t.trigger = Transition.EndNavigation;
-	
+
 	// Do a fade effect for the menu when called
 	fe.add_transition_callback( "orbit_transition" );
-	
+
 	//register to capture the select key and show menu if necessary
 	fe.add_signal_handler("select_game")
 	function select_game(signal)
 	{
-		
+
 		if (signal == "select") // select was pushed
 		{
 			//no menu is currently open and select was pressed. Run the game choice menu to give the user a choice
 			if (fe.overlay.is_up == false )
-			{   
+			{
 			    local SelectClick = fe.add_sound("assets/sounds/Select.mp3")
 			    SelectClick.playing=true
-				
+
 				// tell Attractmode we are using a custom overlay menu
 				fe.overlay.set_custom_controls( overlayMenuTitle, overlay_lb );
-				
+
 				// show the menu and ask the user
 				local result = fe.overlay.list_dialog( ["YES","NO"], "", 0 );
-				
+
 				// remove the menu
 				fe.overlay.clear_custom_controls();
-				
+
 				// start game if chosen
 				if (result)
 				{
 				 local Wheelclick = fe.add_sound("assets/sounds/Click.mp3")
 				 Wheelclick.playing=true
 					return true;
-			}		
+			}
 				else{
 				   local startclick = fe.add_sound("assets/sounds/start.mp3")
 				   startclick.playing=true
 				   return false;
-				
+
 					}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	function orbit_transition( ttype, var, ttime )
 	{
 		switch ( ttype )
@@ -1279,19 +1279,19 @@ free2.align = Align.Right
 				overlaySurface.alpha = ttime;
 				return true;
 				gridc.update_frame();
-		
+
 			}
 			else
 			{
 					overlaySurface.alpha = 255;
 			}
 			break;
-			
+
 		case Transition.HideOverlay:
 			if ( ttime < 255 )
 			{
 				overlaySurface.alpha = 255 - ttime;
-			
+
 				  return true;
 			}
 			else
@@ -1307,17 +1307,17 @@ free2.align = Align.Right
 		}
 		return false;
 	}
-	
+
 	// move the frame to the inital position
 	gridc.update_frame();
 	my_array[gridc.get_sel()].grow();
 
-	
+
 ////////////////////////////////////////////////////
 // layout Main Loop
 ////////////////////////////////////////////////////
-	
-	// move the frame located in the grid object 
+
+	// move the frame located in the grid object
 	// based on joystick movement
 	fe.add_signal_handler( "cursorMovement" );
 	function cursorMovement(sig)
@@ -1332,22 +1332,20 @@ free2.align = Align.Right
 			case "left":
 			case "right":
 			case "select":
-	
+
 				before = gridc.get_sel();
 				more_processing = gridc.move_frame(sig);
 				after = gridc.get_sel();
-			
+
 			if (before != after)
 			{	my_array[before].shrink();
 				my_array[after].grow();
 			}
-			
+
 				return more_processing;
 				break;
-			
+
 		}
-		
+
 		return false;
 	}
-
-
