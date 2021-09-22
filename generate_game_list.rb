@@ -12,6 +12,7 @@ class GenerateGameList
   def process_game(game)
     add_game_to_am_list game
     create_teknoparrot_bash_script(game) unless game.teknoparrot_script.nil?
+    create_pc_bash_script(game) unless game.exe_path.nil?
     add_game_to_rocketlauncher game
   end
 
@@ -25,13 +26,18 @@ class GenerateGameList
     @rocketlauncher.puts "[#{game.name}]"
 
     if game.rocketlauncher_class.nil?
-      @rocketlauncher.puts "Application=#{game.exe_path}"
+      @rocketlauncher.puts "Application=..\\Games\\PC\\#{game.name}.bat"
     else
       @rocketlauncher.puts "Application=..\\Games\\TeknoParrot\\#{game.name}.bat"
     end
 
     @rocketlauncher.puts "ahk_class #{game.rocketlauncher_class}"
     @rocketlauncher.puts ""
+  end
+
+  def create_pc_bash_script(game)
+    bash = "#{game.exe_path}"
+    File.write("Games/PC/#{game.name}.bat", bash, mode: 'w+')
   end
 
   def create_teknoparrot_bash_script(game)
